@@ -85,11 +85,13 @@ export function ArtworkCard({ artwork }: ArtworkCardProps) {
                 className="bg-white text-neutral-900 p-2 rounded-full hover:bg-[#D3A265] hover:text-white transition-colors"
                 size="icon"
                 variant="ghost"
-                asChild
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.location.href = `/artworks/${artwork.id}`;
+                }}
               >
-                <Link href={`/artworks/${artwork.id}`}>
-                  <Search size={18} />
-                </Link>
+                <Search size={18} />
               </Button>
             </div>
           </div>
