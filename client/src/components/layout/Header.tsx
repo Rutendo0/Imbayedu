@@ -66,9 +66,7 @@ const Header = () => {
                   <h3 className="font-medium mb-2 uppercase text-xs tracking-wider">By Category</h3>
                   <ul className="space-y-2">
                     <li><Link href="/artworks?category=1" className="text-neutral-700 hover:text-[#D3A265]">Paintings</Link></li>
-                    <li><Link href="/artworks?category=2" className="text-neutral-700 hover:text-[#D3A265]">Sculptures</Link></li>
-                    <li><Link href="/artworks?category=3" className="text-neutral-700 hover:text-[#D3A265]">Photography</Link></li>
-                    <li><Link href="/artworks?category=4" className="text-neutral-700 hover:text-[#D3A265]">Mixed Media</Link></li>
+                    <li><Link href="/artworks?category=2" className="text-neutral-700 hover:text-[#D3A265]">Mixed Media</Link></li>
                   </ul>
                 </div>
                 <div>
@@ -137,12 +135,6 @@ const Header = () => {
                 Paintings
               </Link>
               <Link href="/artworks?category=2" onClick={closeMenu} className="text-sm text-neutral-700 hover:text-[#D3A265] block py-1">
-                Sculptures
-              </Link>
-              <Link href="/artworks?category=3" onClick={closeMenu} className="text-sm text-neutral-700 hover:text-[#D3A265] block py-1">
-                Photography
-              </Link>
-              <Link href="/artworks?category=4" onClick={closeMenu} className="text-sm text-neutral-700 hover:text-[#D3A265] block py-1">
                 Mixed Media
               </Link>
             </div>
