@@ -39,24 +39,24 @@ const GalleryExperience = () => {
           
           <div className="grid grid-cols-2 gap-4">
             <img 
-              src="https://images.unsplash.com/photo-1551913902-c92207136625?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
-              alt="Gallery Interior" 
-              className="w-full rounded-md shadow-md"
+              src="/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg" 
+              alt="Imbayedu Artwork Display" 
+              className="w-full h-64 object-cover rounded-md shadow-md"
             />
             <img 
-              src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
-              alt="Art Viewing Experience" 
-              className="w-full rounded-md shadow-md"
+              src="/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (2).jpeg" 
+              alt="African Art Collection" 
+              className="w-full h-64 object-cover rounded-md shadow-md"
             />
             <img 
-              src="https://images.unsplash.com/photo-1515169067868-5387ec356754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
-              alt="Gallery Event" 
-              className="w-full rounded-md shadow-md"
+              src="/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (1).jpeg" 
+              alt="Contemporary African Painting" 
+              className="w-full h-64 object-cover rounded-md shadow-md"
             />
             <img 
-              src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" 
-              alt="Artist Studio" 
-              className="w-full rounded-md shadow-md"
+              src="/img/artwork/WhatsApp Image 2025-05-15 at 09.30.09.jpeg" 
+              alt="Vibrant Art Exhibition" 
+              className="w-full h-64 object-cover rounded-md shadow-md"
             />
           </div>
         </div>

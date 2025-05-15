@@ -99,11 +99,9 @@ export class MemStorage implements IStorage {
   }
 
   private initializeData() {
-    // Add sample categories
+    // Add relevant categories
     const categories = [
       { name: "Paintings", description: "Original paintings including oil, acrylic, watercolor and mixed media" },
-      { name: "Sculptures", description: "Three-dimensional art objects created by shaping or combining materials" },
-      { name: "Photography", description: "Photographic prints capturing unique perspectives and moments" },
       { name: "Mixed Media", description: "Artworks that combine different materials and techniques" }
     ];
     
