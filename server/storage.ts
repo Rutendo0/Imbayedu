@@ -109,50 +109,50 @@ export class MemStorage implements IStorage {
     
     categories.forEach(category => this.createCategory(category));
     
-    // Add sample collections
+    // Add collections featuring actual Imbayedu artwork images
     const collections = [
       { 
         name: "Abstract Expressions", 
-        description: "Bold colors and expressive forms", 
-        imageUrl: "https://images.unsplash.com/photo-1578926375605-eaf7559b1458?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=500&q=80", 
+        description: "Bold colors and expressive forms capturing emotional landscapes", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg", 
         featured: true 
       },
       { 
         name: "Cultural Portraits", 
-        description: "Celebrating African heritage and identity", 
-        imageUrl: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=500&q=80", 
+        description: "Celebrating African heritage and identity through vibrant expressions", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg", 
         featured: true 
       },
       { 
         name: "Mixed Media", 
-        description: "Contemporary techniques with traditional influences", 
-        imageUrl: "https://cdn.pixabay.com/photo/2020/08/19/15/24/gallery-5501368_1280.jpg", 
+        description: "Contemporary techniques with traditional influences and textural exploration", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg", 
         featured: true 
       }
     ];
     
     collections.forEach(collection => this.createCollection(collection));
     
-    // Add sample artists
+    // Add artists associated with Imbayedu artworks
     const artists = [
       {
         name: "Zinhle Mkhize",
-        bio: "Contemporary painter specializing in portrait art that captures the essence of African identity and heritage.",
-        imageUrl: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80",
+        bio: "Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (3).jpeg",
         featured: true,
         location: "Johannesburg, South Africa"
       },
       {
         name: "Koffi Adama",
-        bio: "Sculptor and mixed media artist whose work explores the intersection of traditional African symbolism and modern aesthetics.",
-        imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80",
+        bio: "Sculptor and mixed media artist whose work explores the intersection of traditional African symbolism and modern aesthetics. His textural experimentations create dynamic compositions that invite viewers to reconsider materials and forms.",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
         featured: true,
         location: "Accra, Ghana"
       },
       {
         name: "Thabo Mbeki",
-        bio: "Abstract painter known for his vibrant geometric compositions that reflect the rhythm and energy of urban African life.",
-        imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80",
+        bio: "Abstract painter known for his vibrant geometric compositions that reflect the rhythm and energy of urban African life. His landscapes capture emotional responses to environments through bold color relationships and dynamic forms.",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
         featured: true,
         location: "Cape Town, South Africa"
       }
@@ -160,7 +160,7 @@ export class MemStorage implements IStorage {
     
     artists.forEach(artist => this.createArtist(artist));
     
-    // Add sample artworks with actual Imbayedu pieces
+    // Add all artworks with actual Imbayedu pieces
     const artworks = [
       {
         title: "African Spirit",
@@ -441,6 +441,160 @@ export class MemStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true
+      },
+      {
+        title: "Vibrant Abstraction",
+        description: "A colorful abstract piece with geometric elements creating a sense of movement and rhythm.",
+        price: 1850,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (2).jpeg",
+        artistId: 2, // Koffi Adama
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "85 x 100 cm",
+        medium: "Acrylic on canvas",
+        year: "2023",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Expressive Portrait",
+        description: "A bold portrait using expressive brushwork to convey emotion and character.",
+        price: 2100,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (3).jpeg",
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 2, // Cultural Portraits
+        dimensions: "90 x 110 cm",
+        medium: "Oil on canvas",
+        year: "2024",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Sculptural Forms",
+        description: "An explorative painting investigating sculptural forms and textures through paint application.",
+        price: 1950,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg",
+        artistId: 2, // Koffi Adama
+        categoryId: 1, // Paintings
+        collectionId: 3, // Mixed Media
+        dimensions: "95 x 120 cm",
+        medium: "Mixed media on canvas",
+        year: "2023",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Minimalist Landscape",
+        description: "A subdued landscape with minimal elements creating a sense of calm and spaciousness.",
+        price: 1750,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06 (1).jpeg",
+        artistId: 3, // Thabo Mbeki
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "80 x 90 cm",
+        medium: "Oil on canvas",
+        year: "2023",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Dynamic Composition",
+        description: "A dynamic arrangement of shapes and colors creating a sense of movement and energy.",
+        price: 1880,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07.jpeg",
+        artistId: 2, // Koffi Adama
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "100 x 100 cm",
+        medium: "Acrylic on canvas",
+        year: "2024",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Textural Abstract",
+        description: "A highly textured abstract work exploring surface quality and material interaction.",
+        price: 1950,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
+        artistId: 2, // Koffi Adama
+        categoryId: 4, // Mixed Media
+        collectionId: 3, // Mixed Media
+        dimensions: "90 x 95 cm",
+        medium: "Mixed media on canvas",
+        year: "2023",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Serene Waters",
+        description: "A peaceful depiction of water and sky with subtle color transitions creating a meditative mood.",
+        price: 1780,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (2).jpeg",
+        artistId: 3, // Thabo Mbeki
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "85 x 110 cm",
+        medium: "Oil on canvas",
+        year: "2023",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Expressionist Landscape",
+        description: "A bold expressionist interpretation of landscape elements with expressive brushwork.",
+        price: 2100,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
+        artistId: 3, // Thabo Mbeki
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "100 x 120 cm",
+        medium: "Acrylic on canvas",
+        year: "2024",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Cultural Celebration",
+        description: "A vibrant celebration of African cultural motifs and patterns in a contemporary format.",
+        price: 2250,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (1).jpeg",
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 2, // Cultural Portraits
+        dimensions: "90 x 110 cm",
+        medium: "Mixed media on canvas",
+        year: "2024",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Gestural Abstract",
+        description: "A dynamic gestural abstract painting capturing movement and spontaneity through brushwork.",
+        price: 1950,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg",
+        artistId: 2, // Koffi Adama
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "95 x 115 cm",
+        medium: "Acrylic on canvas",
+        year: "2023",
+        inStock: true,
+        featured: false
+      },
+      {
+        title: "Vibrant Landscape",
+        description: "A colorful landscape painting with bold hues capturing the vibrant quality of African light.",
+        price: 2050,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.09.jpeg",
+        artistId: 3, // Thabo Mbeki
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "90 x 120 cm",
+        medium: "Oil on canvas",
+        year: "2024",
+        inStock: true,
+        featured: false
       }
     ];
     
