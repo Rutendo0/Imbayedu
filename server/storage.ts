@@ -160,13 +160,153 @@ export class MemStorage implements IStorage {
     
     artists.forEach(artist => this.createArtist(artist));
     
-    // Add sample artworks
+    // Add sample artworks with actual Imbayedu pieces
     const artworks = [
       {
-        title: "Geometric Harmony",
-        description: "A vibrant abstract painting exploring the relationship between color and form through geometric patterns.",
-        price: 1250,
-        imageUrl: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600&q=80",
+        title: "African Spirit",
+        description: "A vibrant portrait celebrating African heritage with bold colors and expressive brushwork.",
+        price: 1850,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.21.jpeg",
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 2, // Cultural Portraits
+        dimensions: "90 x 120 cm",
+        medium: "Acrylic on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Sunset Reflections",
+        description: "A captivating landscape depicting the warm hues of an African sunset reflecting over water.",
+        price: 1650,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.23.jpeg",
+        artistId: 3, // Thabo Mbeki
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "80 x 100 cm",
+        medium: "Oil on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Nature's Harmony",
+        description: "An exploration of natural forms and patterns through a rich tapestry of colors and textures.",
+        price: 1450,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.24.jpeg",
+        artistId: 2, // Koffi Adama
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "70 x 90 cm",
+        medium: "Mixed media on canvas",
+        year: "2023",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Abstract Emotion",
+        description: "A powerful abstract piece exploring the depths of human emotion through color and form.",
+        price: 1950,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.29.57.jpeg",
+        artistId: 3, // Thabo Mbeki
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "100 x 100 cm",
+        medium: "Acrylic on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Cultural Heritage",
+        description: "A celebration of African cultural heritage through symbolic imagery and traditional patterns.",
+        price: 2100,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.29.59.jpeg",
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 2, // Cultural Portraits
+        dimensions: "90 x 120 cm",
+        medium: "Oil on canvas",
+        year: "2023",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Urban Rhythm",
+        description: "A dynamic composition capturing the energy and rhythm of urban African life.",
+        price: 1750,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00.jpeg",
+        artistId: 2, // Koffi Adama
+        categoryId: 4, // Mixed Media
+        collectionId: 3, // Mixed Media
+        dimensions: "80 x 100 cm",
+        medium: "Mixed media on wood panel",
+        year: "2023",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Serene Landscape",
+        description: "A peaceful landscape showcasing the serene beauty of African natural environments.",
+        price: 1880,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (1).jpeg",
+        artistId: 3, // Thabo Mbeki
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "90 x 120 cm",
+        medium: "Oil on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Colorful Abstraction",
+        description: "A vibrant abstract composition with bold colors and dynamic forms creating visual harmony.",
+        price: 1680,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (2).jpeg",
+        artistId: 2, // Koffi Adama
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "80 x 80 cm",
+        medium: "Acrylic on canvas",
+        year: "2023",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Textured Landscape",
+        description: "A richly textured landscape highlighting the diverse topography of African environments.",
+        price: 1950,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.01.jpeg",
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "100 x 120 cm",
+        medium: "Mixed media on canvas",
+        year: "2023",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Vibrant Portrait",
+        description: "A striking portrait featuring bold colors and expressive brushwork celebrating African identity.",
+        price: 2200,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.01 (1).jpeg",
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 2, // Cultural Portraits
+        dimensions: "90 x 120 cm",
+        medium: "Oil on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Abstract Patterns",
+        description: "A mesmerizing exploration of patterns and textures through abstract composition.",
+        price: 1850,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02.jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -177,100 +317,128 @@ export class MemStorage implements IStorage {
         featured: true
       },
       {
-        title: "Soul of Africa",
-        description: "A powerful portrait that celebrates African heritage through traditional symbolism and contemporary techniques.",
-        price: 1850,
-        imageUrl: "https://images.unsplash.com/photo-1576773689115-5cd2b0223523?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600&q=80",
-        artistId: 1, // Zinhle Mkhize
+        title: "Nature's Palette",
+        description: "A colorful interpretation of natural elements using an expressive color palette.",
+        price: 1750,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (1).jpeg",
+        artistId: 2, // Koffi Adama
         categoryId: 1, // Paintings
-        collectionId: 2, // Cultural Portraits
-        dimensions: "90 x 120 cm",
-        medium: "Oil on canvas",
-        year: "2022",
+        collectionId: 1, // Abstract Expressions
+        dimensions: "90 x 90 cm",
+        medium: "Acrylic on canvas",
+        year: "2024",
         inStock: true,
         featured: true
       },
       {
-        title: "Serengeti Dreams",
-        description: "A vivid landscape depicting the beauty and tranquility of the African savanna at sunset.",
-        price: 2100,
-        imageUrl: "https://images.unsplash.com/photo-1549289524-06cf8837ace5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600&q=80",
-        artistId: 1, // Zinhle Mkhize
+        title: "Emotional Landscape",
+        description: "A landscape that captures emotional response through color harmonies and compositional elements.",
+        price: 1980,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (2).jpeg",
+        artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
-        dimensions: "100 x 150 cm",
+        dimensions: "100 x 120 cm",
+        medium: "Oil on canvas",
+        year: "2023",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Cultural Tapestry",
+        description: "A vibrant representation of African cultural elements woven together in a harmonious composition.",
+        price: 2150,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg",
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 4, // Mixed Media
+        collectionId: 2, // Cultural Portraits
+        dimensions: "90 x 120 cm",
+        medium: "Mixed media on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Abstract Movement",
+        description: "A dynamic abstract piece capturing movement and energy through flowing forms and vibrant colors.",
+        price: 1950,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (1).jpeg",
+        artistId: 2, // Koffi Adama
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "100 x 100 cm",
         medium: "Acrylic on canvas",
         year: "2023",
         inStock: true,
         featured: true
       },
       {
-        title: "Textural Ancestry",
-        description: "A mixed media piece that incorporates traditional African textiles and contemporary elements to explore heritage.",
-        price: 1750,
-        imageUrl: "https://cdn.pixabay.com/photo/2017/08/01/20/52/people-2567915_1280.jpg",
+        title: "Soulful Portrait",
+        description: "A soulful portrait that captures the depth and spirit of its subject through expressive techniques.",
+        price: 2300,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg",
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 2, // Cultural Portraits
+        dimensions: "90 x 120 cm",
+        medium: "Oil on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Vibrant Expression",
+        description: "An expressive and vibrant piece showcasing bold brushstrokes and dynamic color relationships.",
+        price: 1850,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
+        artistId: 3, // Thabo Mbeki
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "80 x 100 cm",
+        medium: "Acrylic on canvas",
+        year: "2023",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Textural Study",
+        description: "A rich exploration of texture and form through layers of paint and mixed media elements.",
+        price: 1780,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 4, // Mixed Media
         collectionId: 3, // Mixed Media
-        dimensions: "70 x 90 cm",
-        medium: "Mixed media on wood panel",
-        year: "2022",
-        inStock: true,
-        featured: true
-      },
-      {
-        title: "Guardian Spirit",
-        description: "A sculptural piece inspired by traditional African guardian figures, reimagined through a contemporary lens.",
-        price: 2400,
-        imageUrl: "https://images.unsplash.com/photo-1581430872221-d1cfed785922?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600&q=80",
-        artistId: 2, // Koffi Adama
-        categoryId: 2, // Sculptures
-        collectionId: 2, // Cultural Portraits
-        dimensions: "40 x 30 x 20 cm",
-        medium: "Bronze",
-        year: "2021",
-        inStock: true,
-        featured: true
-      },
-      {
-        title: "Desert Whispers",
-        description: "An abstract interpretation of the desert landscape, capturing its vastness and subtle color variations.",
-        price: 1680,
-        imageUrl: "https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=600&q=80",
-        artistId: 3, // Thabo Mbeki
-        categoryId: 1, // Paintings
-        collectionId: 1, // Abstract Expressions
-        dimensions: "60 x 80 cm",
-        medium: "Acrylic and sand on canvas",
-        year: "2022",
-        inStock: true,
-        featured: true
-      },
-      {
-        title: "Vibrant Journey",
-        description: "A colorful abstract composition representing the journey of life through dynamic brushstrokes and bold colors.",
-        price: 1950,
-        imageUrl: "https://cdn.pixabay.com/photo/2022/08/22/10/11/abstraction-7403055_1280.jpg",
-        artistId: 3, // Thabo Mbeki
-        categoryId: 1, // Paintings
-        collectionId: 1, // Abstract Expressions
         dimensions: "90 x 90 cm",
+        medium: "Mixed media on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Natural Harmony",
+        description: "A balanced composition inspired by natural forms and organic elements from African landscapes.",
+        price: 1950,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
+        artistId: 3, // Thabo Mbeki
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "100 x 120 cm",
         medium: "Oil on canvas",
         year: "2023",
         inStock: true,
         featured: true
       },
       {
-        title: "Twilight Savanna",
-        description: "A photographic print capturing the magical moment when day transitions to night on the African savanna.",
-        price: 1480,
-        imageUrl: "https://cdn.pixabay.com/photo/2023/01/23/13/37/animals-7738990_1280.jpg",
+        title: "Cultural Identity",
+        description: "A powerful representation of African cultural identity through symbolic imagery and traditional patterns.",
+        price: 2400,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (1).jpeg",
         artistId: 1, // Zinhle Mkhize
-        categoryId: 3, // Photography
+        categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
-        dimensions: "80 x 120 cm",
-        medium: "Archival pigment print on fine art paper",
-        year: "2022",
+        dimensions: "110 x 130 cm",
+        medium: "Mixed media on canvas",
+        year: "2024",
         inStock: true,
         featured: true
       }

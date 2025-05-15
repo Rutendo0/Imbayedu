@@ -1,5 +1,7 @@
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
+import express from "express";
+import path from "path";
 import { storage } from "./storage";
 import { 
   insertUserSchema, 
@@ -13,6 +15,9 @@ import {
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Serve artwork images from public directory
+  app.use('/img/artwork', express.static(path.join(process.cwd(), 'public/img/artwork')));
+  
   // API Routes
   // All routes prefixed with /api
   
