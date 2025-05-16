@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
 
 const app = express();
 app.use(express.json());
@@ -47,6 +48,14 @@ app.use((req, res, next) => {
     throw err;
   });
 
+
+
+if (app.get("env") === "production") {
+  app.use(express.static(path.join(__dirname, "../public")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
+  });
+}
   // importantly only setup vite in development and after
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
