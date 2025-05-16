@@ -25,7 +25,17 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    chunkSizeWarningLimit: 1000, // increase limit if needed
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor modules into separate chunks
+          react: ['react', 'react-dom'],
+          vendor: ['lodash', 'axios'] // add other large dependencies
+        }
+      }
+    },
+    outDir: path.resolve(import.meta.dirname, "server/client"),
     emptyOutDir: true,
   },
 });
