@@ -24,9 +24,24 @@ const Artworks = () => {
     }
   }, [location]);
 
-  const { data: artworks, isLoading: artworksLoading } = useQuery<ArtworkWithDetails[]>({
-    queryKey: ['/api/artworks/details'],
-  });
+  const fetchArtworks = async (): Promise<ArtworkWithDetails[]> => {
+    const response = await fetch('/api/artworks/details');
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json();
+  };
+
+  const { data: artworks, isLoading: artworksLoading } = useQuery<ArtworkWithDetails[], Error, ArtworkWithDetails[], [string]>(
+    {
+      queryKey: ['/api/artworks/details'],
+      queryFn: fetchArtworks,
+      onSuccess: (data: ArtworkWithDetails[]) => {
+        console.log('Loaded artworks:', data);
+      },
+      onError: (error: any) => {
+        console.error('Error loading artworks:', error);
+      }
+    }
+  );
 
   const { data: categories, isLoading: categoriesLoading } = useQuery<Category[]>({
     queryKey: ['/api/categories'],
@@ -36,20 +51,24 @@ const Artworks = () => {
 
   const handleCategoryChange = (value: string) => {
     setSelectedCategory(value);
+
+    const params = new URLSearchParams(window.location.search);
+  params.set('category', value);
+  window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
   };
 
   const handleSortChange = (value: string) => {
     setSortOrder(value);
   };
 
-  const filteredArtworks = artworks?.filter(artwork => {
+  const filteredArtworks = (artworks as ArtworkWithDetails[] | undefined)?.filter(artwork => {
     if (selectedCategory === "all") return true;
     return artwork.categoryId.toString() === selectedCategory;
   }) || [];
 
   const sortedArtworks = [...filteredArtworks].sort((a, b) => {
     if (sortOrder === "latest") {
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      return (b.createdAt ? new Date(b.createdAt).getTime() : 0) - (a.createdAt ? new Date(a.createdAt).getTime() : 0);
     } else if (sortOrder === "price-asc") {
       return a.price - b.price;
     } else if (sortOrder === "price-desc") {

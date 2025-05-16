@@ -8,6 +8,7 @@ import {
   testimonials, Testimonial, InsertTestimonial,
   ArtworkWithDetails, CartItemWithDetails
 } from "@shared/schema";
+import { title } from "process";
 
 // Storage interface with CRUD methods
 export interface IStorage {
@@ -126,7 +127,8 @@ export class MemStorage implements IStorage {
         description: "Contemporary techniques with traditional influences and textural exploration", 
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg", 
         featured: true 
-      }
+      },
+    
     ];
     
     collections.forEach(collection => this.createCollection(collection));
@@ -138,21 +140,21 @@ export class MemStorage implements IStorage {
         bio: "Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.",
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (3).jpeg",
         featured: true,
-        location: "Johannesburg, South Africa"
+        location: "Marondera, Zimbabwe"
       },
       {
         name: "Koffi Adama",
         bio: "Sculptor and mixed media artist whose work explores the intersection of traditional African symbolism and modern aesthetics. His textural experimentations create dynamic compositions that invite viewers to reconsider materials and forms.",
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
         featured: true,
-        location: "Accra, Ghana"
+        location: "Harare, Zimbabwe"
       },
       {
         name: "Thabo Mbeki",
         bio: "Abstract painter known for his vibrant geometric compositions that reflect the rhythm and energy of urban African life. His landscapes capture emotional responses to environments through bold color relationships and dynamic forms.",
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
         featured: true,
-        location: "Cape Town, South Africa"
+        location: "Harare, Zimbabwe"
       }
     ];
     
@@ -236,7 +238,7 @@ export class MemStorage implements IStorage {
         price: 1750,
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00.jpeg",
         artistId: 2, // Koffi Adama
-        categoryId: 4, // Mixed Media
+        categoryId: 2, // Mixed Media
         collectionId: 3, // Mixed Media
         dimensions: "80 x 100 cm",
         medium: "Mixed media on wood panel",
@@ -348,8 +350,8 @@ export class MemStorage implements IStorage {
         price: 2150,
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg",
         artistId: 1, // Zinhle Mkhize
-        categoryId: 4, // Mixed Media
-        collectionId: 2, // Cultural Portraits
+        categoryId: 2, // Mixed Media
+        collectionId: 1, // Cultural Portraits
         dimensions: "90 x 120 cm",
         medium: "Mixed media on canvas",
         year: "2024",
@@ -376,7 +378,7 @@ export class MemStorage implements IStorage {
         price: 2300,
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg",
         artistId: 1, // Zinhle Mkhize
-        categoryId: 1, // Paintings
+        categoryId: 2, // Mixed Media
         collectionId: 2, // Cultural Portraits
         dimensions: "90 x 120 cm",
         medium: "Oil on canvas",
@@ -404,7 +406,7 @@ export class MemStorage implements IStorage {
         price: 1780,
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg",
         artistId: 2, // Koffi Adama
-        categoryId: 4, // Mixed Media
+        categoryId: 2, // Mixed Media
         collectionId: 3, // Mixed Media
         dimensions: "90 x 90 cm",
         medium: "Mixed media on canvas",
@@ -516,8 +518,8 @@ export class MemStorage implements IStorage {
         price: 1950,
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
         artistId: 2, // Koffi Adama
-        categoryId: 4, // Mixed Media
-        collectionId: 3, // Mixed Media
+        categoryId: 2, // Mixed Media
+        collectionId: 1, // Mixed Media
         dimensions: "90 x 95 cm",
         medium: "Mixed media on canvas",
         year: "2023",
@@ -586,14 +588,57 @@ export class MemStorage implements IStorage {
         price: 2050,
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.09.jpeg",
         artistId: 3, // Thabo Mbeki
-        categoryId: 1, // Paintings
+        categoryId: 2, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "90 x 120 cm",
         medium: "Oil on canvas",
         year: "2024",
         inStock: true,
         featured: false
-      }
+      },
+       { 
+        title: "Abstract Expressions", 
+        description: "From the vibrant strokes of paintings that sing with color to the intricate details of mixed media, this collection showcases the dynamic range of contemporary African art.", 
+       price: 1850,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-16 at 11.47.25.jpeg", 
+       artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "80 x 120 cm",
+        medium: "Acrylic on canvas",
+        year: "2025",
+        inStock: true, 
+        featured: false
+      },
+ { 
+        title: "Paintings", 
+        description: "Creating a visual narrative that speaks to the heart and soul of African culture, this collection features a range of styles and techniques that celebrate the beauty and diversity of the continent.", 
+        price: 1750,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-16 at 11.47.24 (1).jpeg", 
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "80 x 130 cm",
+        medium: "Acrylic on canvas",
+        year: "2024",
+        inStock: true,
+        featured: false 
+      },
+ { 
+        title: "Cultural Portraits", 
+        description: "A piece that breathes life into space, inviting viewers to explore the rich tapestry of African culture through the lens of contemporary art.", 
+        price: 2000,
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-16 at 11.47.24.jpeg",
+        artistId: 1, // Zinhle Mkhize
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "90 x 120 cm",
+        medium: "Acrylic on canvas",
+        year: "2024",
+        inStock: true, 
+        featured: false 
+      },
+
     ];
     
     artworks.forEach(artwork => this.createArtwork(artwork));
@@ -602,21 +647,21 @@ export class MemStorage implements IStorage {
     const testimonials = [
       {
         name: "Sarah Johnson",
-        location: "Art Collector, New York",
+        location: "Art Collector, Bulawayo",
         comment: "I was looking for a statement piece for my home office and found the perfect artwork through Imbayedu. The quality exceeded my expectations, and the team was incredibly helpful throughout the entire process.",
         rating: 5,
         featured: true
       },
       {
         name: "Michael Chen",
-        location: "Interior Designer, Los Angeles",
+        location: "Interior Designer, Harare",
         comment: "As an interior designer, I've worked with many art galleries, but Imbayedu stands out for their curated selection of African art. My clients are always impressed with the unique pieces we source from them.",
         rating: 5,
         featured: true
       },
       {
-        name: "Elena Rodriguez",
-        location: "Home Owner, Chicago",
+        name: "Elena Sibanda",
+        location: "Home Owner, Marondera",
         comment: "I purchased a piece from Imbayedu for my husband's birthday. The shipping was prompt, and the artwork was beautifully packaged. It's now the focal point of our living room and we receive compliments on it constantly.",
         rating: 4,
         featured: true
@@ -639,7 +684,7 @@ export class MemStorage implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = this.userId++;
-    const user: User = { ...insertUser, id, isAdmin: false };
+    const user: User = { ...insertUser, fullName: insertUser.fullName ?? null, id, isAdmin: false };
     this.users.set(id, user);
     return user;
   }
@@ -659,7 +704,14 @@ export class MemStorage implements IStorage {
 
   async createArtist(insertArtist: InsertArtist): Promise<Artist> {
     const id = this.artistId++;
-    const artist: Artist = { ...insertArtist, id };
+    const artist: Artist = {
+      id,
+      name: insertArtist.name,
+      bio: insertArtist.bio,
+      imageUrl: insertArtist.imageUrl,
+      location: insertArtist.location ?? null,
+      featured: insertArtist.featured ?? null
+    };
     this.artists.set(id, artist);
     return artist;
   }
@@ -675,7 +727,7 @@ export class MemStorage implements IStorage {
 
   async createCategory(insertCategory: InsertCategory): Promise<Category> {
     const id = this.categoryId++;
-    const category: Category = { ...insertCategory, id };
+    const category: Category = { ...insertCategory, id, description: insertCategory.description ?? null };
     this.categories.set(id, category);
     return category;
   }
@@ -695,7 +747,13 @@ export class MemStorage implements IStorage {
 
   async createCollection(insertCollection: InsertCollection): Promise<Collection> {
     const id = this.collectionId++;
-    const collection: Collection = { ...insertCollection, id };
+    const collection: Collection = {
+      id,
+      name: insertCollection.name,
+      imageUrl: insertCollection.imageUrl,
+      featured: insertCollection.featured ?? null,
+      description: insertCollection.description ?? null
+    };
     this.collections.set(id, collection);
     return collection;
   }
@@ -762,7 +820,13 @@ export class MemStorage implements IStorage {
     const id = this.artworkId++;
     const currentDate = new Date();
     const artwork: Artwork = { 
-      ...insertArtwork, 
+      ...insertArtwork,
+      collectionId: insertArtwork.collectionId ?? null,
+      featured: insertArtwork.featured ?? null,
+      dimensions: insertArtwork.dimensions ?? null,
+      medium: insertArtwork.medium ?? null,
+      year: insertArtwork.year ?? null,
+      inStock: insertArtwork.inStock ?? null,
       id, 
       createdAt: currentDate 
     };
@@ -808,7 +872,7 @@ export class MemStorage implements IStorage {
       // Update quantity instead of creating new
       return this.updateCartItemQuantity(
         existingItem.id, 
-        existingItem.quantity + insertCartItem.quantity
+        existingItem.quantity + (insertCartItem.quantity ?? 1)
       ) as Promise<CartItem>;
     }
     
@@ -818,6 +882,7 @@ export class MemStorage implements IStorage {
     const cartItem: CartItem = { 
       ...insertCartItem, 
       id, 
+      quantity: insertCartItem.quantity ?? 1, 
       addedAt: currentDate 
     };
     this.cartItems.set(id, cartItem);
@@ -860,7 +925,7 @@ export class MemStorage implements IStorage {
 
   async createTestimonial(insertTestimonial: InsertTestimonial): Promise<Testimonial> {
     const id = this.testimonialId++;
-    const testimonial: Testimonial = { ...insertTestimonial, id };
+    const testimonial: Testimonial = { ...insertTestimonial, id, featured: insertTestimonial.featured ?? null };
     this.testimonials.set(id, testimonial);
     return testimonial;
   }

@@ -39,7 +39,7 @@ const FeaturedArtworks = () => {
 
   const sortedArtworks = [...filteredArtworks].sort((a, b) => {
     if (sortOrder === "latest") {
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      return (b.createdAt ? new Date(b.createdAt).getTime() : 0) - (a.createdAt ? new Date(a.createdAt).getTime() : 0);
     } else if (sortOrder === "price-asc") {
       return a.price - b.price;
     } else if (sortOrder === "price-desc") {

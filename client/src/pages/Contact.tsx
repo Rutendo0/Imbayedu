@@ -89,7 +89,7 @@ const Contact = () => {
                     <MapPin className="mr-4 text-[#D3A265] mt-1" size={20} />
                     <div>
                       <h3 className="font-semibold text-neutral-900 mb-1">Our Location</h3>
-                      <p className="text-neutral-700">123 Art Gallery Lane<br />Johannesburg, South Africa</p>
+                      <p className="text-neutral-700">Pro Flora Farm<br />Concession, Zimbabwe</p>
                     </div>
                   </div>
                   
@@ -97,7 +97,7 @@ const Contact = () => {
                     <Phone className="mr-4 text-[#D3A265] mt-1" size={20} />
                     <div>
                       <h3 className="font-semibold text-neutral-900 mb-1">Phone</h3>
-                      <p className="text-neutral-700">+27 12 345 6789</p>
+                      <p className="text-neutral-700">078 336 1999</p>
                     </div>
                   </div>
                   

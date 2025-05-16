@@ -26,7 +26,9 @@ const Artists = () => {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <p className="text-lg text-neutral-700 max-w-4xl mx-auto text-center mb-12">
-            Discover the talented creators behind our exceptional collection of African art. Our artists combine traditional techniques with contemporary perspectives to create unique and powerful works.
+            At Imba Yedu, we are more than a collective—we are a family. Our artists are luminaries, each bringing a unique voice to the rich symphony of African art. Sculptors breathe life into stone, painters weave dreams onto canvas, and textile artists thread heritage into fabric.
+
+When you collect from Imba Yedu, you take home more than a piece of art. You become part of an artist’s journey—a story of resilience, inspiration, and unyielding creativity. These are not mere artworks; they are heirlooms, destined to grace spaces with their presence and history for generations.
           </p>
 
           {isLoading ? (

@@ -61,7 +61,7 @@ const Header = () => {
               <Link href="/artworks" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/artworks') ? 'text-[#D3A265]' : ''}`}>
                 Shop Art
               </Link>
-              <div className="absolute hidden group-hover:block bg-white shadow-lg p-6 z-50 left-1/2 transform -translate-x-1/2 w-[500px] grid grid-cols-2 gap-4">
+              <div className="absolute hidden group-hover:block bg-white shadow-lg p-6 z-50 left-1/2 transform -translate-x-1/2 w-[500px] grid-cols-2 gap-4">
                 <div>
                   <h3 className="font-medium mb-2 uppercase text-xs tracking-wider">By Category</h3>
                   <ul className="space-y-2">
