@@ -113,19 +113,19 @@ export class MemStorage implements IStorage {
       { 
         name: "Abstract Expressions", 
         description: "Bold colors and expressive forms capturing emotional landscapes", 
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg", 
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg", 
         featured: true 
       },
       { 
         name: "Cultural Portraits", 
         description: "Celebrating African heritage and identity through vibrant expressions", 
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg", 
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg", 
         featured: true 
       },
       { 
         name: "Mixed Media", 
         description: "Contemporary techniques with traditional influences and textural exploration", 
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg", 
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg", 
         featured: true 
       },
     
@@ -138,21 +138,21 @@ export class MemStorage implements IStorage {
       {
         name: "Zinhle Mkhize",
         bio: "Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.",
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (3).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (3).jpeg",
         featured: true,
         location: "Marondera, Zimbabwe"
       },
       {
         name: "Koffi Adama",
         bio: "Sculptor and mixed media artist whose work explores the intersection of traditional African symbolism and modern aesthetics. His textural experimentations create dynamic compositions that invite viewers to reconsider materials and forms.",
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
         featured: true,
         location: "Harare, Zimbabwe"
       },
       {
         name: "Thabo Mbeki",
         bio: "Abstract painter known for his vibrant geometric compositions that reflect the rhythm and energy of urban African life. His landscapes capture emotional responses to environments through bold color relationships and dynamic forms.",
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
         featured: true,
         location: "Harare, Zimbabwe"
       }
@@ -166,7 +166,7 @@ export class MemStorage implements IStorage {
         title: "African Spirit",
         description: "A vibrant portrait celebrating African heritage with bold colors and expressive brushwork.",
         price: 1850,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.21.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.27.21.jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
@@ -180,7 +180,7 @@ export class MemStorage implements IStorage {
         title: "Sunset Reflections",
         description: "A captivating landscape depicting the warm hues of an African sunset reflecting over water.",
         price: 1650,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.23.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.27.23.jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -194,7 +194,7 @@ export class MemStorage implements IStorage {
         title: "Nature's Harmony",
         description: "An exploration of natural forms and patterns through a rich tapestry of colors and textures.",
         price: 1450,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.24.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.27.24.jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -208,7 +208,7 @@ export class MemStorage implements IStorage {
         title: "Abstract Emotion",
         description: "A powerful abstract piece exploring the depths of human emotion through color and form.",
         price: 1950,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.29.57.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.29.57.jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -222,7 +222,7 @@ export class MemStorage implements IStorage {
         title: "Cultural Heritage",
         description: "A celebration of African cultural heritage through symbolic imagery and traditional patterns.",
         price: 2100,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.29.59.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.29.59.jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
@@ -236,7 +236,7 @@ export class MemStorage implements IStorage {
         title: "Urban Rhythm",
         description: "A dynamic composition capturing the energy and rhythm of urban African life.",
         price: 1750,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.00.jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 2, // Mixed Media
         collectionId: 3, // Mixed Media
@@ -250,7 +250,7 @@ export class MemStorage implements IStorage {
         title: "Serene Landscape",
         description: "A peaceful landscape showcasing the serene beauty of African natural environments.",
         price: 1880,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (1).jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -264,7 +264,7 @@ export class MemStorage implements IStorage {
         title: "Colorful Abstraction",
         description: "A vibrant abstract composition with bold colors and dynamic forms creating visual harmony.",
         price: 1680,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (2).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (2).jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -278,7 +278,7 @@ export class MemStorage implements IStorage {
         title: "Textured Landscape",
         description: "A richly textured landscape highlighting the diverse topography of African environments.",
         price: 1950,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.01.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.01.jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -292,7 +292,7 @@ export class MemStorage implements IStorage {
         title: "Vibrant Portrait",
         description: "A striking portrait featuring bold colors and expressive brushwork celebrating African identity.",
         price: 2200,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.01 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.01 (1).jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
@@ -306,7 +306,7 @@ export class MemStorage implements IStorage {
         title: "Abstract Patterns",
         description: "A mesmerizing exploration of patterns and textures through abstract composition.",
         price: 1850,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.02.jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -320,7 +320,7 @@ export class MemStorage implements IStorage {
         title: "Nature's Palette",
         description: "A colorful interpretation of natural elements using an expressive color palette.",
         price: 1750,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (1).jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -334,7 +334,7 @@ export class MemStorage implements IStorage {
         title: "Emotional Landscape",
         description: "A landscape that captures emotional response through color harmonies and compositional elements.",
         price: 1980,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (2).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (2).jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -348,7 +348,7 @@ export class MemStorage implements IStorage {
         title: "Cultural Tapestry",
         description: "A vibrant representation of African cultural elements woven together in a harmonious composition.",
         price: 2150,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 2, // Mixed Media
         collectionId: 1, // Cultural Portraits
@@ -362,7 +362,7 @@ export class MemStorage implements IStorage {
         title: "Abstract Movement",
         description: "A dynamic abstract piece capturing movement and energy through flowing forms and vibrant colors.",
         price: 1950,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (1).jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -376,7 +376,7 @@ export class MemStorage implements IStorage {
         title: "Soulful Portrait",
         description: "A soulful portrait that captures the depth and spirit of its subject through expressive techniques.",
         price: 2300,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 2, // Mixed Media
         collectionId: 2, // Cultural Portraits
@@ -390,7 +390,7 @@ export class MemStorage implements IStorage {
         title: "Vibrant Expression",
         description: "An expressive and vibrant piece showcasing bold brushstrokes and dynamic color relationships.",
         price: 1850,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -404,7 +404,7 @@ export class MemStorage implements IStorage {
         title: "Textural Study",
         description: "A rich exploration of texture and form through layers of paint and mixed media elements.",
         price: 1780,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 2, // Mixed Media
         collectionId: 3, // Mixed Media
@@ -418,7 +418,7 @@ export class MemStorage implements IStorage {
         title: "Natural Harmony",
         description: "A balanced composition inspired by natural forms and organic elements from African landscapes.",
         price: 1950,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -432,7 +432,7 @@ export class MemStorage implements IStorage {
         title: "Cultural Identity",
         description: "A powerful representation of African cultural identity through symbolic imagery and traditional patterns.",
         price: 2400,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (1).jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
@@ -446,7 +446,7 @@ export class MemStorage implements IStorage {
         title: "Vibrant Abstraction",
         description: "A colorful abstract piece with geometric elements creating a sense of movement and rhythm.",
         price: 1850,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (2).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (2).jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -460,7 +460,7 @@ export class MemStorage implements IStorage {
         title: "Expressive Portrait",
         description: "A bold portrait using expressive brushwork to convey emotion and character.",
         price: 2100,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (3).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (3).jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
@@ -474,7 +474,7 @@ export class MemStorage implements IStorage {
         title: "Sculptural Forms",
         description: "An explorative painting investigating sculptural forms and textures through paint application.",
         price: 1950,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 1, // Paintings
         collectionId: 3, // Mixed Media
@@ -488,7 +488,7 @@ export class MemStorage implements IStorage {
         title: "Minimalist Landscape",
         description: "A subdued landscape with minimal elements creating a sense of calm and spaciousness.",
         price: 1750,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.06 (1).jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -502,7 +502,7 @@ export class MemStorage implements IStorage {
         title: "Dynamic Composition",
         description: "A dynamic arrangement of shapes and colors creating a sense of movement and energy.",
         price: 1880,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.07.jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -516,7 +516,7 @@ export class MemStorage implements IStorage {
         title: "Textural Abstract",
         description: "A highly textured abstract work exploring surface quality and material interaction.",
         price: 1950,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 2, // Mixed Media
         collectionId: 1, // Mixed Media
@@ -530,7 +530,7 @@ export class MemStorage implements IStorage {
         title: "Serene Waters",
         description: "A peaceful depiction of water and sky with subtle color transitions creating a meditative mood.",
         price: 1780,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (2).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (2).jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -544,7 +544,7 @@ export class MemStorage implements IStorage {
         title: "Expressionist Landscape",
         description: "A bold expressionist interpretation of landscape elements with expressive brushwork.",
         price: 2100,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -558,7 +558,7 @@ export class MemStorage implements IStorage {
         title: "Cultural Celebration",
         description: "A vibrant celebration of African cultural motifs and patterns in a contemporary format.",
         price: 2250,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (1).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (1).jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
@@ -572,7 +572,7 @@ export class MemStorage implements IStorage {
         title: "Gestural Abstract",
         description: "A dynamic gestural abstract painting capturing movement and spontaneity through brushwork.",
         price: 1950,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg",
         artistId: 2, // Koffi Adama
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -586,7 +586,7 @@ export class MemStorage implements IStorage {
         title: "Vibrant Landscape",
         description: "A colorful landscape painting with bold hues capturing the vibrant quality of African light.",
         price: 2050,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.09.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.09.jpeg",
         artistId: 3, // Thabo Mbeki
         categoryId: 2, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -600,7 +600,7 @@ export class MemStorage implements IStorage {
         title: "Abstract Expressions", 
         description: "From the vibrant strokes of paintings that sing with color to the intricate details of mixed media, this collection showcases the dynamic range of contemporary African art.", 
        price: 1850,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-16 at 11.47.25.jpeg", 
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-16 at 11.47.25.jpeg", 
        artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -614,7 +614,7 @@ export class MemStorage implements IStorage {
         title: "Paintings", 
         description: "Creating a visual narrative that speaks to the heart and soul of African culture, this collection features a range of styles and techniques that celebrate the beauty and diversity of the continent.", 
         price: 1750,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-16 at 11.47.24 (1).jpeg", 
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-16 at 11.47.24 (1).jpeg", 
         artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -628,7 +628,7 @@ export class MemStorage implements IStorage {
         title: "Cultural Portraits", 
         description: "A piece that breathes life into space, inviting viewers to explore the rich tapestry of African culture through the lens of contemporary art.", 
         price: 2000,
-        imageUrl: "/img/artwork/WhatsApp Image 2025-05-16 at 11.47.24.jpeg",
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-16 at 11.47.24.jpeg",
         artistId: 1, // Zinhle Mkhize
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions

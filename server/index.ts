@@ -18,9 +18,14 @@ const publicPath = process.env.NODE_ENV === "production"
   : path.join(__dirname, '../../public');
 
 // Static assets serving
-app.use('/assets', express.static(path.join(__dirname, '../../dist/public/assets')));
-app.use('/img', express.static(path.join(__dirname, '../../public/img')));
-app.use(express.static(publicPath));
+// In index.ts, replace the static file serving section with:
+if (process.env.NODE_ENV === "production") {
+  app.use('/assets', express.static(path.join(__dirname, '../../dist/public/assets')));
+  app.use('/img', express.static(path.join(__dirname, '../../public/img')));
+} else {
+  app.use('/assets', express.static(path.join(__dirname, '../../client/dist/assets')));
+  app.use('/img', express.static(path.join(__dirname, '../../public/img')));
+}
 
 // Request logging middleware
 app.use((req, res, next) => {
