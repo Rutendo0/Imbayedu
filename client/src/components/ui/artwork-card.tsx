@@ -32,13 +32,23 @@ export function ArtworkCard({ artwork }: ArtworkCardProps) {
     });
   };
 
+  const { addItem: addToWishlist, items: wishlistItems } = useWishlist();
+  const isInWishlist = wishlistItems.some(item => item.artworkId === artwork.id);
+
   const handleAddToWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     
+    addToWishlist({
+      artworkId: artwork.id,
+      userId: 1
+    });
+    
     toast({
-      title: "Added to wishlist",
-      description: `${artwork.title} has been added to your wishlist.`,
+      title: isInWishlist ? "Already in wishlist" : "Added to wishlist",
+      description: isInWishlist 
+        ? `${artwork.title} is already in your wishlist.`
+        : `${artwork.title} has been added to your wishlist.`,
     });
   };
   
