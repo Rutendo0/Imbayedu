@@ -121,12 +121,9 @@ const Contact = () => {
                     </div>
                   </div>
                 </div>
-                
-                {/* Google Maps Embed would go here in a real implementation */}
-                <div className="w-full h-64 bg-neutral-200 rounded-md flex items-center justify-center">
-                  <p className="text-neutral-600 text-center">Map placeholder - would use Google Maps embed in production</p>
                 </div>
-              </div>
+                
+               
               
               {/* Contact Form */}
               <div className="bg-white p-6 rounded-md shadow-sm">
