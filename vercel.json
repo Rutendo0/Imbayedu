@@ -34,8 +34,9 @@
       "handle": "filesystem"
     },
     {
-      "src": "/(.*)", 
-      "dest": "/server/index.js"
+      "src": "/(.*)",
+      "dest": "/dist/public/index.html",
+      "status": 200
     }
   ]
 }
