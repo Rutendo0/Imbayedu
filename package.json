@@ -5,10 +5,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx server/index.ts",
-    "build": "vite build && tsc && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/server --external:./storage",
+    "build": "vite build",
+"build:server": "tsc && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/server --external:./storage",
+"build:all": "npm run build && npm run build:server",
     "start": "NODE_ENV=production node dist/server/index.js",
-    "vercel-build": "npm run build && cp -r public dist/ && cp -r server/storage.ts dist/server/",
-    "check": "tsc",
+     "check": "tsc",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
