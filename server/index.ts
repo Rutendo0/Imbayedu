@@ -3,6 +3,7 @@ import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import path from "path";
 import { fileURLToPath } from 'url';
+import { storage } from "./storage";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -56,6 +57,8 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     app.use(express.static(path.join(__dirname, "../../dist/public")));
     app.get("*", (req, res) => {
       res.sendFile(path.join(__dirname, "../../dist/public/index.html"));
+
+      storage.initializeData();
     });
   }
 
