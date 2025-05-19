@@ -12,9 +12,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Static file serving - adjusted for Vercel
+// Improved static file serving for both development and production
+const publicPath = process.env.NODE_ENV === "production" 
+  ? path.join(__dirname, '../../dist/public')
+  : path.join(__dirname, '../../public');
+
+// Static assets serving
 app.use('/assets', express.static(path.join(__dirname, '../../dist/public/assets')));
 app.use('/img', express.static(path.join(__dirname, '../../public/img')));
+app.use(express.static(publicPath));
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -46,19 +52,25 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   const status = err.status || err.statusCode || 500;
   const message = err.message || "Internal Server Error";
   res.status(status).json({ message });
-  throw err;
+  console.error(err); // Better error logging
 });
 
 (async () => {
   const server = await registerRoutes(app);
 
+  // Initialize data storage
+  storage.initializeData();
+
   // Production static file serving
   if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../../dist/public")));
-    app.get("*", (req, res) => {
+    app.get("*", (req, res, next) => {
+      // Skip API routes
+      if (req.path.startsWith('/api/')) {
+        return next();
+      }
+      
+      // For client-side routing, send the index.html
       res.sendFile(path.join(__dirname, "../../dist/public/index.html"));
-
-      storage.initializeData();
     });
   }
 
@@ -69,10 +81,8 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     serveStatic(app);
   }
 
-  // Vercel requires module.exports for serverless functions
-
-  // Local development server
-  if (process.env.VERCEL) {
+  // Local development server when not on Vercel
+  if (!process.env.VERCEL) {
     const port = process.env.PORT || 5000;
     server.listen({
       port,
