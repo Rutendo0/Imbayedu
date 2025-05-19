@@ -26,16 +26,20 @@ export default defineConfig({
   root: path.resolve(import.meta.dirname, "client"),
   build: {
     chunkSizeWarningLimit: 1000, // increase limit if needed
+    assetsInlineLimit: 4096, // 4kb (default)
     rollupOptions: {
       output: {
         manualChunks: {
           // Split vendor modules into separate chunks
           react: ['react', 'react-dom'],
           vendor: ['lodash', 'axios'] // add other large dependencies
-        }
+        },
       }
     },
     outDir: path.resolve(import.meta.dirname, "dist/public"),
+    assetsDir: "assets", // This is where built assets will go
+    copyPublicDir: true,
     emptyOutDir: true,
   },
+   publicDir: path.resolve(import.meta.dirname, "public"),
 });
