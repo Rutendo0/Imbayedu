@@ -44,6 +44,17 @@ function Router() {
 }
 
 function App() {
+  // Prefetch important data
+  queryClient.prefetchQuery({
+    queryKey: ['/api/categories'],
+    staleTime: Infinity
+  });
+  
+  queryClient.prefetchQuery({
+    queryKey: ['/api/artists/featured'],
+    staleTime: 1000 * 60 * 5
+  });
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
