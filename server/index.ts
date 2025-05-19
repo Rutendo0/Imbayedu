@@ -72,7 +72,7 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   // Vercel requires module.exports for serverless functions
 
   // Local development server
-  if (process.env.VERCEL !== "1") {
+  if (process.env.VERCEL) {
     const port = process.env.PORT || 5000;
     server.listen({
       port,
