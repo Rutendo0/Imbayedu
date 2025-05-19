@@ -4,6 +4,7 @@ import { Heart, ShoppingCart, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useCart } from "@/hooks/use-cart";
+import { useWishlist } from "@/hooks/use-wishlist";
 import { formatCurrency } from "@/lib/utils";
 import { ArtworkWithDetails } from "@shared/schema";
 
