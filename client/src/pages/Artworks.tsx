@@ -33,13 +33,7 @@ const Artworks = () => {
   const { data: artworks, isLoading: artworksLoading } = useQuery<ArtworkWithDetails[], Error, ArtworkWithDetails[], [string]>(
     {
       queryKey: ['/api/artworks/details'],
-      queryFn: fetchArtworks,
-      onSuccess: (data: ArtworkWithDetails[]) => {
-        console.log('Loaded artworks:', data);
-      },
-      onError: (error: any) => {
-        console.error('Error loading artworks:', error);
-      }
+      queryFn: fetchArtworks
     }
   );
 

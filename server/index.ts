@@ -64,7 +64,13 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   const server = await registerRoutes(app);
 
   // Initialize data storage
-  storage.initializeData();
+  class MemStorage {
+    public initializeData() {
+      // initialization code
+    }
+  }
+  const memStorage = new MemStorage();
+  memStorage.initializeData();
 
   // Production static file serving
   if (process.env.NODE_ENV === "production") {
