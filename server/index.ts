@@ -14,14 +14,17 @@ app.use(express.urlencoded({ extended: false }));
 
 // Improved static file serving for both development and production
 const publicPath = process.env.NODE_ENV === "production" 
-  ? path.join(__dirname, '../../dist/public')
+  ? path.join(__dirname, '../public')
   : path.join(__dirname, '../../public');
+
 
 // Update static file serving section in index.ts
 if (process.env.NODE_ENV === "production") {
-  app.use('/assets', express.static(path.join(__dirname, '../../public/assets')));
-  app.use(express.static(path.join(__dirname, '../../public')));
+  // Serve static assets from dist/public in production
+  app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
+  app.use(express.static(path.join(__dirname, '../public')));
 } else {
+  // Serve static assets from client/dist/assets in development
   app.use('/assets', express.static(path.join(__dirname, '../../client/dist/assets')));
   app.use(express.static(path.join(__dirname, '../../public')));
 }
@@ -52,6 +55,7 @@ app.use((req, res, next) => {
 });
 
 // Error handling middleware
+// ...existing code...
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   const status = err.status || err.statusCode || 500;
   const message = err.message || "Internal Server Error";
@@ -78,9 +82,8 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
       if (req.path.startsWith('/api/')) {
         return next();
       }
-      
       // For client-side routing, send the index.html
-      res.sendFile(path.join(__dirname, "../../dist/public/index.html"));
+      res.sendFile(path.join(__dirname, "../public/index.html"));
     });
   }
 
