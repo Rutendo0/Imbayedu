@@ -1,16 +1,10 @@
-
 import express from 'express';
 import cors from 'cors';
 import { registerRoutes } from '../server/routes';
 
 const app = express();
 
-app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5000', 'http://localhost:3000'],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -27,7 +21,7 @@ app.use((req, res, next) => {
 // Initialize routes
 (async () => {
   const server = await registerRoutes(app);
-  
+
   const port = process.env.PORT || 5000;
   server.listen(port, '0.0.0.0', () => {
     console.log(`Backend API running on port ${port}`);

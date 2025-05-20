@@ -26,9 +26,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   // Fixed userId for demo purposes - in a real app this would come from auth
   const userId = 1;
-  const API_URL = import.meta.env.PROD 
-    ? window.location.origin
-    : 'http://localhost:5000';
+  const API_URL = '';
 
   // Load cart items on mount
   useEffect(() => {
