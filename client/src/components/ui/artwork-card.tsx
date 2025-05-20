@@ -11,7 +11,7 @@ export const ArtworkCard = ({ artwork }: ArtworkCardProps) => {
       <div className="group cursor-pointer">
         <div className="aspect-[4/5] overflow-hidden mb-4 bg-neutral-100">
           <img
-            src={artwork.imageUrl}
+            src={`/${artwork.imageUrl}`}
             alt={artwork.title}
             loading="lazy"
             className="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
