@@ -1,7 +1,12 @@
+
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { fileURLToPath } from 'url';
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [
@@ -19,27 +24,26 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client", "src"),
-    "@shared": path.resolve(__dirname, "shared"),
-    "@assets": path.resolve(__dirname, "attached_assets"),
+      "@shared": path.resolve(__dirname, "shared"),
+      "@assets": path.resolve(__dirname, "attached_assets"),
     },
   },
-  root: path.resolve(import.meta.dirname, "client"),
+  root: path.resolve(__dirname, "client"),
   build: {
-    chunkSizeWarningLimit: 1000, // increase limit if needed
-    assetsInlineLimit: 4096, // 4kb (default)
+    chunkSizeWarningLimit: 1000,
+    assetsInlineLimit: 4096,
     rollupOptions: {
       output: {
         manualChunks: {
-          // Split vendor modules into separate chunks
           react: ['react', 'react-dom'],
-          vendor: ['lodash', 'axios'] // add other large dependencies
+          vendor: ['lodash', 'axios']
         },
       }
     },
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
-    assetsDir: "assets", // This is where built assets will go
+    outDir: path.resolve(__dirname, "dist/public"),
+    assetsDir: "assets",
     copyPublicDir: true,
     emptyOutDir: true,
   },
-   publicDir: path.resolve(import.meta.dirname, "public"),
+  publicDir: path.resolve(__dirname, "public"),
 });
