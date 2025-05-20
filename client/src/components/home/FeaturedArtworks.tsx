@@ -97,7 +97,7 @@ const FeaturedArtworks = () => {
             <div className="animate-pulse h-10 w-48 bg-gray-200 rounded"></div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="animate-pulse">
                 <div className="bg-gray-200 h-80 rounded-md mb-4"></div>
