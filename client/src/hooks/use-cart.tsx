@@ -26,7 +26,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   // Fixed userId for demo purposes - in a real app this would come from auth
   const userId = 1;
-  const { API_URL } = await import("@/lib/config");
+  const API_URL = 'http://0.0.0.0:5000';
 
   // Load cart items on mount
   useEffect(() => {
