@@ -61,7 +61,17 @@ export interface IStorage {
 }
 
 // In-memory storage implementation
-export class MemStorage implements IStorage {
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+
+if (!process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL is required");
+}
+
+const client = postgres(process.env.DATABASE_URL);
+const db = drizzle(client, { schema: { users, artists, categories, collections, artworks, cartItems, testimonials } });
+
+export class PostgresStorage implements IStorage {
   private users: Map<number, User>;
   private artists: Map<number, Artist>;
   private categories: Map<number, Category>;
@@ -931,4 +941,4 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new PostgresStorage();
