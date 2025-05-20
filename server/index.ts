@@ -17,12 +17,10 @@ const publicPath = process.env.NODE_ENV === "production"
   ? path.join(__dirname, '../../dist/public')
   : path.join(__dirname, '../../public');
 
-// Static assets serving
-// In index.ts, replace the static file serving section with:
-// Update static file serving paths
+// Update static file serving section in index.ts
 if (process.env.NODE_ENV === "production") {
-  app.use('/assets', express.static(path.join(__dirname, '../../dist/public/assets')));
-  app.use(express.static(path.join(__dirname, '../../dist/public')));
+  app.use('/assets', express.static(path.join(__dirname, '../../public/assets')));
+  app.use(express.static(path.join(__dirname, '../../public')));
 } else {
   app.use('/assets', express.static(path.join(__dirname, '../../client/dist/assets')));
   app.use(express.static(path.join(__dirname, '../../public')));
