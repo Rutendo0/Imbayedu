@@ -6,8 +6,10 @@ import { registerRoutes } from '../server/routes';
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173'],
-  credentials: true
+  origin: ['http://localhost:5173', 'https://art-gallery.yourdomain.repl.co'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['Content-Type']
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
