@@ -26,16 +26,17 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   // Fixed userId for demo purposes - in a real app this would come from auth
   const userId = 1;
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
   // Load cart items on mount
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch(`/api/cart/${userId}/details`, {
+        const response = await fetch(`${API_URL}/api/cart/${userId}/details`, {
           credentials: "include",
         });
-        
+
         if (response.ok) {
           const data = await response.json();
           setCartItems(data);
@@ -53,19 +54,19 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     };
 
     fetchCartItems();
-  }, [toast]);
+  }, [API_URL, toast, userId]);
 
   const addItem = async (item: InsertCartItem) => {
     try {
       setIsLoading(true);
-      const response = await apiRequest("POST", "/api/cart", item);
+      const response = await apiRequest("POST", `${API_URL}/api/cart`, item);
       const newItem = await response.json();
-      
+
       // Refetch cart to get updated cart with details
-      const cartResponse = await fetch(`/api/cart/${userId}/details`, {
+      const cartResponse = await fetch(`${API_URL}/api/cart/${userId}/details`, {
         credentials: "include",
       });
-      
+
       if (cartResponse.ok) {
         const data = await cartResponse.json();
         setCartItems(data);
@@ -85,7 +86,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const removeItem = async (id: number) => {
     try {
       setIsLoading(true);
-      await apiRequest("DELETE", `/api/cart/${id}`);
+      await apiRequest("DELETE", `${API_URL}/api/cart/${id}`);
       setCartItems(prevItems => prevItems.filter(item => item.id !== id));
     } catch (error) {
       console.error("Error removing item from cart:", error);
@@ -102,8 +103,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const updateItemQuantity = async (id: number, quantity: number) => {
     try {
       setIsLoading(true);
-      await apiRequest("PATCH", `/api/cart/${id}`, { quantity });
-      
+      await apiRequest("PATCH", `${API_URL}/api/cart/${id}`, { quantity });
+
       setCartItems(prevItems => 
         prevItems.map(item => 
           item.id === id ? { ...item, quantity } : item
@@ -124,7 +125,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const clearCart = async () => {
     try {
       setIsLoading(true);
-      await apiRequest("DELETE", `/api/cart/user/${userId}`);
+      await apiRequest("DELETE", `${API_URL}/api/cart/user/${userId}`);
       setCartItems([]);
     } catch (error) {
       console.error("Error clearing cart:", error);
