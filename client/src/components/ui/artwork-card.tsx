@@ -9,11 +9,12 @@ export const ArtworkCard = ({ artwork }: ArtworkCardProps) => {
   return (
     <Link href={`/artworks/${artwork.id}`}>
       <div className="group cursor-pointer">
-        <div className="aspect-[4/5] overflow-hidden mb-4">
+        <div className="aspect-[4/5] overflow-hidden mb-4 bg-neutral-100">
           <img
             src={artwork.imageUrl}
             alt={artwork.title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+            className="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
           />
         </div>
         <h3 className="text-lg font-medium text-neutral-900 mb-1">{artwork.title}</h3>
