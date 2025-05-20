@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx server/index.ts",
     "build": "vite build",
-"build:server": "tsc && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/server --external:./storage",
-"build:all": "npm run build && npm run build:server",
+    "build:server": "tsc && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/server --external:./storage",
+    "build:all": "npm run build && npm run build:server",
     "start": "NODE_ENV=production node dist/server/index.js",
-     "check": "tsc",
+    "check": "tsc",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
@@ -62,6 +62,7 @@
     "next-themes": "^0.4.6",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
+    "postgres": "^3.4.5",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",

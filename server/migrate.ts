@@ -5,11 +5,8 @@ import { storage } from './storage';
 import * as schema from '../shared/schema';
 
 async function migrate() {
-  if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL is required");
-  }
-
-  const client = postgres(process.env.DATABASE_URL);
+  const DATABASE_URL = "postgres://postgres:postgres@0.0.0.0:5432/postgres";
+  const client = postgres(DATABASE_URL);
   const db = drizzle(client, { schema });
 
   console.log("Starting migration...");

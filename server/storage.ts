@@ -64,11 +64,8 @@ export interface IStorage {
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL is required");
-}
-
-const client = postgres(process.env.DATABASE_URL);
+const DATABASE_URL = "postgres://postgres:postgres@0.0.0.0:5432/postgres";
+const client = postgres(DATABASE_URL);
 const db = drizzle(client, { schema: { users, artists, categories, collections, artworks, cartItems, testimonials } });
 
 export class PostgresStorage implements IStorage {
