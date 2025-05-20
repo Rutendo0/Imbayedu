@@ -5,8 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useLocation } from "wouter";
 import { useMemo } from "react";
-import { useCart } from "@/hooks/use-cart";
-import { useToast } from "@/hooks/use-toast";
+import { useCart } from "../hooks/use-cart";
+import { useToast } from "../hooks/use-toast";
 import { 
   Form, 
   FormControl, 
@@ -14,19 +14,19 @@ import {
   FormItem, 
   FormLabel, 
   FormMessage 
-} from "@/components/ui/form";
+} from "../components/ui/form";
 import { 
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { formatCurrency } from "@/lib/utils";
+} from "../components/ui/select";
+import { Input } from "../components/ui/input";
+import { Textarea } from "../components/ui/textarea";
+import { Button } from "../components/ui/button";
+import { Separator } from "../components/ui/separator";
+import { formatCurrency } from "../lib/utils";
 import { Link } from "wouter";
 import { CheckCircle } from "lucide-react";
 

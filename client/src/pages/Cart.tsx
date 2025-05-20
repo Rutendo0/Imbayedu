@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { Link } from "wouter";
 import { Helmet } from "react-helmet";
-import { useCart } from "@/hooks/use-cart";
-import { CartItem } from "@/components/ui/cart-item";
-import { Button } from "@/components/ui/button";
-import { formatCurrency } from "@/lib/utils";
+import { useCart } from "../hooks/use-cart";
+import { CartItem } from "../components/ui/cart-item";
+import { Button } from "../components/ui/button";
+import { formatCurrency } from "../lib/utils";
 import { ShoppingBag } from "lucide-react";
 
 const Cart = () => {

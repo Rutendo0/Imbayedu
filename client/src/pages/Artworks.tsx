@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "wouter";
 import { Helmet } from "react-helmet";
-import { ArtworkWithDetails, Category } from "@shared/schema";
-import { ArtworkCard } from "@/components/ui/artwork-card";
-import { FilterBar } from "@/components/ui/filter-bar";
+import { ArtworkWithDetails, Category } from "../../../shared/schema";
+import { ArtworkCard } from "../components/ui/artwork-card";
+import { FilterBar } from "../components/ui/filter-bar";
 
 const Artworks = () => {
   const [location] = useLocation();

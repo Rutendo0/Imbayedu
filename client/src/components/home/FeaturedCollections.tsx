@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Collection } from "@shared/schema";
+import { Collection } from "../../../../shared/schema";
 import { Link } from "wouter";
 import { ArrowRight } from "lucide-react";
 

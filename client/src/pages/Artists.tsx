@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet";
-import { Artist } from "@shared/schema";
-import { ArtistCard } from "@/components/ui/artist-card";
+import { Artist } from "../../../shared/schema";
+import { ArtistCard } from "../components/ui/artist-card";
 
 const Artists = () => {
   const { data: artists, isLoading, error } = useQuery<Artist[]>({

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { ShoppingCart, Search, Heart, Menu, X, User } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { useCart } from "@/hooks/use-cart";
+import { Badge } from "../ui/badge";
+import { useCart } from "../../hooks/use-cart";
 
 const Header = () => {
   const [location] = useLocation();

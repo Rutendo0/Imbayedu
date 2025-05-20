@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Testimonial } from "@shared/schema";
+import { Testimonial } from "../../../../shared/schema";
 import { Star, StarHalf } from "lucide-react";
 
 const Testimonials = () => {
@@ -35,7 +35,7 @@ const Testimonials = () => {
   }
 
   const renderStars = (rating: number) => {
-    const stars = [];
+    const stars: React.ReactElement[] = [];
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
 

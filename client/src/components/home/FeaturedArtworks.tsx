@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
-import { ArtworkWithDetails, Category } from "@shared/schema";
-import { ArtworkCard } from "@/components/ui/artwork-card";
-import { FilterBar } from "@/components/ui/filter-bar";
+import { ArtworkWithDetails, Category } from "../../../../shared/schema";
+import { ArtworkCard } from "../ui/artwork-card";
+import { FilterBar } from "../ui/filter-bar";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const FeaturedArtworks = () => {

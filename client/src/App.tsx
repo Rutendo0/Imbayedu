@@ -1,23 +1,23 @@
 import { Switch, Route } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { CartProvider } from "@/hooks/use-cart";
+import { Toaster } from "./components/ui/toaster";
+import { TooltipProvider } from "./components/ui/tooltip";
+import { CartProvider } from "./hooks/use-cart";
 
-import NotFound from "@/pages/not-found";
-import Home from "@/pages/Home";
-import Artworks from "@/pages/Artworks";
-import ArtworkDetail from "@/pages/ArtworkDetail";
-import Artists from "@/pages/Artists";
-import ArtistDetail from "@/pages/ArtistDetail";
-import About from "@/pages/About";
-import Contact from "@/pages/Contact";
-import Cart from "@/pages/Cart";
-import Checkout from "@/pages/Checkout";
+import NotFound from "./pages/not-found";
+import Home from "./pages/Home";
+import Artworks from "./pages/Artworks";
+import ArtworkDetail from "./pages/ArtworkDetail";
+import Artists from "./pages/Artists";
+import ArtistDetail from "./pages/ArtistDetail";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 function Router() {
   return (

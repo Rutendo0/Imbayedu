@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link, useLocation } from "wouter";
 import { Helmet } from "react-helmet";
-import { ArtworkWithDetails } from "@shared/schema";
-import { Button } from "@/components/ui/button";
-import { useCart } from "@/hooks/use-cart";
-import { useToast } from "@/hooks/use-toast";
-import { formatCurrency } from "@/lib/utils";
+import { ArtworkWithDetails } from "../../../shared/schema";
+import { Button } from "../components/ui/button";
+import { useCart } from "../hooks/use-cart";
+import { useToast } from "../hooks/use-toast";
+import { formatCurrency } from "../lib/utils";
 import { Heart, Share2, Minus, Plus } from "lucide-react";
 
 const ArtworkDetail = () => {

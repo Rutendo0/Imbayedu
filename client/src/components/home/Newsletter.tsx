@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useToast } from "../../hooks/use-toast";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");

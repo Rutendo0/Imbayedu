@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link, useLocation } from "wouter";
 import { Helmet } from "react-helmet";
-import { Artist, ArtworkWithDetails } from "@shared/schema";
-import { Button } from "@/components/ui/button";
-import { ArtworkCard } from "@/components/ui/artwork-card";
+import { Artist, ArtworkWithDetails } from "../../../shared/schema";
+import { Button } from "../components/ui/button";
+import { ArtworkCard } from "../components/ui/artwork-card";
 
 const ArtistDetail = () => {
   const { id } = useParams();
