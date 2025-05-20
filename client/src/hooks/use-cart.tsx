@@ -26,7 +26,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   // Fixed userId for demo purposes - in a real app this would come from auth
   const userId = 1;
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+  const API_URL = import.meta.env.VITE_API_URL || "http://0.0.0.0:5000";
 
   // Load cart items on mount
   useEffect(() => {
