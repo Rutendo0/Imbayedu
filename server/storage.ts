@@ -65,7 +65,7 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
 // For development, fall back to in-memory storage if database connection fails
-const DATABASE_URL = "postgres://postgres:postgres@0.0.0.0:5432/postgres";
+const DATABASE_URL = "postgres://postgres:postgres@0.0.0.0:5432/artgallery";
 let client;
 let db;
 
