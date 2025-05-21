@@ -185,34 +185,7 @@ export class PostgresStorage implements IStorage {
 
     // Add all artworks with actual Imbayedu pieces
     const artworks = [
-      {
-        title: "Urban Dreams",
-        description: "A vibrant abstract composition exploring urban life through layers of color and emotion.",
-        price: 2200,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-21 at 10.47.54.jpg",
-        artistId: 4,
-        categoryId: 1,
-        collectionId: 1,
-        dimensions: "100 x 120 cm",
-        medium: "Mixed media on canvas",
-        year: "2024",
-        inStock: true,
-        featured: true
-      },
-      {
-        title: "Flight of Imagination",
-        description: "An energetic piece depicting an abstract interpretation of flight and movement.",
-        price: 1950,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-21 at 10.47.55.jpg",
-        artistId: 4,
-        categoryId: 1,
-        collectionId: 1,
-        dimensions: "90 x 150 cm",
-        medium: "Acrylic on canvas",
-        year: "2024",
-        inStock: true,
-        featured: true
-      },
+      
       {
         title: "Abstract Spirit",
         description: "A vibrant portrait celebrating African heritage with bold colors and expressive brushwork.",
