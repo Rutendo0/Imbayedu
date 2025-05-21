@@ -1,32 +1,24 @@
 
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+import { Button } from "../components/ui/button";
+import { Link } from "wouter";
 
 const InteriorDesign = () => {
   const designs = [
     {
-      title: "Modern Living Room Design",
-      imageUrl: "/img/interiors/interior1.jpg",
-      description: "Contemporary living space with artistic elements"
+      title: "Modern Art Space Design",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg",
+      description: "Contemporary gallery space with optimal lighting"
     },
     {
-      title: "Art Gallery Space",
-      imageUrl: "/img/interiors/interior2.jpg", 
-      description: "Gallery-inspired interior with optimal lighting"
+      title: "Cultural Exhibition Area",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg", 
+      description: "Gallery-inspired interior with cultural elements"
     },
     {
-      title: "Mixed-Use Space",
-      imageUrl: "/img/interiors/interior3.jpg",
-      description: "Versatile space combining art and functionality"
-    },
-    {
-      title: "Creative Studio Design",
-      imageUrl: "/img/interiors/interior4.jpg",
-      description: "Artist studio with natural lighting"
-    },
-    {
-      title: "Exhibition Space",
-      imageUrl: "/img/interiors/interior5.jpg",
-      description: "Custom exhibition area design"
+      title: "Artist Studio Space",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
+      description: "Creative studio optimized for artists"
     }
   ];
 
@@ -89,6 +81,14 @@ const InteriorDesign = () => {
                 <p className="text-neutral-600">Execution of the design plan with careful attention to detail.</p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-16 text-center">
+            <Link href="/contact">
+              <Button className="bg-[#D3A265] hover:bg-opacity-90 text-white">
+                Get Started
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
