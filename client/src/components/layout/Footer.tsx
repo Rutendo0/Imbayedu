@@ -52,6 +52,11 @@ const Footer = () => {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link href="/interior-design" className="text-neutral-400 hover:text-white transition duration-300">
+                  Interior Design
+                </Link>
+              </li>
             </ul>
           </div>
 
