@@ -114,17 +114,9 @@ const Exhibitions = () => {
 
               <p className="text-neutral-600 mb-4">{exhibition.description}</p>
               
-              <div className="text-sm text-[#D3A265] mb-4">
+              <div className="text-sm text-[#D3A265]">
                 <strong>Note:</strong> {exhibition.specialNotes}
               </div>
-
-              <Link href={`/exhibitions/${exhibition.id}`}>
-                <Button 
-                  className="w-full bg-[#D3A265] hover:bg-opacity-90 text-white"
-                >
-                  Learn More
-                </Button>
-              </Link>
             </div>
           ))}
         </div>
