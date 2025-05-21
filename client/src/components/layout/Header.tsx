@@ -9,7 +9,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { cartItems } = useCart();
-  
+
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Header = () => {
           <p className="text-center text-neutral-600">Free shipping on orders over $500 • Artwork ships with Certificate of Authenticity</p>
         </div>
       </div>
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -51,7 +51,7 @@ const Header = () => {
               <span className="text-2xl font-['Playfair_Display'] font-bold text-black tracking-wide">IMBAYEDU</span>
             </Link>
           </div>
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8">
             <Link href="/" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/') ? 'text-[#D3A265]' : ''}`}>
@@ -92,7 +92,7 @@ const Header = () => {
               Contact
             </Link>
           </nav>
-          
+
           {/* Right side icons */}
           <div className="flex items-center space-x-6">
             <button className="text-neutral-900 hover:text-[#D3A265] hidden sm:block">
@@ -121,7 +121,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="lg:hidden bg-white border-t border-gray-200 py-2 px-4 shadow-md">
