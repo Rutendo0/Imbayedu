@@ -15,8 +15,8 @@ import {
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Serve artwork images from public directory
-  app.use('/img/artwork', express.static(path.join(process.cwd(), 'public/img/artwork')));
+  // Serve all images from public directory
+  app.use('/img', express.static(path.join(process.cwd(), 'public/img')));
   
   // API Routes
   // All routes prefixed with /api
