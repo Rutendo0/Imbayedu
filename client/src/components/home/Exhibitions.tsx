@@ -56,13 +56,13 @@ const Exhibitions = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-neutral-900 mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-['Playfair_Display'] font-bold text-neutral-900 mb-6">
             Upcoming Exhibitions
           </h2>
-          <p className="text-neutral-600 max-w-3xl mx-auto">
+          <p className="text-neutral-600 max-w-3xl mx-auto text-lg">
             Visit our exhibitions to experience African art in person and meet our talented artists
           </p>
         </div>
@@ -71,7 +71,7 @@ const Exhibitions = () => {
           {exhibitions.map((exhibition) => (
             <div 
               key={exhibition.id}
-              className="bg-neutral-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              className="bg-neutral-50 p-8 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
             >
               <h3 className="text-xl font-['Playfair_Display'] font-semibold text-neutral-900 mb-4">
                 {exhibition.title}

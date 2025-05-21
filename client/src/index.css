@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom heading styles */
+h2.font-\['Playfair_Display'\'] {
+  letter-spacing: -0.02em;
+  text-rendering: optimizeLegibility;
+}
+
+.text-neutral-600 {
+  line-height: 1.7;
+}
+
 :root {
       --background: 0 0% 100%;
 --foreground: 20 14.3% 4.1%;
