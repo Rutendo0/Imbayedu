@@ -3,6 +3,18 @@ import { Helmet } from "react-helmet-async";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const FAQ = () => {
+  // Scroll to anchor on mount
+  React.useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -21,7 +33,7 @@ const FAQ = () => {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
-            <AccordionItem value="shipping">
+            <AccordionItem value="shipping" id="shipping">
               <AccordionTrigger>What are your shipping methods?</AccordionTrigger>
               <AccordionContent>
                 We offer secure, insured shipping worldwide. Artworks are carefully packaged to ensure safe delivery. Local delivery within Zimbabwe is available for select areas.
@@ -35,14 +47,14 @@ const FAQ = () => {
               </AccordionContent>
             </AccordionItem>
             
-            <AccordionItem value="payment">
+            <AccordionItem value="payment" id="payment">
               <AccordionTrigger>What payment methods do you accept?</AccordionTrigger>
               <AccordionContent>
                 We accept major credit cards, bank transfers, and mobile money payments. All transactions are secure and encrypted.
               </AccordionContent>
             </AccordionItem>
             
-            <AccordionItem value="care">
+            <AccordionItem value="care" id="care">
               <AccordionTrigger>How should I care for my artwork?</AccordionTrigger>
               <AccordionContent>
                 Avoid direct sunlight and maintain consistent room temperature. Dust with a soft, dry cloth. For specific care instructions, please refer to the documentation provided with your artwork.
