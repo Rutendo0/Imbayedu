@@ -175,7 +175,7 @@ export class PostgresStorage implements IStorage {
       {
         name: "O'Neal Tanaka Maisiri ",
         bio: "O'Neal Tanaka Maisisri is a Zimbabwean artist whose abstract paintings reflect a deep connection to her environment. Using bold colors and dynamic compositions, she conveys the energy and emotions of her surroundings.",
-        imageUrl: "/img/artwork/artist.png",
+        imageUrl: "img/artwork/artist.png",
         featured: true,
         location: "Harare, Zimbabwe"
       }
