@@ -85,7 +85,7 @@ export class PostgresStorage implements IStorage {
   private artworks: Map<number, Artwork>;
   private cartItems: Map<number, CartItem>;
   private testimonials: Map<number, Testimonial>;
-  
+
   private userId: number;
   private artistId: number;
   private categoryId: number;
@@ -102,7 +102,7 @@ export class PostgresStorage implements IStorage {
     this.artworks = new Map();
     this.cartItems = new Map();
     this.testimonials = new Map();
-    
+
     this.userId = 1;
     this.artistId = 1;
     this.categoryId = 1;
@@ -110,7 +110,7 @@ export class PostgresStorage implements IStorage {
     this.artworkId = 1;
     this.cartItemId = 1;
     this.testimonialId = 1;
-    
+
     // Initialize with sample data
     this.initializeData();
   }
@@ -121,9 +121,9 @@ export class PostgresStorage implements IStorage {
       { name: "Paintings", description: "Original paintings including oil, acrylic, watercolor and mixed media" },
       { name: "Mixed Media", description: "Artworks that combine different materials and techniques" }
     ];
-    
+
     categories.forEach(category => this.createCategory(category));
-    
+
     // Add collections featuring actual Imbayedu artwork images
     const collections = [
       { 
@@ -144,11 +144,11 @@ export class PostgresStorage implements IStorage {
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg", 
         featured: true 
       },
-    
+
     ];
-    
+
     collections.forEach(collection => this.createCollection(collection));
-    
+
     // Add artists associated with Imbayedu artworks
     const artists = [
       {
@@ -171,15 +171,50 @@ export class PostgresStorage implements IStorage {
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
         featured: true,
         location: "Harare, Zimbabwe"
+      },
+      {
+        name: "Chenai Gondo",
+        bio: "Chenai Gondo is a Zimbabwean artist whose abstract paintings reflect a deep connection to her environment. Using bold colors and dynamic compositions, she conveys the energy and emotions of her surroundings.",
+        imageUrl: "img/artwork/Chenai Gondo.jpeg",
+        featured: true,
+        location: "Harare, Zimbabwe"
       }
     ];
-    
+
     artists.forEach(artist => this.createArtist(artist));
-    
+
     // Add all artworks with actual Imbayedu pieces
     const artworks = [
       {
-        title: "African Spirit",
+        title: "Urban Dreams",
+        description: "A vibrant abstract composition exploring urban life through layers of color and emotion.",
+        price: 2200,
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-21 at 10.47.54.jpg",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "100 x 120 cm",
+        medium: "Mixed media on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Flight of Imagination",
+        description: "An energetic piece depicting an abstract interpretation of flight and movement.",
+        price: 1950,
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-21 at 10.47.55.jpg",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "90 x 150 cm",
+        medium: "Acrylic on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+      {
+        title: "Abstract Spirit",
         description: "A vibrant portrait celebrating African heritage with bold colors and expressive brushwork.",
         price: 1850,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.27.21.jpeg",
@@ -656,9 +691,9 @@ export class PostgresStorage implements IStorage {
       },
 
     ];
-    
+
     artworks.forEach(artwork => this.createArtwork(artwork));
-    
+
     // Add sample testimonials
     const testimonials = [
       {
@@ -683,7 +718,7 @@ export class PostgresStorage implements IStorage {
         featured: true
       }
     ];
-    
+
     testimonials.forEach(testimonial => this.createTestimonial(testimonial));
   }
 
@@ -706,7 +741,7 @@ export class PostgresStorage implements IStorage {
   }
 
   // Artist methods
-  async getArtists(): Promise<Artist[]> {
+  async getArtists():Promise<Artist[]> {
     return Array.from(this.artists.values());
   }
 
@@ -785,7 +820,7 @@ export class PostgresStorage implements IStorage {
         const artist = await this.getArtist(artwork.artistId);
         const category = await this.getCategory(artwork.categoryId);
         const collection = artwork.collectionId ? await this.getCollection(artwork.collectionId) : undefined;
-        
+
         return {
           ...artwork,
           artist: artist!,
@@ -807,7 +842,7 @@ export class PostgresStorage implements IStorage {
     const artist = await this.getArtist(artwork.artistId);
     const category = await this.getCategory(artwork.categoryId);
     const collection = artwork.collectionId ? await this.getCollection(artwork.collectionId) : undefined;
-    
+
     return {
       ...artwork,
       artist: artist!,
@@ -857,7 +892,7 @@ export class PostgresStorage implements IStorage {
 
   async getCartItemsWithDetails(userId: number): Promise<CartItemWithDetails[]> {
     const cartItems = await this.getCartItems(userId);
-    
+
     return Promise.all(
       cartItems.map(async (item) => {
         const artwork = await this.getArtworkWithDetails(item.artworkId);
@@ -879,11 +914,11 @@ export class PostgresStorage implements IStorage {
     if (!artwork) {
       throw new Error("Artwork not found");
     }
-    
+
     // Check if item is already in cart
     const existingItems = await this.getCartItems(insertCartItem.userId);
     const existingItem = existingItems.find(item => item.artworkId === insertCartItem.artworkId);
-    
+
     if (existingItem) {
       // Update quantity instead of creating new
       return this.updateCartItemQuantity(
@@ -891,7 +926,7 @@ export class PostgresStorage implements IStorage {
         existingItem.quantity + (insertCartItem.quantity ?? 1)
       ) as Promise<CartItem>;
     }
-    
+
     // Create new cart item
     const id = this.cartItemId++;
     const currentDate = new Date();
@@ -908,12 +943,12 @@ export class PostgresStorage implements IStorage {
   async updateCartItemQuantity(id: number, quantity: number): Promise<CartItem | undefined> {
     const cartItem = await this.getCartItem(id);
     if (!cartItem) return undefined;
-    
+
     const updatedItem: CartItem = {
       ...cartItem,
       quantity
     };
-    
+
     this.cartItems.set(id, updatedItem);
     return updatedItem;
   }
