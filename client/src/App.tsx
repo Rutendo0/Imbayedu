@@ -18,8 +18,6 @@ import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import FAQ from "./pages/FAQ";
-import InteriorDesign from "./pages/InteriorDesign";
-
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
@@ -39,7 +37,6 @@ function Router() {
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
           <Route path="/faq" component={FAQ} />
-          <Route path="/interior-design" component={InteriorDesign} />
           <Route path="/exhibitions/:id" component={ExhibitionDetail} />
           {/* Fallback to 404 */}
           <Route component={NotFound} />

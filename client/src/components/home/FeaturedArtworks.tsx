@@ -146,7 +146,8 @@ const FeaturedArtworks = () => {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 transition-all duration-500 ease-in-out"
             style={{ 
               opacity: currentArtworks.length > 0 ? 1 : 0,
-              transform: currentArtworks.length > 0 ? 'translateY(0)' : 'translateY(20px)'
+              transform: currentArtworks.length > 0 ? 'translateY(0)' : 'translateY(20px)',
+              contain: 'content'
             }}
           >
             {currentArtworks.map((artwork) => (
