@@ -5,20 +5,57 @@ import { Link } from "wouter";
 const InteriorDesign = () => {
   const designServices = [
     {
-      title: "Art Curation & Installation",
+      
       description: "Expert art placement and curation services to enhance your space with African contemporary art",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg"
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.10.jpeg"
     },
-    {
-      title: "Gallery & Exhibition Design",
-      description: "Professional design services for galleries, museums, and exhibition spaces",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg"
+     {
+    
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13 (1).jpeg"
     },
-    {
-      title: "Residential Art Consultation",
-      description: "Personalized art selection and placement for private residences",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg"
-    }
+     {
+    
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13 (2).jpeg"
+    },
+     {
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13 (3).jpeg"
+    },
+     {
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13 (4).jpeg"
+    },
+     {
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13.jpeg"
+    },
+     {
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (1).jpeg"
+    },
+     {
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (2).jpeg"
+    },
+     {
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (3).jpeg"
+    },
+     {
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (4).jpeg"
+    },
+     {
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (5).jpeg"
+    },
+     {
+      description: "Expert art placement and curation services to enhance your space with African contemporary art",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14.jpeg"
+    },
+    
   ];
 
   const processSteps = [
