@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "./components/ui/toaster";
 import { TooltipProvider } from "./components/ui/tooltip";
 import { CartProvider } from "./hooks/use-cart";
+import { HelmetProvider } from 'react-helmet-async';
 
 import NotFound from "./pages/not-found";
 import Home from "./pages/Home";
@@ -51,21 +52,23 @@ function App() {
     queryKey: ['/api/categories'],
     staleTime: Infinity
   });
-  
+
   queryClient.prefetchQuery({
     queryKey: ['/api/artists/featured'],
     staleTime: 1000 * 60 * 5
   });
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <CartProvider>
-          <Toaster />
-          <Router />
-        </CartProvider>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <CartProvider>
+            <Toaster />
+            <Router />
+          </CartProvider>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 
