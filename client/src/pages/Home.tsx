@@ -6,6 +6,7 @@ import FeaturedArtists from "../components/home/FeaturedArtists";
 import GalleryExperience from "../components/home/GalleryExperience";
 import Testimonials from "../components/home/Testimonials";
 import Newsletter from "../components/home/Newsletter";
+import Exhibitions from "../components/home/Exhibitions";
 
 const Home = () => {
   return (
@@ -23,6 +24,7 @@ const Home = () => {
       <FeaturedArtworks />
       <FeaturedArtists />
       <GalleryExperience />
+      <Exhibitions />
       <Testimonials />
       <Newsletter />
     </>
