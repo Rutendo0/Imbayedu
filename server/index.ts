@@ -100,7 +100,7 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     server.listen({
       port,
       host: "0.0.0.0",
-      reusePort: true,
+      exclusive: true,
     }, () => {
       log(`Server running on port ${port}`);
     });
