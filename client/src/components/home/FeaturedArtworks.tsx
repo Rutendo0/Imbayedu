@@ -14,10 +14,14 @@ const FeaturedArtworks = () => {
 
   const { data: artworks, isLoading: artworksLoading } = useQuery<ArtworkWithDetails[]>({
     queryKey: ['/api/artworks/details'],
+    staleTime: 300000, // Cache data for 5 minutes
+    refetchOnWindowFocus: false,
   });
 
   const { data: categories, isLoading: categoriesLoading } = useQuery<Category[]>({
     queryKey: ['/api/categories'],
+    staleTime: 300000, // Cache data for 5 minutes
+    refetchOnWindowFocus: false,
   });
 
   const isLoading = artworksLoading || categoriesLoading;
