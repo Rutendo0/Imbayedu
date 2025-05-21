@@ -70,7 +70,20 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/policies" className="text-neutral-400 hover:text-white transition duration-300">
+                <Link href="/faq#store-policy" className="text-neutral-400 hover:text-white transition duration-300">
+                  Store Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq#payment" className="text-neutral-400 hover:text-white transition duration-300">
+                  Payment Methods
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq#artwork-care" className="text-neutral-400 hover:text-white transition duration-300">
+                  Artwork Care
+                </Link>
+              </li>
                   Store Policy
                 </Link>
               </li>

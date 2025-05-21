@@ -34,33 +34,76 @@ const FAQ = () => {
         
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
-            <AccordionItem value="shipping" id="shipping">
-              <AccordionTrigger>What are your shipping methods?</AccordionTrigger>
-              <AccordionContent>
-                We offer secure, insured shipping worldwide. Artworks are carefully packaged to ensure safe delivery. Local delivery within Zimbabwe is available for select areas.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="returns">
-              <AccordionTrigger>What is your return policy?</AccordionTrigger>
-              <AccordionContent>
-                We offer a 14-day return policy for artworks in original condition. Please contact us for return shipping arrangements.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="payment" id="payment">
-              <AccordionTrigger>What payment methods do you accept?</AccordionTrigger>
-              <AccordionContent>
-                We accept major credit cards, bank transfers, and mobile money payments. All transactions are secure and encrypted.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="care" id="care">
-              <AccordionTrigger>How should I care for my artwork?</AccordionTrigger>
-              <AccordionContent>
-                Avoid direct sunlight and maintain consistent room temperature. Dust with a soft, dry cloth. For specific care instructions, please refer to the documentation provided with your artwork.
-              </AccordionContent>
-            </AccordionItem>
+            <div id="shipping" className="scroll-mt-32">
+              <AccordionItem value="shipping">
+                <AccordionTrigger>Shipping & Returns</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <h3 className="font-semibold">Shipping Information</h3>
+                    <p>We offer secure, insured shipping worldwide. All artworks are carefully packaged to ensure safe delivery.</p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>Local delivery within Zimbabwe is available for select areas</li>
+                      <li>International shipping takes 7-14 business days</li>
+                      <li>Tracking information is provided for all shipments</li>
+                    </ul>
+                    <h3 className="font-semibold pt-4">Returns Policy</h3>
+                    <p>We offer a 14-day return policy for artworks in original condition. Contact us for return shipping arrangements.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
+
+            <div id="store-policy" className="scroll-mt-32">
+              <AccordionItem value="store-policy">
+                <AccordionTrigger>Store Policy</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <p>Our store policies are designed to ensure a transparent and secure shopping experience:</p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>All artworks are authentic with certificates of authenticity</li>
+                      <li>Prices are listed in USD and include standard shipping</li>
+                      <li>Custom framing services are available upon request</li>
+                      <li>We reserve the right to refuse service to anyone</li>
+                    </ul>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
+
+            <div id="payment" className="scroll-mt-32">
+              <AccordionItem value="payment">
+                <AccordionTrigger>Payment Methods</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <p>We accept the following payment methods:</p>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>Major credit cards (Visa, MasterCard, American Express)</li>
+                      <li>Bank transfers</li>
+                      <li>Mobile money payments</li>
+                      <li>PayPal for international transactions</li>
+                    </ul>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
+
+            <div id="artwork-care" className="scroll-mt-32">
+              <AccordionItem value="artwork-care">
+                <AccordionTrigger>Artwork Care</AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-4">
+                    <h3 className="font-semibold">General Care Guidelines</h3>
+                    <ul className="list-disc pl-5 space-y-2">
+                      <li>Avoid direct sunlight and maintain consistent room temperature</li>
+                      <li>Clean with a soft, dry cloth only</li>
+                      <li>Keep artwork away from heat sources and humid areas</li>
+                      <li>Handle artwork by the edges or frame only</li>
+                    </ul>
+                    <p className="pt-4">For specific care instructions, please refer to the documentation provided with your artwork.</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
           </Accordion>
         </div>
       </div>
