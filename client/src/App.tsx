@@ -11,6 +11,7 @@ import Artworks from "./pages/Artworks";
 import ArtworkDetail from "./pages/ArtworkDetail";
 import Artists from "./pages/Artists";
 import ArtistDetail from "./pages/ArtistDetail";
+import ExhibitionDetail from "./pages/ExhibitionDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Cart from "./pages/Cart";
@@ -34,6 +35,7 @@ function Router() {
           <Route path="/contact" component={Contact} />
           <Route path="/cart" component={Cart} />
           <Route path="/checkout" component={Checkout} />
+          <Route path="/exhibitions/:id" component={ExhibitionDetail} />
           {/* Fallback to 404 */}
           <Route component={NotFound} />
         </Switch>
