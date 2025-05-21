@@ -1,4 +1,3 @@
-
 import { Helmet } from "react-helmet-async";
 import { Button } from "../components/ui/button";
 import { Link } from "wouter";
@@ -53,10 +52,10 @@ const InteriorDesign = () => {
           <div className="absolute inset-0 flex items-center justify-center z-20">
             <div className="text-center text-white">
               <h1 className="text-4xl md:text-5xl font-['Playfair_Display'] font-bold mb-4">
-                Interior Design Services
+                Interior Design
               </h1>
               <p className="text-lg md:text-xl max-w-2xl mx-auto">
-                Transform your space with curated African contemporary art
+                Where Spaces Speak and Stories Breathe
               </p>
             </div>
           </div>
