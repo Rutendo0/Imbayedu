@@ -22,7 +22,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
@@ -54,7 +54,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          
+
           {/* Customer Service */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Customer Service</h3>
@@ -84,22 +84,9 @@ const Footer = () => {
                   Artwork Care
                 </Link>
               </li>
-                  Store Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq#payment" className="text-neutral-400 hover:text-white transition duration-300">
-                  Payment Methods
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq#care" className="text-neutral-400 hover:text-white transition duration-300">
-                  Artwork Care
-                </Link>
-              </li>
             </ul>
           </div>
-          
+
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
@@ -123,7 +110,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="pt-8 border-t border-neutral-800 text-center text-neutral-500 text-sm">
           <p>© {new Date().getFullYear()} Imbayedu Art Gallery. All rights reserved.</p>
           <div className="mt-4 flex justify-center space-x-6">
