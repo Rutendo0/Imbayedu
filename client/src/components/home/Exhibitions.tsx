@@ -31,7 +31,7 @@ const Exhibitions = () => {
       description: "Exhibition featuring urban contemporary artworks from Zimbabwe's leading artists.",
       entryFee: "$15",
       artists: [
-        "Chenai Gondo",
+        "O'Neal Tanaka Maisiri",
         "Thabo Mbeki",
         "Zinhle Mkhize"
       ],
@@ -48,7 +48,7 @@ const Exhibitions = () => {
       entryFee: "$8",
       artists: [
         "Koffi Adama",
-        "Chenai Gondo"
+        "O'Neal Tanaka Maisiri",
       ],
       address: "45 The Green, Marondera",
       specialNotes: "Artist talks every Wednesday at 2:00 PM"

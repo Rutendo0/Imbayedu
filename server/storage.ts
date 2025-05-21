@@ -173,9 +173,9 @@ export class PostgresStorage implements IStorage {
         location: "Harare, Zimbabwe"
       },
       {
-        name: "Chenai Gondo",
-        bio: "Chenai Gondo is a Zimbabwean artist whose abstract paintings reflect a deep connection to her environment. Using bold colors and dynamic compositions, she conveys the energy and emotions of her surroundings.",
-        imageUrl: "img/artwork/Chenai Gondo.jpeg",
+        name: "O'Neal Tanaka Maisiri ",
+        bio: "O'Neal Tanaka Maisisri is a Zimbabwean artist whose abstract paintings reflect a deep connection to her environment. Using bold colors and dynamic compositions, she conveys the energy and emotions of her surroundings.",
+        imageUrl: "img/artwork/artist.png",
         featured: true,
         location: "Harare, Zimbabwe"
       }
@@ -690,6 +690,121 @@ export class PostgresStorage implements IStorage {
         featured: false 
       },
 
+       {
+        title: "A ROYAL AFRICAN DIALECT",
+        description: " The bi-associative and symbolic diction in the title of the work highlights the African affinities we share as African people.  This painting highlights the unified empathy of a people under threat during the restrictive times of COVID-19",
+        price: 0,
+        imageUrl: "img/artwork/royal.png",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "126 cm x 73 cm ",
+        medium: "oil, acrylic, pastel on canvas",
+        year: "2021",
+        inStock: true,
+        featured: true
+      },
+
+       {
+        title: "BLOOMING DESIRE",
+        description: "The artwork Blooming Desire is presented in an effortless flow of paint with rippling harmonies, melodious squiggles and an ultra spontaneous mode of application. In painterly automatism, this capricious work has amorous overtones, revealed in the stemming of a heart symbol juxtaposed with a rose bloom.  ",
+        price: 0,
+        imageUrl: "img/artwork/box.png",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "38 cm x 38cm x 5cm",
+        medium: "oil on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+
+       {
+        title: "FIGHT FLIGHT",
+        description: "A pun on the workings of adrenaline on the body, the image of an aeroplane taking off symbolizes the economic migration that has beset the youth of the nation.  In a search for better opportunities, employment and economic survival, Zimbabwean youths are experiencing growing up isolated in today’s broken up families.",
+        price: 0,
+        imageUrl: "img/artwork/flight.png",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "194 cm X 54 cm",
+        medium: "acrylic, ink on wood ",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+       {
+        title: "UNTITLED X",
+        description: "Untitled X is a work inspired by apocalyptic revelations in the Bible.   An outline of a skull entwined in the digital age of Starlink, Twitter, X and other global digital platforms harken the end times for man.",
+        price: 0,
+        imageUrl: "img/artwork/unit.png",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "190 cm x 135 cm ",
+        medium: "oil acrylic ink and pastel on wood",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+       {
+        title: "TRANSCENDENT",
+        description: "In this painting the artist reminiscence about his close spiritual relationship with his late mother and how her intuition protected him from the dangerous follies of life.  Likening her intuition to an out of body experience, the artist depicts his thoughts in a surreal manner where a disjointed head hovers over his work.   This painting has layers of meaning  that question our physical and spiritual existence.",
+        price: 0,
+        imageUrl: "img/artwork/UNIT3.png",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "120 cm X 43 cm",
+        medium: "acrylic, oil, ink and pastel on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+       {
+        title: "CAPPIN' VANITIES",
+        description: "In local urban slang, the term capping means to tell exaggerated lies to impress one's peers. Maisiri makes a penetrating statement about the vanities and false identitiesexhibited by the youth of today. In this urban landscape the social critic uses collage of torn bank notes and faces from popular social and fashion magazines to express the pseudo identities and materialism sought by his urban peers.",
+        price: 0,
+        imageUrl: "img/artwork/capp.png",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "120 x 38 cm",
+        medium: "oil, acrylic, ink on plastic, paper and canvas",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+       {
+        title: "GIRLS DESERVE THEIR FLOWERS",
+        description: "Here Maisiri interrogates social norms and etiquette of placing flowers at gravesites or presenting a female with flowers as a gesture of affection.  Squiggles of white ‘iceberg’ roses snd graffiti, reading; ‘ Girls Deserve their Flowers’ occupy the left foreground of the painting as a reminder  of the importance of the moment and the  worthiness of women.",
+        price: 0,
+        imageUrl: "img/artwork/girls.png",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "56 x 63 cm",
+        medium: "acrylic, oil, ink, pastel, embroidery threads and found objects",
+        year: "2024",
+        inStock: true,
+        featured: true
+      },
+       {
+        title: "MUDIWA",
+        description: "The Shona word Mudiwa means beloved one.  In this work Maisiri depicts an exaggerated female hand pointing to the viewer in the manner of the famous Lord Kitchener World War II poster - Your Country Needs You, calling on youths to enlist.  Here the gender sensitive artist reconstitutes the image in a socioreligious way that is locally relevant and directed to the female youth of Zimbabwe",
+        price: 0,
+        imageUrl: "img/artwork/mudiwa.png",
+        artistId: 4,
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "100 x 100 cm",
+        medium: "acrylic, oil, ink, plastic and glass on canvas",
+        year: "2022",
+        inStock: true,
+        featured: true
+      },
+      
     ];
 
     artworks.forEach(artwork => this.createArtwork(artwork));
