@@ -85,6 +85,9 @@ const Header = () => {
             <Link href="/about" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/about') ? 'text-[#D3A265]' : ''}`}>
               About
             </Link>
+            <Link href="/interior-design" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/interior-design') ? 'text-[#D3A265]' : ''}`}>
+              Interior Design
+            </Link>
             <Link href="/contact" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/contact') ? 'text-[#D3A265]' : ''}`}>
               Contact
             </Link>
