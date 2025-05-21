@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '../ui/button';
 import { Calendar, Clock, MapPin, Users, Ticket } from 'lucide-react';
+import { Link } from 'wouter';
 
 const Exhibitions = () => {
   const exhibitions = [
@@ -117,11 +118,13 @@ const Exhibitions = () => {
                 <strong>Note:</strong> {exhibition.specialNotes}
               </div>
 
-              <Button 
-                className="w-full bg-[#D3A265] hover:bg-opacity-90 text-white"
-              >
-                Learn More
-              </Button>
+              <Link href={`/exhibitions/${exhibition.id}`}>
+                <Button 
+                  className="w-full bg-[#D3A265] hover:bg-opacity-90 text-white"
+                >
+                  Learn More
+                </Button>
+              </Link>
             </div>
           ))}
         </div>
