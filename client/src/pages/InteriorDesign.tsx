@@ -63,6 +63,23 @@ const InteriorDesign = () => {
       </div>
 
       <div className="container mx-auto px-4 py-16">
+        <div className="prose prose-lg mx-auto mb-16 text-center max-w-3xl">
+          <p className="text-neutral-800 mb-6">
+            At Imbayedu, interior design is not mere arrangement—it is alchemy. It is the sacred transformation of walls and floors into whispers of culture, warmth, and identity. Each room we touch becomes a living narrative—crafted with intention, layered with memory, and rooted in the rhythm of African elegance.
+          </p>
+          <p className="text-neutral-800 mb-6">
+            We approach interiors as immersive experiences—spaces that stir the soul and serve the spirit. Our designs honor heritage while embracing innovation, blending ancestral wisdom with future-forward vision. Whether sculpting silence into a sanctuary or shaping color into conversation, our interiors are vessels of meaning.
+          </p>
+          <p className="text-neutral-800 mb-6">
+            From curated homes to dynamic commercial realms, we bring a human-centered ethos to every surface, texture, and light beam. We believe in creating spaces that listen, spaces that hold, and spaces that rise with the dreams of those who dwell within them.
+          </p>
+          <h2 className="text-2xl font-['Playfair_Display'] font-bold text-neutral-900 mt-8 mb-4">
+            Timeless. Textured. Thoughtful.
+          </h2>
+          <p className="text-neutral-800">
+            At the heart of our practice is a belief: that good design elevates, and great design remembers. We do not chase trends—we cultivate environments that endure. Spaces where design breathes, and culture lives.
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {designServices.map((service, index) => (
             <div key={index} className="group">
