@@ -60,29 +60,29 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-6">Customer Service</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-neutral-400 hover:text-white transition duration-300">
+                <Link href="/faq" className="text-neutral-400 hover:text-white transition duration-300">
                   FAQ
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-neutral-400 hover:text-white transition duration-300">
+                <Link href="/faq#shipping" className="text-neutral-400 hover:text-white transition duration-300">
                   Shipping & Returns
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-neutral-400 hover:text-white transition duration-300">
+                <Link href="/policies" className="text-neutral-400 hover:text-white transition duration-300">
                   Store Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-neutral-400 hover:text-white transition duration-300">
+                <Link href="/faq#payment" className="text-neutral-400 hover:text-white transition duration-300">
                   Payment Methods
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-neutral-400 hover:text-white transition duration-300">
+                <Link href="/faq#care" className="text-neutral-400 hover:text-white transition duration-300">
                   Artwork Care
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
