@@ -50,11 +50,11 @@ const InteriorDesign = () => {
         <div className="absolute inset-0 bg-neutral-900/40 z-10"></div>
         <div className="relative h-[60vh] bg-cover bg-center" style={{ backgroundImage: `url('/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg')` }}>
           <div className="absolute inset-0 flex items-center justify-center z-20">
-            <div className="text-center text-white">
-              <h1 className="text-4xl md:text-5xl font-['Playfair_Display'] font-bold mb-4">
+            <div className="text-center text-white px-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-['Playfair_Display'] font-bold mb-4">
                 Interior Design
               </h1>
-              <p className="text-lg md:text-xl max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
                 Where Spaces Speak and Stories Breathe
               </p>
             </div>
@@ -80,9 +80,9 @@ const InteriorDesign = () => {
             At the heart of our practice is a belief: that good design elevates, and great design remembers. We do not chase trends—we cultivate environments that endure. Spaces where design breathes, and culture lives.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {designServices.map((service, index) => (
-            <div key={index} className="group">
+            <div key={index} className="group p-4">
               <div className="aspect-[4/3] overflow-hidden rounded-lg mb-4">
                 <img
                   src={service.imageUrl}
