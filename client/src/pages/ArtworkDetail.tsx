@@ -116,7 +116,7 @@ const ArtworkDetail = () => {
               <div className="bg-white p-2 shadow-lg mb-6">
                 <div className="bg-gray-50 flex items-center justify-center p-4">
                   <img 
-                    src={`/${artwork.imageUrl}`} 
+                    src={artwork.imageUrl} 
                     alt={artwork.title} 
                     className="max-w-full max-h-[600px] object-contain"
                     onError={(e) => {
