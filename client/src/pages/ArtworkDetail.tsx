@@ -17,7 +17,14 @@ const ArtworkDetail = () => {
   const { toast } = useToast();
 
   const { data: artwork, isLoading, error } = useQuery<ArtworkWithDetails>({
-    queryKey: [`/api/artworks/${id}/details`],
+    queryKey: ['artwork', id],
+    queryFn: async () => {
+      const response = await fetch(`/api/artworks/${id}`);
+      if (!response.ok) {
+        throw new Error('Artwork not found');
+      }
+      return response.json();
+    },
   });
 
   const handleAddToCart = () => {
