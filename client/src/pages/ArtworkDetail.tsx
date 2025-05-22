@@ -31,13 +31,13 @@ const ArtworkDetail = () => {
 
   const handleAddToCart = () => {
     if (!artwork) return;
-    
+
     addItem({
       artworkId: artwork.id,
       userId: 1, // Default user ID (guest)
       quantity
     });
-    
+
     toast({
       title: "Added to cart",
       description: `${artwork.title} has been added to your cart.`,
@@ -46,7 +46,7 @@ const ArtworkDetail = () => {
 
   const handleAddToWishlist = () => {
     if (!artwork) return;
-    
+
     toast({
       title: "Added to wishlist",
       description: `${artwork.title} has been added to your wishlist.`,
@@ -103,7 +103,7 @@ const ArtworkDetail = () => {
         <title>{artwork.title} by {artwork.artist.name} | Imbayedu Art Gallery</title>
         <meta name="description" content={`${artwork.title} - ${artwork.description.substring(0, 150)}... - Art by ${artwork.artist.name} available at Imbayedu Art Gallery.`} />
       </Helmet>
-      
+
       <div className="pt-24 md:pt-32">
         {/* Breadcrumb navigation */}
         <div className="bg-gray-50 py-4 border-b border-gray-100">
@@ -125,18 +125,18 @@ const ArtworkDetail = () => {
               <div className="bg-white p-2 shadow-lg mb-6">
                 <div className="bg-gray-50 flex items-center justify-center p-4">
                   <img 
-                    src={artwork.imageUrl} 
+                    src={artwork.imageUrl?.startsWith('/') ? artwork.imageUrl : `/${artwork.imageUrl}`}
                     alt={artwork.title} 
                     className="max-w-full max-h-[600px] object-contain"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.onerror = null;
-                      target.src = 'https://via.placeholder.com/600x800?text=Image+Not+Available';
+                      target.src = "https://via.placeholder.com/600x800?text=Image+Not+Available";
                     }}
                   />
                 </div>
               </div>
-              
+
               <div className="bg-gray-50 p-6 rounded-md">
                 <h2 className="text-lg font-medium mb-4 text-neutral-800">Artwork Details</h2>
                 <div className="grid grid-cols-2 gap-x-6 gap-y-4">
@@ -175,11 +175,11 @@ const ArtworkDetail = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Artwork Details Section */}
             <div>
               <h1 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-neutral-900 mb-2">{artwork.title}</h1>
-              
+
               <div className="flex items-center mb-5">
                 <Link href={`/artists/${artwork.artist.id}`} className="text-lg text-neutral-700 hover:text-[#D3A265] inline-block">
                   {artwork.artist.name}
@@ -191,17 +191,17 @@ const ArtworkDetail = () => {
                   </>
                 )}
               </div>
-              
+
               <p className="text-2xl text-[#D3A265] font-semibold mb-8">{formatCurrency(artwork.price)}</p>
-              
+
               <div className="mb-10">
                 <p className="text-neutral-700 mb-6 leading-relaxed">{artwork.description}</p>
               </div>
-              
+
               {/* Purchase Options */}
               <div className="bg-gray-50 p-6 mb-8 rounded-md">
                 <h2 className="text-lg font-medium mb-6 text-neutral-800">Purchase Options</h2>
-                
+
                 {/* Quantity Selector */}
                 <div className="flex items-center mb-6">
                   <span className="mr-4 text-neutral-700">Quantity:</span>
@@ -225,7 +225,7 @@ const ArtworkDetail = () => {
                     </Button>
                   </div>
                 </div>
-                
+
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 mb-4">
                   <Button 
@@ -243,13 +243,13 @@ const ArtworkDetail = () => {
                     Add to Wishlist
                   </Button>
                 </div>
-                
+
                 <p className="text-sm text-neutral-500 italic mt-4">
                   This artwork ships with a certificate of authenticity.
                   Free shipping on orders over $500.
                 </p>
               </div>
-              
+
               {/* Share */}
               <div className="flex items-center mb-10">
                 <Button variant="ghost" className="text-neutral-600 hover:text-neutral-900 p-0">
@@ -257,7 +257,7 @@ const ArtworkDetail = () => {
                   Share this Artwork
                 </Button>
               </div>
-              
+
               {/* Artist Info Preview */}
               <div className="bg-white p-6 border border-gray-100 rounded-md">
                 <div className="flex items-center gap-4 mb-4">
@@ -282,7 +282,7 @@ const ArtworkDetail = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Artist Info Full Section */}
           <div className="mt-16 py-10 border-t border-gray-200">
             <h2 className="text-2xl font-['Playfair_Display'] font-bold text-neutral-900 mb-6">About the Artist</h2>
