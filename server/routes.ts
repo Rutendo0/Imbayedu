@@ -196,6 +196,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.get("/api/artworks/:id/details", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid artwork ID" });
+      }
+      
+      const artwork = await storage.getArtworkWithDetails(id);
+      if (!artwork) {
+        return res.status(404).json({ message: "Artwork not found" });
+      }
+      
+      res.json(artwork);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch artwork details" });
+    }
+  });
+
   app.get("/api/artworks/:id", async (req, res) => {
     try {
       const id = parseInt(req.params.id);
