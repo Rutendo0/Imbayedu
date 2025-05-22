@@ -221,7 +221,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Invalid artwork ID" });
       }
       
-      const artwork = await storage.getArtwork(id);
+      const artwork = await storage.getArtworkWithDetails(id);
       if (!artwork) {
         return res.status(404).json({ message: "Artwork not found" });
       }
