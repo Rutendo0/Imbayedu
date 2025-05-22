@@ -24,3 +24,4 @@ export function ArtistCard({ artist }: ArtistCardProps) {
     </div>
   );
 }
+```

@@ -48,7 +48,7 @@ function App() {
                   <Route path="/artworks" component={Artworks} />
                   <Route path="/artwork/:id" component={ArtworkDetail} />
                   <Route path="/artists" component={Artists} />
-                  <Route path="/artist/:id" component={ArtistDetail} />
+                  <Route path="/artists/:id" component={ArtistDetail} />
                   <Route path="/exhibition/:id" component={ExhibitionDetail} />
                   <Route path="/about" component={About} />
                   <Route path="/contact" component={Contact} />
