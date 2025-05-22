@@ -226,6 +226,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(404).json({ message: "Artwork not found" });
       }
       
+      return res.json(artwork);
+      }
+      
       res.json(artwork);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch artwork" });

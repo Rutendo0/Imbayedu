@@ -19,10 +19,12 @@ const ArtworkDetail = () => {
   const { data: artwork, isLoading, error } = useQuery<ArtworkWithDetails>({
     queryKey: ['artwork', id],
     queryFn: async () => {
+      if (!id) throw new Error('No artwork ID provided');
       const response = await fetch(`/api/artworks/${id}`);
       if (!response.ok) {
-        throw new Error('Artwork not found');
+        throw new Error(`Failed to fetch artwork: ${response.statusText}`);
       }
+      return response.json();
       return response.json();
     },
   });
