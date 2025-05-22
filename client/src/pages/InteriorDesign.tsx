@@ -24,35 +24,57 @@ const InteriorDesign = () => {
 
   const projectGallery = [
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg",
-      title: "Luxury Penthouse",
-      description: "Contemporary design with African art integration"
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.47.jpeg",
+      title: "Marbella Villa",
+      description: "The light and comfort of a Mediterranean villa"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.47 (1).jpeg",
       title: "Executive Office",
       description: "Modern workspace with artistic elements"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
-      title: "Boutique Hotel",
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.46.jpeg",
+      title: "Modern Mansion",
       description: "Elegant fusion of modern and traditional"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-15 at 11.04.43.jpeg",
       title: "Private Gallery",
       description: "Custom-designed art display space"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-15 at 11.04.44 (1).jpeg",
       title: "Urban Loft",
       description: "Industrial chic with artistic touches"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.45 (1).jpeg",
+      title: "Luxurious living room",
+      description: "Luxurious living with curated art collection"
+    }
+    {
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.44.jpeg",
       title: "Residential Villa",
       description: "Luxurious living with curated art collection"
     }
+  {
+    image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.45.jpeg",
+    title: "Luxurious Living Room",
+    description: "Luxurious living with curated art collection"
+  }
+  {
+    image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.46.jpeg",
+    title: "Residential Villa",
+    description: "Luxurious living with curated art collection"
+  }
+  {
+    image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.48.jpeg",
+    title: "Luxurious Space",
+    description: "Luxurious feel with curated art collection"
+  }
+    
+  
   ];
 
   const values = [
