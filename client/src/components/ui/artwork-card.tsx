@@ -11,7 +11,7 @@ export const ArtworkCard = ({ artwork }: ArtworkCardProps) => {
       <div className="group cursor-pointer">
         <div className="aspect-[4/5] overflow-hidden mb-4 bg-neutral-100">
           <img
-            src={artwork.imageUrl.startsWith('/') ? artwork.imageUrl : `/${artwork.imageUrl}`}
+            src={artwork.imageUrl?.startsWith('/') ? artwork.imageUrl : `/${artwork.imageUrl}`}
             alt={artwork.title}
             loading="lazy"
             decoding="async"

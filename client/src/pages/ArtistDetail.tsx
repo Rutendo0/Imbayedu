@@ -29,6 +29,9 @@ const ArtistDetail = () => {
       return data.filter((artwork) => artwork.artistId === parseInt(id || "0", 10));
     },
     enabled: !!id,
+    onError: (error) => {
+      console.error('Failed to fetch artworks:', error);
+    }
   });
 
   const isLoading = artistLoading || artworksLoading;
