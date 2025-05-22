@@ -24,32 +24,32 @@ const InteriorDesign = () => {
 
   const projectGallery = [
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.55.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg",
       title: "Luxury Penthouse",
       description: "Contemporary design with African art integration"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.56.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
       title: "Executive Office",
       description: "Modern workspace with artistic elements"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.57.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
       title: "Boutique Hotel",
       description: "Elegant fusion of modern and traditional"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.58.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg",
       title: "Private Gallery",
       description: "Custom-designed art display space"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.59.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07.jpeg",
       title: "Urban Loft",
       description: "Industrial chic with artistic touches"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.37.00.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
       title: "Residential Villa",
       description: "Luxurious living with curated art collection"
     }
