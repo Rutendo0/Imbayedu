@@ -19,7 +19,7 @@ const ArtworkDetail = () => {
   const { data: artwork, isLoading, error } = useQuery<ArtworkWithDetails>({
     queryKey: ['artwork', id],
     queryFn: async () => {
-      const response = await fetch(`/api/artworks/${id}`);
+      const response = await fetch(`/api/artworks/${id}/details`);
       if (!response.ok) {
         throw new Error('Artwork not found');
       }
