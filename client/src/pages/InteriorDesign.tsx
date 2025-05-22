@@ -1,7 +1,37 @@
-
 import { Helmet } from "react-helmet-async";
 import { Button } from "../components/ui/button";
 import { Link } from "wouter";
+import { useState } from "react";
+
+const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const imageAspectRatios = {
+    square: "1/1",
+    portrait: "3/4",
+    landscape: "4/3",
+    wide: "16/9"
+  };
+
+  const paddingBottom = imageAspectRatios[aspectRatio] || imageAspectRatios["square"];
+
+  return (
+    <div className="relative w-full overflow-hidden">
+      <div style={{ paddingBottom: `calc(100% / (${paddingBottom}))` }}></div>
+      {isLoading && (
+        <div className="absolute inset-0 bg-neutral-200 animate-pulse"></div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+          isLoading ? "opacity-0" : "opacity-100"
+        } ${className}`}
+        onLoad={() => setIsLoading(false)}
+      />
+    </div>
+  );
+};
 
 const InteriorDesign = () => {
   const designServices = [
@@ -127,10 +157,11 @@ const InteriorDesign = () => {
           {designServices.map((service, index) => (
             <div key={index} className="group">
               <div className="aspect-[3/4] overflow-hidden mb-6">
-                <img
+                <ImageLoader
                   src={service.imageUrl}
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  aspectRatio="portrait"
+                  className="transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <h3 className="text-2xl font-['Playfair_Display'] font-semibold mb-4">
@@ -153,10 +184,11 @@ const InteriorDesign = () => {
             {projectGallery.map((project, index) => (
               <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg">
                 <div className="aspect-[4/5] overflow-hidden">
-                  <img
+                  <ImageLoader
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    aspectRatio="portrait"
+                    className="transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
