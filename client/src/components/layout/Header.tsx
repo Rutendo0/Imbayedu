@@ -147,6 +147,9 @@ const Header = () => {
             <Link href="/about" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
               About
             </Link>
+            <Link href="/interior-design" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
+              Interior Design
+            </Link>
             <Link href="/contact" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
               Contact
             </Link>
