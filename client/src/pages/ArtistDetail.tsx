@@ -1,3 +1,4 @@
+
 import { useQuery } from "@tanstack/react-query";
 import { useParams, Link, useLocation } from "wouter";
 import { Helmet } from "react-helmet";
@@ -10,7 +11,7 @@ const ArtistDetail = () => {
   const [, setLocation] = useLocation();
 
   const { data: artist, isLoading: artistLoading, error: artistError } = useQuery<Artist>({
-    queryKey: [`/api/artists/${id}`],
+    queryKey: ['artist', id],
     queryFn: async () => {
       const response = await fetch(`/api/artists/${id}`);
       if (!response.ok) {
@@ -21,13 +22,13 @@ const ArtistDetail = () => {
   });
 
   const { data: artworks, isLoading: artworksLoading } = useQuery<ArtworkWithDetails[]>({
-    queryKey: [`/api/artworks/details`],
+    queryKey: ['artworks', id],
     queryFn: async () => {
       const response = await fetch('/api/artworks/details');
       const data = await response.json();
       return data.filter((artwork) => artwork.artistId === parseInt(id || "0", 10));
     },
-    enabled: !!artist && !!id,
+    enabled: !!id,
   });
 
   const isLoading = artistLoading || artworksLoading;
