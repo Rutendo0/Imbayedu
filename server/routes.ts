@@ -17,10 +17,10 @@ import { z } from "zod";
 export async function registerRoutes(app: Express): Promise<Server> {
   // Serve all images from public directory
   app.use('/img', express.static(path.join(process.cwd(), 'public/img')));
-  
+
   // API Routes
   // All routes prefixed with /api
-  
+
   // Artists routes
   app.get("/api/artists", async (req, res) => {
     try {
@@ -46,12 +46,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (isNaN(id)) {
         return res.status(400).json({ message: "Invalid artist ID" });
       }
-      
+
       const artist = await storage.getArtist(id);
       if (!artist) {
         return res.status(404).json({ message: "Artist not found" });
       }
-      
+
       res.json(artist);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch artist" });
@@ -87,12 +87,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (isNaN(id)) {
         return res.status(400).json({ message: "Invalid category ID" });
       }
-      
+
       const category = await storage.getCategory(id);
       if (!category) {
         return res.status(404).json({ message: "Category not found" });
       }
-      
+
       res.json(category);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch category" });
@@ -137,12 +137,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (isNaN(id)) {
         return res.status(400).json({ message: "Invalid collection ID" });
       }
-      
+
       const collection = await storage.getCollection(id);
       if (!collection) {
         return res.status(404).json({ message: "Collection not found" });
       }
-      
+
       res.json(collection);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch collection" });
@@ -166,9 +166,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/artworks", async (req, res) => {
     try {
       const { categoryId, artistId, collectionId, featured } = req.query;
-      
+
       let artworks;
-      
+
       if (categoryId) {
         artworks = await storage.getArtworksByCategory(parseInt(categoryId as string));
       } else if (artistId) {
@@ -180,7 +180,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       } else {
         artworks = await storage.getArtworks();
       }
-      
+
       res.json(artworks);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch artworks" });
@@ -196,57 +196,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get("/api/artworks/:id/details", async (req, res) => {
-    try {
-      const id = parseInt(req.params.id);
-      if (isNaN(id)) {
-        return res.status(400).json({ message: "Invalid artwork ID" });
-      }
-      
-      const artwork = await storage.getArtworkWithDetails(id);
-      if (!artwork) {
-        return res.status(404).json({ message: "Artwork not found" });
-      }
-      
-      res.json(artwork);
-    } catch (error) {
-      res.status(500).json({ message: "Failed to fetch artwork details" });
-    }
-  });
-
   app.get("/api/artworks/:id", async (req, res) => {
     try {
       const id = parseInt(req.params.id);
       if (isNaN(id)) {
         return res.status(400).json({ message: "Invalid artwork ID" });
       }
-      
+
       const artwork = await storage.getArtworkWithDetails(id);
       if (!artwork) {
         return res.status(404).json({ message: "Artwork not found" });
       }
-      
+
       return res.json(artwork);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch artwork" });
-    }
-  });
-
-  app.get("/api/artworks/:id/details", async (req, res) => {
-    try {
-      const id = parseInt(req.params.id);
-      if (isNaN(id)) {
-        return res.status(400).json({ message: "Invalid artwork ID" });
-      }
-      
-      const artwork = await storage.getArtworkWithDetails(id);
-      if (!artwork) {
-        return res.status(404).json({ message: "Artwork not found" });
-      }
-      
-      res.json(artwork);
-    } catch (error) {
-      res.status(500).json({ message: "Failed to fetch artwork details" });
     }
   });
 
@@ -270,7 +234,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (isNaN(userId)) {
         return res.status(400).json({ message: "Invalid user ID" });
       }
-      
+
       const cartItems = await storage.getCartItems(userId);
       res.json(cartItems);
     } catch (error) {
@@ -284,7 +248,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (isNaN(userId)) {
         return res.status(400).json({ message: "Invalid user ID" });
       }
-      
+
       const cartItems = await storage.getCartItemsWithDetails(userId);
       res.json(cartItems);
     } catch (error) {
@@ -311,17 +275,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (isNaN(id)) {
         return res.status(400).json({ message: "Invalid cart item ID" });
       }
-      
+
       const { quantity } = req.body;
       if (typeof quantity !== 'number' || quantity < 1) {
         return res.status(400).json({ message: "Invalid quantity" });
       }
-      
+
       const cartItem = await storage.updateCartItemQuantity(id, quantity);
       if (!cartItem) {
         return res.status(404).json({ message: "Cart item not found" });
       }
-      
+
       res.json(cartItem);
     } catch (error) {
       res.status(500).json({ message: "Failed to update cart item" });
@@ -334,12 +298,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (isNaN(id)) {
         return res.status(400).json({ message: "Invalid cart item ID" });
       }
-      
+
       const success = await storage.removeCartItem(id);
       if (!success) {
         return res.status(404).json({ message: "Cart item not found" });
       }
-      
+
       res.json({ success: true });
     } catch (error) {
       res.status(500).json({ message: "Failed to remove cart item" });
@@ -352,7 +316,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (isNaN(userId)) {
         return res.status(400).json({ message: "Invalid user ID" });
       }
-      
+
       await storage.clearCart(userId);
       res.json({ success: true });
     } catch (error) {

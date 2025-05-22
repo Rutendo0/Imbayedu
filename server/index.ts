@@ -2,6 +2,17 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 import path from "path";
+
+import rateLimit from 'express-rate-limit';
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
+
+// Apply to all requests
+app.use(limiter);
+
 import { fileURLToPath } from 'url';
 import { storage } from "./storage";
 
@@ -21,7 +32,11 @@ const publicPath = process.env.NODE_ENV === "production"
 // Update static file serving section in index.ts
 if (process.env.NODE_ENV === "production") {
   // Serve static assets from dist/public in production
-  app.use('/assets', express.static(path.join(__dirname, '../public/assets')));
+  app.use('/assets', express.static(path.join(__dirname, '../public/assets'), {
+  maxAge: '1d',
+  etag: true,
+  lastModified: true
+}));
   app.use(express.static(path.join(__dirname, '../public')));
 } else {
   // Serve static assets from client/dist/assets in development
