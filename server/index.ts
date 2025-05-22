@@ -18,8 +18,8 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Enable trust proxy
-app.set('trust proxy', true);
+// Configure trust proxy for rate limiting
+app.set('trust proxy', 1);
 
 // Apply rate limiter to all requests
 app.use(limiter);
