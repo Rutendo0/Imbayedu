@@ -10,9 +10,6 @@ const limiter = rateLimit({
   max: 100 // limit each IP to 100 requests per windowMs
 });
 
-// Apply to all requests
-app.use(limiter);
-
 import { fileURLToPath } from 'url';
 import { storage } from "./storage";
 
@@ -20,6 +17,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+// Apply rate limiter to all requests
+app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
