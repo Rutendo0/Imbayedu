@@ -185,7 +185,7 @@ export class PostgresStorage implements IStorage {
 
     // Add all artworks with actual Imbayedu pieces
     const artworks = [
-      
+
       {
         title: "Abstract Spirit",
         description: "A vibrant portrait celebrating African heritage with bold colors and expressive brushwork.",
@@ -725,7 +725,8 @@ export class PostgresStorage implements IStorage {
         title: "TRANSCENDENT",
         description: "In this painting the artist reminiscence about his close spiritual relationship with his late mother and how her intuition protected him from the dangerous follies of life.  Likening her intuition to an out of body experience, the artist depicts his thoughts in a surreal manner where a disjointed head hovers over his work.   This painting has layers of meaning  that question our physical and spiritual existence.",
         price: 0,
-        imageUrl: "/img/artwork/UNIT3.png",
+        ```text
+imageUrl: "/img/artwork/UNIT3.png",
         artistId: 4,
         categoryId: 1,
         collectionId: 1,
@@ -777,7 +778,7 @@ export class PostgresStorage implements IStorage {
         inStock: true,
         featured: true
       },
-      
+
     ];
 
     artworks.forEach(artwork => this.createArtwork(artwork));
