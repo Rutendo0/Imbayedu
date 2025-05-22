@@ -1,3 +1,4 @@
+
 import { Link } from "wouter";
 import { Artist } from "@shared/schema";
 
@@ -24,4 +25,3 @@ export function ArtistCard({ artist }: ArtistCardProps) {
     </div>
   );
 }
-```
