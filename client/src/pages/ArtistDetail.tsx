@@ -72,7 +72,7 @@ const ArtistDetail = () => {
         <title>{artist.name} | Imbayedu Art Gallery</title>
         <meta name="description" content={`Discover art by ${artist.name}. ${artist.bio.substring(0, 150)}... View and purchase artwork at Imbayedu Art Gallery.`} />
       </Helmet>
-      
+
       <div className="pt-24 md:pt-32">
         <div className="bg-neutral-100 py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,11 +103,11 @@ const ArtistDetail = () => {
               </p>
             </div>
           </div>
-          
+
           <h2 className="text-2xl font-['Playfair_Display'] font-semibold text-neutral-900 mb-6">
             Artworks by {artist.name}
           </h2>
-          
+
           {artworks && artworks.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
               {artworks.map((artwork) => (
