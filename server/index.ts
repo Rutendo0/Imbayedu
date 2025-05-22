@@ -6,7 +6,7 @@ import path from "path";
 import rateLimit from 'express-rate-limit';
 
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
+  windowMs: 1 * 60 * 1000, // 15 minutes
   max: 100 // limit each IP to 100 requests per windowMs
 });
 
@@ -114,7 +114,7 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
 
   // Local development server when not on Vercel
   if (!process.env.VERCEL) {
-    const port = process.env.PORT || 5000;
+    const port = process.env.PORT ? parseInt(process.env.PORT) : 5000;
     server.listen(port, "0.0.0.0", () => {
       log(`Server running on http://0.0.0.0:${port}`);
     });

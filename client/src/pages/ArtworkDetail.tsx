@@ -25,8 +25,11 @@ const ArtworkDetail = () => {
         throw new Error(`Failed to fetch artwork: ${response.statusText}`);
       }
       return response.json();
-      return response.json();
+    
     },
+
+    retry: 3, // Number of retries
+  retryDelay: (attempt) => Math.min(attempt * 1000, 5000), // Exponential backoff
   });
 
   const handleAddToCart = () => {
