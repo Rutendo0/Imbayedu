@@ -39,12 +39,12 @@ const InteriorDesign = () => {
       description: "Elegant fusion of modern and traditional"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-15 at 11.04.43.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.43.jpeg",
       title: "Private Gallery",
       description: "Custom-designed art display space"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-15 at 11.04.44 (1).jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.44 (1).jpeg",
       title: "Urban Loft",
       description: "Industrial chic with artistic touches"
     },
