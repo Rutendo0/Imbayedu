@@ -24,16 +24,34 @@ const InteriorDesign = () => {
 
   const projectGallery = [
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (1).jpeg",
-      title: "Modern Luxury Villa"
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.55.jpeg",
+      title: "Luxury Penthouse",
+      description: "Contemporary design with African art integration"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (2).jpeg",
-      title: "Contemporary Gallery Space"
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.56.jpeg",
+      title: "Executive Office",
+      description: "Modern workspace with artistic elements"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (3).jpeg",
-      title: "Artistic Living Room"
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.57.jpeg",
+      title: "Boutique Hotel",
+      description: "Elegant fusion of modern and traditional"
+    },
+    {
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.58.jpeg",
+      title: "Private Gallery",
+      description: "Custom-designed art display space"
+    },
+    {
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.36.59.jpeg",
+      title: "Urban Loft",
+      description: "Industrial chic with artistic touches"
+    },
+    {
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 10.37.00.jpeg",
+      title: "Residential Villa",
+      description: "Luxurious living with curated art collection"
     }
   ];
 
@@ -111,9 +129,9 @@ const InteriorDesign = () => {
               Recent Projects
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projectGallery.map((project, index) => (
-              <div key={index} className="group relative overflow-hidden">
+              <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg">
                 <div className="aspect-[4/5] overflow-hidden">
                   <img
                     src={project.image}
@@ -121,8 +139,9 @@ const InteriorDesign = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <h3 className="text-white text-xl font-semibold">{project.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <h3 className="text-white text-xl font-semibold mb-2">{project.title}</h3>
+                  <p className="text-white/90 text-sm">{project.description}</p>
                 </div>
               </div>
             ))}
