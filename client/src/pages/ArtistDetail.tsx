@@ -10,14 +10,24 @@ const ArtistDetail = () => {
   const [, setLocation] = useLocation();
 
   const { data: artist, isLoading: artistLoading, error: artistError } = useQuery<Artist>({
-    queryKey: [`/api/artists/${id}`],
-    select: (data) => data || null,
-    retry: 1,
+    queryKey: ['artist', id],
+    queryFn: async () => {
+      const response = await fetch(`/api/artists/${id}`);
+      if (!response.ok) {
+        throw new Error('Artist not found');
+      }
+      return response.json();
+    },
   });
 
   const { data: artworks, isLoading: artworksLoading } = useQuery<ArtworkWithDetails[]>({
-    queryKey: [`/api/artworks/details`],
-    select: (data) => data.filter((artwork) => artwork.artistId === parseInt(id || "0")),
+    queryKey: ['artworks', id],
+    queryFn: async () => {
+      const response = await fetch('/api/artworks/details');
+      const data = await response.json();
+      return data.filter((artwork) => artwork.artistId === parseInt(id || "0"));
+    },
+    enabled: !!artist,
   });
 
   const isLoading = artistLoading || artworksLoading;
