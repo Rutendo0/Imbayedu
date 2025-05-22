@@ -725,8 +725,7 @@ export class PostgresStorage implements IStorage {
         title: "TRANSCENDENT",
         description: "In this painting the artist reminiscence about his close spiritual relationship with his late mother and how her intuition protected him from the dangerous follies of life.  Likening her intuition to an out of body experience, the artist depicts his thoughts in a surreal manner where a disjointed head hovers over his work.   This painting has layers of meaning  that question our physical and spiritual existence.",
         price: 0,
-        ```text
-imageUrl: "/img/artwork/UNIT3.png",
+        imageUrl: "/img/artwork/UNIT3.png",
         artistId: 4,
         categoryId: 1,
         collectionId: 1,
