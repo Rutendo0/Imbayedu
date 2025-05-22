@@ -52,29 +52,27 @@ const InteriorDesign = () => {
       image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.45 (1).jpeg",
       title: "Luxurious living room",
       description: "Luxurious living with curated art collection"
-    }
+    },
     {
       image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.44.jpeg",
       title: "Residential Villa",
       description: "Luxurious living with curated art collection"
+    },
+    {
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.45.jpeg",
+      title: "Luxurious Living Room",
+      description: "Luxurious living with curated art collection"
+    },
+    {
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.46.jpeg",
+      title: "Residential Villa",
+      description: "Luxurious living with curated art collection"
+    },
+    {
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.48.jpeg",
+      title: "Luxurious Space",
+      description: "Luxurious feel with curated art collection"
     }
-  {
-    image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.45.jpeg",
-    title: "Luxurious Living Room",
-    description: "Luxurious living with curated art collection"
-  }
-  {
-    image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.46.jpeg",
-    title: "Residential Villa",
-    description: "Luxurious living with curated art collection"
-  }
-  {
-    image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.48.jpeg",
-    title: "Luxurious Space",
-    description: "Luxurious feel with curated art collection"
-  }
-    
-  
   ];
 
   const values = [
