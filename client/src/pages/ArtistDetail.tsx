@@ -83,7 +83,7 @@ const ArtistDetail = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row gap-8 mb-12">
             <img 
-              src={`/${artist.imageUrl}`} 
+              src={artist.imageUrl} 
               alt={artist.name} 
               className="w-40 h-40 object-cover rounded-full self-start"
             />
