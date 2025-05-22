@@ -112,12 +112,8 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   // Local development server when not on Vercel
   if (!process.env.VERCEL) {
     const port = process.env.PORT || 5000;
-    server.listen({
-      port,
-      host: "0.0.0.0",
-      exclusive: true,
-    }, () => {
-      log(`Server running on port ${port}`);
+    server.listen(port, "0.0.0.0", () => {
+      log(`Server running on http://0.0.0.0:${port}`);
     });
   }
 })();
