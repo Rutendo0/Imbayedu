@@ -21,6 +21,16 @@ const Footer = () => {
                 <Twitter size={20} />
               </a>
             </div>
+            <div className="mt-10">
+            <a 
+              href="https://www.niakazi.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-white transition duration-300"
+            >
+              Designed By Niakazi
+            </a>
+          </div>
           </div>
 
           {/* Quick Links */}
@@ -123,6 +133,8 @@ const Footer = () => {
             <a href="#" className="hover:text-white transition duration-300">Terms of Service</a>
             <a href="#" className="hover:text-white transition duration-300">Cookie Policy</a>
           </div>
+
+          
         </div>
       </div>
     </footer>

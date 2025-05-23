@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Button } from "../components/ui/button";
 import { Link } from "wouter";
 import { useState } from "react";
+import { Play } from "lucide-react";
 
 const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,6 +14,7 @@ const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
     wide: "16/9"
   };
 
+   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const paddingBottom = imageAspectRatios[aspectRatio] || imageAspectRatios["square"];
 
   return (
@@ -120,6 +122,8 @@ const InteriorDesign = () => {
     }
   ];
 
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  
   return (
     <>
       <Helmet>
@@ -152,6 +156,55 @@ const InteriorDesign = () => {
             At Imbayedu, we believe in creating more than just beautiful spaces. Our designs are a harmonious blend of contemporary aesthetics, African artistry, and functional excellence. Each project is a unique journey in transforming spaces into living works of art.
           </p>
         </div>
+
+
+         <div className="container mx-auto px-4 py-16">
+  <div className="max-w-6xl mx-auto mb-24">
+    <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold mb-8 text-center">
+      Our Design Process
+    </h2>
+    
+    <div className="relative aspect-video bg-neutral-100 rounded-xl overflow-hidden shadow-lg">
+      {!isVideoPlaying ? (
+        // Video Thumbnail with Play Button
+        <div className="relative w-full h-full">
+          <ImageLoader
+            src="/img/artwork/WhatsApp Image 2025-05-21 at 15.52.10.jpeg" // Your thumbnail image
+            alt="Design process video thumbnail"
+            aspectRatio="wide"
+            className="w-full h-full"
+          />
+          <button 
+            className="absolute inset-0 flex items-center justify-center w-full h-full group"
+            onClick={() => setIsVideoPlaying(true)}
+          >
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-all duration-300"></div>
+            <div className="relative z-10 flex items-center justify-center w-20 h-20 bg-[#D3A265] rounded-full hover:bg-[#BA8F58] transition-all duration-300 group-hover:scale-110">
+              <Play className="text-white ml-1" size={28} fill="white" />
+            </div>
+          </button>
+        </div>
+      ) : (
+        // Video Player
+        <video 
+          className="w-full h-full object-cover" 
+          controls 
+          autoPlay
+          onEnded={() => setIsVideoPlaying(false)}
+        >
+          <source src="/img/artwork/WhatsApp Video 2025-05-22 at 17.16.46" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
+    </div>
+    
+    <p className="text-center text-neutral-600 mt-6">
+      Watch how we transform spaces into works of art
+    </p>
+  </div>
+</div>
+
+
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
           {designServices.map((service, index) => (

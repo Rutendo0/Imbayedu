@@ -119,6 +119,6 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
       log(`Server running on http://0.0.0.0:${port}`);
     });
   }
-})();
+ })();
 
 export default app;
