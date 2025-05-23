@@ -192,7 +192,7 @@ const InteriorDesign = () => {
           autoPlay
           onEnded={() => setIsVideoPlaying(false)}
         >
-          <source src="/img/artwork/WhatsApp Video 2025-05-22 at 17.16.46" type="video/mp4" />
+          <source src="/img/artwork/WhatsApp Video 2025-05-22 at 17.16.46.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       )}
