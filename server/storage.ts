@@ -790,7 +790,7 @@ export class PostgresStorage implements IStorage {
         year: "2022",
         inStock: true,
         featured: true,
-        artistId: 1
+        artistId: 0
       },
 
     ];
