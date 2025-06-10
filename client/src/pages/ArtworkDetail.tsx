@@ -103,8 +103,8 @@ const ArtworkDetail = () => {
   return (
     <>
       <Helmet>
-        <title>{artwork.title} by {artwork.artist.name} | Imbayedu Art Gallery</title>
-        <meta name="description" content={`${artwork.title} - ${artwork.description.substring(0, 150)}... - Art by ${artwork.artist.name} available at Imbayedu Art Gallery.`} />
+        <title>{artwork.title} by {artwork.artist?.name || 'Unknown Artist'} | Imbayedu Art Gallery</title>
+        <meta name="description" content={`${artwork.title} - ${artwork.description.substring(0, 150)}... - Art by ${artwork.artist?.name || 'Unknown Artist'} available at Imbayedu Art Gallery.`} />
       </Helmet>
 
       <div className="pt-24 md:pt-32">

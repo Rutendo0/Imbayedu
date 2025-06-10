@@ -144,7 +144,7 @@ const InteriorDesign = () => {
 
       <div className="relative">
         <div className="absolute inset-0 bg-black/50 z-10"></div>
-        <div className="relative h-[90vh] bg-cover bg-center" style={{ backgroundImage: `url('/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33 .jpg')` }}>
+        <div className="relative h-[90vh] bg-cover bg-center" style={{ backgroundImage: `url('/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33_a0ff7f2e.jpg')` }}>
           <div className="absolute inset-0 flex items-center justify-center z-20">
             <div className="text-center text-white px-4">
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-['Playfair_Display'] font-bold mb-6">

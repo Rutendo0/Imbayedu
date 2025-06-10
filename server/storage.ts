@@ -767,9 +767,9 @@ export class PostgresStorage implements IStorage {
       {
         title: "Waves of Change",
         description: "A dynamic abstract piece that captures the essence of movement and transformation through fluid brushstrokes and vibrant colors.",
-      price: 0,
+        price: 0,
         imageUrl: "img/artwork/WhatsApp Image 2025-06-10 at 07.59.33_a0ff7f2e.jpg",
-        artistId: 0,
+        artistId: 1,
         categoryId: 2,
         collectionId: 1,
         dimensions: "100 x 100 cm",
@@ -781,7 +781,7 @@ export class PostgresStorage implements IStorage {
       {
         title: "Dynamic Harmony",
         description: "An abstract composition that explores the interplay of shapes and colors, creating a sense of rhythm and balance.",
-      price: 0,
+        price: 0,
         imageUrl: "img/artwork/WhatsApp Image 2025-06-10 at 07.59.32 (2).jpg",
         categoryId: 1,
         collectionId: 1,
@@ -790,7 +790,7 @@ export class PostgresStorage implements IStorage {
         year: "2022",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
 
     ];
