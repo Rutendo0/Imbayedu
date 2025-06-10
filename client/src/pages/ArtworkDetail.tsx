@@ -184,10 +184,14 @@ const ArtworkDetail = () => {
               <h1 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold text-neutral-900 mb-2">{artwork.title}</h1>
 
               <div className="flex items-center mb-5">
-                <Link href={`/artists/${artwork.artist.id}`} className="text-lg text-neutral-700 hover:text-[#D3A265] inline-block">
-                  {artwork.artist.name}
-                </Link>
-                {artwork.artist.location && (
+                {artwork.artist ? (
+                  <Link href={`/artists/${artwork.artist.id}`} className="text-lg text-neutral-700 hover:text-[#D3A265] inline-block">
+                    {artwork.artist.name}
+                  </Link>
+                ) : (
+                  <span className="text-lg text-neutral-700">Unknown Artist</span>
+                )}
+                {artwork.artist?.location && (
                   <>
                     <span className="mx-2 text-neutral-400">•</span>
                     <span className="text-neutral-500">{artwork.artist.location}</span>
