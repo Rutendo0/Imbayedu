@@ -104,7 +104,18 @@ const InteriorDesign = () => {
       image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.48.jpeg",
       title: "Luxurious Space",
       description: "Luxurious feel with curated art collection"
-    }
+    },
+     {
+      image: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.31.jpg",
+      title: "Sunset Villa",
+      description: "The light and comfort of a the villa"
+    },
+    {
+      image: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.32.jpg",
+      title: "Bedroom ",
+      description: "The light and radiance of the room "
+    },
+   
   ];
 
   const values = [
@@ -133,7 +144,7 @@ const InteriorDesign = () => {
 
       <div className="relative">
         <div className="absolute inset-0 bg-black/50 z-10"></div>
-        <div className="relative h-[90vh] bg-cover bg-center" style={{ backgroundImage: `url('/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (4).jpeg')` }}>
+        <div className="relative h-[90vh] bg-cover bg-center" style={{ backgroundImage: `url('/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33 .jpg')` }}>
           <div className="absolute inset-0 flex items-center justify-center z-20">
             <div className="text-center text-white px-4">
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-['Playfair_Display'] font-bold mb-6">
