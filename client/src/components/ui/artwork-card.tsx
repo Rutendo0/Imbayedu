@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ArtworkWithDetails } from "@shared/schema";
+import { ArtworkWithDetails } from "../../../shared/schema";
 
 interface ArtworkCardProps {
   artwork: ArtworkWithDetails;
