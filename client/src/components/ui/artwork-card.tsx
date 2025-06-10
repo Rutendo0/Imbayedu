@@ -19,7 +19,7 @@ export const ArtworkCard = ({ artwork }: ArtworkCardProps) => {
           />
         </div>
         <h3 className="text-lg font-medium text-neutral-900 mb-1">{artwork.title}</h3>
-        <p className="text-sm text-neutral-600 mb-2">{artwork.artist.name}</p>
+        <p className="text-sm text-neutral-600 mb-2">{artwork.artist?.name || 'Unknown Artist'}</p>
         <p className="text-sm font-medium text-neutral-900">${artwork.price.toLocaleString()}</p>
       </div>
     </Link>

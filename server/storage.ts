@@ -185,7 +185,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Sunset Reflections",
@@ -199,7 +199,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Nature's Harmony",
@@ -213,7 +213,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Abstract Emotion",
@@ -227,7 +227,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Cultural Heritage",
@@ -241,7 +241,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Urban Rhythm",
@@ -255,7 +255,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Serene Landscape",
@@ -269,7 +269,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Colorful Abstraction",
@@ -283,7 +283,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Textured Landscape",
@@ -297,7 +297,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Vibrant Portrait",
@@ -311,7 +311,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Abstract Patterns",
@@ -325,7 +325,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Nature's Palette",
@@ -339,7 +339,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Emotional Landscape",
@@ -353,7 +353,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Cultural Tapestry",
@@ -367,7 +367,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Abstract Movement",
@@ -381,7 +381,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Soulful Portrait",
@@ -395,7 +395,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Vibrant Expression",
@@ -409,7 +409,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Textural Study",
@@ -423,7 +423,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Natural Harmony",
@@ -437,7 +437,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Cultural Identity",
@@ -451,7 +451,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Vibrant Abstraction",
@@ -465,7 +465,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Expressive Portrait",
@@ -479,7 +479,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Sculptural Forms",
@@ -493,7 +493,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Minimalist Landscape",
@@ -507,7 +507,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Dynamic Composition",
@@ -521,7 +521,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Textural Abstract",
@@ -535,7 +535,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Serene Waters",
@@ -549,7 +549,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Expressionist Landscape",
@@ -563,7 +563,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Cultural Celebration",
@@ -577,7 +577,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Gestural Abstract",
@@ -591,7 +591,7 @@ export class PostgresStorage implements IStorage {
         year: "2023",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
       {
         title: "Vibrant Landscape",
@@ -605,7 +605,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
        { 
         title: "Abstract Expressions", 
@@ -619,7 +619,7 @@ export class PostgresStorage implements IStorage {
         year: "2025",
         inStock: true, 
         featured: false,
-        artistId: 0
+        artistId: 1
       },
  { 
         title: "Paintings", 
@@ -633,7 +633,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true,
         featured: false,
-        artistId: 0
+        artistId: 1
       },
  { 
         title: "Cultural Portraits", 
@@ -647,7 +647,7 @@ export class PostgresStorage implements IStorage {
         year: "2024",
         inStock: true, 
         featured: false,
-        artistId: 0
+        artistId: 1
       },
 
        {
@@ -790,7 +790,7 @@ export class PostgresStorage implements IStorage {
         year: "2022",
         inStock: true,
         featured: true,
-        artistId: 0
+        artistId: 1
       },
 
     ];
