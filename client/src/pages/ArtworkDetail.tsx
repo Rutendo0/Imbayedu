@@ -7,7 +7,7 @@ import { Button } from "../components/ui/button";
 import { useCart } from "../hooks/use-cart";
 import { useToast } from "../hooks/use-toast";
 import { formatCurrency } from "../lib/utils";
-import { Heart, Share2, Gift } from "lucide-react";
+import { Heart, Share2, Gift, Plus, Minus } from "lucide-react";
 
 const ArtworkDetail = () => {
   const { id } = useParams();
