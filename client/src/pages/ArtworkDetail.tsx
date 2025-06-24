@@ -290,56 +290,70 @@ const ArtworkDetail = () => {
               </div>
 
               {/* Artist Info Preview */}
-              <div className="bg-white p-6 border border-gray-100 rounded-md">
-                <div className="flex items-center gap-4 mb-4">
-                  <img 
-                    src={`/${artwork.artist.imageUrl}`} 
-                    alt={artwork.artist.name} 
-                    className="w-14 h-14 object-cover rounded-full"
-                  />
-                  <div>
-                    <h3 className="font-medium text-neutral-900">{artwork.artist.name}</h3>
-                    {artwork.artist.location && (
-                      <p className="text-sm text-neutral-500">{artwork.artist.location}</p>
-                    )}
+              {artwork.artist && (
+                <div className="bg-white p-6 border border-gray-100 rounded-md">
+                  <div className="flex items-center gap-4 mb-4">
+                    <img 
+                      src={artwork.artist.imageUrl ? `/${artwork.artist.imageUrl}` : "https://via.placeholder.com/56x56?text=Artist"} 
+                      alt={artwork.artist.name} 
+                      className="w-14 h-14 object-cover rounded-full"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.onerror = null;
+                        target.src = "https://via.placeholder.com/56x56?text=Artist";
+                      }}
+                    />
+                    <div>
+                      <h3 className="font-medium text-neutral-900">{artwork.artist.name}</h3>
+                      {artwork.artist.location && (
+                        <p className="text-sm text-neutral-500">{artwork.artist.location}</p>
+                      )}
+                    </div>
                   </div>
+                  <Link 
+                    href={`/artists/${artwork.artist.id}`} 
+                    className="text-[#D3A265] font-medium hover:text-neutral-900 transition duration-300 text-sm"
+                  >
+                    View Artist Profile →
+                  </Link>
                 </div>
-                <Link 
-                  href={`/artists/${artwork.artist.id}`} 
-                  className="text-[#D3A265] font-medium hover:text-neutral-900 transition duration-300 text-sm"
-                >
-                  View Artist Profile →
-                </Link>
-              </div>
+              )}
             </div>
           </div>
 
           {/* Artist Info Full Section */}
-          <div className="mt-16 py-10 border-t border-gray-200">
-            <h2 className="text-2xl font-['Playfair_Display'] font-bold text-neutral-900 mb-6">About the Artist</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-              <div className="md:col-span-1">
-                <img 
-                  src={`/${artwork.artist.imageUrl}`} 
-                  alt={artwork.artist.name} 
-                  className="w-full aspect-square object-cover rounded-md mb-4"
-                />
-                <h3 className="text-xl font-medium text-neutral-900 mb-1">{artwork.artist.name}</h3>
-                {artwork.artist.location && (
-                  <p className="text-neutral-500 mb-3">{artwork.artist.location}</p>
-                )}
-                <Link 
-                  href={`/artists/${artwork.artist.id}`} 
-                  className="text-[#D3A265] font-medium hover:text-neutral-900 transition duration-300"
-                >
-                  View Full Profile
-                </Link>
-              </div>
-              <div className="md:col-span-3">
-                <p className="text-neutral-700 leading-relaxed">{artwork.artist.bio}</p>
+          {artwork.artist && (
+            <div className="mt-16 py-10 border-t border-gray-200">
+              <h2 className="text-2xl font-['Playfair_Display'] font-bold text-neutral-900 mb-6">About the Artist</h2>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div className="md:col-span-1">
+                  <img 
+                    src={artwork.artist.imageUrl ? `/${artwork.artist.imageUrl}` : "https://via.placeholder.com/300x300?text=Artist"} 
+                    alt={artwork.artist.name} 
+                    className="w-full aspect-square object-cover rounded-md mb-4"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.onerror = null;
+                      target.src = "https://via.placeholder.com/300x300?text=Artist";
+                    }}
+                  />
+                  <h3 className="text-xl font-medium text-neutral-900 mb-1">{artwork.artist.name}</h3>
+                  {artwork.artist.location && (
+                    <p className="text-neutral-500 mb-3">{artwork.artist.location}</p>
+                  )}
+                  <Link 
+                    href={`/artists/${artwork.artist.id}`} 
+                    className="text-[#D3A265] font-medium hover:text-neutral-900 transition duration-300"
+                  >
+                    View Full Profile
+                  </Link>
+                </div>
+                <div className="md:col-span-3">
+                  <p className="text-neutral-700 leading-relaxed">{artwork.artist.bio}</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>
