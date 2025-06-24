@@ -140,43 +140,46 @@ const ArtworkDetail = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-50 p-6 rounded-md">
-                <h2 className="text-lg font-medium mb-4 text-neutral-800">Artwork Details</h2>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-4">
-                  {artwork.medium && (
+              {/* Only show artwork details for non-gift artworks */}
+              {!(artwork.price === 0 || artwork.description?.includes('[GIFT]')) && (
+                <div className="bg-gray-50 p-6 rounded-md">
+                  <h2 className="text-lg font-medium mb-4 text-neutral-800">Artwork Details</h2>
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                    {artwork.medium && (
+                      <div>
+                        <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Medium</h3>
+                        <p className="text-neutral-600">{artwork.medium}</p>
+                      </div>
+                    )}
+                    {artwork.dimensions && (
+                      <div>
+                        <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Dimensions</h3>
+                        <p className="text-neutral-600">{artwork.dimensions}</p>
+                      </div>
+                    )}
+                    {artwork.year && (
+                      <div>
+                        <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Year</h3>
+                        <p className="text-neutral-600">{artwork.year}</p>
+                      </div>
+                    )}
                     <div>
-                      <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Medium</h3>
-                      <p className="text-neutral-600">{artwork.medium}</p>
+                      <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Category</h3>
+                      <p className="text-neutral-600">{artwork.category.name}</p>
                     </div>
-                  )}
-                  {artwork.dimensions && (
+                    {artwork.collection && (
+                      <div>
+                        <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Collection</h3>
+                        <p className="text-neutral-600">{artwork.collection.name}</p>
+                      </div>
+                    )}
                     <div>
-                      <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Dimensions</h3>
-                      <p className="text-neutral-600">{artwork.dimensions}</p>
+                      <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Availability</h3>
+                      <p className="text-neutral-600">{artwork.inStock ? 'In Stock' : 'Sold Out'}</p>
                     </div>
-                  )}
-                  {artwork.year && (
-                    <div>
-                      <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Year</h3>
-                      <p className="text-neutral-600">{artwork.year}</p>
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Category</h3>
-                    <p className="text-neutral-600">{artwork.category.name}</p>
-                  </div>
-                  {artwork.collection && (
-                    <div>
-                      <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Collection</h3>
-                      <p className="text-neutral-600">{artwork.collection.name}</p>
-                    </div>
-                  )}
-                  <div>
-                    <h3 className="text-sm font-semibold text-neutral-900 uppercase tracking-wide">Availability</h3>
-                    <p className="text-neutral-600">{artwork.inStock ? 'In Stock' : 'Sold Out'}</p>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Artwork Details Section */}
