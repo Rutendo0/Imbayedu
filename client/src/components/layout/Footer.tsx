@@ -104,6 +104,7 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Copyright */}
         <div className="py-8 border-t border-neutral-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-neutral-400 text-sm">© {new Date().getFullYear()} Imbayedu Art Collective. All rights reserved.</p>
