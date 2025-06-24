@@ -113,13 +113,17 @@ const Footer = () => {
               <a href="#" className="text-neutral-400 hover:text-[#D3A265] text-sm transition-colors duration-300">Terms of Service</a>
               <a href="#" className="text-neutral-400 hover:text-[#D3A265] text-sm transition-colors duration-300">Cookie Policy</a>
             </div>
+          </div>
+          
+          {/* Prominent Niakazi Attribution */}
+          <div className="mt-6 text-center">
             <a 
               href="https://www.niakazi.com/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-neutral-400 hover:text-[#D3A265] text-sm transition-colors duration-300"
+              className="inline-block bg-gradient-to-r from-[#D3A265] to-[#BA8F58] text-white font-bold text-lg px-8 py-3 rounded-md hover:shadow-lg hover:scale-105 transition-all duration-300 tracking-wide"
             >
-              Designed By Niakazi
+              🎨 DESIGNED BY NIAKAZI 🎨
             </a>
           </div>
         </div>
