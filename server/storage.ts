@@ -172,6 +172,21 @@ export class PostgresStorage implements IStorage {
 
     // Add all artworks with actual Imbayedu pieces
     const artworks = [
+        
+{
+        title: "Family",
+        description: "A vibrant portrait the beauty of family relations.",
+        price: 0,
+        imageUrl: "img/artwork/WhatsApp Image 2025-06-24 at 04.32.13.jpg", 
+        categoryId: 1, // Paintings
+        collectionId: 2, // Cultural Portraits
+        dimensions: "90 x 120 cm",
+        medium: "Acrylic on canvas",
+        year: "2024",
+        inStock: true,
+        featured: true,
+        artistId: 0
+      },
 
       {
         title: "Blending Colours",
@@ -258,29 +273,29 @@ export class PostgresStorage implements IStorage {
         artistId: 1
       },
       {
-        title: "Urban Rhythm",
-        description: "A dynamic composition capturing the energy and rhythm of urban African life.",
-        price: 350,
+        title: "Cultural Heritage",
+        description: "A celebration of African cultural heritage through symbolic imagery and traditional patterns",
+        price: 290,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.00.jpeg",
-        categoryId: 2, // Mixed Media
-        collectionId: 3, // Mixed Media
-        dimensions: "80 x 100 cm",
-        medium: "Mixed media on wood panel",
+        categoryId: 1, // Mixed Media
+        collectionId: 2, // Mixed Media
+        dimensions: "90 x 120 cm",
+        medium: "Oil on canvas",
         year: "2023",
         inStock: false,
         featured: true,
         artistId: 1
       },
       {
-        title: "Serene Landscape",
-        description: "A peaceful landscape showcasing the serene beauty of African natural environments.",
-        price: 400,
+        title: "Cultural Heritage",
+        description: "A celebration of African cultural heritage through symbolic imagery and traditional patterns",  
+        price: 290,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (1).jpeg",
         categoryId: 1, // Paintings
-        collectionId: 1, // Abstract Expressions
+        collectionId: 2, // Abstract Expressions
         dimensions: "90 x 120 cm",
         medium: "Oil on canvas",
-        year: "2024",
+        year: "2023",
         inStock: false,
         featured: true,
         artistId: 1
@@ -293,20 +308,6 @@ export class PostgresStorage implements IStorage {
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 80 cm",
-        medium: "Acrylic on canvas",
-        year: "2023",
-        inStock: false,
-        featured: true,
-        artistId: 1
-      },
-      {
-        title: "Textured Landscape",
-        description: "A richly textured landscape highlighting the diverse topography of African environments.",
-        price: 290,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.01.jpeg",
-        categoryId: 1, // Paintings
-        collectionId: 1, // Abstract Expressions
-        dimensions: "100 x 120 cm",
         medium: "Mixed media on canvas",
         year: "2023",
         inStock: false,
@@ -314,15 +315,44 @@ export class PostgresStorage implements IStorage {
         artistId: 1
       },
       {
-        title: "Vibrant Portrait",
-        description: "A striking portrait featuring bold colors and expressive brushwork celebrating African identity.",
-        price: 600,
+        title: "Colorful Abstraction",
+        description: "A vibrant abstract composition with bold colors and dynamic forms creating visual harmony.",
+        price: 420,
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.01.jpeg",
+        categoryId: 1, // Paintings
+        collectionId: 1, // Abstract Expressions
+        dimensions: "80 x 80 cm",
+        medium: "Mixed media on canvas",
+        year: "2023",
+        inStock: false,
+        featured: true,
+        artistId: 1
+      },
+{
+        title: "Dynamic Harmony",
+        description: "An abstract composition that explores the interplay of shapes and colors, creating a sense of rhythm and balance.",
+        price: 280,
+        imageUrl: "img/artwork/WhatsApp Image 2025-06-10 at 07.59.32 (2).jpg",
+        categoryId: 1,
+        collectionId: 1,
+        dimensions: "100 x 100 cm",
+        medium: "Collage on canvas",
+        year: "2022",
+        inStock: false,
+        featured: true,
+        artistId: 1
+      },
+
+      {
+        title: "Colorful Abstraction",
+        description: "A vibrant abstract composition with bold colors and dynamic forms creating visual harmony.",
+        price: 420,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.01 (1).jpeg",
         categoryId: 1, // Paintings
-        collectionId: 2, // Cultural Portraits
-        dimensions: "90 x 120 cm",
-        medium: "Oil on canvas",
-        year: "2024",
+        collectionId: 1, // Cultural Portraits
+        dimensions: "80 x 80 cm",
+        medium: "Mixed media on canvas",
+        year: "2023",
         inStock: false,
         featured: true,
         artistId: 1
@@ -336,19 +366,19 @@ export class PostgresStorage implements IStorage {
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 100 cm",
         medium: "Acrylic on canvas",
-        year: "2023",
+        year: "2024",
         inStock: false,
         featured: true,
         artistId: 1
       },
       {
-        title: "Nature's Palette",
-        description: "A colorful interpretation of natural elements using an expressive color palette.",
-        price: 270,
+        title: "Abstract Patterns",
+        description: "A mesmerizing exploration of patterns and textures through abstract composition.",
+        price: 530,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (1).jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
-        dimensions: "90 x 90 cm",
+        dimensions: "80 x 100 cm",
         medium: "Acrylic on canvas",
         year: "2024",
         inStock: false,
@@ -356,14 +386,28 @@ export class PostgresStorage implements IStorage {
         artistId: 1
       },
       {
-        title: "Emotional Landscape",
-        description: "A landscape that captures emotional response through color harmonies and compositional elements.",
-        price: 350,
+        title: "Abstract Patterns",
+        description: "A mesmerizing exploration of patterns and textures through abstract composition.",
+        price: 530,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (2).jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
-        dimensions: "100 x 120 cm",
+        dimensions: "80 x 100 cm",
         medium: "Oil on canvas",
+        year: "2024",
+        inStock: false,
+        featured: true,
+        artistId: 1
+      },
+      {
+        title: "Cultural Tapestry",
+        description: "A vibrant representation of African cultural elements woven together in a harmonious composition.",
+        price: 460,
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg",
+        categoryId: 2, // Mixed Media
+        collectionId: 1, // Cultural Portraits
+        dimensions: "100 x 100 cm",
+        medium: "Acrylic on canvas",
         year: "2023",
         inStock: false,
         featured: true,
@@ -372,23 +416,9 @@ export class PostgresStorage implements IStorage {
       {
         title: "Cultural Tapestry",
         description: "A vibrant representation of African cultural elements woven together in a harmonious composition.",
-        price: 420,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg",
-        categoryId: 2, // Mixed Media
-        collectionId: 1, // Cultural Portraits
-        dimensions: "90 x 120 cm",
-        medium: "Mixed media on canvas",
-        year: "2024",
-        inStock: false,
-        featured: true,
-        artistId: 1
-      },
-      {
-        title: "Abstract Movement",
-        description: "A dynamic abstract piece capturing movement and energy through flowing forms and vibrant colors.",
         price: 460,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (1).jpeg",
-        categoryId: 1, // Paintings
+        categoryId: 2, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "100 x 100 cm",
         medium: "Acrylic on canvas",
@@ -412,41 +442,13 @@ export class PostgresStorage implements IStorage {
         artistId: 1
       },
       {
-        title: "Vibrant Expression",
-        description: "An expressive and vibrant piece showcasing bold brushstrokes and dynamic color relationships.",
-        price: 320,
+        title: "Soulful Portrait",
+        description: "A soulful portrait that captures the depth and spirit of its subject through expressive techniques.",
+        price: 580,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
-        categoryId: 1, // Paintings
-        collectionId: 1, // Abstract Expressions
-        dimensions: "80 x 100 cm",
-        medium: "Acrylic on canvas",
-        year: "2023",
-        inStock: false,
-        featured: true,
-        artistId: 1
-      },
-      {
-        title: "Textural Study",
-        description: "A rich exploration of texture and form through layers of paint and mixed media elements.",
-        price: 600,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg",
-        categoryId: 2, // Mixed Media
-        collectionId: 3, // Mixed Media
-        dimensions: "90 x 90 cm",
-        medium: "Mixed media on canvas",
-        year: "2024",
-        inStock: false,
-        featured: true,
-        artistId: 1
-      },
-      {
-        title: "Natural Harmony",
-        description: "A balanced composition inspired by natural forms and organic elements from African landscapes.",
-        price: 569,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
-        categoryId: 1, // Paintings
-        collectionId: 1, // Abstract Expressions
-        dimensions: "100 x 120 cm",
+        categoryId: 2, // Paintings
+        collectionId: 2, // Abstract Expressions
+        dimensions: "90 x 120 cm",
         medium: "Oil on canvas",
         year: "2023",
         inStock: false,
@@ -454,15 +456,15 @@ export class PostgresStorage implements IStorage {
         artistId: 1
       },
       {
-        title: "Cultural Identity",
-        description: "A powerful representation of African cultural identity through symbolic imagery and traditional patterns.",
-        price: 349,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (1).jpeg",
+        title: "Vibrant Abstraction",
+        description: "A colorful abstract piece with geometric elements creating a sense of movement and rhythm.",
+        price: 569,
+        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
         categoryId: 1, // Paintings
-        collectionId: 2, // Cultural Portraits
-        dimensions: "110 x 130 cm",
-        medium: "Mixed media on canvas",
-        year: "2024",
+        collectionId: 1, // Abstract Expressions
+        dimensions: "85 x 100 cm",
+        medium: "Acrylic on canvas",
+        year: "2023",
         inStock: false,
         featured: true,
         artistId: 1
@@ -470,7 +472,7 @@ export class PostgresStorage implements IStorage {
       {
         title: "Vibrant Abstraction",
         description: "A colorful abstract piece with geometric elements creating a sense of movement and rhythm.",
-        price: 320,
+        price: 569,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (2).jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
@@ -491,34 +493,6 @@ export class PostgresStorage implements IStorage {
         dimensions: "90 x 110 cm",
         medium: "Oil on canvas",
         year: "2024",
-        inStock: false,
-        featured: false,
-        artistId: 1
-      },
-      {
-        title: "Sculptural Forms",
-        description: "An explorative painting investigating sculptural forms and textures through paint application.",
-        price: 560,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg",
-        categoryId: 1, // Paintings
-        collectionId: 3, // Mixed Media
-        dimensions: "95 x 120 cm",
-        medium: "Mixed media on canvas",
-        year: "2023",
-        inStock: false,
-        featured: false,
-        artistId: 1
-      },
-      {
-        title: "Minimalist Landscape",
-        description: "A subdued landscape with minimal elements creating a sense of calm and spaciousness.",
-        price: 450,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.06 (1).jpeg",
-        categoryId: 1, // Paintings
-        collectionId: 1, // Abstract Expressions
-        dimensions: "80 x 90 cm",
-        medium: "Oil on canvas",
-        year: "2023",
         inStock: false,
         featured: false,
         artistId: 1
@@ -596,26 +570,12 @@ export class PostgresStorage implements IStorage {
       {
         title: "Gestural Abstract",
         description: "A dynamic gestural abstract painting capturing movement and spontaneity through brushwork.",
-        price: 350,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg",
-        categoryId: 1, // Paintings
-        collectionId: 1, // Abstract Expressions
-        dimensions: "95 x 115 cm",
-        medium: "Acrylic on canvas",
-        year: "2023",
-        inStock: false,
-        featured: false,
-        artistId: 1
-      },
-      {
-        title: "Vibrant Landscape",
-        description: "A colorful landscape painting with bold hues capturing the vibrant quality of African light.",
-        price: 410,
+        price: 600,
         imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.09.jpeg",
         categoryId: 2, // Paintings
         collectionId: 1, // Abstract Expressions
-        dimensions: "90 x 120 cm",
-        medium: "Oil on canvas",
+        dimensions: "95 x 115 cm",
+        medium: "Acrylic on canvas",
         year: "2024",
         inStock: false,
         featured: false,
@@ -793,20 +753,6 @@ export class PostgresStorage implements IStorage {
         featured: true
       },
       {
-        title: "Dynamic Harmony",
-        description: "An abstract composition that explores the interplay of shapes and colors, creating a sense of rhythm and balance.",
-        price: 280,
-        imageUrl: "img/artwork/WhatsApp Image 2025-06-10 at 07.59.32 (2).jpg",
-        categoryId: 1,
-        collectionId: 1,
-        dimensions: "100 x 100 cm",
-        medium: "Collage on canvas",
-        year: "2022",
-        inStock: false,
-        featured: true,
-        artistId: 1
-      },
-      {
         title: "Family",
         description: "A vibrant portrait the beauty of family relations.",
         price: 0,
@@ -820,21 +766,7 @@ export class PostgresStorage implements IStorage {
         featured: true,
         artistId: 0
       },
-      {
-        title: "Imbayedu",
-        description: "A vibrant portrait.",
-        price: 0,
-        imageUrl: "img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg", 
-        categoryId: 1, // Paintings
-        collectionId: 2, // Cultural Portraits
-        dimensions: "90 x 120 cm",
-        medium: "Acrylic on canvas",
-        year: "2024",
-        inStock: true,
-        featured: true,
-        artistId: 1
-      },
-
+    
     ];
 
     artworks.forEach(artwork => this.createArtwork(artwork));
@@ -842,21 +774,21 @@ export class PostgresStorage implements IStorage {
     // Add sample testimonials
     const testimonials = [
       {
-        name: "Sarah Johnson",
+        name: "Sarah Shumba",
         location: "Art Collector, Bulawayo",
         comment: "I was looking for a statement piece for my home office and found the perfect artwork through Imbayedu. The quality exceeded my expectations, and the team was incredibly helpful throughout the entire process.",
         rating: 5,
         featured: true
       },
       {
-        name: "Michael Chen",
+        name: "Tafadzwa Jaka",
         location: "Interior Designer, Harare",
         comment: "As an interior designer, I've worked with many art galleries, but Imbayedu stands out for their curated selection of African art. My clients are always impressed with the unique pieces we source from them.",
         rating: 5,
         featured: true
       },
       {
-        name: "Elena Sibanda",
+        name: "Natasha Sibanda",
         location: "Home Owner, Marondera",
         comment: "I purchased a piece from Imbayedu for my husband's birthday. The shipping was prompt, and the artwork was beautifully packaged. It's now the focal point of our living room and we receive compliments on it constantly.",
         rating: 4,

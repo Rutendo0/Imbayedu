@@ -103,6 +103,18 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+        {/* Professional Niakazi Attribution */}
+          <div className="mt-6 pt-6 border-t border-neutral-800 text-center">
+            <a 
+              href="https://www.niakazi.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[#D3A265] hover:text-white font-semibold text-base px-6 py-2 border border-[#D3A265] hover:bg-[#D3A265] rounded transition-all duration-300"
+            >
+              <span className="text-lg">⚡</span>
+              DESIGNED BY NIAKAZI
+            </a>
+          </div>
 
         {/* Copyright */}
         <div className="py-8 border-t border-neutral-800">
@@ -115,18 +127,6 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Professional Niakazi Attribution */}
-          <div className="mt-6 pt-6 border-t border-neutral-800 text-center">
-            <a 
-              href="https://www.niakazi.com/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#D3A265] hover:text-white font-semibold text-base px-6 py-2 border border-[#D3A265] hover:bg-[#D3A265] rounded transition-all duration-300"
-            >
-              <span className="text-lg">⚡</span>
-              DESIGNED BY NIAKAZI
-            </a>
-          </div>
         </div>
       </div>
     </footer>

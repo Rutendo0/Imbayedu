@@ -7,6 +7,7 @@ import GalleryExperience from "../components/home/GalleryExperience";
 import Testimonials from "../components/home/Testimonials";
 import Newsletter from "../components/home/Newsletter";
 import Exhibitions from "../components/home/Exhibitions";
+import FAQ from "./FAQ"
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
       <GalleryExperience />
       <Exhibitions />
       <Testimonials />
+      <FAQ />
       <Newsletter />
     </>
   );

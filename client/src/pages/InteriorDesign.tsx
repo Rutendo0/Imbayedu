@@ -40,23 +40,23 @@ const InteriorDesign = () => {
     {
       title: "Residential Design",
       description: "Crafting bespoke living spaces that reflect your personality. From luxurious penthouses to cozy family homes, we create environments that inspire.",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.10.jpeg"
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06 (1).jpeg",
     },
     {
       title: "Art Curation",
       description: "Expert art placement and curation services, featuring contemporary African art that transforms spaces into personal galleries.",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13 (2).jpeg"
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (1).jpeg",
     },
     {
       title: "Custom Furniture",
       description: "Bespoke furniture design that combines functionality with artistry, creating unique pieces that complement your space.",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13.jpeg"
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg"
     }
   ];
 
   const projectGallery = [
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.47.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg",
       title: "Marbella Villa",
       description: "The light and comfort of a Mediterranean villa"
     },
@@ -180,7 +180,7 @@ const InteriorDesign = () => {
         // Video Thumbnail with Play Button
         <div className="relative w-full h-full">
           <ImageLoader
-            src="/img/artwork/WhatsApp Image 2025-05-21 at 15.52.10.jpeg" // Your thumbnail image
+            src="/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13 (4).jpeg" // Your thumbnail image
             alt="Design process video thumbnail"
             aspectRatio="wide"
             className="w-full h-full"
@@ -277,7 +277,7 @@ const InteriorDesign = () => {
           ))}
         </div>
 
-        <div className="text-center bg-neutral-900 text-white p-16 rounded-xl">
+        <div className="text-center bg-[#8B5A2B] text-white p-16 rounded-xl">
           <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold mb-6">
             Begin Your Design Journey
           </h2>
