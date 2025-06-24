@@ -8,7 +8,14 @@ const Footer = () => {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-['Playfair_Display'] font-semibold">Imbayedu Art Collective</h3>
+            <div className="flex items-center space-x-4">
+              <img 
+                src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg" 
+                alt="Imbayedu Logo" 
+                className="w-16 h-16 object-cover rounded-md"
+              />
+              <h3 className="text-2xl font-['Playfair_Display'] font-semibold">Imbayedu Art Collective</h3>
+            </div>
             <p className="text-neutral-400 leading-relaxed">Showcasing exceptional contemporary African art from established and emerging artists.</p>
             <div className="flex items-center space-x-4">
               <a href="#" className="text-neutral-400 hover:text-[#D3A265] transition-colors duration-300">

@@ -100,8 +100,8 @@ const About = () => {
               </div>
               <div>
                 <img 
-                  src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg" 
-                  alt="Imbayedu Art Gallery Collection" 
+                  src="https://images.unsplash.com/photo-1572947650440-e8a97ef053b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
+                  alt="Inside Imbayedu Gallery" 
                   className="rounded-md shadow-lg w-full h-auto"
                 />
               </div>
