@@ -115,15 +115,16 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Prominent Niakazi Attribution */}
-          <div className="mt-6 text-center">
+          {/* Professional Niakazi Attribution */}
+          <div className="mt-6 pt-6 border-t border-neutral-800 text-center">
             <a 
               href="https://www.niakazi.com/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block bg-gradient-to-r from-[#D3A265] to-[#BA8F58] text-white font-bold text-lg px-8 py-3 rounded-md hover:shadow-lg hover:scale-105 transition-all duration-300 tracking-wide"
+              className="inline-flex items-center gap-2 text-[#D3A265] hover:text-white font-semibold text-base px-6 py-2 border border-[#D3A265] hover:bg-[#D3A265] rounded transition-all duration-300"
             >
-              🎨 DESIGNED BY NIAKAZI 🎨
+              <span className="text-lg">⚡</span>
+              DESIGNED BY NIAKAZI
             </a>
           </div>
         </div>

@@ -7,7 +7,7 @@ import { Button } from "../components/ui/button";
 import { useCart } from "../hooks/use-cart";
 import { useToast } from "../hooks/use-toast";
 import { formatCurrency } from "../lib/utils";
-import { Heart, Share2, Minus, Plus } from "lucide-react";
+import { Heart, Share2, Gift } from "lucide-react";
 
 const ArtworkDetail = () => {
   const { id } = useParams();
@@ -25,7 +25,7 @@ const ArtworkDetail = () => {
         throw new Error(`Failed to fetch artwork: ${response.statusText}`);
       }
       return response.json();
-    
+
     },
 
     retry: 3, // Number of retries
@@ -199,7 +199,28 @@ const ArtworkDetail = () => {
                 )}
               </div>
 
-              <p className="text-2xl text-[#D3A265] font-semibold mb-8">{formatCurrency(artwork.price)}</p>
+              <div className="flex items-center mb-10">
+                  {artwork.price === 0 || artwork.description?.includes('[GIFT]') ? (
+                    <div className="flex items-center gap-4">
+                      <span className="text-2xl font-bold text-amber-600 bg-amber-50 px-4 py-2 rounded-lg flex items-center gap-2">
+                        <Gift size={24} />
+                        Gift to Collective
+                      </span>
+                      <span className="text-lg text-neutral-600">Not Available for Purchase</span>
+                    </div>
+                  ) : (
+                    <>
+                      <span className={`text-4xl font-bold ${artwork.inStock ? 'text-neutral-900' : 'text-neutral-500'}`}>
+                        ${artwork.price.toLocaleString()}
+                      </span>
+                      {!artwork.inStock && (
+                        <span className="ml-4 text-lg font-medium text-red-600 bg-red-100 px-3 py-1 rounded">
+                          Sold Out
+                        </span>
+                      )}
+                    </>
+                  )}
+                </div>
 
               <div className="mb-10">
                 <p className="text-neutral-700 mb-6 leading-relaxed">{artwork.description}</p>
@@ -234,22 +255,25 @@ const ArtworkDetail = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                  <Button 
-                    className="bg-[#D3A265] hover:bg-[#C29255] text-white px-8 py-6 h-auto rounded"
-                    onClick={handleAddToCart}
-                  >
-                    Add to Cart
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="border-neutral-900 text-neutral-900 hover:bg-neutral-100 px-8 py-6 h-auto rounded"
-                    onClick={handleAddToWishlist}
-                  >
-                    <Heart size={18} className="mr-2" />
-                    Add to Wishlist
-                  </Button>
-                </div>
+                {!(artwork.price === 0 || artwork.description?.includes('[GIFT]')) && (
+                  <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                    <Button 
+                      className="bg-[#D3A265] hover:bg-[#C29255] text-white px-8 py-6 h-auto rounded" 
+                      onClick={handleAddToCart}
+                      disabled={!artwork.inStock}
+                    >
+                      {artwork.inStock ? 'Add to Cart' : 'Sold Out'}
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="border-neutral-900 text-neutral-900 hover:bg-neutral-100 px-8 py-6 h-auto rounded"
+                      onClick={handleAddToWishlist}
+                    >
+                      <Heart size={18} className="mr-2" />
+                      Add to Wishlist
+                    </Button>
+                  </div>
+                )}
 
                 <p className="text-sm text-neutral-500 italic mt-4">
                   This artwork ships with a certificate of authenticity.
