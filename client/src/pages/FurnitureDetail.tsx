@@ -551,9 +551,8 @@ const FurnitureDetail = () => {
         care: "Clean wood with appropriate products, vacuum upholstery regularly"
       }
     }
-  ];</old_str>
-    
   ];
+    
 
   const furniture = furnitureItems.find(item => item.id === parseInt(id || "0"));
 
