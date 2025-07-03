@@ -111,9 +111,10 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
       {/* Main viewer container */}
       <div 
         ref={containerRef}
-        className="relative aspect-square bg-neutral-100 rounded-xl cursor-pointer"
+        className="relative aspect-square bg-gradient-to-br from-neutral-50 to-neutral-100 rounded-xl cursor-pointer shadow-inner"
         style={{ 
-          perspective: '1500px',
+          perspective: '1800px',
+          perspectiveOrigin: 'center center',
           overflow: is3DMode ? 'visible' : 'hidden'
         }}
         onMouseDown={handleMouseDown}
@@ -126,40 +127,49 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
           className="w-full h-full transition-transform duration-500 ease-out"
           style={{
             transform: is3DMode 
-              ? `perspective(1500px) rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale3d(0.95, 0.95, 0.95) translateZ(10px)`
+              ? `perspective(1800px) rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale3d(0.9, 0.9, 0.9) translateZ(20px)`
               : 'translateZ(0)',
             transformStyle: 'preserve-3d',
             transformOrigin: 'center center',
-            overflow: 'visible'
+            overflow: 'visible',
+            backfaceVisibility: 'hidden',
+            willChange: 'transform'
           }}
         >
           {/* Main image */}
           <img
             src={images[currentImageIndex]}
             alt={`${name} - View ${currentImageIndex + 1}`}
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
             style={{
-              filter: is3DMode ? 'brightness(1.1) contrast(1.1)' : 'none',
-              maxWidth: '100%',
-              maxHeight: '100%'
+              filter: is3DMode ? 'brightness(1.05) contrast(1.05) saturate(1.1)' : 'none',
+              imageRendering: 'high-quality',
+              transformOrigin: 'center center'
             }}
           />
 
           {/* Enhanced shadow and depth effects for 3D */}
           {is3DMode && (
             <>
-              {/* Main shadow overlay */}
+              {/* Ambient shadow overlay */}
               <div 
-                className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 pointer-events-none rounded-lg"
+                className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/15 pointer-events-none rounded-lg"
                 style={{
-                  opacity: Math.abs(rotationX) / 60 * 0.3 + Math.abs(rotationY) / 180 * 0.25
+                  opacity: Math.abs(rotationX) / 60 * 0.25 + Math.abs(rotationY) / 180 * 0.2
                 }}
               />
-              {/* Depth highlight */}
+              {/* Directional light highlight */}
               <div 
-                className="absolute inset-0 bg-gradient-to-tl from-white/8 via-transparent to-transparent pointer-events-none rounded-lg"
+                className="absolute inset-0 bg-gradient-to-tl from-white/6 via-transparent to-transparent pointer-events-none rounded-lg"
                 style={{
-                  opacity: Math.abs(rotationX) / 60 * 0.15 + Math.abs(rotationY) / 180 * 0.1
+                  opacity: Math.abs(rotationX) / 60 * 0.12 + Math.abs(rotationY) / 180 * 0.08
+                }}
+              />
+              {/* Edge enhancement for depth */}
+              <div 
+                className="absolute inset-0 border border-white/5 rounded-lg pointer-events-none"
+                style={{
+                  opacity: is3DMode ? 0.6 : 0
                 }}
               />
             </>
@@ -268,9 +278,14 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
 
         {/* Instructions */}
         {is3DMode && (
-          <p className="text-xs text-neutral-500 text-center">
-            Drag to rotate • Try Studio/Showroom views for professional angles • Auto-rotate for continuous movement
-          </p>
+          <div className="text-center">
+            <p className="text-xs text-neutral-500">
+              Drag to rotate • Try Studio/Showroom views for professional angles • Auto-rotate for continuous movement
+            </p>
+            <p className="text-[10px] text-neutral-400 mt-1">
+              Note: Some images may look better in regular 2D view depending on original photo quality
+            </p>
+          </div>
         )}
       </div>
       {/* Enhanced viewing info */}
