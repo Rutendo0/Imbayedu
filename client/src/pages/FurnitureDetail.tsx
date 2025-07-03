@@ -232,6 +232,122 @@ const FurnitureDetail = () => {
       }
     },
     {
+      id: 41,
+      name: "Modular Sectional Sofa - Cream",
+      category: "seating",
+      price: 3850,
+      description: "Elegant modular sectional with cream upholstery and wooden base trim. This sophisticated piece offers versatile seating arrangements for modern living spaces.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.49_6334a403_1751565481135.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.49_700d49f9_1751565481134.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.49_b1318cc4_1751565481135.jpg"
+      ],
+      dimensions: "280cm L x 180cm W x 80cm H",
+      material: "Cream linen blend, solid wood base",
+      colors: ["Cream", "Light Gray", "Natural"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "95kg",
+        warranty: "10 years on frame, 3 years on upholstery",
+        assembly: "Professional assembly recommended",
+        care: "Professional cleaning recommended, vacuum regularly"
+      }
+    },
+    {
+      id: 45,
+      name: "Contemporary Charcoal Sectional",
+      category: "seating",
+      price: 4450,
+      description: "Modern sectional in rich charcoal with plush cushioning. This premium piece combines style and comfort for the ultimate living room centerpiece.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.50_f92c6ee1_1751565481137.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.51_2c988d20_1751565481137.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.51_35217d8c_1751565481138.jpg"
+      ],
+      dimensions: "310cm L x 190cm W x 85cm H",
+      material: "Charcoal performance fabric, solid frame",
+      colors: ["Charcoal", "Dark Gray", "Black"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "110kg",
+        warranty: "12 years on frame, 4 years on upholstery",
+        assembly: "Professional assembly included",
+        care: "Vacuum regularly, spot clean as needed"
+      }
+    },
+    {
+      id: 51,
+      name: "Heritage Wood Dresser",
+      category: "storage",
+      price: 2850,
+      description: "Elegant eight-drawer dresser showcasing beautiful wood grain patterns. This traditional piece offers extensive storage with timeless appeal.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.52_958fd19b_1751565481140.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.52_7abfea1b_1751565481139.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.52_b8f388c2_1751565481140.jpg"
+      ],
+      dimensions: "165cm W x 52cm D x 88cm H",
+      material: "Heritage wood finish, antique brass hardware",
+      colors: ["Dark Walnut", "Medium Oak"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "78kg",
+        warranty: "12 years on frame, 3 years on hardware",
+        assembly: "Professional assembly recommended",
+        care: "Clean with wood cleaner, avoid moisture"
+      }
+    },
+    {
+      id: 53,
+      name: "Upholstered Panel Bed",
+      category: "bedroom",
+      price: 3280,
+      description: "Sophisticated bed with upholstered panels and brass accent details. This contemporary piece brings elegance and comfort to any bedroom.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_40316adc_1751565481141.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_78929b86_1751565481141.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_b9aaafa1_1751565481142.jpg"
+      ],
+      dimensions: "210cm L x 180cm W x 120cm H",
+      material: "Upholstered panels, solid wood frame, brass details",
+      colors: ["Neutral", "Light Gray", "Cream"],
+      sizes: ["Queen", "King"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "85kg",
+        warranty: "10 years on frame, 2 years on upholstery",
+        assembly: "Professional assembly included",
+        care: "Vacuum upholstery regularly, spot clean as needed"
+      }
+    },
+    {
+      id: 58,
+      name: "Classic Sofa with Walnut Base",
+      category: "seating",
+      price: 2850,
+      description: "Timeless sofa design with elegant walnut wood base and neutral upholstery. This piece combines classic design with modern comfort.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_5d71d380_1751565481143.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_8caea5b9_1751565481143.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_c4441db1_1751565481143.jpg"
+      ],
+      dimensions: "220cm L x 90cm W x 80cm H",
+      material: "Premium linen blend, walnut wood base",
+      colors: ["Natural", "Light Gray", "Cream"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "65kg",
+        warranty: "8 years on frame, 3 years on upholstery",
+        assembly: "Professional assembly recommended",
+        care: "Professional cleaning recommended, rotate cushions regularly"
+      }
+    },
+    {
       id: 29,
       name: "Oak Sideboard with Brass Hardware",
       category: "storage",
