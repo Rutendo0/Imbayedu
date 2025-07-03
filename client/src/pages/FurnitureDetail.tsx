@@ -91,6 +91,97 @@ const FurnitureDetail = () => {
         assembly: "Professional assembly included",
         care: "Vacuum upholstery regularly, spot clean as needed"
       }
+    },
+    {
+      id: 11,
+      name: "Modern Chest of Drawers",
+      category: "storage",
+      price: 1680,
+      description: "Sophisticated four-drawer chest featuring contrasting wood and black front panels with brass hardware. Perfect blend of modern design and functionality.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.21_a470a034_1751565129000.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.23_a7a905d5_1751565129000.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.25_60fb09d8_1751565129001.jpg"
+      ],
+      dimensions: "80cm W x 45cm D x 110cm H",
+      material: "Walnut wood, black oak veneer, brass handles",
+      colors: ["Walnut/Black", "Natural/Charcoal"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "65kg",
+        warranty: "7 years on frame, 2 years on hardware",
+        assembly: "Professional assembly recommended",
+        care: "Dust regularly with soft cloth, avoid direct sunlight"
+      }
+    },
+    {
+      id: 14,
+      name: "Fluted Wood Credenza",
+      category: "storage",
+      price: 2450,
+      description: "Sophisticated credenza featuring signature fluted wood design and brass hardware. This statement piece offers ample storage while serving as a focal point in any room.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.25_f9723f98_1751565129001.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.26_6f47d61c_1751565129002.jpg"
+      ],
+      dimensions: "180cm W x 45cm D x 75cm H",
+      material: "Fluted walnut wood, brass hardware",
+      colors: ["Natural Walnut", "Dark Walnut"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "75kg",
+        warranty: "10 years on frame, 3 years on hardware",
+        assembly: "Professional assembly included",
+        care: "Clean with wood-specific products, avoid moisture"
+      }
+    },
+    {
+      id: 22,
+      name: "Contemporary Shagreen Nightstand",
+      category: "bedroom",
+      price: 1350,
+      description: "Sophisticated nightstand with luxurious shagreen texture finish and brass base. Features soft-close drawers and premium construction for the discerning bedroom.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.39_6765d7a7_1751565129005.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.38_c01f8729_1751565129004.jpg"
+      ],
+      dimensions: "55cm W x 40cm D x 65cm H",
+      material: "Shagreen finish, brass frame, soft-close drawers",
+      colors: ["Cream", "Charcoal", "Navy"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "35kg",
+        warranty: "5 years on frame, 2 years on hardware",
+        assembly: "Minimal assembly required",
+        care: "Clean with damp cloth, avoid abrasive cleaners"
+      }
+    },
+    {
+      id: 25,
+      name: "Executive Channel Bed",
+      category: "bedroom",
+      price: 3580,
+      description: "Sophisticated king-size bed featuring vertical channel design upholstery. This premium piece combines luxury comfort with contemporary aesthetics for the ultimate bedroom centerpiece.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.40_3f0bd6a4_1751565129005.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.39_8b7ee9a0_1751565129004.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.39_b7d51203_1751565129005.jpg"
+      ],
+      dimensions: "220cm L x 200cm W x 130cm H",
+      material: "Solid wood frame, premium linen upholstery",
+      colors: ["Cream", "Light Gray", "Charcoal"],
+      sizes: ["King", "Super King", "California King"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "95kg",
+        warranty: "15 years on frame, 3 years on upholstery",
+        assembly: "Professional assembly included",
+        care: "Professional cleaning recommended, vacuum regularly"
+      }
     }
   ];
 
