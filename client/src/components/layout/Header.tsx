@@ -85,9 +85,20 @@ const Header = () => {
             <Link href="/about" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/about') ? 'text-[#D3A265]' : ''}`}>
               About
             </Link>
-            <Link href="/interior-design" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/interior-design') ? 'text-[#D3A265]' : ''}`}>
-              Interior Design
-            </Link>
+            <div className="relative group">
+              <Link href="/interior-design" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/interior-design') || isActive('/furniture-catalog') ? 'text-[#D3A265]' : ''}`}>
+                Interior Design
+              </Link>
+              <div className="absolute hidden group-hover:block bg-white shadow-lg p-6 z-50 left-1/2 transform -translate-x-1/2 w-[300px]">
+                <div>
+                  <h3 className="font-medium mb-2 uppercase text-xs tracking-wider">Services</h3>
+                  <ul className="space-y-2">
+                    <li><Link href="/interior-design" className="text-neutral-700 hover:text-[#D3A265]">Interior Design</Link></li>
+                    <li><Link href="/furniture-catalog" className="text-neutral-700 hover:text-[#D3A265]">Furniture Catalog</Link></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             <Link href="/furniture-catalog" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/furniture-catalog') ? 'text-[#D3A265]' : ''}`}>
               Furniture
             </Link>
@@ -150,12 +161,17 @@ const Header = () => {
             <Link href="/about" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
               About
             </Link>
-            <Link href="/interior-design" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
-              Interior Design
-            </Link>
-            <Link href="/furniture-catalog" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
-              Furniture
-            </Link>
+            <div className="px-3 py-2">
+              <div className="text-base font-medium text-neutral-900 mb-2">Interior Design</div>
+              <div className="ml-4 space-y-1">
+                <Link href="/interior-design" onClick={closeMenu} className="text-sm font-medium text-neutral-700 hover:text-[#D3A265] block py-1">
+                  Interior Design Services
+                </Link>
+                <Link href="/furniture-catalog" onClick={closeMenu} className="text-sm font-medium text-neutral-700 hover:text-[#D3A265] block py-1">
+                  Furniture Catalog
+                </Link>
+              </div>
+            </div>
             <Link href="/contact" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
               Contact
             </Link>
