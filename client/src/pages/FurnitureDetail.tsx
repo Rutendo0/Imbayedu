@@ -368,6 +368,115 @@ const FurnitureDetail = () => {
         assembly: "Professional assembly recommended",
         care: "Clean with wood cleaner, avoid moisture"
       }
+    },
+    {
+      id: 61,
+      name: "Curved Walnut Tall Cabinet",
+      category: "storage",
+      price: 3480,
+      description: "Elegant tall cabinet with curved edges and rich walnut finish on brass legs. This sophisticated piece combines modern design with premium craftsmanship.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.55_2702d5aa_1751565540908.jpg"
+      ],
+      dimensions: "65cm W x 45cm D x 140cm H",
+      material: "Walnut wood, brass legs, curved construction",
+      colors: ["Rich Walnut", "Natural Walnut"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "68kg",
+        warranty: "10 years on frame, 3 years on hardware",
+        assembly: "Professional assembly included",
+        care: "Clean with wood-specific products, avoid direct sunlight"
+      }
+    },
+    {
+      id: 62,
+      name: "Mid-Century Modern Sofa",
+      category: "seating",
+      price: 3250,
+      description: "Clean-lined sofa with neutral upholstery and walnut wood frame. This timeless piece brings mid-century elegance to any living space.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.55_f03d6cc6_1751565540909.jpg"
+      ],
+      dimensions: "220cm L x 90cm W x 80cm H",
+      material: "Neutral linen blend, walnut wood frame",
+      colors: ["Natural", "Light Gray", "Cream"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "72kg",
+        warranty: "8 years on frame, 3 years on upholstery",
+        assembly: "Professional assembly recommended",
+        care: "Professional cleaning recommended, rotate cushions regularly"
+      }
+    },
+    {
+      id: 68,
+      name: "Sculptural Round Coffee Table",
+      category: "tables",
+      price: 2450,
+      description: "Modern round coffee table with sculptural cream base and smooth finish. This statement piece serves as both furniture and art.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.57_28c56216_1751565540912.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.58_5c45e522_1751565540913.jpg"
+      ],
+      dimensions: "120cm Diameter x 45cm H",
+      material: "Cream stone composite, sculptural base",
+      colors: ["Cream", "Natural Stone"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "95kg",
+        warranty: "5 years on structure",
+        assembly: "Professional delivery and setup included",
+        care: "Clean with mild soap and water, avoid abrasive cleaners"
+      }
+    },
+    {
+      id: 74,
+      name: "Forest Green Velvet Armchair",
+      category: "seating",
+      price: 1850,
+      description: "Luxurious armchair in rich forest green velvet with brass legs. This sophisticated piece adds elegance and comfort to any space.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.59_8a30662e_1751565540914.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.00_0a90b311_1751565540915.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.00_c603a5cc_1751565540916.jpg"
+      ],
+      dimensions: "80cm W x 85cm D x 75cm H",
+      material: "Forest green velvet, brass legs, premium construction",
+      colors: ["Forest Green", "Navy", "Charcoal"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "45kg",
+        warranty: "8 years on frame, 2 years on upholstery",
+        assembly: "Minimal assembly required",
+        care: "Professional velvet cleaning recommended"
+      }
+    },
+    {
+      id: 78,
+      name: "Fluted Oak Armchair",
+      category: "seating",
+      price: 2150,
+      description: "Architectural armchair featuring fluted oak construction with neutral cushions. This contemporary piece combines artistic design with comfort.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.00_f148ff6c_1751565540916.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.01_5e1928f1_1751565540916.jpg"
+      ],
+      dimensions: "85cm W x 90cm D x 80cm H",
+      material: "Fluted oak frame, neutral upholstery",
+      colors: ["Natural Oak", "Dark Oak"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "52kg",
+        warranty: "12 years on frame, 3 years on upholstery",
+        assembly: "Professional assembly included",
+        care: "Clean wood with appropriate products, vacuum upholstery regularly"
+      }
     }
   ];
 
