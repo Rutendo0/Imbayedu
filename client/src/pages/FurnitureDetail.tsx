@@ -67,17 +67,126 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 8,
+      id: 2,
+      name: "Walnut Wood Cabinet",
+      category: "storage",
+      price: 1450,
+      description: "Elegant walnut cabinet with brass legs and clean lines",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.20_51b60c5f_1751565128999.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.28_d740f086_1751565129002.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.32_e121794c_1751565129003.jpg"
+      ],
+      dimensions: "90cm W x 45cm D x 120cm H",
+      material: "Walnut wood, brass hardware",
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "35kg",
+        warranty: "10 years",
+        assembly: "Professional assembly recommended",
+        care: "Clean with wood cleaner, avoid moisture"
+      }
+    },
+    {
+      id: 3,
+      name: "Modern Chest of Drawers",
+      category: "storage",
+      price: 1680,
+      description: "Four-drawer chest with contrasting wood and black front panels",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.21_a470a034_1751565129000.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.23_a7a905d5_1751565129000.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.25_60fb09d8_1751565129001.jpg"
+      ],
+      dimensions: "80cm W x 45cm D x 110cm H",
+      material: "Walnut wood, black oak veneer, brass handles",
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "65kg",
+        warranty: "7 years on frame, 2 years on hardware",
+        assembly: "Professional assembly recommended",
+        care: "Dust regularly with soft cloth, avoid direct sunlight"
+      }
+    },
+    {
+      id: 4,
+      name: "Fluted Wood Credenza",
+      category: "storage",
+      price: 2450,
+      description: "Sophisticated credenza with signature fluted wood design",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.25_f9723f98_1751565129001.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.26_6f47d61c_1751565129002.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.33_0631bd50_1751565129003.jpg"
+      ],
+      dimensions: "180cm W x 45cm D x 75cm H",
+      material: "Fluted walnut wood, brass hardware",
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "75kg",
+        warranty: "10 years on frame, 3 years on hardware",
+        assembly: "Professional assembly included",
+        care: "Clean with wood-specific products, avoid moisture"
+      }
+    },
+    {
+      id: 5,
+      name: "Artisan Wood Side Table",
+      category: "tables",
+      price: 750,
+      description: "Sculptural side table showcasing natural wood grain",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.35_22146ac0_1751565129003.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.57_ba11e897_1751565540912.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.58_d04c5f50_1751565540914.jpg"
+      ],
+      dimensions: "45cm W x 45cm D x 55cm H",
+      material: "Solid oak, natural finish",
+      inStock: true,
+      featured: false,
+      details: {
+        weight: "25kg",
+        warranty: "5 years",
+        assembly: "Minimal assembly required",
+        care: "Clean with wood cleaner, avoid moisture"
+      }
+    },
+    {
+      id: 6,
+      name: "Marble Front Nightstand",
+      category: "bedroom",
+      price: 1120,
+      description: "Elegant nightstand with marble drawer fronts and wood frame",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.37_8853a2d6_1751565129004.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.38_c01f8729_1751565129004.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.39_6765d7a7_1751565129005.jpg"
+      ],
+      dimensions: "50cm W x 40cm D x 60cm H",
+      material: "Oak wood, marble veneer, soft-close drawers",
+      inStock: true,
+      featured: false,
+      details: {
+        weight: "35kg",
+        warranty: "5 years on frame, 2 years on hardware",
+        assembly: "Minimal assembly required",
+        care: "Clean with damp cloth, avoid abrasive cleaners"
+      }
+    },
+    {
+      id: 7,
       name: "Luxury Bed Frame",
       category: "bedroom",
       price: 2800,
-      description: "King-size bed with upholstered headboard featuring channel tufting and solid wood base. A statement piece that combines comfort with sophisticated design.",
+      description: "King-size bed with upholstered headboard featuring channel tufting",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.40_3f0bd6a4_1751564818212.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.40_57059051_1751564818212.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.40_ead737ac_1751564818213.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.41_cc45739f_1751564818213.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.41_eda4682e_1751564818214.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.40_3f0bd6a4_1751565129005.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.39_8b7ee9a0_1751565129004.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.39_b7d51203_1751565129005.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.40_57059051_1751565129006.jpg"
       ],
       dimensions: "200cm L x 180cm W x 120cm H",
       material: "Solid wood, premium upholstery",
@@ -93,106 +202,62 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 11,
-      name: "Modern Chest of Drawers",
-      category: "storage",
-      price: 1680,
-      description: "Sophisticated four-drawer chest featuring contrasting wood and black front panels with brass hardware. Perfect blend of modern design and functionality.",
+      id: 8,
+      name: "Minimalist Platform Bed",
+      category: "bedroom",
+      price: 2450,
+      description: "Clean-lined platform bed with low profile and modern aesthetic",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.21_a470a034_1751565129000.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.23_a7a905d5_1751565129000.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.25_60fb09d8_1751565129001.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.42_00f2934c_1751565163746.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.42_e08b64ea_1751565163747.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.42_ed286796_1751565163747.jpg"
       ],
-      dimensions: "80cm W x 45cm D x 110cm H",
-      material: "Walnut wood, black oak veneer, brass handles",
-      colors: ["Walnut/Black", "Natural/Charcoal"],
+      dimensions: "200cm L x 160cm W x 35cm H",
+      material: "Premium linen upholstery, solid wood frame",
+      colors: ["Beige", "Gray", "Natural"],
+      sizes: ["Queen", "King"],
       inStock: true,
-      featured: true,
+      featured: false,
       details: {
         weight: "65kg",
-        warranty: "7 years on frame, 2 years on hardware",
-        assembly: "Professional assembly recommended",
-        care: "Dust regularly with soft cloth, avoid direct sunlight"
+        warranty: "8 years on frame, 2 years on upholstery",
+        assembly: "Professional assembly included",
+        care: "Vacuum upholstery regularly, spot clean as needed"
       }
     },
     {
-      id: 14,
-      name: "Fluted Wood Credenza",
+      id: 9,
+      name: "Oak Sideboard with Brass Hardware",
       category: "storage",
-      price: 2450,
-      description: "Sophisticated credenza featuring signature fluted wood design and brass hardware. This statement piece offers ample storage while serving as a focal point in any room.",
+      price: 3200,
+      description: "Elegant oak sideboard featuring beautiful wood grain and brass details",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.25_f9723f98_1751565129001.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.26_6f47d61c_1751565129002.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.43_4c7a47f1_1751565163748.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.43_5d40e9c7_1751565163748.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.44_0e29464a_1751565163749.jpg"
       ],
       dimensions: "180cm W x 45cm D x 75cm H",
-      material: "Fluted walnut wood, brass hardware",
-      colors: ["Natural Walnut", "Dark Walnut"],
+      material: "Solid oak, brass hardware and legs",
+      colors: ["Natural Oak", "Dark Oak"],
       inStock: true,
       featured: true,
       details: {
-        weight: "75kg",
-        warranty: "10 years on frame, 3 years on hardware",
-        assembly: "Professional assembly included",
-        care: "Clean with wood-specific products, avoid moisture"
+        weight: "85kg",
+        warranty: "12 years on frame, 3 years on hardware",
+        assembly: "Professional assembly recommended",
+        care: "Clean with wood cleaner, avoid moisture"
       }
     },
     {
-      id: 22,
-      name: "Contemporary Shagreen Nightstand",
-      category: "bedroom",
-      price: 1350,
-      description: "Sophisticated nightstand with luxurious shagreen texture finish and brass base. Features soft-close drawers and premium construction for the discerning bedroom.",
-      images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.39_6765d7a7_1751565129005.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.38_c01f8729_1751565129004.jpg"
-      ],
-      dimensions: "55cm W x 40cm D x 65cm H",
-      material: "Shagreen finish, brass frame, soft-close drawers",
-      colors: ["Cream", "Charcoal", "Navy"],
-      inStock: true,
-      featured: true,
-      details: {
-        weight: "35kg",
-        warranty: "5 years on frame, 2 years on hardware",
-        assembly: "Minimal assembly required",
-        care: "Clean with damp cloth, avoid abrasive cleaners"
-      }
-    },
-    {
-      id: 25,
-      name: "Executive Channel Bed",
-      category: "bedroom",
-      price: 3580,
-      description: "Sophisticated king-size bed featuring vertical channel design upholstery. This premium piece combines luxury comfort with contemporary aesthetics for the ultimate bedroom centerpiece.",
-      images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.40_3f0bd6a4_1751565129005.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.39_8b7ee9a0_1751565129004.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.39_b7d51203_1751565129005.jpg"
-      ],
-      dimensions: "220cm L x 200cm W x 130cm H",
-      material: "Solid wood frame, premium linen upholstery",
-      colors: ["Cream", "Light Gray", "Charcoal"],
-      sizes: ["King", "Super King", "California King"],
-      inStock: true,
-      featured: true,
-      details: {
-        weight: "95kg",
-        warranty: "15 years on frame, 3 years on upholstery",
-        assembly: "Professional assembly included",
-        care: "Professional cleaning recommended, vacuum regularly"
-      }
-    },
-    {
-      id: 32,
+      id: 10,
       name: "Forest Green Velvet Bed",
       category: "bedroom",
       price: 3480,
-      description: "Luxurious bed with rich forest green velvet upholstery and elegant curved design. This statement piece brings sophistication and comfort to any bedroom.",
+      description: "Luxurious bed with rich forest green velvet upholstery",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.45_beaec136_1751565163750.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.45_cd9bbfad_1751565163751.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.46_63b0b657_1751565163751.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.45_beaec136_1751565163750.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.45_cd9bbfad_1751565163751.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.46_63b0b657_1751565163751.jpg"
       ],
       dimensions: "200cm L x 160cm W x 120cm H",
       material: "Forest green velvet, solid wood frame, brass feet",
@@ -208,15 +273,16 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 35,
+      id: 11,
       name: "Fluted Wood Headboard Bed",
       category: "bedroom",
       price: 4200,
-      description: "Architectural bed with stunning fluted wood headboard and integrated nightstands. This piece combines modern design with functional storage solutions.",
+      description: "Architectural bed with stunning fluted wood headboard and integrated nightstands",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.47_12834d40_1751565163753.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.47_6de34b3a_1751565163753.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.47_d1e2d157_1751565163753.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.47_12834d40_1751565163753.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.47_6de34b3a_1751565163753.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.47_d1e2d157_1751565163753.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.48_005c07c5_1751565163754.jpg"
       ],
       dimensions: "240cm W x 200cm D x 130cm H",
       material: "Fluted oak, integrated storage, brass accents",
@@ -232,15 +298,38 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 41,
+      id: 12,
+      name: "Contemporary Sectional Sofa",
+      category: "seating",
+      price: 4200,
+      description: "Modular sectional with clean lines and neutral upholstery",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.48_bb37606e_1751565163754.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.48_c199343d_1751565163754.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.49_6334a403_1751565481135.jpg"
+      ],
+      dimensions: "300cm L x 200cm W x 80cm H",
+      material: "Premium linen blend, hardwood frame, dark wood legs",
+      colors: ["Neutral", "Light Gray", "Charcoal"],
+      inStock: true,
+      featured: false,
+      details: {
+        weight: "95kg",
+        warranty: "10 years on frame, 3 years on upholstery",
+        assembly: "Professional assembly recommended",
+        care: "Professional cleaning recommended, vacuum regularly"
+      }
+    },
+    {
+      id: 13,
       name: "Modular Sectional Sofa - Cream",
       category: "seating",
       price: 3850,
-      description: "Elegant modular sectional with cream upholstery and wooden base trim. This sophisticated piece offers versatile seating arrangements for modern living spaces.",
+      description: "Elegant modular sectional with cream upholstery and wooden base trim",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.49_6334a403_1751565481135.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.49_700d49f9_1751565481134.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.49_b1318cc4_1751565481135.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.49_700d49f9_1751565481134.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.49_b1318cc4_1751565481135.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.50_2ba78eb7_1751565481136.jpg"
       ],
       dimensions: "280cm L x 180cm W x 80cm H",
       material: "Cream linen blend, solid wood base",
@@ -255,15 +344,15 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 45,
+      id: 14,
       name: "Contemporary Charcoal Sectional",
       category: "seating",
       price: 4450,
-      description: "Modern sectional in rich charcoal with plush cushioning. This premium piece combines style and comfort for the ultimate living room centerpiece.",
+      description: "Modern sectional in rich charcoal with plush cushioning",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.50_f92c6ee1_1751565481137.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.51_2c988d20_1751565481137.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.51_35217d8c_1751565481138.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.50_f92c6ee1_1751565481137.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.51_2c988d20_1751565481137.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.51_35217d8c_1751565481138.jpg"
       ],
       dimensions: "310cm L x 190cm W x 85cm H",
       material: "Charcoal performance fabric, solid frame",
@@ -278,15 +367,15 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 51,
+      id: 15,
       name: "Heritage Wood Dresser",
       category: "storage",
       price: 2850,
-      description: "Elegant eight-drawer dresser showcasing beautiful wood grain patterns. This traditional piece offers extensive storage with timeless appeal.",
+      description: "Elegant eight-drawer dresser showcasing beautiful wood grain patterns",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.52_958fd19b_1751565481140.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.52_7abfea1b_1751565481139.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.52_b8f388c2_1751565481140.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.52_958fd19b_1751565481140.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.52_7abfea1b_1751565481139.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.52_b8f388c2_1751565481140.jpg"
       ],
       dimensions: "165cm W x 52cm D x 88cm H",
       material: "Heritage wood finish, antique brass hardware",
@@ -301,15 +390,15 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 53,
+      id: 16,
       name: "Upholstered Panel Bed",
       category: "bedroom",
       price: 3280,
-      description: "Sophisticated bed with upholstered panels and brass accent details. This contemporary piece brings elegance and comfort to any bedroom.",
+      description: "Sophisticated bed with upholstered panels and brass accent details",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_40316adc_1751565481141.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_78929b86_1751565481141.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_b9aaafa1_1751565481142.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.53_40316adc_1751565481141.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.53_78929b86_1751565481141.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.53_b9aaafa1_1751565481142.jpg"
       ],
       dimensions: "210cm L x 180cm W x 120cm H",
       material: "Upholstered panels, solid wood frame, brass details",
@@ -325,15 +414,15 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 58,
+      id: 17,
       name: "Classic Sofa with Walnut Base",
       category: "seating",
       price: 2850,
-      description: "Timeless sofa design with elegant walnut wood base and neutral upholstery. This piece combines classic design with modern comfort.",
+      description: "Timeless sofa design with elegant walnut wood base and neutral upholstery",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_5d71d380_1751565481143.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_8caea5b9_1751565481143.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_c4441db1_1751565481143.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.54_5d71d380_1751565481143.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.54_8caea5b9_1751565481143.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.54_c4441db1_1751565481143.jpg"
       ],
       dimensions: "220cm L x 90cm W x 80cm H",
       material: "Premium linen blend, walnut wood base",
@@ -348,35 +437,15 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 29,
-      name: "Oak Sideboard with Brass Hardware",
-      category: "storage",
-      price: 3200,
-      description: "Elegant oak sideboard featuring beautiful wood grain and brass details. This sophisticated piece offers ample storage while serving as a stunning focal point.",
-      images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.43_4c7a47f1_1751565163748.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.43_5d40e9c7_1751565163748.jpg"
-      ],
-      dimensions: "180cm W x 45cm D x 75cm H",
-      material: "Solid oak, brass hardware and legs",
-      colors: ["Natural Oak", "Dark Oak"],
-      inStock: true,
-      featured: true,
-      details: {
-        weight: "85kg",
-        warranty: "12 years on frame, 3 years on hardware",
-        assembly: "Professional assembly recommended",
-        care: "Clean with wood cleaner, avoid moisture"
-      }
-    },
-    {
-      id: 61,
+      id: 18,
       name: "Curved Walnut Tall Cabinet",
       category: "storage",
       price: 3480,
-      description: "Elegant tall cabinet with curved edges and rich walnut finish on brass legs. This sophisticated piece combines modern design with premium craftsmanship.",
+      description: "Elegant tall cabinet with curved edges and rich walnut finish on brass legs",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.55_2702d5aa_1751565540908.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55_2702d5aa_1751565540908.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55_fad333ab_1751565540910.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56_5b025cf7_1751565540910.jpg"
       ],
       dimensions: "65cm W x 45cm D x 140cm H",
       material: "Walnut wood, brass legs, curved construction",
@@ -391,13 +460,15 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 62,
+      id: 19,
       name: "Mid-Century Modern Sofa",
       category: "seating",
       price: 3250,
-      description: "Clean-lined sofa with neutral upholstery and walnut wood frame. This timeless piece brings mid-century elegance to any living space.",
+      description: "Clean-lined sofa with neutral upholstery and walnut wood frame",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.55_f03d6cc6_1751565540909.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55_f03d6cc6_1751565540909.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56_adf0f063_1751565540911.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56_dcfa4fe4_1751565540911.jpg"
       ],
       dimensions: "220cm L x 90cm W x 80cm H",
       material: "Neutral linen blend, walnut wood frame",
@@ -412,14 +483,15 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 68,
+      id: 20,
       name: "Sculptural Round Coffee Table",
       category: "tables",
       price: 2450,
-      description: "Modern round coffee table with sculptural cream base and smooth finish. This statement piece serves as both furniture and art.",
+      description: "Modern round coffee table with sculptural cream base and smooth finish",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.57_28c56216_1751565540912.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.58_5c45e522_1751565540913.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.57_28c56216_1751565540912.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.58_5c45e522_1751565540913.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.58_b99b40a3_1751565540913.jpg"
       ],
       dimensions: "120cm Diameter x 45cm H",
       material: "Cream stone composite, sculptural base",
@@ -434,15 +506,15 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 74,
+      id: 21,
       name: "Forest Green Velvet Armchair",
       category: "seating",
       price: 1850,
-      description: "Luxurious armchair in rich forest green velvet with brass legs. This sophisticated piece adds elegance and comfort to any space.",
+      description: "Luxurious armchair in rich forest green velvet with brass legs",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.59_8a30662e_1751565540914.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.00_0a90b311_1751565540915.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.00_c603a5cc_1751565540916.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.59_8a30662e_1751565540914.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.00_0a90b311_1751565540915.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.00_c603a5cc_1751565540916.jpg"
       ],
       dimensions: "80cm W x 85cm D x 75cm H",
       material: "Forest green velvet, brass legs, premium construction",
@@ -457,14 +529,15 @@ const FurnitureDetail = () => {
       }
     },
     {
-      id: 78,
+      id: 22,
       name: "Fluted Oak Armchair",
       category: "seating",
       price: 2150,
-      description: "Architectural armchair featuring fluted oak construction with neutral cushions. This contemporary piece combines artistic design with comfort.",
+      description: "Architectural armchair featuring fluted oak construction with neutral cushions",
       images: [
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.00_f148ff6c_1751565540916.jpg",
-        "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.01_5e1928f1_1751565540916.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.00_f148ff6c_1751565540916.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01_5e1928f1_1751565540916.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01_6feaacb2_1751565540917.jpg"
       ],
       dimensions: "85cm W x 90cm D x 80cm H",
       material: "Fluted oak frame, neutral upholstery",
@@ -477,7 +550,8 @@ const FurnitureDetail = () => {
         assembly: "Professional assembly included",
         care: "Clean wood with appropriate products, vacuum upholstery regularly"
       }
-    }
+    },</old_str>
+    
   ];
 
   const furniture = furnitureItems.find(item => item.id === parseInt(id || "0"));
