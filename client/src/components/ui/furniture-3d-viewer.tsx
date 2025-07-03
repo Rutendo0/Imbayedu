@@ -111,8 +111,11 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
       {/* Main viewer container */}
       <div 
         ref={containerRef}
-        className="relative aspect-square bg-neutral-100 rounded-xl overflow-hidden cursor-pointer"
-        style={{ perspective: '1000px' }}
+        className="relative aspect-square bg-neutral-100 rounded-xl cursor-pointer"
+        style={{ 
+          perspective: '1500px',
+          overflow: is3DMode ? 'visible' : 'hidden'
+        }}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -123,19 +126,22 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
           className="w-full h-full transition-transform duration-500 ease-out"
           style={{
             transform: is3DMode 
-              ? `perspective(1200px) rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale3d(0.85, 0.85, 0.85) translateZ(20px)`
+              ? `perspective(1500px) rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale3d(0.95, 0.95, 0.95) translateZ(10px)`
               : 'translateZ(0)',
             transformStyle: 'preserve-3d',
-            transformOrigin: 'center center'
+            transformOrigin: 'center center',
+            overflow: 'visible'
           }}
         >
           {/* Main image */}
           <img
             src={images[currentImageIndex]}
             alt={`${name} - View ${currentImageIndex + 1}`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             style={{
-              filter: is3DMode ? 'brightness(1.1) contrast(1.1)' : 'none'
+              filter: is3DMode ? 'brightness(1.1) contrast(1.1)' : 'none',
+              maxWidth: '100%',
+              maxHeight: '100%'
             }}
           />
 
@@ -144,16 +150,16 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
             <>
               {/* Main shadow overlay */}
               <div 
-                className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/25 pointer-events-none"
+                className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 pointer-events-none rounded-lg"
                 style={{
-                  opacity: Math.abs(rotationX) / 60 * 0.4 + Math.abs(rotationY) / 180 * 0.3
+                  opacity: Math.abs(rotationX) / 60 * 0.3 + Math.abs(rotationY) / 180 * 0.25
                 }}
               />
               {/* Depth highlight */}
               <div 
-                className="absolute inset-0 bg-gradient-to-tl from-white/10 via-transparent to-transparent pointer-events-none"
+                className="absolute inset-0 bg-gradient-to-tl from-white/8 via-transparent to-transparent pointer-events-none rounded-lg"
                 style={{
-                  opacity: Math.abs(rotationX) / 60 * 0.2 + Math.abs(rotationY) / 180 * 0.15
+                  opacity: Math.abs(rotationX) / 60 * 0.15 + Math.abs(rotationY) / 180 * 0.1
                 }}
               />
             </>
