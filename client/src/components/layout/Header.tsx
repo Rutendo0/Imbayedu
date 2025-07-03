@@ -99,9 +99,6 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <Link href="/furniture-catalog" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/furniture-catalog') ? 'text-[#D3A265]' : ''}`}>
-              Furniture
-            </Link>
             <Link href="/contact" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/contact') ? 'text-[#D3A265]' : ''}`}>
               Contact
             </Link>

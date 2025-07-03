@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "../components/ui/button";
 import { Link } from "wouter";
-import { ShoppingCart, Heart, Filter, Search } from "lucide-react";
+import { ShoppingCart, Heart, Filter, Search, ArrowLeft } from "lucide-react";
 
 const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +17,7 @@ const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
   const paddingBottom = imageAspectRatios[aspectRatio] || imageAspectRatios["square"];
 
   return (
-    <div className="relative w-full overflow-hidden">
+    <div className="relative w-full overflow-hidden rounded-lg">
       <div style={{ paddingBottom: `calc(100% / (${paddingBottom}))` }}></div>
       {isLoading && (
         <div className="absolute inset-0 bg-neutral-200 animate-pulse"></div>
@@ -44,120 +44,11 @@ const FurnitureCatalog = () => {
     { id: "seating", name: "Seating" },
     { id: "tables", name: "Tables" },
     { id: "storage", name: "Storage" },
-    { id: "lighting", name: "Lighting" },
     { id: "bedroom", name: "Bedroom" },
     { id: "outdoor", name: "Outdoor" }
   ];
 
   const furnitureItems = [
-    {
-      id: 1,
-      name: "Modern Leather Armchair",
-      category: "seating",
-      price: 1250,
-      description: "Handcrafted leather armchair with oak frame",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.44.jpeg",
-      dimensions: "80cm W x 85cm D x 75cm H",
-      material: "Premium leather, oak wood",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 2,
-      name: "Artisan Dining Table",
-      category: "tables",
-      price: 2100,
-      description: "Solid wood dining table with artistic metal legs",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.45.jpeg",
-      dimensions: "200cm L x 100cm W x 75cm H",
-      material: "Solid teak, steel",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 3,
-      name: "Contemporary Sofa Set",
-      category: "seating",
-      price: 3500,
-      description: "Modular sofa set with African-inspired patterns",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.46.jpeg",
-      dimensions: "250cm L x 120cm D x 80cm H",
-      material: "Premium fabric, hardwood frame",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 4,
-      name: "Designer Coffee Table",
-      category: "tables",
-      price: 850,
-      description: "Glass-top coffee table with sculptural base",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.47 (1).jpeg",
-      dimensions: "120cm L x 70cm W x 45cm H",
-      material: "Tempered glass, metal",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 5,
-      name: "Executive Office Chair",
-      category: "seating",
-      price: 950,
-      description: "Ergonomic office chair with premium materials",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.48.jpeg",
-      dimensions: "65cm W x 70cm D x 110-120cm H",
-      material: "Leather, aluminum",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 6,
-      name: "Custom Storage Unit",
-      category: "storage",
-      price: 1750,
-      description: "Modular storage system with artistic elements",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.43.jpeg",
-      dimensions: "180cm W x 45cm D x 200cm H",
-      material: "Oak veneer, steel accents",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 7,
-      name: "Statement Floor Lamp",
-      category: "lighting",
-      price: 680,
-      description: "Sculptural floor lamp with African motifs",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.31.jpg",
-      dimensions: "40cm W x 40cm D x 165cm H",
-      material: "Brass, fabric shade",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 8,
-      name: "Luxury Bed Frame",
-      category: "bedroom",
-      price: 2800,
-      description: "King-size bed with upholstered headboard",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.32.jpg",
-      dimensions: "200cm L x 180cm W x 120cm H",
-      material: "Solid wood, premium upholstery",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 9,
-      name: "Outdoor Lounge Set",
-      category: "outdoor",
-      price: 1900,
-      description: "Weather-resistant outdoor furniture set",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33.jpg",
-      dimensions: "Various sizes",
-      material: "Teak, aluminum",
-      inStock: true,
-      featured: false
-    },
     {
       id: 10,
       name: "Walnut Wood Cabinet",
@@ -168,7 +59,7 @@ const FurnitureCatalog = () => {
       dimensions: "90cm W x 45cm D x 120cm H",
       material: "Walnut wood, brass hardware",
       inStock: true,
-      featured: false
+      featured: true
     },
     {
       id: 11,
@@ -589,570 +480,6 @@ const FurnitureCatalog = () => {
       material: "Charcoal performance fabric, solid frame",
       inStock: true,
       featured: true
-    },
-    {
-      id: 46,
-      name: "Executive Living Room Set",
-      category: "seating",
-      price: 5200,
-      description: "Complete living room solution with sectional and accent pieces",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.50_fe98461d_1751565481137.jpg",
-      dimensions: "Various sizes",
-      material: "Premium upholstery, solid wood construction",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 47,
-      name: "Dark Gray Modern Sectional",
-      category: "seating",
-      price: 4350,
-      description: "Sleek sectional in sophisticated dark gray with clean architecture",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.51_2c988d20_1751565481137.jpg",
-      dimensions: "295cm L x 185cm W x 80cm H",
-      material: "Dark gray performance fabric, engineered wood frame",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 48,
-      name: "Luxury Charcoal Sectional",
-      category: "seating",
-      price: 4680,
-      description: "Premium sectional with deep charcoal upholstery and comfort design",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.51_35217d8c_1751565481138.jpg",
-      dimensions: "330cm L x 200cm W x 90cm H",
-      material: "Charcoal velvet, hardwood frame, brass accents",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 49,
-      name: "Professional Grade Sectional",
-      category: "seating",
-      price: 4920,
-      description: "Commercial-quality sectional perfect for high-end residential spaces",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.51_c53d59a2_1751565481139.jpg",
-      dimensions: "340cm L x 195cm W x 85cm H",
-      material: "Professional grade fabric, reinforced frame",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 50,
-      name: "Classic Eight-Drawer Dresser",
-      category: "storage",
-      price: 2680,
-      description: "Traditional eight-drawer dresser with rich wood finish and classic hardware",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.52_7abfea1b_1751565481139.jpg",
-      dimensions: "160cm W x 50cm D x 85cm H",
-      material: "Solid wood construction, traditional hardware",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 51,
-      name: "Heritage Wood Dresser",
-      category: "storage",
-      price: 2850,
-      description: "Elegant eight-drawer dresser showcasing beautiful wood grain patterns",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.52_958fd19b_1751565481140.jpg",
-      dimensions: "165cm W x 52cm D x 88cm H",
-      material: "Heritage wood finish, antique brass hardware",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 52,
-      name: "Traditional Storage Dresser",
-      category: "storage",
-      price: 2750,
-      description: "Spacious dresser with traditional styling and ample storage capacity",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.52_b8f388c2_1751565481140.jpg",
-      dimensions: "170cm W x 50cm D x 80cm H",
-      material: "Traditional wood finish, classic drawer pulls",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 53,
-      name: "Upholstered Panel Bed",
-      category: "bedroom",
-      price: 3280,
-      description: "Sophisticated bed with upholstered panels and brass accent details",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_40316adc_1751565481141.jpg",
-      dimensions: "210cm L x 180cm W x 120cm H",
-      material: "Upholstered panels, solid wood frame, brass details",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 54,
-      name: "Modern Panel Platform Bed",
-      category: "bedroom",
-      price: 3450,
-      description: "Contemporary platform bed featuring geometric panel design",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_78929b86_1751565481141.jpg",
-      dimensions: "200cm L x 160cm W x 110cm H",
-      material: "Upholstered panels, oak frame, brass feet",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 55,
-      name: "Panel Detail Bed Frame",
-      category: "bedroom",
-      price: 3180,
-      description: "Elegant bed frame with detailed panel work and refined finish",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_b9aaafa1_1751565481142.jpg",
-      dimensions: "205cm L x 165cm W x 115cm H",
-      material: "Mixed material panels, solid construction",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 56,
-      name: "Geometric Panel Bed",
-      category: "bedroom",
-      price: 3380,
-      description: "Modern bed with striking geometric panel arrangement",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.53_d364d7b6_1751565481142.jpg",
-      dimensions: "200cm L x 180cm W x 120cm H",
-      material: "Geometric upholstered panels, brass accents",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 57,
-      name: "Contemporary Panel King Bed",
-      category: "bedroom",
-      price: 3650,
-      description: "King-size bed with contemporary panel design and luxury finish",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_4a371f33_1751565481142.jpg",
-      dimensions: "220cm L x 200cm W x 125cm H",
-      material: "Premium panel construction, solid wood frame",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 58,
-      name: "Classic Sofa with Walnut Base",
-      category: "seating",
-      price: 2850,
-      description: "Timeless sofa design with elegant walnut wood base and neutral upholstery",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_5d71d380_1751565481143.jpg",
-      dimensions: "220cm L x 90cm W x 80cm H",
-      material: "Premium linen blend, walnut wood base",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 59,
-      name: "Mid-Century Inspired Sofa",
-      category: "seating",
-      price: 2680,
-      description: "Clean-lined sofa with mid-century modern influence and quality construction",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_8caea5b9_1751565481143.jpg",
-      dimensions: "200cm L x 85cm W x 75cm H",
-      material: "Neutral upholstery, tapered wood legs",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 60,
-      name: "Contemporary Three-Seat Sofa",
-      category: "seating",
-      price: 2920,
-      description: "Modern three-seat sofa perfect for contemporary living spaces",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.54_c4441db1_1751565481143.jpg",
-      dimensions: "210cm L x 88cm W x 78cm H",
-      material: "Performance fabric, solid wood construction",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 61,
-      name: "Curved Walnut Tall Cabinet",
-      category: "storage",
-      price: 3480,
-      description: "Elegant tall cabinet with curved edges and rich walnut finish on brass legs",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.55_2702d5aa_1751565540908.jpg",
-      dimensions: "65cm W x 45cm D x 140cm H",
-      material: "Walnut wood, brass legs, curved construction",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 62,
-      name: "Mid-Century Modern Sofa",
-      category: "seating",
-      price: 3250,
-      description: "Clean-lined sofa with neutral upholstery and walnut wood frame",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.55_f03d6cc6_1751565540909.jpg",
-      dimensions: "220cm L x 90cm W x 80cm H",
-      material: "Neutral linen blend, walnut wood frame",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 63,
-      name: "Curved Walnut Six-Drawer Dresser",
-      category: "storage",
-      price: 4200,
-      description: "Sophisticated curved dresser with rich walnut finish and brass legs",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.55_fad333ab_1751565540910.jpg",
-      dimensions: "160cm W x 55cm D x 75cm H",
-      material: "Curved walnut construction, brass legs",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 64,
-      name: "Curved Walnut Six-Drawer Dresser - Open View",
-      category: "storage",
-      price: 4200,
-      description: "Elegant curved dresser featuring smooth walnut finish with brass accents",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.56_5b025cf7_1751565540910.jpg",
-      dimensions: "160cm W x 55cm D x 75cm H",
-      material: "Curved walnut construction, brass legs and details",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 65,
-      name: "Premium Curved Walnut Dresser",
-      category: "storage",
-      price: 4450,
-      description: "Luxurious curved dresser with premium walnut veneer and brass hardware",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.56_adf0f063_1751565540911.jpg",
-      dimensions: "165cm W x 55cm D x 80cm H",
-      material: "Premium walnut veneer, brass legs and accents",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 66,
-      name: "Curved Walnut Credenza",
-      category: "storage",
-      price: 3850,
-      description: "Sleek curved credenza with rich walnut finish and brass leg details",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.56_dcfa4fe4_1751565540911.jpg",
-      dimensions: "180cm W x 50cm D x 75cm H",
-      material: "Curved walnut construction, brass legs",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 67,
-      name: "Executive Curved Dresser",
-      category: "storage",
-      price: 4680,
-      description: "Premium curved dresser with sophisticated walnut finish and brass details",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.56_fbbc7a75_1751565540912.jpg",
-      dimensions: "170cm W x 55cm D x 85cm H",
-      material: "Premium curved walnut, brass hardware",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 68,
-      name: "Sculptural Round Coffee Table",
-      category: "tables",
-      price: 2450,
-      description: "Modern round coffee table with sculptural cream base and smooth finish",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.57_28c56216_1751565540912.jpg",
-      dimensions: "120cm Diameter x 45cm H",
-      material: "Cream stone composite, sculptural base",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 69,
-      name: "Living Room Scene - Green Sofa Set",
-      category: "seating",
-      price: 5200,
-      description: "Complete living room setup featuring green channel-tufted sofa and accent chair",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.57_ba11e897_1751565540912.jpg",
-      dimensions: "Various sizes",
-      material: "Green upholstery, mixed materials",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 70,
-      name: "Modern Cream Coffee Table",
-      category: "tables",
-      price: 2280,
-      description: "Contemporary round coffee table with smooth cream finish and sculptural design",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.58_5c45e522_1751565540913.jpg",
-      dimensions: "110cm Diameter x 40cm H",
-      material: "Cream composite material, modern design",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 71,
-      name: "Natural Oak Vertical Cabinet",
-      category: "storage",
-      price: 2850,
-      description: "Tall vertical oak cabinet with natural wood grain and clean lines",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.58_b99b40a3_1751565540913.jpg",
-      dimensions: "60cm W x 40cm D x 120cm H",
-      material: "Natural oak wood, clean construction",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 72,
-      name: "Oak Storage Cabinet with Interior",
-      category: "storage",
-      price: 2950,
-      description: "Functional oak cabinet featuring adjustable shelving and premium construction",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.58_d04c5f50_1751565540914.jpg",
-      dimensions: "80cm W x 45cm D x 90cm H",
-      material: "Solid oak, adjustable shelving",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 73,
-      name: "Oak Fluted Sideboard",
-      category: "storage",
-      price: 3650,
-      description: "Sophisticated sideboard with distinctive fluted oak design",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.59_54577024_1751565540914.jpg",
-      dimensions: "200cm W x 50cm D x 80cm H",
-      material: "Fluted oak construction, modern design",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 74,
-      name: "Forest Green Velvet Armchair",
-      category: "seating",
-      price: 1850,
-      description: "Luxurious armchair in rich forest green velvet with brass legs",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.59_8a30662e_1751565540914.jpg",
-      dimensions: "80cm W x 85cm D x 75cm H",
-      material: "Forest green velvet, brass legs, premium construction",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 75,
-      name: "Oak Fluted Storage Credenza",
-      category: "storage",
-      price: 3450,
-      description: "Wide credenza featuring beautiful fluted oak panels",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.59_ae9832e0_1751565540915.jpg",
-      dimensions: "220cm W x 50cm D x 75cm H",
-      material: "Fluted oak panels, solid construction",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 76,
-      name: "Forest Green Velvet Armchair - Side View",
-      category: "seating",
-      price: 1850,
-      description: "Elegant velvet armchair with clean lines and brass accents",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.00_0a90b311_1751565540915.jpg",
-      dimensions: "80cm W x 85cm D x 75cm H",
-      material: "Forest green velvet, brass legs",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 77,
-      name: "Forest Green Velvet Club Chair",
-      category: "seating",
-      price: 1950,
-      description: "Statement club chair in rich forest green velvet with contemporary styling",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.00_c603a5cc_1751565540916.jpg",
-      dimensions: "85cm W x 90cm D x 80cm H",
-      material: "Forest green velvet upholstery, brass legs",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 78,
-      name: "Fluted Oak Armchair",
-      category: "seating",
-      price: 2150,
-      description: "Architectural armchair featuring fluted oak construction with neutral cushions",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.00_f148ff6c_1751565540916.jpg",
-      dimensions: "85cm W x 90cm D x 80cm H",
-      material: "Fluted oak frame, neutral upholstery",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 79,
-      name: "Fluted Oak Club Chair",
-      category: "seating",
-      price: 2250,
-      description: "Contemporary club chair with distinctive fluted oak frame and premium cushioning",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.01_5e1928f1_1751565540916.jpg",
-      dimensions: "85cm W x 90cm D x 85cm H",
-      material: "Fluted oak construction, premium cushions",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 80,
-      name: "Modern Oval Dining Set",
-      category: "tables",
-      price: 4850,
-      description: "Sophisticated oval dining table with burgundy velvet chairs and sculptural black pedestals",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.01_ce4434c0_1751565658114.jpg",
-      dimensions: "240cm L x 120cm W x 75cm H",
-      material: "Cream marble top, black fluted base, burgundy velvet chairs",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 81,
-      name: "Fluted Oak Armchair",
-      category: "seating",
-      price: 1980,
-      description: "Architectural armchair with fluted oak frame and neutral upholstery",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.02_27a93443_1751565658114.jpg",
-      dimensions: "80cm W x 85cm D x 75cm H",
-      material: "Fluted oak frame, neutral linen upholstery",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 82,
-      name: "Fluted Wood Sectional with Storage",
-      category: "seating",
-      price: 4200,
-      description: "Modern sectional featuring fluted wood construction with integrated storage",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.02_94aaf941_1751565658115.jpg",
-      dimensions: "280cm L x 180cm W x 80cm H",
-      material: "Fluted oak construction, neutral upholstery, storage compartments",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 83,
-      name: "Fluted Wood Lounge Chair",
-      category: "seating",
-      price: 2180,
-      description: "Sophisticated lounge chair with fluted wood frame and integrated side table",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.02_ff34bf05_1751565658115.jpg",
-      dimensions: "90cm W x 85cm D x 75cm H",
-      material: "Fluted oak frame, neutral upholstery, integrated wood side table",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 84,
-      name: "Outdoor Teak Dining Set",
-      category: "outdoor",
-      price: 3850,
-      description: "Premium teak dining table with modern rope chairs perfect for outdoor entertaining",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.03_a5d646a1_1751565658116.jpg",
-      dimensions: "220cm L x 100cm W x 75cm H",
-      material: "Solid teak, weather-resistant rope chairs",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 85,
-      name: "Fluted Wood Two-Seat Sofa",
-      category: "seating",
-      price: 3450,
-      description: "Elegant two-seat sofa with distinctive fluted wood base and premium upholstery",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.03_ad278f0b_1751565658116.jpg",
-      dimensions: "180cm L x 85cm W x 80cm H",
-      material: "Fluted oak base, premium neutral upholstery",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 86,
-      name: "Fluted Wood Sofa with Storage",
-      category: "seating",
-      price: 3680,
-      description: "Modern sofa featuring fluted wood design with integrated storage compartment",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.03_cba09154_1751565658116.jpg",
-      dimensions: "200cm L x 90cm W x 80cm H",
-      material: "Fluted oak construction, neutral upholstery, storage compartment",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 87,
-      name: "Curved Swivel Chair - Cream",
-      category: "seating",
-      price: 1680,
-      description: "Luxurious curved swivel chair in cream bouclé with sculptural design",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.04_765a89e7_1751565658117.jpg",
-      dimensions: "90cm W x 85cm D x 75cm H",
-      material: "Cream bouclé upholstery, swivel base",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 88,
-      name: "Outdoor Teak Dining Table",
-      category: "tables",
-      price: 2450,
-      description: "Classic teak dining table with clean lines perfect for outdoor spaces",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.04_9325438e_1751565658117.jpg",
-      dimensions: "200cm L x 100cm W x 75cm H",
-      material: "Solid teak construction, weather-resistant finish",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 89,
-      name: "Curved Swivel Chair - Side View",
-      category: "seating",
-      price: 1680,
-      description: "Elegant curved swivel chair showcasing sculptural profile and premium comfort",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.04_a5d2e4db_1751565658118.jpg",
-      dimensions: "90cm W x 85cm D x 75cm H",
-      material: "Premium bouclé upholstery, smooth swivel mechanism",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 90,
-      name: "Classic Olive Velvet Armchair",
-      category: "seating",
-      price: 1950,
-      description: "Traditional armchair in rich olive velvet with rolled arms and dark wood base",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.05_3a7d2017_1751565658119.jpg",
-      dimensions: "85cm W x 90cm D x 85cm H",
-      material: "Olive velvet upholstery, dark wood base",
-      inStock: true,
-      featured: false
-    },
-    {
-      id: 91,
-      name: "Outdoor Curved Swivel Chair",
-      category: "outdoor",
-      price: 1850,
-      description: "Weather-resistant curved swivel chair perfect for poolside relaxation",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.05_70e40450_1751565658120.jpg",
-      dimensions: "100cm W x 90cm D x 80cm H",
-      material: "Weather-resistant fabric, aluminum swivel base",
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 92,
-      name: "Premium Curved Swivel Chair",
-      category: "seating",
-      price: 1780,
-      description: "Sophisticated curved chair with premium upholstery and smooth swivel function",
-      imageUrl: "/attached_assets/WhatsApp Image 2025-07-03 at 08.30.05_d511b7ae_1751565658120.jpg",
-      dimensions: "95cm W x 85cm D x 75cm H",
-      material: "Premium textured upholstery, engineered swivel base",
-      inStock: true,
-      featured: false
     }
   ];
 
@@ -1162,10 +489,13 @@ const FurnitureCatalog = () => {
     const matchesPrice = priceRange === "all" || 
       (priceRange === "under1000" && item.price < 1000) ||
       (priceRange === "1000-2000" && item.price >= 1000 && item.price <= 2000) ||
-      (priceRange === "over2000" && item.price > 2000);
+      (priceRange === "2000-4000" && item.price >= 2000 && item.price <= 4000) ||
+      (priceRange === "over4000" && item.price > 4000);
 
     return matchesCategory && matchesSearch && matchesPrice;
   });
+
+  const featuredItems = furnitureItems.filter(item => item.featured);
 
   return (
     <>
@@ -1174,14 +504,24 @@ const FurnitureCatalog = () => {
         <meta name="description" content="Discover our curated collection of luxury furniture pieces designed to complement your interior design vision" />
       </Helmet>
 
+      {/* Breadcrumb */}
+      <div className="pt-24 pb-8">
+        <div className="container mx-auto px-4">
+          <Link href="/interior-design" className="inline-flex items-center text-neutral-600 hover:text-[#D3A265] transition-colors">
+            <ArrowLeft size={16} className="mr-2" />
+            Back to Interior Design
+          </Link>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <div className="relative">
-        <div className="absolute inset-0 bg-black/50 z-10"></div>
-        <div className="relative h-[70vh] bg-cover bg-center" style={{ backgroundImage: `url('/img/artwork/WhatsApp Image 2025-05-22 at 11.04.44 (1).jpeg')` }}>
+        <div className="absolute inset-0 bg-black/40 z-10"></div>
+        <div className="relative h-[60vh] bg-cover bg-center" style={{ backgroundImage: `url('/attached_assets/WhatsApp Image 2025-07-03 at 08.29.47_12834d40_1751565163753.jpg')` }}>
           <div className="absolute inset-0 flex items-center justify-center z-20">
             <div className="text-center text-white px-4">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-['Playfair_Display'] font-bold mb-6">
-                Furniture Catalog
+                Furniture Collection
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl max-w-2xl mx-auto font-light">
                 Curated pieces that blend artistry with functionality
@@ -1214,7 +554,7 @@ const FurnitureCatalog = () => {
                 placeholder="Search furniture..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D3A265]"
+                className="w-full pl-10 pr-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D3A265] focus:border-transparent"
               />
             </div>
 
@@ -1222,7 +562,7 @@ const FurnitureCatalog = () => {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D3A265]"
+              className="px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D3A265] focus:border-transparent min-w-[180px]"
             >
               {categories.map(category => (
                 <option key={category.id} value={category.id}>
@@ -1235,12 +575,13 @@ const FurnitureCatalog = () => {
             <select
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              className="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D3A265]"
+              className="px-4 py-3 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D3A265] focus:border-transparent min-w-[180px]"
             >
               <option value="all">All Prices</option>
               <option value="under1000">Under $1,000</option>
               <option value="1000-2000">$1,000 - $2,000</option>
-              <option value="over2000">Over $2,000</option>
+              <option value="2000-4000">$2,000 - $4,000</option>
+              <option value="over4000">Over $4,000</option>
             </select>
           </div>
         </div>
@@ -1251,8 +592,8 @@ const FurnitureCatalog = () => {
             Featured Pieces
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {furnitureItems.filter(item => item.featured).map((item) => (
-              <Link key={item.id} href={`/furniture/${item.id}`} className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            {featuredItems.map((item) => (
+              <Link key={item.id} href={`/furniture/${item.id}`} className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                 <div className="aspect-[4/3] overflow-hidden">
                   <ImageLoader
                     src={item.imageUrl}
@@ -1262,11 +603,11 @@ const FurnitureCatalog = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-xl font-['Playfair_Display'] font-semibold">{item.name}</h4>
-                    <span className="text-lg font-bold text-[#D3A265]">${item.price.toLocaleString()}</span>
+                  <div className="flex justify-between items-start mb-3">
+                    <h4 className="text-xl font-['Playfair_Display'] font-semibold line-clamp-2">{item.name}</h4>
+                    <span className="text-lg font-bold text-[#D3A265] ml-2">${item.price.toLocaleString()}</span>
                   </div>
-                  <p className="text-neutral-600 mb-3">{item.description}</p>
+                  <p className="text-neutral-600 mb-4 line-clamp-2">{item.description}</p>
                   <div className="text-sm text-neutral-500 mb-4">
                     <p><strong>Dimensions:</strong> {item.dimensions}</p>
                     <p><strong>Material:</strong> {item.material}</p>
@@ -1288,47 +629,70 @@ const FurnitureCatalog = () => {
 
         {/* All Items Grid */}
         <div className="mb-16">
-          <h3 className="text-2xl md:text-3xl font-['Playfair_Display'] font-bold mb-8 text-center">
-            Complete Collection
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredItems.map((item) => (
-              <div key={item.id} className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="aspect-square overflow-hidden">
-                  <ImageLoader
-                    src={item.imageUrl}
-                    alt={item.name}
-                    aspectRatio="square"
-                    className="transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4">
-                  <div className="flex justify-between items-start mb-2">
-                    <h4 className="text-lg font-semibold">{item.name}</h4>
-                    <span className="text-lg font-bold text-[#D3A265]">${item.price.toLocaleString()}</span>
-                  </div>
-                  <p className="text-neutral-600 text-sm mb-3">{item.description}</p>
-                  <div className="flex gap-2">
-                    <Button size="sm" className="flex-1 bg-[#D3A265] hover:bg-[#BA8F58] text-white text-xs">
-                      <ShoppingCart size={14} className="mr-1" />
-                      Add to Cart
-                    </Button>
-                    <Button variant="outline" size="sm" className="border-[#D3A265] text-[#D3A265] hover:bg-[#D3A265] hover:text-white">
-                      <Heart size={14} />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="flex justify-between items-center mb-8">
+            <h3 className="text-2xl md:text-3xl font-['Playfair_Display'] font-bold">
+              Complete Collection
+            </h3>
+            <p className="text-neutral-600">
+              {filteredItems.length} {filteredItems.length === 1 ? 'item' : 'items'} found
+            </p>
           </div>
+
+          {filteredItems.length === 0 ? (
+            <div className="text-center py-16">
+              <p className="text-neutral-500 text-lg">No furniture items match your current filters.</p>
+              <Button 
+                onClick={() => {
+                  setSelectedCategory("all");
+                  setSearchTerm("");
+                  setPriceRange("all");
+                }}
+                variant="outline"
+                className="mt-4 border-[#D3A265] text-[#D3A265] hover:bg-[#D3A265] hover:text-white"
+              >
+                Clear Filters
+              </Button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredItems.map((item) => (
+                <Link key={item.id} href={`/furniture/${item.id}`} className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                  <div className="aspect-square overflow-hidden">
+                    <ImageLoader
+                      src={item.imageUrl}
+                      alt={item.name}
+                      aspectRatio="square"
+                      className="transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold line-clamp-2 flex-1 mr-2">{item.name}</h4>
+                      <span className="text-lg font-bold text-[#D3A265] whitespace-nowrap">${item.price.toLocaleString()}</span>
+                    </div>
+                    <p className="text-neutral-600 text-sm mb-3 line-clamp-2">{item.description}</p>
+                    <div className="flex gap-2">
+                      <Button size="sm" className="flex-1 bg-[#D3A265] hover:bg-[#BA8F58] text-white text-xs">
+                        <ShoppingCart size={14} className="mr-1" />
+                        Add to Cart
+                      </Button>
+                      <Button variant="outline" size="sm" className="border-[#D3A265] text-[#D3A265] hover:bg-[#D3A265] hover:text-white">
+                        <Heart size={14} />
+                      </Button>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Custom Design CTA */}
-        <div className="text-center bg-[#8B5A2B] text-white p-16 rounded-xl">
+        <div className="text-center bg-gradient-to-r from-[#8B5A2B] to-[#6B4423] text-white p-12 rounded-xl">
           <h2 className="text-3xl md:text-4xl font-['Playfair_Display'] font-bold mb-6">
             Need Something Unique?
           </h2>
-          <p className="text-lg max-w-2xl mx-auto mb-8 text-neutral-300">
+          <p className="text-lg max-w-2xl mx-auto mb-8 text-neutral-200">
             We specialize in custom furniture design that perfectly complements your space and style. 
             Let our team create something truly exceptional for your home or office.
           </p>
