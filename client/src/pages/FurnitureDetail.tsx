@@ -550,7 +550,8 @@ const FurnitureDetail = () => {
         assembly: "Professional assembly included",
         care: "Clean wood with appropriate products, vacuum upholstery regularly"
       }
-    },</old_str>
+    }
+  ];</old_str>
     
   ];
 
