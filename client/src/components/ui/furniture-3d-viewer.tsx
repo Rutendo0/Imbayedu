@@ -74,23 +74,26 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
     }
   };
 
-  // Generate different angle views using CSS transforms
+  // Generate different angle views using existing images with 3D transforms
   const generateAngleViews = () => {
     const angles = [
-      { name: 'Front', rotateX: 0, rotateY: 0 },
-      { name: 'Right Side', rotateX: 0, rotateY: 45 },
-      { name: 'Profile', rotateX: 0, rotateY: 90 },
-      { name: 'Left Side', rotateX: 0, rotateY: -45 },
-      { name: 'Top View', rotateX: -45, rotateY: 0 },
-      { name: 'Isometric', rotateX: -20, rotateY: 45 },
-      { name: 'Studio', rotateX: -15, rotateY: 25 },
-      { name: 'Showroom', rotateX: -10, rotateY: -25 }
+      { name: 'Front', rotateX: 0, rotateY: 0, imageIndex: 0 },
+      { name: 'Right', rotateX: 0, rotateY: 45, imageIndex: 1 % images.length },
+      { name: 'Back', rotateX: 0, rotateY: 180, imageIndex: 2 % images.length },
+      { name: 'Left', rotateX: 0, rotateY: -45, imageIndex: (images.length - 1) % images.length },
+      { name: 'Top', rotateX: -45, rotateY: 0, imageIndex: Math.floor(images.length / 2) % images.length },
+      { name: 'Bottom', rotateX: 45, rotateY: 0, imageIndex: (Math.floor(images.length / 2) + 1) % images.length },
+      { name: 'Studio', rotateX: -15, rotateY: 25, imageIndex: (images.length - 2) % images.length },
+      { name: 'Detail', rotateX: -10, rotateY: -25, imageIndex: (images.length - 1) }
     ];
 
     return angles.map((angle, index) => (
       <button
         key={angle.name}
         onClick={() => {
+          // Switch to the corresponding image for this angle
+          setCurrentImageIndex(angle.imageIndex);
+          // Apply the 3D rotation
           setRotationX(angle.rotateX);
           setRotationY(angle.rotateY);
           setIs3DMode(true);
