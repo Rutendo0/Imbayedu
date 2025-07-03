@@ -606,12 +606,12 @@ const FurnitureDetail = () => {
               
               {/* Enhanced viewing info */}
               <div className="bg-neutral-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-sm mb-2">Enhanced Viewing Experience</h4>
+                <h4 className="font-semibold text-sm mb-2">Image Gallery</h4>
                 <div className="text-xs text-neutral-600 space-y-1">
-                  <p>• Switch to 3D mode to explore from different angles</p>
-                  <p>• Use auto-rotation for a complete 360° view</p>
-                  <p>• Click quick view buttons for specific perspectives</p>
-                  <p>• Drag in 3D mode to manually rotate the furniture</p>
+                  <p>• Use navigation arrows to browse through different views</p>
+                  <p>• Click on thumbnails for quick image switching</p>
+                  <p>• Multiple angles available for comprehensive viewing</p>
+                  <p>• High-quality images showcase all furniture details</p>
                 </div>
               </div>
             </div>

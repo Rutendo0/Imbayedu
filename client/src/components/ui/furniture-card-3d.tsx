@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { Link } from 'wouter';
 import { Button } from './button';
-import { ShoppingCart, Heart, Move3D } from 'lucide-react';
+import { ShoppingCart, Heart } from 'lucide-react';
 
-interface FurnitureCard3DProps {
+interface FurnitureCardProps {
   furniture: {
     id: number;
     name: string;
@@ -16,8 +16,7 @@ interface FurnitureCard3DProps {
   };
 }
 
-export const FurnitureCard3D: React.FC<FurnitureCard3DProps> = ({ furniture }) => {
-  const [isHovered, setIsHovered] = useState(false);
+export const FurnitureCard3D: React.FC<FurnitureCardProps> = ({ furniture }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (
@@ -25,40 +24,15 @@ export const FurnitureCard3D: React.FC<FurnitureCard3DProps> = ({ furniture }) =
       href={`/furniture/${furniture.id}`} 
       className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
     >
-      <div 
-        className="relative aspect-square overflow-hidden"
-        style={{ perspective: '1000px' }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {/* 3D Transform Container */}
-        <div
-          className="w-full h-full transition-transform duration-700 ease-out"
-          style={{
-            transform: isHovered 
-              ? 'rotateY(15deg) rotateX(5deg) scale3d(1.05, 1.05, 1.05)'
-              : 'rotateY(0deg) rotateX(0deg) scale3d(1, 1, 1)',
-            transformStyle: 'preserve-3d'
-          }}
-        >
-          <img
-            src={furniture.images[currentImageIndex]}
-            alt={furniture.name}
-            className="w-full h-full object-cover transition-all duration-700"
-            style={{
-              filter: isHovered ? 'brightness(1.1) contrast(1.1)' : 'brightness(1) contrast(1)'
-            }}
-          />
+      <div className="relative aspect-square overflow-hidden">
+        <img
+          src={furniture.images[currentImageIndex]}
+          alt={furniture.name}
+          className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
+        />
 
-          {/* Subtle shadow overlay for depth */}
-          <div 
-            className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/10 pointer-events-none transition-opacity duration-700"
-            style={{ opacity: isHovered ? 1 : 0 }}
-          />
-        </div>
-
-        {/* Image cycling on hover */}
-        {furniture.images.length > 1 && isHovered && (
+        {/* Image cycling indicators */}
+        {furniture.images.length > 1 && (
           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
             {furniture.images.map((_, index) => (
               <button
@@ -74,13 +48,6 @@ export const FurnitureCard3D: React.FC<FurnitureCard3DProps> = ({ furniture }) =
             ))}
           </div>
         )}
-
-        {/* 3D indicator */}
-        <div className={`absolute top-2 right-2 bg-[#D3A265] text-white p-1 rounded transition-opacity duration-300 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
-        }`}>
-          <Move3D size={12} />
-        </div>
       </div>
 
       <div className="p-4">
