@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, RotateCw, Move3D } from 'lucide-react';
 import { Button } from './button';
@@ -41,13 +40,13 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging || !is3DMode) return;
-    
+
     const deltaX = e.clientX - lastMousePos.x;
     const deltaY = e.clientY - lastMousePos.y;
-    
+
     setRotationY(prev => prev + deltaX * 0.5);
     setRotationX(prev => Math.max(-60, Math.min(60, prev - deltaY * 0.5)));
-    
+
     setLastMousePos({ x: e.clientX, y: e.clientY });
   };
 
@@ -247,6 +246,17 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
             Drag to rotate • Use quick views for specific angles • Auto-rotate for continuous movement
           </p>
         )}
+      </div>
+      {/* Enhanced viewing info */}
+      <div className="bg-gradient-to-r from-neutral-50 to-neutral-100 p-4 rounded-lg border">
+        <h4 className="font-semibold text-sm mb-2 text-[#8B5A2B]">Enhanced 3D Viewing Experience</h4>
+        <div className="text-xs text-neutral-600 space-y-1">
+          <p>• <strong>3D Mode:</strong> Explore furniture from multiple angles with realistic depth</p>
+          <p>• <strong>Auto-Rotation:</strong> Continuous 360° view for complete inspection</p>
+          <p>• <strong>Quick Views:</strong> Predefined angles including studio and showroom perspectives</p>
+          <p>• <strong>Interactive:</strong> Drag to manually rotate and examine details</p>
+          <p>• <strong>Multi-Image:</strong> Switch between different photos while in 3D mode</p>
+        </div>
       </div>
     </div>
   );
