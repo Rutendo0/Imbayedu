@@ -284,11 +284,18 @@ const InteriorDesign = () => {
           <p className="text-lg max-w-2xl mx-auto mb-8 text-neutral-300">
             Transform your space into a masterpiece that reflects your unique style and vision.
           </p>
-          <Link href="/contact">
-            <Button className="bg-[#D3A265] hover:bg-[#BA8F58] text-white px-8 py-6 text-lg">
-              Schedule a Consultation
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <Button className="bg-[#D3A265] hover:bg-[#BA8F58] text-white px-8 py-6 text-lg">
+                Schedule a Consultation
+              </Button>
+            </Link>
+            <Link href="/furniture-catalog">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#8B5A2B] px-8 py-6 text-lg">
+                Browse Furniture
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

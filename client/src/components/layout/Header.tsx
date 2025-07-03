@@ -88,6 +88,9 @@ const Header = () => {
             <Link href="/interior-design" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/interior-design') ? 'text-[#D3A265]' : ''}`}>
               Interior Design
             </Link>
+            <Link href="/furniture-catalog" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/furniture-catalog') ? 'text-[#D3A265]' : ''}`}>
+              Furniture
+            </Link>
             <Link href="/contact" className={`nav-link text-sm font-medium text-neutral-900 hover:text-[#D3A265] ${isActive('/contact') ? 'text-[#D3A265]' : ''}`}>
               Contact
             </Link>
@@ -149,6 +152,9 @@ const Header = () => {
             </Link>
             <Link href="/interior-design" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
               Interior Design
+            </Link>
+            <Link href="/furniture-catalog" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
+              Furniture
             </Link>
             <Link href="/contact" onClick={closeMenu} className="text-base font-medium text-neutral-900 hover:text-[#D3A265] block px-3 py-2">
               Contact
