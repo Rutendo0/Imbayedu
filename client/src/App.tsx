@@ -21,6 +21,7 @@ import Checkout from "./pages/Checkout";
 import FAQ from "./pages/FAQ";
 import InteriorDesign from "./pages/InteriorDesign";
 import FurnitureCatalog from "./pages/FurnitureCatalog";
+import FurnitureDetail from "./pages/FurnitureDetail";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 
@@ -58,6 +59,7 @@ function App() {
                   <Route path="/faq" component={FAQ} />
                   <Route path="/interior-design" component={InteriorDesign} />
                   <Route path="/furniture-catalog" component={FurnitureCatalog} />
+                  <Route path="/furniture/:id" component={FurnitureDetail} />
                   <Route component={NotFound} />
                 </Switch>
               </main>

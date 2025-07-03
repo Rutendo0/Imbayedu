@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "../components/ui/button";
@@ -168,7 +167,7 @@ const FurnitureCatalog = () => {
       (priceRange === "under1000" && item.price < 1000) ||
       (priceRange === "1000-2000" && item.price >= 1000 && item.price <= 2000) ||
       (priceRange === "over2000" && item.price > 2000);
-    
+
     return matchesCategory && matchesSearch && matchesPrice;
   });
 
@@ -257,7 +256,7 @@ const FurnitureCatalog = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {furnitureItems.filter(item => item.featured).map((item) => (
-              <div key={item.id} className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <Link key={item.id} href={`/furniture/${item.id}`} className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
                 <div className="aspect-[4/3] overflow-hidden">
                   <ImageLoader
                     src={item.imageUrl}
@@ -286,7 +285,7 @@ const FurnitureCatalog = () => {
                     </Button>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
