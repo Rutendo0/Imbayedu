@@ -77,21 +77,24 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
   // Generate different angle views using CSS transforms
   const generateAngleViews = () => {
     const angles = [
-      { name: 'Front', rotateY: 0 },
-      { name: 'Right', rotateY: 90 },
-      { name: 'Back', rotateY: 180 },
-      { name: 'Left', rotateY: 270 },
-      { name: 'Top', rotateX: -90 },
-      { name: 'Bottom', rotateX: 90 }
+      { name: 'Front', rotateX: 0, rotateY: 0 },
+      { name: 'Right Side', rotateX: 0, rotateY: 45 },
+      { name: 'Profile', rotateX: 0, rotateY: 90 },
+      { name: 'Left Side', rotateX: 0, rotateY: -45 },
+      { name: 'Top View', rotateX: -45, rotateY: 0 },
+      { name: 'Isometric', rotateX: -20, rotateY: 45 },
+      { name: 'Studio', rotateX: -15, rotateY: 25 },
+      { name: 'Showroom', rotateX: -10, rotateY: -25 }
     ];
 
     return angles.map((angle, index) => (
       <button
         key={angle.name}
         onClick={() => {
-          setRotationX(angle.rotateX || 0);
-          setRotationY(angle.rotateY || 0);
+          setRotationX(angle.rotateX);
+          setRotationY(angle.rotateY);
           setIs3DMode(true);
+          setIsRotating(false); // Stop auto-rotation when selecting a specific view
         }}
         className="px-3 py-1 text-xs bg-neutral-100 hover:bg-[#D3A265] hover:text-white rounded transition-colors"
       >
@@ -114,12 +117,13 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
       >
         {/* 3D Transform Container */}
         <div
-          className="w-full h-full transition-transform duration-300 ease-out"
+          className="w-full h-full transition-transform duration-500 ease-out"
           style={{
             transform: is3DMode 
-              ? `rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale3d(0.8, 0.8, 0.8)`
-              : 'none',
-            transformStyle: 'preserve-3d'
+              ? `perspective(1200px) rotateX(${rotationX}deg) rotateY(${rotationY}deg) scale3d(0.85, 0.85, 0.85) translateZ(20px)`
+              : 'translateZ(0)',
+            transformStyle: 'preserve-3d',
+            transformOrigin: 'center center'
           }}
         >
           {/* Main image */}
@@ -132,14 +136,24 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
             }}
           />
 
-          {/* Shadow overlay for 3D effect */}
+          {/* Enhanced shadow and depth effects for 3D */}
           {is3DMode && (
-            <div 
-              className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 pointer-events-none"
-              style={{
-                opacity: Math.abs(rotationX) / 60 * 0.3 + Math.abs(rotationY) / 180 * 0.2
-              }}
-            />
+            <>
+              {/* Main shadow overlay */}
+              <div 
+                className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/25 pointer-events-none"
+                style={{
+                  opacity: Math.abs(rotationX) / 60 * 0.4 + Math.abs(rotationY) / 180 * 0.3
+                }}
+              />
+              {/* Depth highlight */}
+              <div 
+                className="absolute inset-0 bg-gradient-to-tl from-white/10 via-transparent to-transparent pointer-events-none"
+                style={{
+                  opacity: Math.abs(rotationX) / 60 * 0.2 + Math.abs(rotationY) / 180 * 0.15
+                }}
+              />
+            </>
           )}
         </div>
 
@@ -166,10 +180,13 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
           {currentImageIndex + 1} / {images.length}
         </div>
 
-        {/* 3D mode indicator */}
+        {/* 3D mode indicator with rotation values */}
         {is3DMode && (
           <div className="absolute top-4 left-4 bg-[#D3A265] text-white px-2 py-1 rounded text-xs font-medium">
             3D Mode
+            <div className="text-[10px] opacity-75 mt-1">
+              X: {rotationX}° Y: {rotationY}°
+            </div>
           </div>
         )}
       </div>
@@ -243,7 +260,7 @@ export const Furniture3DViewer: React.FC<Furniture3DViewerProps> = ({
         {/* Instructions */}
         {is3DMode && (
           <p className="text-xs text-neutral-500 text-center">
-            Drag to rotate • Use quick views for specific angles • Auto-rotate for continuous movement
+            Drag to rotate • Try Studio/Showroom views for professional angles • Auto-rotate for continuous movement
           </p>
         )}
       </div>
