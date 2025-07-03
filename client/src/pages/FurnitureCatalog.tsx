@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Button } from "../components/ui/button";
+import { FurnitureCard3D } from "../components/ui/furniture-card-3d";
 import { Link } from "wouter";
 import { ShoppingCart, Heart, Filter, Search, ArrowLeft } from "lucide-react";
 
@@ -664,32 +665,7 @@ const FurnitureCatalog = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredItems.map((item) => (
-                <Link key={item.id} href={`/furniture/${item.id}`} className="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="aspect-square overflow-hidden">
-                    <ImageLoader
-                      src={item.images[0]}
-                      alt={item.name}
-                      aspectRatio="square"
-                      className="transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <div className="flex justify-between items-start mb-2">
-                      <h4 className="text-lg font-semibold line-clamp-2 flex-1 mr-2">{item.name}</h4>
-                      <span className="text-lg font-bold text-[#D3A265] whitespace-nowrap">${item.price.toLocaleString()}</span>
-                    </div>
-                    <p className="text-neutral-600 text-sm mb-3 line-clamp-2">{item.description}</p>
-                    <div className="flex gap-2">
-                      <Button size="sm" className="flex-1 bg-[#D3A265] hover:bg-[#BA8F58] text-white text-xs">
-                        <ShoppingCart size={14} className="mr-1" />
-                        Add to Cart
-                      </Button>
-                      <Button variant="outline" size="sm" className="border-[#D3A265] text-[#D3A265] hover:bg-[#D3A265] hover:text-white">
-                        <Heart size={14} />
-                      </Button>
-                    </div>
-                  </div>
-                </Link>
+                <FurnitureCard3D key={item.id} furniture={item} />
               ))}
             </div>
           )}

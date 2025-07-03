@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useParams, Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import { Button } from "../components/ui/button";
+import { Furniture3DViewer } from "../components/ui/furniture-3d-viewer";
 import { ArrowLeft, ShoppingCart, Heart, Share2, ChevronLeft, ChevronRight } from "lucide-react";
 
 const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
@@ -595,59 +596,23 @@ const FurnitureDetail = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Image Gallery */}
+            {/* Enhanced 3D Image Viewer */}
             <div className="space-y-4">
-              {/* Main Image */}
-              <div className="relative aspect-square bg-neutral-100 rounded-xl overflow-hidden">
-                <ImageLoader
-                  src={furniture.images[currentImageIndex]}
-                  alt={`${furniture.name} - View ${currentImageIndex + 1}`}
-                  aspectRatio="square"
-                  className="w-full h-full"
-                />
-                
-                {/* Navigation Arrows */}
-                {furniture.images.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevImage}
-                      className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 transition-colors"
-                    >
-                      <ChevronLeft size={20} />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 transition-colors"
-                    >
-                      <ChevronRight size={20} />
-                    </button>
-                  </>
-                )}
-
-                {/* Image Counter */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
-                  {currentImageIndex + 1} / {furniture.images.length}
+              <Furniture3DViewer
+                images={furniture.images}
+                name={furniture.name}
+                className="w-full"
+              />
+              
+              {/* Enhanced viewing info */}
+              <div className="bg-neutral-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-sm mb-2">Enhanced Viewing Experience</h4>
+                <div className="text-xs text-neutral-600 space-y-1">
+                  <p>• Switch to 3D mode to explore from different angles</p>
+                  <p>• Use auto-rotation for a complete 360° view</p>
+                  <p>• Click quick view buttons for specific perspectives</p>
+                  <p>• Drag in 3D mode to manually rotate the furniture</p>
                 </div>
-              </div>
-
-              {/* Thumbnail Gallery */}
-              <div className="grid grid-cols-5 gap-2">
-                {furniture.images.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={`aspect-square rounded-lg overflow-hidden border-2 transition-colors ${
-                      currentImageIndex === index ? 'border-[#D3A265]' : 'border-transparent'
-                    }`}
-                  >
-                    <ImageLoader
-                      src={image}
-                      alt={`${furniture.name} thumbnail ${index + 1}`}
-                      aspectRatio="square"
-                      className="w-full h-full hover:opacity-80 transition-opacity"
-                    />
-                  </button>
-                ))}
               </div>
             </div>
 
