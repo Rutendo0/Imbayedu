@@ -182,6 +182,76 @@ const FurnitureDetail = () => {
         assembly: "Professional assembly included",
         care: "Professional cleaning recommended, vacuum regularly"
       }
+    },
+    {
+      id: 32,
+      name: "Forest Green Velvet Bed",
+      category: "bedroom",
+      price: 3480,
+      description: "Luxurious bed with rich forest green velvet upholstery and elegant curved design. This statement piece brings sophistication and comfort to any bedroom.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.45_beaec136_1751565163750.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.45_cd9bbfad_1751565163751.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.46_63b0b657_1751565163751.jpg"
+      ],
+      dimensions: "200cm L x 160cm W x 120cm H",
+      material: "Forest green velvet, solid wood frame, brass feet",
+      colors: ["Forest Green", "Navy", "Charcoal"],
+      sizes: ["Queen", "King"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "75kg",
+        warranty: "10 years on frame, 2 years on upholstery",
+        assembly: "Professional assembly recommended",
+        care: "Professional velvet cleaning recommended"
+      }
+    },
+    {
+      id: 35,
+      name: "Fluted Wood Headboard Bed",
+      category: "bedroom",
+      price: 4200,
+      description: "Architectural bed with stunning fluted wood headboard and integrated nightstands. This piece combines modern design with functional storage solutions.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.47_12834d40_1751565163753.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.47_6de34b3a_1751565163753.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.47_d1e2d157_1751565163753.jpg"
+      ],
+      dimensions: "240cm W x 200cm D x 130cm H",
+      material: "Fluted oak, integrated storage, brass accents",
+      colors: ["Natural Oak", "Dark Walnut"],
+      sizes: ["King", "Super King"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "120kg",
+        warranty: "15 years on frame, 5 years on hardware",
+        assembly: "Professional assembly included",
+        care: "Clean with wood-specific products, dust regularly"
+      }
+    },
+    {
+      id: 29,
+      name: "Oak Sideboard with Brass Hardware",
+      category: "storage",
+      price: 3200,
+      description: "Elegant oak sideboard featuring beautiful wood grain and brass details. This sophisticated piece offers ample storage while serving as a stunning focal point.",
+      images: [
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.43_4c7a47f1_1751565163748.jpg",
+        "/attached_assets/WhatsApp Image 2025-07-03 at 08.29.43_5d40e9c7_1751565163748.jpg"
+      ],
+      dimensions: "180cm W x 45cm D x 75cm H",
+      material: "Solid oak, brass hardware and legs",
+      colors: ["Natural Oak", "Dark Oak"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "85kg",
+        warranty: "12 years on frame, 3 years on hardware",
+        assembly: "Professional assembly recommended",
+        care: "Clean with wood cleaner, avoid moisture"
+      }
     }
   ];
 
