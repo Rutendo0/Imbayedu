@@ -338,10 +338,10 @@ const FurnitureCatalog = () => {
     },
     {
       id: 17,
-      name: "One seat sofa",
+      name: "Forest Green Velvet Armchair",
       category: "seating",
       price: 2850,
-      description: "Timeless sofa design with elegant walnut wood base and neutral upholstery",
+      description: "Luxurious armchair in rich forest green velvet with brass legs",
       images: [
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.59.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.00.jpg",

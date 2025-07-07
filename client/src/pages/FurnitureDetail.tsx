@@ -402,10 +402,10 @@ const FurnitureDetail = () => {
     },
     {
       id: 17,
-      name: "One seat sofa",
+      name: "Forest Green Velvet Armchair",
       category: "seating",
       price: 2850,
-      description: "Timeless sofa design with elegant walnut wood base and neutral upholstery",
+      description: "Luxurious armchair in rich forest green velvet with brass legs",
       images: [
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.59.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.00.jpg",
@@ -430,10 +430,10 @@ const FurnitureDetail = () => {
       price: 3480,
       description: "Elegant  cabinet with curved edges and rich walnut finish on brass legs",
       images: [
-         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.59 (3).jpg",
+         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.58.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.59 (2).jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.58 (2).jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.58.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.59 (3).jpg"
       ],
       dimensions: "65cm W x 45cm D x 140cm H",
       material: "Walnut wood, brass legs, curved construction",
