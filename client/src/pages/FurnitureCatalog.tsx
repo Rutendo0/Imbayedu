@@ -90,16 +90,16 @@ const FurnitureCatalog = () => {
       price: 1680,
       description: "Elegant walnut cabinet with brass legs and clean lines",
       images: [
-      "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56.jpg",
+       "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56 (2).jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (2).jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (4).jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (3).jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56 (3).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56 (4).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (2).jpg"
       ],
       dimensions: "80cm W x 45cm D x 110cm H",
       material: "Walnut wood",
       inStock: true,
-      featured: true
+      featured: false
     },
     {
       id: 4,
@@ -208,7 +208,7 @@ const FurnitureCatalog = () => {
       dimensions: "180cm W x 45cm D x 75cm H",
       material: "Solid oak, brass hardware and legs",
       inStock: true,
-      featured: true
+      featured: false
     },
     {
       id: 10,
@@ -225,7 +225,7 @@ const FurnitureCatalog = () => {
       dimensions: "200cm L x 160cm W x 120cm H",
       material: "Forest green velvet, solid wood frame, brass feet",
       inStock: true,
-      featured: true
+      featured: false
     },
     {
       id: 11,
@@ -368,7 +368,7 @@ const FurnitureCatalog = () => {
       dimensions: "65cm W x 45cm D x 140cm H",
       material: "Walnut wood, brass legs, curved construction",
       inStock: true,
-      featured: true
+      featured: false
     },
     {
       id: 19,
@@ -399,23 +399,22 @@ const FurnitureCatalog = () => {
       dimensions: "80cm W x 85cm D x 75cm H",
       material: "Forest green velvet, brass legs, premium construction",
       inStock: true,
-      featured: true
+      featured: false
     },
     {
       id: 21,
-      name: "Fluted Oak Armchair",
-      category: "seating",
+      name: "Storage Cabinets",
+      category: "storage",
       price: 2150,
-      description: "Architectural armchair featuring fluted oak construction with neutral cushions",
+      description: "Architectural cabinets featuring fluted oak construction",
       images: [
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.00.jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01.jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01 (2).jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.39 (2).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.39 (3).jpg"
       ],
       dimensions: "85cm W x 90cm D x 80cm H",
       material: "Fluted oak frame, neutral upholstery",
       inStock: true,
-      featured: true
+      featured: false
     },
     {
       id: 22,
@@ -677,7 +676,7 @@ const FurnitureCatalog = () => {
               </Button>
             </Link>
             <Link href="/interior-design">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#8B5A2B] px-8 py-3 text-lg">
+              <Button variant="outline" className="border-white text-gray-700 hover:bg-white hover:text-[#8B5A2B] px-8 py-3 text-lg">
                 View Interior Design
               </Button>
             </Link>

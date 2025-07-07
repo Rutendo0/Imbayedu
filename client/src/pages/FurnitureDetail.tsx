@@ -44,6 +44,26 @@ const FurnitureDetail = () => {
 
   // Enhanced furniture data with multiple angles
   const furnitureItems = [
+     {
+      id: 1,
+      name: "Modern Drawers",
+      category: "seating",
+      price: 1250,
+      description: "Handcrafted chest of drawer with oak frame. This contemporary piece combines traditional craftsmanship with modern design sensibilities.",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.25 (2).jpg"
+      ],
+      dimensions: "80cm W x 85cm D x 75cm H",
+      material: " oak wood",
+      colors: ["Brown", "Tan"],
+      inStock: true,
+      featured: false,
+      details: {
+        weight: "35kg",
+        assembly: "Professional assembly recommended",
+        care: "Clean with wood cleaner, avoid moisture"
+      }
+    },
     {
      id: 2,
       name: "Modern Chest Of Drawers",
@@ -75,14 +95,14 @@ const FurnitureDetail = () => {
       images: [
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56 (2).jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (2).jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (4).jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (3).jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56 (3).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56 (4).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (2).jpg"
       ],
       dimensions: "80cm W x 45cm D x 110cm H",
       material: "Walnut wood, brass hardware",
       inStock: true,
-      featured: true,
+      featured: false,
       details: {
         weight: "35kg",
         assembly: "Professional assembly recommended",
@@ -224,7 +244,7 @@ const FurnitureDetail = () => {
       material: "Solid oak, brass hardware and legs",
       colors: ["Natural Oak", "Dark Oak"],
       inStock: true,
-      featured: true,
+      featured: false,
       details: {
         weight: "85kg",
         assembly: "Professional assembly recommended",
@@ -248,7 +268,7 @@ const FurnitureDetail = () => {
       colors: ["Forest Green", "Navy", "Charcoal"],
       sizes: ["Queen", "King"],
       inStock: true,
-      featured: true,
+      featured: false,
       details: {
         weight: "75kg",
         assembly: "Professional assembly recommended",
@@ -439,7 +459,7 @@ const FurnitureDetail = () => {
       material: "Walnut wood, brass legs, curved construction",
       colors: ["Rich Walnut", "Natural Walnut"],
       inStock: true,
-      featured: true,
+      featured: false,
       details: {
         weight: "68kg",
         assembly: "Professional assembly included",
@@ -482,7 +502,7 @@ const FurnitureDetail = () => {
       material: "Forest green velvet, brass legs, premium construction",
       colors: ["Forest Green", "Navy", "Charcoal"],
       inStock: true,
-      featured: true,
+      featured: false,
       details: {
         weight: "45kg",
         assembly: "Minimal assembly required",
@@ -491,23 +511,21 @@ const FurnitureDetail = () => {
     },
     {
       id: 21,
-      name: "Fluted Oak Armchair",
-      category: "seating",
+      name: "Storage Cabinets",
+      category: "storage",
       price: 2150,
-      description: "Architectural armchair featuring fluted oak construction with neutral cushions",
+      description: "Architectural cabinets featuring fluted oak construction ",
       images: [
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.00_f148ff6c_1751565540916.jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01_5e1928f1_1751565540916.jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01_6feaacb2_1751565540917.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.39 (2).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.39 (3).jpg"
       ],
       dimensions: "85cm W x 90cm D x 80cm H",
       material: "Fluted oak frame, neutral upholstery",
       colors: ["Natural Oak", "Dark Oak"],
       inStock: true,
-      featured: true,
+      featured: false,
       details: {
         weight: "52kg",
-        warranty: "12 years on frame, 3 years on upholstery",
         assembly: "Professional assembly included",
         care: "Clean wood with appropriate products, vacuum upholstery regularly"
       }
