@@ -92,7 +92,9 @@ const FurnitureCatalog = () => {
       images: [
       "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.56 (2).jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (2).jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (2).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (4).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (3).jpg"
       ],
       dimensions: "80cm W x 45cm D x 110cm H",
       material: "Walnut wood",
@@ -272,7 +274,7 @@ const FurnitureCatalog = () => {
       price: 3850,
       description: "Elegant modular sectional with cream upholstery and wooden base trim",
       images: [
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55 (2).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.55.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.54.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.54 (3).jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.54 (2).jpg",
@@ -439,7 +441,7 @@ const FurnitureCatalog = () => {
       price: 3800,
       description: "Sophisticated dining table with rich wood finish and brass details",
       images: [
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.02.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01.jpg"
       ],
       dimensions: "240cm L x 100cm W x 75cm H",
       material: "Premium wood, brass accents",
