@@ -408,9 +408,9 @@ const FurnitureCatalog = () => {
       price: 2150,
       description: "Architectural armchair featuring fluted oak construction with neutral cushions",
       images: [
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.00_f148ff6c_1751565540916.jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01_5e1928f1_1751565540916.jpg",
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01_6feaacb2_1751565540917.jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.00.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01 (2).jpg"
       ],
       dimensions: "85cm W x 90cm D x 80cm H",
       material: "Fluted oak frame, neutral upholstery",
