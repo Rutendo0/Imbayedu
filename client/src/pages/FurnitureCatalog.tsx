@@ -58,7 +58,7 @@ const FurnitureCatalog = () => {
       price: 1250,
       description: "Handcrafted chest of drawer with oak frame. This contemporary piece combines traditional craftsmanship with modern design sensibilities.",
       images: [
-        "/img/artwork/WhatsApp Image 2025-07-03 at 08.29.25 (2).jpg"
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.25 (2).jpg"
       ],
       dimensions: "80cm W x 85cm D x 75cm H",
       material: " oak wood",
@@ -73,11 +73,11 @@ const FurnitureCatalog = () => {
       price: 1450,
       description: "Four-drawer chest with contrasting wood and black panels",
       images: [
-        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.21jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.21.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.23.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.20.jpg",
         "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.25.jpg"
-      ]   ,
+      ],
       dimensions: "90cm W x 45cm D x 120cm H",
       material: "Walnut wood, black oak veneer, brass handles",
       inStock: true,
@@ -260,7 +260,7 @@ const FurnitureCatalog = () => {
           "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.49 (2).jpg",
            "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.49.jpg",
            "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.50 (3).jpg",
-            "/img/funiture/WhatsApp Image 2025-07-03 at 08.29.50.jpg"
+            "/img/furniture/WhatsApp Image 2025-07-03 at 08.29.50.jpg"
       ],
       dimensions: "300cm L x 200cm W x 80cm H",
       material: "Premium linen blend, hardwood frame, dark wood legs",
