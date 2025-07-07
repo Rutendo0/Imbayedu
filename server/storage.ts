@@ -128,19 +128,19 @@ export class PostgresStorage implements IStorage {
       { 
         name: "Abstract Expressions", 
         description: "Bold colors and expressive forms capturing emotional landscapes", 
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg", 
         featured: true 
       },
       { 
         name: "Cultural Portraits", 
         description: "Celebrating African heritage and identity through vibrant expressions", 
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg", 
         featured: true 
       },
       { 
         name: "Mixed Media", 
         description: "Contemporary techniques with traditional influences and textural exploration", 
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04 (1).jpeg", 
         featured: true 
       },
 
@@ -153,7 +153,7 @@ export class PostgresStorage implements IStorage {
       {
         name: "Tunga Makoni",
         bio: "Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.",
-        imageUrl: "img/artwork/WhatsApp Image 2025-06-10 at 07.59.33_a0ff7f2e.jpg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33_a0ff7f2e.jpg",
         featured: true,
         location: "Harare, Zimbabwe"
       },
@@ -162,7 +162,7 @@ export class PostgresStorage implements IStorage {
       {
         name: "O'Neal Tanaka Maisiri ",
         bio: "O'Neal Tanaka Maisiri is a Zimbabwean artist whose abstract paintings reflect a deep connection to his environment. Using bold colors and dynamic compositions, he conveys the energy and emotions of his surroundings.",
-        imageUrl: "img/artwork/artist.png",
+        imageUrl: "/img/artwork/artist.png",
         featured: true,
         location: "Harare, Zimbabwe"
       }
@@ -177,7 +177,7 @@ export class PostgresStorage implements IStorage {
         title: "Family",
         description: "A vibrant portrait the beauty of family relations.",
         price: 0,
-        imageUrl: "img/artwork/WhatsApp Image 2025-06-24 at 04.32.13.jpg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-06-24 at 04.32.13.jpg", 
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
         dimensions: "90 x 120 cm",
@@ -192,7 +192,7 @@ export class PostgresStorage implements IStorage {
         title: "Blending Colours",
         description: "A vibrant portrait.",
         price: 279,
-        imageUrl: "img/artwork/WhatsApp Image 2025-06-24 at 07.18.28.jpg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-06-24 at 07.18.28.jpg", 
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
         dimensions: "90 x 120 cm",
@@ -206,7 +206,7 @@ export class PostgresStorage implements IStorage {
         title: "Abstract Spirit",
         description: "A vibrant portrait celebrating African heritage with bold colors and expressive brushwork.",
         price: 250,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.27.21.jpeg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.21.jpeg", 
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
         dimensions: "90 x 120 cm",
@@ -220,7 +220,7 @@ export class PostgresStorage implements IStorage {
         title: "Sunset Reflections",
         description: "A captivating landscape depicting the warm hues of an African sunset reflecting over water.",
         price: 300,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.27.23.jpeg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.23.jpeg", 
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 100 cm",
@@ -234,7 +234,7 @@ export class PostgresStorage implements IStorage {
         title: "Nature's Harmony",
         description: "An exploration of natural forms and patterns through a rich tapestry of colors and textures.",
         price: 500,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.27.24.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.24.jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "70 x 90 cm",
@@ -248,7 +248,7 @@ export class PostgresStorage implements IStorage {
         title: "Abstract Emotion",
         description: "A powerful abstract piece exploring the depths of human emotion through color and form.",
         price: 260,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.29.57.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.29.57.jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "100 x 100 cm",
@@ -262,7 +262,7 @@ export class PostgresStorage implements IStorage {
         title: "Cultural Heritage",
         description: "A celebration of African cultural heritage through symbolic imagery and traditional patterns.",
         price: 290,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.29.59.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.29.59.jpeg",
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
         dimensions: "90 x 120 cm",
@@ -276,7 +276,7 @@ export class PostgresStorage implements IStorage {
         title: "Cultural Heritage",
         description: "A celebration of African cultural heritage through symbolic imagery and traditional patterns",
         price: 290,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.00.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00.jpeg",
         categoryId: 1, // Mixed Media
         collectionId: 2, // Mixed Media
         dimensions: "90 x 120 cm",
@@ -290,7 +290,7 @@ export class PostgresStorage implements IStorage {
         title: "Cultural Heritage",
         description: "A celebration of African cultural heritage through symbolic imagery and traditional patterns",  
         price: 290,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (1).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (1).jpeg",
         categoryId: 1, // Paintings
         collectionId: 2, // Abstract Expressions
         dimensions: "90 x 120 cm",
@@ -304,7 +304,7 @@ export class PostgresStorage implements IStorage {
         title: "Colorful Abstraction",
         description: "A vibrant abstract composition with bold colors and dynamic forms creating visual harmony.",
         price: 420,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (2).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (2).jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 80 cm",
@@ -318,7 +318,7 @@ export class PostgresStorage implements IStorage {
         title: "Colorful Abstraction",
         description: "A vibrant abstract composition with bold colors and dynamic forms creating visual harmony.",
         price: 420,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.01.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.01.jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 80 cm",
@@ -332,7 +332,7 @@ export class PostgresStorage implements IStorage {
         title: "Dynamic Harmony",
         description: "An abstract composition that explores the interplay of shapes and colors, creating a sense of rhythm and balance.",
         price: 280,
-        imageUrl: "img/artwork/WhatsApp Image 2025-06-10 at 07.59.32 (2).jpg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.32 (2).jpg",
         categoryId: 1,
         collectionId: 1,
         dimensions: "100 x 100 cm",
@@ -347,7 +347,7 @@ export class PostgresStorage implements IStorage {
         title: "Colorful Abstraction",
         description: "A vibrant abstract composition with bold colors and dynamic forms creating visual harmony.",
         price: 420,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.01 (1).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.01 (1).jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Cultural Portraits
         dimensions: "80 x 80 cm",
@@ -361,7 +361,7 @@ export class PostgresStorage implements IStorage {
         title: "Abstract Patterns",
         description: "A mesmerizing exploration of patterns and textures through abstract composition.",
         price: 530,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.02.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02.jpeg",
          categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 100 cm",
@@ -375,7 +375,7 @@ export class PostgresStorage implements IStorage {
         title: "Abstract Patterns",
         description: "A mesmerizing exploration of patterns and textures through abstract composition.",
         price: 530,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (1).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (1).jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 100 cm",
@@ -389,7 +389,7 @@ export class PostgresStorage implements IStorage {
         title: "Abstract Patterns",
         description: "A mesmerizing exploration of patterns and textures through abstract composition.",
         price: 530,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (2).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (2).jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 100 cm",
@@ -403,7 +403,7 @@ export class PostgresStorage implements IStorage {
         title: "Cultural Tapestry",
         description: "A vibrant representation of African cultural elements woven together in a harmonious composition.",
         price: 460,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03.jpeg",
         categoryId: 2, // Mixed Media
         collectionId: 1, // Cultural Portraits
         dimensions: "100 x 100 cm",
@@ -417,7 +417,7 @@ export class PostgresStorage implements IStorage {
         title: "Cultural Tapestry",
         description: "A vibrant representation of African cultural elements woven together in a harmonious composition.",
         price: 460,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (1).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (1).jpeg",
         categoryId: 2, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "100 x 100 cm",
@@ -431,7 +431,7 @@ export class PostgresStorage implements IStorage {
         title: "Soulful Portrait",
         description: "A soulful portrait that captures the depth and spirit of its subject through expressive techniques.",
         price: 580,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg",
         categoryId: 2, // Mixed Media
         collectionId: 2, // Cultural Portraits
         dimensions: "90 x 120 cm",
@@ -445,7 +445,7 @@ export class PostgresStorage implements IStorage {
         title: "Soulful Portrait",
         description: "A soulful portrait that captures the depth and spirit of its subject through expressive techniques.",
         price: 580,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
         categoryId: 2, // Paintings
         collectionId: 2, // Abstract Expressions
         dimensions: "90 x 120 cm",
@@ -459,7 +459,7 @@ export class PostgresStorage implements IStorage {
         title: "Vibrant Abstraction",
         description: "A colorful abstract piece with geometric elements creating a sense of movement and rhythm.",
         price: 569,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05.jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "85 x 100 cm",
@@ -473,7 +473,7 @@ export class PostgresStorage implements IStorage {
         title: "Vibrant Abstraction",
         description: "A colorful abstract piece with geometric elements creating a sense of movement and rhythm.",
         price: 569,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (2).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (2).jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "85 x 100 cm",
@@ -487,7 +487,7 @@ export class PostgresStorage implements IStorage {
         title: "Expressive Portrait",
         description: "A bold portrait using expressive brushwork to convey emotion and character.",
         price: 390,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (3).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (3).jpeg",
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
         dimensions: "90 x 110 cm",
@@ -501,7 +501,7 @@ export class PostgresStorage implements IStorage {
         title: "Dynamic Composition",
         description: "A dynamic arrangement of shapes and colors creating a sense of movement and energy.",
         price: 410,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.07.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07.jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "100 x 100 cm",
@@ -515,7 +515,7 @@ export class PostgresStorage implements IStorage {
         title: "Textural Abstract",
         description: "A highly textured abstract work exploring surface quality and material interaction.",
         price: 325,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (1).jpeg",
         categoryId: 2, // Mixed Media
         collectionId: 1, // Mixed Media
         dimensions: "90 x 95 cm",
@@ -529,7 +529,7 @@ export class PostgresStorage implements IStorage {
         title: "Serene Waters",
         description: "A peaceful depiction of water and sky with subtle color transitions creating a meditative mood.",
         price: 290,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (2).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.07 (2).jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "85 x 110 cm",
@@ -543,7 +543,7 @@ export class PostgresStorage implements IStorage {
         title: "Expressionist Landscape",
         description: "A bold expressionist interpretation of landscape elements with expressive brushwork.",
         price: 500,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08.jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "100 x 120 cm",
@@ -557,7 +557,7 @@ export class PostgresStorage implements IStorage {
         title: "Cultural Celebration",
         description: "A vibrant celebration of African cultural motifs and patterns in a contemporary format.",
         price: 250,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (1).jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (1).jpeg",
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
         dimensions: "90 x 110 cm",
@@ -571,7 +571,7 @@ export class PostgresStorage implements IStorage {
         title: "Gestural Abstract",
         description: "A dynamic gestural abstract painting capturing movement and spontaneity through brushwork.",
         price: 600,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-15 at 09.30.09.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.09.jpeg",
         categoryId: 2, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "95 x 115 cm",
@@ -585,7 +585,7 @@ export class PostgresStorage implements IStorage {
         title: "Abstract Expressions", 
         description: "From the vibrant strokes of paintings that sing with color to the intricate details of mixed media, this collection showcases the dynamic range of contemporary African art.", 
        price: 550,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-16 at 11.47.25.jpeg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-16 at 11.47.25.jpeg", 
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 120 cm",
@@ -599,7 +599,7 @@ export class PostgresStorage implements IStorage {
         title: "Paintings", 
         description: "Creating a visual narrative that speaks to the heart and soul of African culture, this collection features a range of styles and techniques that celebrate the beauty and diversity of the continent.", 
         price: 385,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-16 at 11.47.24 (1).jpeg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-16 at 11.47.24 (1).jpeg", 
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "80 x 130 cm",
@@ -613,7 +613,7 @@ export class PostgresStorage implements IStorage {
         title: "Cultural Portraits", 
         description: "A piece that breathes life into space, inviting viewers to explore the rich tapestry of African culture through the lens of contemporary art.", 
         price: 575,
-        imageUrl: "img/artwork/WhatsApp Image 2025-05-16 at 11.47.24.jpeg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-05-16 at 11.47.24.jpeg",
         categoryId: 1, // Paintings
         collectionId: 1, // Abstract Expressions
         dimensions: "90 x 120 cm",
@@ -742,7 +742,7 @@ export class PostgresStorage implements IStorage {
         title: "Waves of Change",
         description: "A dynamic abstract piece that captures the essence of movement and transformation through fluid brushstrokes and vibrant colors.",
         price: 500,
-        imageUrl: "img/artwork/WhatsApp Image 2025-06-10 at 07.59.33_a0ff7f2e.jpg",
+        imageUrl: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33_a0ff7f2e.jpg",
         artistId: 1,
         categoryId: 2,
         collectionId: 1,
@@ -756,7 +756,7 @@ export class PostgresStorage implements IStorage {
         title: "Family",
         description: "A vibrant portrait the beauty of family relations.",
         price: 0,
-        imageUrl: "img/artwork/WhatsApp Image 2025-06-24 at 04.32.13.jpg", 
+        imageUrl: "/img/artwork/WhatsApp Image 2025-06-24 at 04.32.13.jpg", 
         categoryId: 1, // Paintings
         collectionId: 2, // Cultural Portraits
         dimensions: "90 x 120 cm",
