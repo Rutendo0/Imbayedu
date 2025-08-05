@@ -94,8 +94,8 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   memStorage.initializeData();
 
   // Production static file serving
-  if (process.env.NODE_ENV === "production") {
-    // Serve static files from the dist/public directory
+  if (process.env.NODE_ENV === "production" && !process.env.VERCEL) {
+    // Serve static files from the dist/public directory (local production)
     app.use(express.static(path.join(__dirname, "../public")));
 
     app.get("*", (req, res, next) => {

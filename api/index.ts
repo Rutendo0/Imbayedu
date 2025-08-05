@@ -1,60 +1,58 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { registerRoutes } from '../server/routes';
+import { storage } from '../server/storage';
+import rateLimit from 'express-rate-limit';
 
 const app = express();
 
-// Middleware
+// Configure trust proxy for rate limiting
+app.set('trust proxy', 1);
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 100 // limit each IP to 100 requests per windowMs
+});
+
+app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Serve static files from the dist directory
-app.use('/assets', express.static(path.join(__dirname, '../dist/public/assets')));
-app.use(express.static(path.join(__dirname, '../dist/public')));
-
-// Simple API endpoints for testing
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'API is working!' });
+// Error handling middleware
+app.use((err: any, req: any, res: any, next: any) => {
+  const status = err.status || err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  res.status(status).json({ message });
+  console.error(err);
 });
 
-app.get('/api/artists', (req, res) => {
-  res.json([
-    {
-      id: 1,
-      name: "Tunga Makoni",
-      bio: "Contemporary painter specializing in portrait art",
-      imageUrl: "/img/artwork/artist.png",
-      featured: true,
-      location: "Harare, Zimbabwe"
+// Initialize the app with routes
+let initialized = false;
+
+async function initializeApp() {
+  if (!initialized) {
+    await registerRoutes(app);
+    
+    // Initialize data storage
+    class MemStorage {
+      public initializeData() {
+        // initialization code
+      }
     }
-  ]);
-});
-
-app.get('/api/artworks', (req, res) => {
-  res.json([
-    {
-      id: 1,
-      title: "Abstract Expression",
-      artistId: 1,
-      price: 2500,
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg",
-      inStock: true
-    }
-  ]);
-});
-
-// Catch-all handler for client-side routing
-app.get('*', (req, res) => {
-  // Skip API routes
-  if (req.path.startsWith('/api/')) {
-    return res.status(404).json({ error: 'API endpoint not found' });
+    const memStorage = new MemStorage();
+    memStorage.initializeData();
+    
+    initialized = true;
   }
-  
-  // Serve the React app for all other routes
-  res.sendFile(path.join(__dirname, '../dist/public/index.html'));
-});
+}
 
-export default app; 
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  await initializeApp();
+  
+  // Create express-compatible request/response objects
+  const expressReq = req as any;
+  const expressRes = res as any;
+  
+  app(expressReq, expressRes);
+} 

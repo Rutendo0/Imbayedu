@@ -15,11 +15,22 @@ import {
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Serve all images from public directory
-  app.use('/img', express.static(path.join(process.cwd(), 'public/img')));
+  // Serve all images from public directory (skip in Vercel as it's handled by routes)
+  if (!process.env.VERCEL) {
+    app.use('/img', express.static(path.join(process.cwd(), 'public/img')));
+  }
 
   // API Routes
   // All routes prefixed with /api
+
+  // Health check endpoint
+  app.get("/api/health", (req, res) => {
+    res.json({ 
+      status: "ok", 
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || 'development'
+    });
+  });
 
   // Artists routes
   app.get("/api/artists", async (req, res) => {
