@@ -157,8 +157,8 @@ export class PostgresStorage implements IStorage {
         featured: true,
         location: "Harare, Zimbabwe"
       },
-     
-    
+
+
       {
         name: "O'Neal Tanaka Maisiri ",
         bio: "O'Neal Tanaka Maisiri is a Zimbabwean artist whose abstract paintings reflect a deep connection to his environment. Using bold colors and dynamic compositions, he conveys the energy and emotions of his surroundings.",
@@ -172,7 +172,7 @@ export class PostgresStorage implements IStorage {
 
     // Add all artworks with actual Imbayedu pieces
     const artworks = [
-        
+
 {
         title: "Family",
         description: "A vibrant portrait the beauty of family relations.",
@@ -292,7 +292,7 @@ export class PostgresStorage implements IStorage {
         price: 290,
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.00 (1).jpeg",
         categoryId: 1, // Paintings
-        collectionId: 2, // Abstract Expressions
+        collectionId: 2, // Cultural Portraits
         dimensions: "90 x 120 cm",
         medium: "Oil on canvas",
         year: "2023",
@@ -414,8 +414,8 @@ export class PostgresStorage implements IStorage {
         artistId: 1
       },
       {
-        title: "Cultural Tapestry",
-        description: "A vibrant representation of African cultural elements woven together in a harmonious composition.",
+        title: "Unity in Diversity",
+        description: "An exploration of African unity through diverse cultural symbols and patterns, celebrating the continent's rich heritage.",
         price: 460,
         imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (1).jpeg",
         categoryId: 2, // Paintings
@@ -766,7 +766,7 @@ export class PostgresStorage implements IStorage {
         featured: true,
         artistId: 0
       },
-    
+
     ];
 
     artworks.forEach(artwork => this.createArtwork(artwork));
