@@ -64,13 +64,15 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
 // For development, fall back to in-memory storage if database connection fails
-const DATABASE_URL = "postgres://postgres:postgres@0.0.0.0:5432/artgallery";
+const DATABASE_URL = process.env.DATABASE_URL || "postgres://postgres:postgres@0.0.0.0:5432/artgallery";
 let client;
 let db;
 
 try {
-  client = postgres(DATABASE_URL);
-  db = drizzle(client, { schema: { users, artists, categories, collections, artworks, cartItems, testimonials } });
+  if (DATABASE_URL) {
+    client = postgres(DATABASE_URL);
+    db = drizzle(client, { schema: { users, artists, categories, collections, artworks, cartItems, testimonials } });
+  }
 } catch (error) {
   console.error('Failed to connect to PostgreSQL:', error);
   // Will fall back to in-memory storage

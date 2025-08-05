@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "wouter";
 import { Gift } from "lucide-react";
-import { ArtworkWithDetails } from "../../../shared/schema";
+import { ArtworkWithDetails } from "@shared/schema";
 
 interface ArtworkCardProps {
   artwork: ArtworkWithDetails;

@@ -6,7 +6,14 @@ import { Button } from "../components/ui/button";
 import { Furniture3DViewer } from "../components/ui/furniture-3d-viewer";
 import { ArrowLeft, ShoppingCart, Heart, Share2 } from "lucide-react";
 
-const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
+interface ImageLoaderProps {
+  src: string;
+  alt: string;
+  aspectRatio?: "square" | "portrait" | "landscape" | "wide";
+  className?: string;
+}
+
+const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }: ImageLoaderProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const imageAspectRatios = {
@@ -16,7 +23,7 @@ const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
     wide: "16/9"
   };
 
-  const paddingBottom = imageAspectRatios[aspectRatio] || imageAspectRatios["square"];
+  const paddingBottom = imageAspectRatios[aspectRatio as keyof typeof imageAspectRatios] || imageAspectRatios["square"];
 
   return (
     <div className="relative w-full overflow-hidden">

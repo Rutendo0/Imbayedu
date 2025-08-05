@@ -4,7 +4,14 @@ import { Button } from "../components/ui/button";
 import { Link } from "wouter";
 import { Play } from "lucide-react";
 
-const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
+interface ImageLoaderProps {
+  src: string;
+  alt: string;
+  aspectRatio?: "square" | "portrait" | "landscape" | "wide";
+  className?: string;
+}
+
+const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }: ImageLoaderProps) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const imageAspectRatios = {
@@ -15,7 +22,7 @@ const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }) => {
   };
 
    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const paddingBottom = imageAspectRatios[aspectRatio] || imageAspectRatios["square"];
+  const paddingBottom = imageAspectRatios[aspectRatio as keyof typeof imageAspectRatios] || imageAspectRatios["square"];
 
   return (
     <div className="relative w-full overflow-hidden">
