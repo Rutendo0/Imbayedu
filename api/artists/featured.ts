@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-const artists = [
+const featuredArtists = [
   {
     id: 1,
     name: "Tunga Makoni",
@@ -27,21 +27,12 @@ const artists = [
     featured: true,
     location: "Mutare, Zimbabwe",
     specialties: ["Photography", "Documentary", "Urban Art"]
-  },
-  {
-    id: 4,
-    name: "Rumbi Katedza",
-    bio: "Sculptor working primarily with stone and metal, creating pieces that reflect Zimbabwe's cultural heritage and contemporary social issues.",
-    imageUrl: "/img/artwork/box.png",
-    featured: false,
-    location: "Gweru, Zimbabwe",
-    specialties: ["Sculpture", "Stone Carving", "Social Commentary"]
   }
 ];
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'GET') {
-    res.status(200).json(artists);
+    res.status(200).json(featuredArtists);
   } else {
     res.status(405).json({ message: 'Method not allowed' });
   }

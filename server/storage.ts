@@ -63,13 +63,18 @@ export interface IStorage {
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
-// For development, fall back to in-memory storage if database connection fails
-const DATABASE_URL = process.env.DATABASE_URL || "postgres://postgres:postgres@0.0.0.0:5432/artgallery";
+// Database connection - prioritize Vercel environment variables
+const DATABASE_URL = 
+  process.env.POSTGRES_URL ||           // Vercel Postgres
+  process.env.DATABASE_URL ||           // Custom or local
+  "postgres://postgres:postgres@0.0.0.0:5432/artgallery"; // Fallback
+
 let client;
 let db;
 
 try {
   if (DATABASE_URL) {
+    console.log('Connecting to database...', DATABASE_URL.split('@')[0] + '@[HIDDEN]');
     client = postgres(DATABASE_URL);
     db = drizzle(client, { schema: { users, artists, categories, collections, artworks, cartItems, testimonials } });
   }
