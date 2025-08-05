@@ -35,12 +35,12 @@ const publicPath = process.env.NODE_ENV === "production"
 // Update static file serving section in index.ts
 if (process.env.NODE_ENV === "production") {
   // Serve static assets from dist/public in production
-  app.use('/assets', express.static(path.join(__dirname, '../dist/public/assets'), {
+  app.use('/assets', express.static(path.join(__dirname, '../public/assets'), {
   maxAge: '1d',
   etag: true,
   lastModified: true
 }));
-  app.use(express.static(path.join(__dirname, '../dist/public')));
+  app.use(express.static(path.join(__dirname, '../public')));
 } else {
   // Serve static assets from client/dist/assets in development
   app.use('/assets', express.static(path.join(__dirname, '../../client/dist/assets')));
@@ -95,13 +95,16 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
 
   // Production static file serving
   if (process.env.NODE_ENV === "production") {
+    // Serve static files from the dist/public directory
+    app.use(express.static(path.join(__dirname, "../public")));
+
     app.get("*", (req, res, next) => {
       // Skip API routes
       if (req.path.startsWith('/api/')) {
         return next();
       }
       // For client-side routing, send the index.html
-      res.sendFile(path.join(__dirname, "../dist/public/index.html"));
+      res.sendFile(path.join(__dirname, "../public/index.html"));
     });
   }
 
