@@ -25,8 +25,8 @@ const ArtistDetail = () => {
     queryKey: ['artworks', id],
     queryFn: async () => {
       const response = await fetch('/api/artworks/details');
-      const data = await response.json();
-      return data.filter((artwork) => artwork.artistId === parseInt(id || "0", 10));
+      const data = (await response.json()) as ArtworkWithDetails[];
+      return data.filter((artwork: ArtworkWithDetails) => artwork.artistId === parseInt(id || "0", 10));
     },
     enabled: !!id
   });
