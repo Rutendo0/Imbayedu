@@ -16,16 +16,6 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/api/categories/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/categories/route.js"
-    ],
-    "/api/cart/1/details/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/cart/1/details/route.js"
-    ],
     "/api/artworks/details/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -36,35 +26,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/api/collections/route.js"
     ],
+    "/api/categories/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/categories/route.js"
+    ],
     "/api/artists/featured/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/artists/featured/route.js"
     ],
-    "/contact/page": [
+    "/api/cart/1/details/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/contact/page.js"
-    ],
-    "/about/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
-    ],
-    "/interior-design/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/interior-design/page.js"
-    ],
-    "/artists/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/artists/page.js"
-    ],
-    "/api/artists/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/artists/route.js"
+      "static/chunks/app/api/cart/1/details/route.js"
     ],
     "/artworks/page": [
       "static/chunks/webpack.js",

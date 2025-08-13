@@ -1,7 +1,9 @@
 {
-  "/interior-design/page": "app/interior-design/page.js",
-  "/artworks/page": "app/artworks/page.js",
-  "/artists/page": "app/artists/page.js",
+  "/api/artworks/details/route": "app/api/artworks/details/route.js",
+  "/api/collections/route": "app/api/collections/route.js",
+  "/api/categories/route": "app/api/categories/route.js",
+  "/api/artists/featured/route": "app/api/artists/featured/route.js",
+  "/api/cart/1/details/route": "app/api/cart/1/details/route.js",
   "/page": "app/page.js",
-  "/about/page": "app/about/page.js"
+  "/artworks/page": "app/artworks/page.js"
 }
