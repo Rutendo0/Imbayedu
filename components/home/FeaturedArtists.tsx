@@ -51,9 +51,14 @@ const FeaturedArtists = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-          {artists.map((artist) => (
-            <ArtistCard key={artist.id} artist={artist} />
-          ))}
+          {artists
+            .filter((artist, index, self) => 
+              index === self.findIndex(a => a.id === artist.id)
+            )
+            .map((artist) => (
+              <ArtistCard key={artist.id} artist={artist} />
+            ))
+          }
         </div>
 
         <div className="mt-12 text-center">

@@ -51,9 +51,14 @@ When you collect from Imba Yedu, you take home more than a piece of art. You bec
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-              {artists.map((artist) => (
-                <ArtistCard key={artist.id} artist={artist} />
-              ))}
+              {artists
+                .filter((artist, index, self) => 
+                  index === self.findIndex(a => a.id === artist.id)
+                )
+                .map((artist) => (
+                  <ArtistCard key={artist.id} artist={artist} />
+                ))
+              }
             </div>
           )}
         </div>
