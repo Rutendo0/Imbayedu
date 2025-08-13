@@ -18,6 +18,7 @@ export async function GET() {
       }
     }
 
+    console.log('Returning', artworks?.length || 0, 'artworks from API')
     return NextResponse.json(artworks)
   } catch {
     return NextResponse.json({ message: 'Failed to fetch artworks with details' }, { status: 500 })

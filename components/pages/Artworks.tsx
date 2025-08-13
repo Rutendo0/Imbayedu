@@ -81,6 +81,10 @@ const Artworks = () => {
     return artwork.categoryId.toString() === selectedCategory;
   }) || [];
 
+  console.log('Total artworks:', artworks?.length);
+  console.log('Filtered artworks:', filteredArtworks.length);
+  console.log('Selected category:', selectedCategory);
+
   const sortedArtworks = [...filteredArtworks].sort((a, b) => {
     if (sortOrder === "latest") {
       return (b.createdAt ? new Date(b.createdAt).getTime() : 0) - (a.createdAt ? new Date(a.createdAt).getTime() : 0);
