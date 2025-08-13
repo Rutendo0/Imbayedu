@@ -1,6 +1,5 @@
 {
-  "/api/cart/1/details/route": "app/api/cart/1/details/route.js",
   "/api/artists/route": "app/api/artists/route.js",
-  "/about/page": "app/about/page.js",
+  "/api/cart/1/details/route": "app/api/cart/1/details/route.js",
   "/artists/page": "app/artists/page.js"
 }
