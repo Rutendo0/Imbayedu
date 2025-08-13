@@ -43,12 +43,11 @@ const FeaturedCollections = () => {
     return null;
   }
 
-  // Update collection images to use your artwork
-  const collectionImages = [
-    "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.01.jpeg",
-    "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02 (2).jpeg",
-    "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg"
-  ];
+  // Use images from the collection data and de-duplicate by id
+  const uniqueCollections = Array.from(
+    new Map(collections.map((c) => [c.id, c])).values()
+  );
+  const fallbackImage = "/img/artwork/artist.png"; // shown if a collection has no image
 
   return (
     <section className="py-20 bg-white">
@@ -68,11 +67,11 @@ const FeaturedCollections = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {collections.map((collection, index) => (
+          {uniqueCollections.map((collection) => (
             <Link key={collection.id} href={`/artworks?collection=${collection.id}`}>
               <div className="group relative overflow-hidden rounded-md shadow-md transition duration-300 hover:shadow-xl h-96">
                 <img 
-                  src={collectionImages[index] || collection.imageUrl} 
+                  src={collection.imageUrl || fallbackImage} 
                   alt={collection.name} 
                   className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                 />
