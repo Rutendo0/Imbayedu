@@ -1,4 +1,6 @@
 {
   "/api/artworks/details/route": "app/api/artworks/details/route.js",
-  "/api/categories/route": "app/api/categories/route.js"
+  "/api/artworks/[id]/route": "app/api/artworks/[id]/route.js",
+  "/artworks/page": "app/artworks/page.js",
+  "/artworks/[id]/page": "app/artworks/[id]/page.js"
 }
