@@ -1,6 +1,6 @@
 {
-  "/api/artworks/details/route": "app/api/artworks/details/route.js",
-  "/api/artworks/[id]/route": "app/api/artworks/[id]/route.js",
-  "/artworks/page": "app/artworks/page.js",
-  "/artworks/[id]/page": "app/artworks/[id]/page.js"
+  "/api/cart/1/details/route": "app/api/cart/1/details/route.js",
+  "/api/artists/route": "app/api/artists/route.js",
+  "/about/page": "app/about/page.js",
+  "/artists/page": "app/artists/page.js"
 }

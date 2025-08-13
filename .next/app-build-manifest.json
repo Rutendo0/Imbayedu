@@ -11,40 +11,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/artworks/page": [
+    "/about/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/artworks/page.js"
-    ],
-    "/api/admin/seed/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/admin/seed/route.js"
-    ],
-    "/api/artworks/details/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/artworks/details/route.js"
-    ],
-    "/api/categories/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/categories/route.js"
+      "static/chunks/app/about/page.js"
     ],
     "/api/cart/1/details/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/cart/1/details/route.js"
     ],
-    "/artworks/[id]/page": [
+    "/artists/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/artworks/[id]/page.js"
+      "static/chunks/app/artists/page.js"
     ],
-    "/api/artworks/[id]/route": [
+    "/api/artists/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/artworks/[id]/route.js"
+      "static/chunks/app/api/artists/route.js"
     ]
   }
 }
