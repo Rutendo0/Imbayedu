@@ -1,8 +1,8 @@
 {
   "version": 1,
   "functions": {
-    "/api/artists/[id]": {},
     "/api/cart/[id]": {},
-    "/api/collections/[id]": {}
+    "/api/collections/[id]": {},
+    "/api/artists/[id]": {}
   }
 }
