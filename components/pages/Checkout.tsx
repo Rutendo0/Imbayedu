@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -52,7 +52,7 @@ const checkoutFormSchema = z.object({
 type CheckoutFormValues = z.infer<typeof checkoutFormSchema>;
 
 const Checkout = () => {
-  const [, setLocation] = useLocation();
+  const router = useRouter();
   const { cartItemsWithDetails, clearCart } = useCart();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,10 +60,11 @@ const Checkout = () => {
   const [orderId, setOrderId] = useState("");
 
   // Redirect to cart if cart is empty
-  if (cartItemsWithDetails.length === 0 && !orderComplete) {
-    setLocation("/cart");
-    return null;
-  }
+  useEffect(() => {
+    if (cartItemsWithDetails.length === 0 && !orderComplete) {
+      router.push('/cart')
+    }
+  }, [cartItemsWithDetails.length, orderComplete, router])
 
   const subtotal = useMemo(() => {
     return cartItemsWithDetails.reduce(
@@ -117,11 +118,7 @@ const Checkout = () => {
   if (orderComplete) {
     return (
       <>
-        <Helmet>
-          <title>Order Confirmation | Imbayedu Art Collective</title>
-          <meta name="description" content="Thank you for your order! Your purchase from Imbayedu Art Collective has been received and is being processed." />
-        </Helmet>
-        
+        {/* SEO head tags typically handled in server components or layout */}
         <div className="pt-24 md:pt-32">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="max-w-2xl mx-auto text-center">
@@ -169,11 +166,7 @@ const Checkout = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Checkout | Imbayedu Art Collective</title>
-        <meta name="description" content="Complete your purchase at Imbayedu Art Collective. Secure checkout for your selected artworks." />
-      </Helmet>
-      
+      {/* SEO head tags are typically handled in server components or layout */}
       <div className="pt-24 md:pt-32">
         <div className="bg-neutral-100 py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

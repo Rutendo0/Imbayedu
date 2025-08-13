@@ -7,12 +7,12 @@ export const revalidate = 0
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: { id?: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const idParam = params?.id
-    const id = Number.parseInt(String(idParam), 10)
-    if (!idParam || Number.isNaN(id)) {
+    const { id: idStr } = await params
+    const id = Number.parseInt(idStr, 10)
+    if (Number.isNaN(id)) {
       return NextResponse.json({ message: 'Invalid collection id' }, { status: 400 })
     }
     const collection = await storage.getCollection(id)

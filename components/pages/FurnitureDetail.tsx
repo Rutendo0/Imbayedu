@@ -46,7 +46,7 @@ const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }: Image
 };
 
 const FurnitureDetail = () => {
-  const { id } = useParams();
+  const { id } = useParams() as { id?: string | string[] };
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState("beige");
   const [selectedSize, setSelectedSize] = useState("queen");
@@ -542,7 +542,8 @@ const FurnitureDetail = () => {
   ];
     
 
-  const furniture = furnitureItems.find(item => item.id === parseInt(id || "0"));
+  const idStr = Array.isArray(id) ? id[0] : id
+  const furniture = furnitureItems.find(item => item.id === parseInt(String(idStr ?? "0"), 10));
 
   if (!furniture) {
     return (

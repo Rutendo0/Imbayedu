@@ -1,4 +1,4 @@
-// File: /home/runner/workspace/app/artists/page.tsx
+// File: C:\Users\KING BHURU\Desktop\Imbayedu-1\app\artists\page.tsx
 import * as entry from '../../../../app/artists/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -93,9 +93,11 @@ const ArtworkDetail = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
           <h2 className="text-2xl font-bold mb-4">Artwork not found</h2>
           <p className="mb-6">The artwork you're looking for doesn't exist or has been removed.</p>
-          <Button onClick={() => setLocation("/artworks")}>
-            Browse Artworks
-          </Button>
+          <Link href="/artworks">
+            <Button>
+              Browse Artworks
+            </Button>
+          </Link>
         </div>
       </div>
     );
@@ -103,10 +105,7 @@ const ArtworkDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{artwork.title} by {artwork.artist?.name || 'Unknown Artist'} | Imbayedu Art Collective</title>
-        <meta name="description" content={`${artwork.title} - ${artwork.description.substring(0, 150)}... - Art by ${artwork.artist?.name || 'Unknown Artist'} available at Imbayedu Art Collective.`} />
-      </Helmet>
+      {/* SEO head tags are typically set in server components or layout; omitting Helmet in client component */}
 
       <div className="pt-24 md:pt-32">
         {/* Breadcrumb navigation */}

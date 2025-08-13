@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Testimonial } from "../../../../shared/schema";
+import { Testimonial } from "@shared/schema";
 import { Star, StarHalf } from "lucide-react";
 
 const Testimonials = () => {

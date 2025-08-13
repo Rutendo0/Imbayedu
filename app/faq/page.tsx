@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import FAQ from '@/components/pages/FAQ'
 
 export const metadata: Metadata = {
@@ -7,5 +8,9 @@ export const metadata: Metadata = {
 }
 
 export default function FAQPage() {
-  return <FAQ />
+  return (
+    <Suspense fallback={<div className="pt-24 md:pt-32" />}> 
+      <FAQ />
+    </Suspense>
+  )
 }

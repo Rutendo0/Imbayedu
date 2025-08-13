@@ -1,8 +1,5 @@
-
 import React from 'react';
-import { Button } from '../ui/button';
 import { Calendar, Clock, MapPin, Users, Ticket } from 'lucide-react';
-import { Link } from 'wouter';
 
 const Exhibitions = () => {
   const exhibitions = [
