@@ -8,11 +8,11 @@ export const revalidate = 0
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id: idStr } = await params
-    const id = Number.parseInt(idStr, 10)
+    const idStr = params?.id
+    const id = Number.parseInt(idStr as string, 10)
     if (!idStr || Number.isNaN(id)) {
       return NextResponse.json({ message: 'Invalid artist id' }, { status: 400 })
     }
