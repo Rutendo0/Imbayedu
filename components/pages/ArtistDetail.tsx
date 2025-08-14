@@ -23,11 +23,11 @@ const ArtistDetail = () => {
   });
 
   const { data: artworks, isLoading: artworksLoading } = useQuery<ArtworkWithDetails[]>({
-    queryKey: ['artworks', id],
+    queryKey: ['artist-artworks-detailed', id],
     queryFn: async () => {
-      const response = await fetch('/api/artworks/details');
-      const data: ArtworkWithDetails[] = await response.json();
-      return data.filter((artwork: ArtworkWithDetails) => artwork.artistId === parseInt(String(id ?? "0"), 10));
+      const res = await fetch(`/api/artists/${id}/artworks`);
+      if (!res.ok) throw new Error('Failed to load artworks for artist');
+      return res.json();
     },
     enabled: !!id
   });
@@ -82,12 +82,7 @@ const ArtistDetail = () => {
 
   return (
     <>
-      {/* Replace Helmet with a simple head element for client component */}
-      <head>
-        <title>{`${artist.name} | Imbayedu Art Collective`}</title>
-        <meta name="description" content={`Discover art by ${artist.name}. ${artist.bio.substring(0, 150)}... View and purchase artwork at Imbayedu Art Collective.`} />
-      </head>
-
+      {/* Title and description are handled by app/artists/[id]/page.tsx metadata. Avoid using <head> inside client components to prevent hydration errors. */}
       <div className="pt-24 md:pt-32">
         <div className="bg-neutral-100 py-12">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -55,7 +55,53 @@ const FeaturedArtworks = () => {
     return artwork.categoryId.toString() === selectedCategory;
   }) || [];
 
-  const sortedArtworks = [...filteredArtworks].sort((a, b) => {
+  // De-duplicate artworks by ID (normalize to string) to avoid repeated tiles
+  const uniqueArtworks = Array.from(
+    new Map(filteredArtworks.map((a) => [String(a.id), a])).values()
+  );
+
+  // Further de-duplicate by normalized image URL to avoid same image with different titles
+  // Normalize by stripping domain, leading slashes, query/hash, and common duplicate suffixes and size hints
+  const normalizeImageKey = (raw?: string | null, id?: string | number) => {
+    const finalize = (filename: string) => {
+      const parts = filename.split('.');
+      const ext = parts.length > 1 ? `.${parts.pop()}` : '';
+      const base = parts.join('.');
+      // Remove common duplicate markers and size hints
+      const cleanedName = base
+        .replace(/(\s*\(\d+\)|[ _-]\d+|[ _-]copy)$/i, '') // (1), _1, -copy
+        .replace(/@[23]x$/i, '') // @2x, @3x
+        .replace(/[-_](\d{2,4}x\d{2,4})$/i, '') // -1080x1080, _800x600
+        .replace(/[-_](scaled|min|compressed|final|edit(?:ed)?)$/i, ''); // -scaled, -min, -compressed, -final, -edit/-edited
+      return `${cleanedName}${ext}`.toLowerCase();
+    };
+
+    if (!raw) return `noimg-${String(id ?? '')}`;
+    try {
+      const u = raw.startsWith('http') ? new URL(raw) : new URL(raw, 'https://dummy.base');
+      const pathname = u.pathname.replace(/^\/+/, '');
+      const filename = pathname.split('/').pop() || pathname;
+      return finalize(filename);
+    } catch {
+      const cleaned = raw.replace(/^\/+/, '').split('?')[0].split('#')[0];
+      const filename = cleaned.split('/').pop() || cleaned;
+      return finalize(filename);
+    }
+  };
+
+  // Build a stronger visual key: normalized image + artist id (if available)
+  const uniqueByImage = Array.from(
+    new Map(
+      uniqueArtworks.map((a) => {
+        const imgKey = normalizeImageKey(a.imageUrl, a.id);
+        const artistKey = String((a as any).artistId ?? a.artist?.id ?? '');
+        const visualKey = `${imgKey}::${artistKey}`;
+        return [visualKey, a] as const;
+      })
+    ).values()
+  );
+
+  const sortedArtworks = [...uniqueByImage].sort((a, b) => {
     if (sortOrder === "latest") {
       return (b.createdAt ? new Date(b.createdAt).getTime() : 0) - (a.createdAt ? new Date(a.createdAt).getTime() : 0);
     } else if (sortOrder === "price-asc") {
@@ -67,8 +113,8 @@ const FeaturedArtworks = () => {
   });
 
   // Get featured artworks first, then fill with other artworks
-  const featuredArtworks = sortedArtworks.filter(artwork => artwork.featured);
-  const nonFeaturedArtworks = sortedArtworks.filter(artwork => !artwork.featured);
+  const featuredArtworks = sortedArtworks.filter((artwork) => artwork.featured);
+  const nonFeaturedArtworks = sortedArtworks.filter((artwork) => !artwork.featured);
   
   // Combine featured and non-featured, ensuring we prioritize featured works
   const combinedArtworks = [...featuredArtworks, ...nonFeaturedArtworks].slice(0, 12);

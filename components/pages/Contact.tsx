@@ -16,7 +16,7 @@ import {
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
-import { useToast } from "../../hooks/use-toast";
+import { useToast } from "@/components/hooks/use-toast";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingCart, Search, Heart, Menu, X, User } from "lucide-react";
 import { Badge } from "../ui/badge";
-import { useCart } from "../../hooks/use-cart";
+import { useCart } from "../hooks/use-cart";
 
 const Header = () => {
   const pathname = usePathname();

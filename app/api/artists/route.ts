@@ -27,17 +27,33 @@ export async function GET() {
     }
   }
 
-  // Remove duplicates based on artist name and id before returning
-  const uniqueArtists = artists.reduce((acc: typeof artists, current) => {
-    const isDuplicate = acc.some(artist => 
-      artist.id === current.id || artist.name === current.name
-    )
-    if (!isDuplicate) {
-      acc.push(current)
-    }
-    return acc
-  }, [])
+  // Normalize name for deduplication (trim + lower)
+  const norm = (s: string) => s.trim().toLowerCase()
 
-  console.log('Returning', uniqueArtists?.length || 0, 'unique artists from API')
-  return NextResponse.json(uniqueArtists)
+  // Group by normalized name and pick a single representative
+  const byName = new Map<string, typeof artists[number][]>();
+  for (const a of artists) {
+    const k = norm(a.name)
+    const list = byName.get(k) || []
+    list.push(a)
+    byName.set(k, list)
+  }
+
+  // For each group, choose the artist id with most artworks; fallback to lowest id
+  const result: typeof artists = []
+  for (const [, group] of byName) {
+    try {
+      const counts = await Promise.all(group.map(g => storage.getArtworksByArtist(g.id).then(xs => ({ id: g.id, count: xs.length }))))
+      const best = counts.sort((a,b) => b.count - a.count || a.id - b.id)[0]
+      const chosen = group.find(g => g.id === best.id)!
+      result.push(chosen)
+    } catch {
+      // Fallback: pick lowest id if counting failed
+      const chosen = group.sort((a,b) => a.id - b.id)[0]
+      result.push(chosen)
+    }
+  }
+
+  console.log('Returning', result.length, 'deduped artists from API')
+  return NextResponse.json(result)
 }

@@ -45,7 +45,7 @@ export async function POST() {
     // Artists
     const artistsData: InsertArtist[] = [
       { name: 'Tunga Makoni', bio: 'Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.', imageUrl: '/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33_a0ff7f2e.jpg', featured: true, location: 'Harare, Zimbabwe' },
-      { name: "O'Neal Tanaka Maisiri ", bio: "O'Neal Tanaka Maisiri is a Zimbabwean artist whose abstract paintings reflect a deep connection to his environment. Using bold colors and dynamic compositions, he conveys the energy and emotions of his surroundings.", imageUrl: '/img/artwork/artist.png', featured: true, location: 'Harare, Zimbabwe' },
+      { name: "O'Neal Tanaka Maisiri", bio: "O'Neal Tanaka Maisiri is a Zimbabwean artist whose abstract paintings reflect a deep connection to his environment. Using bold colors and dynamic compositions, he conveys the energy and emotions of his surroundings.", imageUrl: '/img/artwork/artist.png', featured: true, location: 'Harare, Zimbabwe' },
     ]
 
     let tunga, oneal
@@ -53,10 +53,11 @@ export async function POST() {
       tunga = await storage.createArtist(artistsData[0])
       oneal = await storage.createArtist(artistsData[1])
     } catch {
-      // Artists might already exist, fetch them
+      // Artists might already exist, fetch them and match by normalized names
       const artists = await storage.getArtists()
-      tunga = artists.find(a => a.name === 'Tunga Makoni')!
-      oneal = artists.find(a => a.name === "O'Neal Tanaka Maisiri ")!
+      const norm = (s: string) => s.trim().toLowerCase()
+      tunga = artists.find(a => norm(a.name) === norm('Tunga Makoni'))!
+      oneal = artists.find(a => norm(a.name) === norm("O'Neal Tanaka Maisiri"))!
     }
 
     // All artworks from comprehensive list
@@ -108,10 +109,17 @@ export async function POST() {
     const existingArtworks = await storage.getArtworks()
     const existingTitles = new Set(existingArtworks.map(a => a.title))
     let createdCount = 0
+    let skipped = 0
+    const failures: { title: string; error: string }[] = []
+
     for (const aw of artworksData) {
-      if (existingTitles.has(aw.title)) continue
-      await storage.createArtwork(aw)
-      createdCount++
+      if (existingTitles.has(aw.title)) { skipped++; continue }
+      try {
+        await storage.createArtwork(aw)
+        createdCount++
+      } catch (e) {
+        failures.push({ title: aw.title, error: (e as Error)?.message || String(e) })
+      }
     }
 
     // Testimonials
@@ -127,10 +135,17 @@ export async function POST() {
     return NextResponse.json({ 
       message: 'Database seeded successfully', 
       artworksCreated: createdCount,
-      totalArtworks: artworksData.length
+      artworksSkipped: skipped,
+      totalArtworks: artworksData.length,
+      failures
     })
   } catch (error) {
     console.error('Seeding error:', error)
     return NextResponse.json({ message: 'Failed to seed database', error: String(error) }, { status: 500 })
   }
+}
+
+// Convenience: allow GET to trigger seeding in dev
+export async function GET() {
+  return POST()
 }

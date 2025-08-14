@@ -3,8 +3,31 @@ import { Testimonial } from "@shared/schema";
 import { Star, StarHalf } from "lucide-react";
 
 const Testimonials = () => {
+  const fetchFeaturedTestimonials = async (): Promise<Testimonial[]> => {
+    const res = await fetch('/api/testimonials/featured', { cache: 'no-store' });
+    if (!res.ok) throw new Error('Failed to load featured testimonials');
+    return res.json();
+  };
+
   const { data: testimonials, isLoading, error } = useQuery<Testimonial[]>({
     queryKey: ['/api/testimonials/featured'],
+    queryFn: fetchFeaturedTestimonials,
+    staleTime: 300000,
+    refetchOnWindowFocus: false,
+    // Stronger de-duplication: always use composite content key
+    // This collapses duplicates even if IDs differ across items
+    select: (data) => {
+      if (!Array.isArray(data)) return [];
+      const makeKey = (t: Testimonial) => `${(t.name || '').trim().toLowerCase()}|${(t.location || '').trim().toLowerCase()}|${(t.comment || '').replace(/\s+/g, ' ').trim().toLowerCase()}|${t.rating ?? ''}`;
+      const map = new Map<string, Testimonial>();
+      for (const t of data) {
+        const compositeKey = makeKey(t);
+        if (!map.has(compositeKey)) {
+          map.set(compositeKey, t);
+        }
+      }
+      return Array.from(map.values());
+    },
   });
 
   if (isLoading) {

@@ -1,11 +1,4 @@
-import {
-  users,
-  artists,
-  categories,
-  collections,
-  artworks,
-  cartItems,
-  testimonials,
+import {users, artists,categories,collections,artworks,cartItems,testimonials,
   type InsertUser,
   type User,
   type InsertArtist,
