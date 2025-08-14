@@ -6,8 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
-import { useCart } from "../../hooks/use-cart";
-import { useToast } from "../../hooks/use-toast";
+import { useCart } from "../hooks/use-cart";
+import { useToast } from "../hooks/use-toast";
 import { 
   Form, 
   FormControl, 
@@ -27,7 +27,7 @@ import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
-import { formatCurrency } from "../../lib/utils";
+import { formatCurrency } from "@/lib/utils";
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 

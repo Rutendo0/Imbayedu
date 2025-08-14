@@ -6,9 +6,9 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArtworkWithDetails } from "@shared/schema";
 import { Button } from "../ui/button";
-import { useCart } from "../../hooks/use-cart";
-import { useToast } from "../../hooks/use-toast";
-import { formatCurrency } from "../../lib/utils";
+import { useCart } from "../hooks/use-cart";
+import { useToast } from "../hooks/use-toast";
+import { formatCurrency } from "@/lib/utils";
 import { Heart, Share2, Gift, Plus, Minus } from "lucide-react";
 
 const ArtworkDetail = () => {

@@ -1,4 +1,4 @@
-import { useCart } from "@/hooks/use-cart";
+import { useCart } from "@/components/hooks/use-cart";
 import { CartItemWithDetails } from "@shared/schema";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";

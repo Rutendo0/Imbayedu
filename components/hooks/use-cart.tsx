@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "../hooks/use-toast";
+import { useToast } from "./use-toast";
 import { InsertCartItem, CartItemWithDetails } from "@shared/schema";
 import { isDev } from '@/lib/config';
 
