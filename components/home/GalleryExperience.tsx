@@ -39,7 +39,7 @@ const GalleryExperience = () => {
           
           <div className="grid grid-cols-2 gap-4">
             <img 
-              src="/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg" 
+              src="/img/artwork/box.png" 
               alt="Imbayedu Artwork Display" 
               className="w-full h-64 object-cover rounded-md shadow-md"
             />

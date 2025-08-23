@@ -123,6 +123,36 @@ const InteriorDesign = () => {
       title: "Bedroom ",
       description: "The light and radiance of the room "
     },
+      {
+      image: "/img/artwork/inte4.jpeg",
+      title: "Art And Design ",
+      description: "The fusion of art and design "
+    },
+      {
+      image: "/img/artwork/inte3.jpeg",
+      title: "Office Space ",
+      description: "The balance of light and work "
+    },
+      {
+      image: "/img/artwork/inte2.jpeg",
+      title: "Lounge Space ",
+      description: "The light and radiance of the room "
+    },
+      {
+      image: "/img/artwork/inte6.jpeg",
+      title: "Cozy Corner ",
+      description: "Where comfort meets style "
+    },
+      {
+      image: "/img/artwork/inte5.jpeg",
+      title: " Artistic Vibes ",
+      description: "Nurturing creativity through design "
+    },
+      {
+      image: "/img/artwork/ine7.jpeg",
+      title: "Warm Artistry ",
+      description: "Living spaces inspired by art "
+    },
    
   ];
 

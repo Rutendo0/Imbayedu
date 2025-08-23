@@ -394,13 +394,13 @@ class InMemoryStorage implements IStorage {
     this.createCollection({
       name: "Cultural Portraits",
       description: "Celebrating African heritage and identity through vibrant expressions",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.03 (2).jpeg",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
       featured: true,
     });
     this.createCollection({
       name: "Mixed Media",
       description: "Contemporary techniques with traditional influences and textural exploration",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.04.jpeg",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.02.jpeg",
       featured: true,
     });
 
@@ -421,20 +421,6 @@ class InMemoryStorage implements IStorage {
     });
 
     // Artworks (34 items)
-    this.createArtwork({
-      title: "Family",
-      description: "A vibrant portrait the beauty of family relations.",
-      price: 0,
-      imageUrl: "/img/artwork/WhatsApp Image 2025-06-24 at 04.32.13.jpg",
-      categoryId: 1,
-      collectionId: 2,
-      dimensions: "90 x 120 cm",
-      medium: "Acrylic on canvas",
-      year: "2024",
-      inStock: true,
-      featured: true,
-      artistId: 1,
-    });
     this.createArtwork({
       title: "Blending Colours",
       description: "A vibrant portrait.",
@@ -458,20 +444,6 @@ class InMemoryStorage implements IStorage {
       collectionId: 2,
       dimensions: "90 x 120 cm",
       medium: "Acrylic on canvas",
-      year: "2024",
-      inStock: true,
-      featured: true,
-      artistId: 2,
-    });
-    this.createArtwork({
-      title: "Sunset Reflections",
-      description: "A captivating landscape depicting the warm hues of an African sunset reflecting over water.",
-      price: 300,
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.27.23.jpeg",
-      categoryId: 1,
-      collectionId: 1,
-      dimensions: "80 x 100 cm",
-      medium: "Oil on canvas",
       year: "2024",
       inStock: true,
       featured: true,
