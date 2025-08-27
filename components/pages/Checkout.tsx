@@ -507,7 +507,9 @@ const Checkout = () => {
                       />
                       <div className="flex-1">
                         <h4 className="text-sm font-medium text-neutral-900">{item.artwork.title}</h4>
-                        <p className="text-xs text-neutral-500">Artist: {item.artwork.artist.name}</p>
+                        <p className="text-xs text-neutral-500">
+                          Artist: {item.artwork.artist ? item.artwork.artist.name : (item.artwork.price === 0 ? 'Gift to Community' : 'Unknown Artist')}
+                        </p>
                         <div className="flex justify-between mt-1">
                           <span className="text-xs text-neutral-700">Qty: {item.quantity}</span>
                           <span className="text-sm font-medium">{formatCurrency(item.artwork.price * item.quantity)}</span>

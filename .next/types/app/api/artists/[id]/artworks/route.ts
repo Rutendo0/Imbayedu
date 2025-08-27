@@ -1,4 +1,4 @@
-// File: C:\Users\user\Desktop\Imbayedu\app\api\artists\[id]\artworks\route.ts
+// File: C:\Users\user\OneDrive\Desktop\Imbayedu\app\api\artists\[id]\artworks\route.ts
 import * as entry from '../../../../../../../app/api/artists/[id]/artworks/route.js'
 import type { NextRequest } from 'next/server.js'
 

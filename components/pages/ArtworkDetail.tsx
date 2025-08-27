@@ -194,7 +194,9 @@ const ArtworkDetail = () => {
                     {artwork.artist.name}
                   </Link>
                 ) : (
-                  <span className="text-lg text-neutral-700">Unknown Artist</span>
+                  <span className="text-lg text-neutral-700">
+                    {artwork.price === 0 ? 'Gift to Community' : 'Unknown Artist'}
+                  </span>
                 )}
                 {artwork.artist?.location && (
                   <>
@@ -299,7 +301,7 @@ const ArtworkDetail = () => {
                 <div className="bg-white p-6 border border-gray-100 rounded-md">
                   <div className="flex items-center gap-4 mb-4">
                     <img 
-                      src={artwork.artist.imageUrl ? `/${artwork.artist.imageUrl}` : "https://via.placeholder.com/56x56?text=Artist"} 
+                      src={artwork.artist.imageUrl?.startsWith('/') ? artwork.artist.imageUrl : `/${artwork.artist.imageUrl}`} 
                       alt={artwork.artist.name} 
                       className="w-14 h-14 object-cover rounded-full"
                       onError={(e) => {
@@ -333,7 +335,7 @@ const ArtworkDetail = () => {
               <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
                 <div className="md:col-span-1">
                   <img 
-                    src={artwork.artist.imageUrl ? `/${artwork.artist.imageUrl}` : "https://via.placeholder.com/300x300?text=Artist"} 
+                    src={artwork.artist.imageUrl?.startsWith('/') ? artwork.artist.imageUrl : `/${artwork.artist.imageUrl}`} 
                     alt={artwork.artist.name} 
                     className="w-full aspect-square object-cover rounded-md mb-4"
                     onError={(e) => {

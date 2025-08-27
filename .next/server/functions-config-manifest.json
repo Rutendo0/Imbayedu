@@ -1,8 +1,10 @@
 {
   "version": 1,
   "functions": {
+    "/api/admin/fix-tunga": {},
     "/api/artists/[id]": {},
     "/api/artists/[id]/artworks": {},
+    "/api/artists": {},
     "/api/artists/featured": {},
     "/api/cart/[id]": {},
     "/api/collections/[id]": {}

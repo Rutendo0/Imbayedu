@@ -72,7 +72,7 @@ export const artworks = pgTable("artworks", {
   description: text("description").notNull(),
   price: doublePrecision("price").notNull(),
   imageUrl: text("image_url").notNull(),
-  artistId: integer("artist_id").notNull(),
+  artistId: integer("artist_id"),
   categoryId: integer("category_id").notNull(),
   collectionId: integer("collection_id"),
   dimensions: text("dimensions"),

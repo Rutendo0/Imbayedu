@@ -48,7 +48,7 @@ const InteriorDesign = () => {
     {
       title: "Residential Design",
       description: "Crafting bespoke living spaces that reflect your personality. From luxurious penthouses to cozy family homes, we create environments that inspire.",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06 (1).jpeg",
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (5).jpeg",
     },
     {
       title: "Art Curation",
@@ -58,13 +58,13 @@ const InteriorDesign = () => {
     {
       title: "Custom Furniture",
       description: "Bespoke furniture design that combines functionality with artistry, creating unique pieces that complement your space.",
-      imageUrl: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.06.jpeg"
+      imageUrl: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.46 (1).jpeg"
     }
   ];
 
   const projectGallery = [
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-15 at 09.30.08 (2).jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.48.jpeg",
       title: "Marbella Villa",
       description: "The light and comfort of a Mediterranean villa"
     },
@@ -94,7 +94,7 @@ const InteriorDesign = () => {
       description: "Luxurious living with curated art collection"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.44.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (3).jpeg",
       title: "Residential Villa",
       description: "Luxurious living with curated art collection"
     },
@@ -104,14 +104,14 @@ const InteriorDesign = () => {
       description: "Luxurious living with curated art collection"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.46.jpeg",
-      title: "Residential Villa",
-      description: "Luxurious living with curated art collection"
+      image: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14.jpeg",
+      title: "Contemporary Design",
+      description: "Modern interior with artistic elements"
     },
     {
-      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.48.jpeg",
-      title: "Luxurious Space",
-      description: "Luxurious feel with curated art collection"
+      image: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13 (4).jpeg",
+      title: "Elegant Space",
+      description: "Sophisticated design with curated art"
     },
      {
       image: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.31.jpg",
@@ -144,14 +144,24 @@ const InteriorDesign = () => {
       description: "Where comfort meets style "
     },
       {
-      image: "/img/artwork/inte5.jpeg",
-      title: " Artistic Vibes ",
-      description: "Nurturing creativity through design "
+      image: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.13 (3).jpeg",
+      title: "Artistic Vibes",
+      description: "Nurturing creativity through design"
     },
       {
-      image: "/img/artwork/ine7.jpeg",
+      image: "/img/artwork/WhatsApp Image 2025-05-21 at 15.52.14 (1).jpeg",
       title: "Warm Artistry ",
       description: "Living spaces inspired by art "
+    },
+    {
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.43 (1).jpeg",
+      title: "Luxury Interior",
+      description: "Premium design with attention to detail"
+    },
+    {
+      image: "/img/artwork/WhatsApp Image 2025-05-22 at 11.04.44.jpeg",
+      title: "Modern Living",
+      description: "Contemporary style meets comfort"
     },
    
   ];
@@ -179,7 +189,7 @@ const InteriorDesign = () => {
 
       <div className="relative">
         <div className="absolute inset-0 bg-black/50 z-10"></div>
-        <div className="relative h-[90vh] bg-cover bg-center" style={{ backgroundImage: `url('/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33.jpg')` }}>
+        <div className="relative h-[90vh] bg-cover bg-center" style={{ backgroundImage: `url('/img/artwork/WhatsApp Image 2025-05-22 at 11.04.43.jpeg')` }}>
           <div className="absolute inset-0 flex items-center justify-center z-20">
             <div className="text-center text-white px-4">
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-['Playfair_Display'] font-bold mb-6">

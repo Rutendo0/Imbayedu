@@ -8,46 +8,10 @@ import { Button } from "../ui/button";
 import { Furniture3DViewer } from "../ui/furniture-3d-viewer";
 import { ArrowLeft, ShoppingCart, Heart, Share2 } from "lucide-react";
 
-interface ImageLoaderProps {
-  src: string;
-  alt: string;
-  aspectRatio?: "square" | "portrait" | "landscape" | "wide";
-  className?: string;
-}
-
-const ImageLoader = ({ src, alt, aspectRatio = "square", className = "" }: ImageLoaderProps) => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const imageAspectRatios = {
-    square: "1/1",
-    portrait: "3/4",
-    landscape: "4/3",
-    wide: "16/9"
-  };
-
-  const paddingBottom = imageAspectRatios[aspectRatio as keyof typeof imageAspectRatios] || imageAspectRatios["square"];
-
-  return (
-    <div className="relative w-full overflow-hidden">
-      <div style={{ paddingBottom: `calc(100% / (${paddingBottom}))` }}></div>
-      {isLoading && (
-        <div className="absolute inset-0 bg-neutral-200 animate-pulse"></div>
-      )}
-      <img
-        src={src}
-        alt={alt}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-          isLoading ? "opacity-0" : "opacity-100"
-        } ${className}`}
-        onLoad={() => setIsLoading(false)}
-      />
-    </div>
-  );
-};
+// Removed unused ImageLoader interface and component
 
 const FurnitureDetail = () => {
   const { id } = useParams() as { id?: string | string[] };
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState("beige");
   const [selectedSize, setSelectedSize] = useState("queen");
 
@@ -538,6 +502,93 @@ const FurnitureDetail = () => {
         assembly: "Professional assembly included",
         care: "Clean wood with appropriate products, vacuum upholstery regularly"
       }
+    },
+    {
+      id: 22,
+      name: "Modern Dining Chair Set",
+      category: "seating",
+      price: 1200,
+      description: "Contemporary dining chairs with clean lines and premium upholstery",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.03 (2).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.03 (3).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.02.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.02 (3).jpg"
+      ],
+      dimensions: "45cm W x 50cm D x 85cm H",
+      material: "Premium upholstery, solid wood frame",
+      colors: ["Natural", "Gray", "Black"],
+      inStock: true,
+      featured: false,
+      details: {
+        weight: "8kg per chair",
+        assembly: "Minimal assembly required",
+        care: "Vacuum regularly, spot clean as needed"
+      }
+    },
+    {
+      id: 23,
+      name: "Executive Dining Table",
+      category: "tables",
+      price: 3800,
+      description: "Sophisticated dining table with rich wood finish and brass details",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.01.jpg"
+      ],
+      dimensions: "240cm L x 100cm W x 75cm H",
+      material: "Premium wood, brass accents",
+      colors: ["Natural Wood", "Dark Walnut"],
+      inStock: true,
+      featured: true,
+      details: {
+        weight: "95kg",
+        assembly: "Professional assembly included",
+        care: "Clean with wood-specific products, use coasters"
+      }
+    },
+    {
+      id: 24,
+      name: "Contemporary Stools",
+      category: "seating",
+      price: 850,
+      description: "Modern stools with adjustable height and swivel function",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.04.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.04 (3).jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.05.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.05 (2).jpg"
+      ],
+      dimensions: "40cm W x 40cm D x 85-110cm H",
+      material: "Steel frame, premium upholstery",
+      colors: ["Black", "Gray", "White"],
+      inStock: true,
+      featured: false,
+      details: {
+        weight: "12kg per stool",
+        assembly: "Minimal assembly required",
+        care: "Wipe clean with damp cloth"
+      }
+    },
+    {
+      id: 25,
+      name: "Outdoor Patio Set",
+      category: "outdoor",
+      price: 2400,
+      description: "Weather-resistant patio furniture set with cushions",
+      images: [
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.03.jpg",
+        "/img/furniture/WhatsApp Image 2025-07-03 at 08.30.04 (2).jpg"
+      ],
+      dimensions: "Various sizes included",
+      material: "Weather-resistant materials, outdoor cushions",
+      colors: ["Natural", "Gray", "Navy"],
+      inStock: true,
+      featured: false,
+      details: {
+        weight: "Various weights",
+        assembly: "Professional assembly recommended",
+        care: "Weather-resistant, store cushions when not in use"
+      }
     }
   ];
     
@@ -558,13 +609,7 @@ const FurnitureDetail = () => {
     );
   }
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % furniture.images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + furniture.images.length) % furniture.images.length);
-  };
+  // Image navigation functions removed as they're handled by the Furniture3DViewer component
 
   return (
     <>

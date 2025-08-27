@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import Image from "next/image";
 import { Artist } from "@shared/schema";
 
 interface ArtistCardProps {
@@ -9,11 +10,16 @@ interface ArtistCardProps {
 export function ArtistCard({ artist }: ArtistCardProps) {
   return (
     <div className="flex flex-col items-center">
-      <img 
-        src={artist.imageUrl} 
-        alt={artist.name} 
-        className="w-40 h-40 object-cover rounded-full mb-6 shadow-md"
-      />
+      <div className="w-40 h-40 relative mb-6 shadow-md rounded-full overflow-hidden">
+        <Image 
+          src={artist.imageUrl} 
+          alt={artist.name} 
+          fill
+          className="object-cover"
+          sizes="160px"
+          priority={artist.featured || false}
+        />
+      </div>
       <h3 className="text-xl font-['Playfair_Display'] font-semibold text-neutral-900 mb-2">{artist.name}</h3>
       <p className="text-neutral-600 text-center mb-4 line-clamp-3">{artist.bio}</p>
       <Link 

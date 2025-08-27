@@ -39,7 +39,9 @@ export function CartItem({ item }: CartItemProps) {
       </div>
       <div className="flex-grow">
         <h3 className="text-lg font-medium mb-1">{artwork.title}</h3>
-        <p className="text-neutral-600 text-sm mb-2">By {artwork.artist.name}</p>
+        <p className="text-neutral-600 text-sm mb-2">
+          By {artwork.artist ? artwork.artist.name : (artwork.price === 0 ? 'Gift to Community' : 'Unknown Artist')}
+        </p>
         <p className="text-[#D3A265] font-semibold">{formatCurrency(artwork.price)}</p>
       </div>
       <div className="flex items-center mt-4 sm:mt-0">

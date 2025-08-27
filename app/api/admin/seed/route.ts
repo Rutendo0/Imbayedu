@@ -44,7 +44,7 @@ export async function POST() {
 
     // Artists
     const artistsData: InsertArtist[] = [
-      { name: 'Tunga Makoni', bio: 'Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.', imageUrl: '/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33_a0ff7f2e.jpg', featured: true, location: 'Harare, Zimbabwe' },
+      { name: 'Tunga Makoni', bio: 'Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.', imageUrl: '/img/artwork/Tunga.jpg?v=' + Date.now(), featured: true, location: 'Harare, Zimbabwe' },
       { name: "O'Neal Tanaka Maisiri", bio: "O'Neal Tanaka Maisiri is a Zimbabwean artist whose abstract paintings reflect a deep connection to his environment. Using bold colors and dynamic compositions, he conveys the energy and emotions of his surroundings.", imageUrl: '/img/artwork/artist.png', featured: true, location: 'Harare, Zimbabwe' },
     ]
 
@@ -62,7 +62,7 @@ export async function POST() {
 
     // All artworks from comprehensive list
     const artworksData: InsertArtwork[] = [
-      { title: 'Family', description: 'A vibrant portrait the beauty of family relations.', price: 0, imageUrl: '/img/artwork/WhatsApp Image 2025-06-24 at 04.32.13.jpg', categoryId: catPaintings.id, collectionId: collCultural.id, dimensions: '90 x 120 cm', medium: 'Acrylic on canvas', year: '2024', inStock: true, featured: true, artistId: tunga.id },
+      { title: 'Family', description: 'A vibrant portrait the beauty of family relations.', price: 0, imageUrl: '/img/artwork/WhatsApp Image 2025-06-24 at 04.32.13.jpg', categoryId: catPaintings.id, collectionId: collCultural.id, dimensions: '90 x 120 cm', medium: 'Acrylic on canvas', year: '2024', inStock: true, featured: true, artistId: null },
       { title: 'Blending Colours', description: 'A vibrant portrait.', price: 279, imageUrl: '/img/artwork/WhatsApp Image 2025-06-24 at 07.18.28.jpg', categoryId: catPaintings.id, collectionId: collCultural.id, dimensions: '90 x 120 cm', medium: 'Acrylic on canvas', year: '2024', inStock: true, featured: true, artistId: tunga.id },
       { title: 'Abstract Spirit', description: 'A vibrant portrait celebrating African heritage with bold colors and expressive brushwork.', price: 250, imageUrl: '/img/artwork/WhatsApp Image 2025-05-15 at 09.27.21.jpeg', categoryId: catPaintings.id, collectionId: collCultural.id, dimensions: '90 x 120 cm', medium: 'Acrylic on canvas', year: '2024', inStock: false, featured: true, artistId: oneal.id },
       { title: 'Nature\'s Harmony', description: 'An exploration of natural forms and patterns through a rich tapestry of colors and textures.', price: 500, imageUrl: '/img/artwork/WhatsApp Image 2025-05-15 at 09.27.24.jpeg', categoryId: catPaintings.id, collectionId: collAbstract.id, dimensions: '70 x 90 cm', medium: 'Mixed media on canvas', year: '2023', inStock: false, featured: true, artistId: oneal.id },

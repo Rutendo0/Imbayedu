@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server'
 import { storage } from '@/lib/storage'
 
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function GET() {
   let artists = await storage.getArtists()
 
@@ -10,7 +14,7 @@ export async function GET() {
       await storage.createArtist({
         name: "Tunga Makoni",
         bio: "Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.",
-        imageUrl: "/img/artwork/WhatsApp Image 2025-06-10 at 07.59.33_a0ff7f2e.jpg",
+        imageUrl: "/img/artwork/Tunga.jpg?v=" + Date.now(),
         featured: true,
         location: "Harare, Zimbabwe",
       })

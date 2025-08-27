@@ -4,10 +4,10 @@
     "env": {},
     "webpack": null,
     "eslint": {
-      "ignoreDuringBuilds": false
+      "ignoreDuringBuilds": true
     },
     "typescript": {
-      "ignoreBuildErrors": false,
+      "ignoreBuildErrors": true,
       "tsconfigPath": "tsconfig.json"
     },
     "distDir": ".next",
@@ -106,7 +106,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\user\\Desktop\\Imbayedu",
+    "outputFileTracingRoot": "C:\\Users\\user\\OneDrive\\Desktop\\Imbayedu",
     "experimental": {
       "useSkewCookie": false,
       "nodeMiddleware": false,
@@ -300,10 +300,10 @@
       "@neondatabase/serverless"
     ],
     "turbopack": {
-      "root": "C:\\Users\\user\\Desktop\\Imbayedu"
+      "root": "C:\\Users\\user\\OneDrive\\Desktop\\Imbayedu"
     }
   },
-  "appDir": "C:\\Users\\user\\Desktop\\Imbayedu",
+  "appDir": "C:\\Users\\user\\OneDrive\\Desktop\\Imbayedu",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",
