@@ -10,12 +10,14 @@ import { useCart } from "../hooks/use-cart";
 import { useToast } from "../hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
 import { Heart, Share2, Gift, Plus, Minus } from "lucide-react";
+import { useWishlist } from "../hooks/use-wishlist";
 
 const ArtworkDetail = () => {
   const { id } = useParams();
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useCart();
   const { toast } = useToast();
+  const { addItem: addWishItem } = useWishlist();
 
   const { data: artwork, isLoading, error } = useQuery<ArtworkWithDetails>({
     queryKey: ['artwork', id],
@@ -50,7 +52,7 @@ const ArtworkDetail = () => {
 
   const handleAddToWishlist = () => {
     if (!artwork) return;
-
+    addWishItem({ artworkId: artwork.id, userId: 1 });
     toast({
       title: "Added to wishlist",
       description: `${artwork.title} has been added to your wishlist.`,

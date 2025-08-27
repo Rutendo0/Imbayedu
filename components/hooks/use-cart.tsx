@@ -126,7 +126,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const clearCart = async () => {
     try {
       setIsLoading(true);
-      await apiRequest("DELETE", `${API_URL}/api/cart/user/${userId}`);
+      await apiRequest("DELETE", `${API_URL}/api/cart?userId=${userId}`);
       setCartItems([]);
     } catch (error) {
       console.error("Error clearing cart:", error);

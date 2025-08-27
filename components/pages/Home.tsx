@@ -8,6 +8,7 @@ import GalleryExperience from "../home/GalleryExperience";
 import Testimonials from "../home/Testimonials";
 import Newsletter from "../home/Newsletter";
 import Exhibitions from "../home/Exhibitions";
+import GiftHighlight from "../home/GiftHighlight";
 import FAQ from "./FAQ"
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
       <FeaturedArtworks />
       <FeaturedArtists />
       <GalleryExperience />
+      <GiftHighlight />
       <Exhibitions />
       <Testimonials />
       <FAQ />

@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
         style={{ 
-          backgroundImage: "url('/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (2).jpeg')",
+          backgroundImage: "url('/img/artwork/WhatsApp Image 2025-05-15 at 09.30.05 (1).jpeg')",
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}

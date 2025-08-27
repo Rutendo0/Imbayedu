@@ -122,10 +122,26 @@ const FeaturedCollections = () => {
 
   const fallbackImage = "/img/artwork/artist.png"; // shown if a collection has no image
 
-  const visibleCollections = uniqueByImage.filter((c) => {
-    const key = normalizeImageKey(c.imageUrl);
-    return !failedImages.has(key);
-  });
+  // Pin the requested three collections by name (avoids URL variant mismatches)
+  const pinnedNames = [
+    "Abstract Expressions",
+    "Cultural Portraits",
+    "Mixed Media",
+  ];
+  const pinned: Collection[] = [];
+  for (const name of pinnedNames) {
+    const found = uniqueByImage.find((c) => c.name === name);
+    if (found && !pinned.includes(found)) pinned.push(found);
+  }
+  const remaining = uniqueByImage.filter((c) => !pinned.includes(c));
+  const orderedByPinned = [...pinned, ...remaining];
+
+  const visibleCollections = orderedByPinned
+    .filter((c) => {
+      const key = normalizeImageKey(c.imageUrl);
+      return !failedImages.has(key);
+    })
+    .slice(0, 3);
 
   return (
     <section className="py-20 bg-white">

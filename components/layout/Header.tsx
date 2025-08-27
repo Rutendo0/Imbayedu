@@ -115,9 +115,9 @@ const Header = () => {
             <button className="text-neutral-900 hover:text-[#D3A265] hidden sm:block">
               <User size={20} />
             </button>
-            <button className="text-neutral-900 hover:text-[#D3A265] hidden sm:block">
+            <Link href="/wishlist" className="text-neutral-900 hover:text-[#D3A265] hidden sm:block">
               <Heart size={20} />
-            </button>
+            </Link>
             <Link href="/cart" className="text-neutral-900 hover:text-[#D3A265] relative">
               <ShoppingCart size={20} />
               {totalItems > 0 && (
