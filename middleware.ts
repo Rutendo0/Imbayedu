@@ -16,13 +16,9 @@ export function middleware(request: NextRequest) {
       if (isAdminApi) {
         return new NextResponse(JSON.stringify({ message: 'Unauthorized' }), { status: 401, headers: { 'Content-Type': 'application/json' } })
       }
-      // Allow the admin root page to render the login form
-      if (isAdminRoot) {
-        return NextResponse.next()
-      }
-      // For other admin pages, redirect to /admin (login)
+      // For all admin pages, redirect to /login
       const url = request.nextUrl.clone()
-      url.pathname = '/admin'
+      url.pathname = '/login'
       return NextResponse.redirect(url)
     }
   }

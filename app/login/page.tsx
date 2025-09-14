@@ -44,10 +44,10 @@ export default function LoginPage() {
       const res = await fetch('/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ identifier, password }) })
       if (!res.ok) throw new Error((await res.json()).message || 'Login failed')
       // ensure cookie applied, then redirect robustly
-      await new Promise((r)=>setTimeout(r, 80))
+      await new Promise((r)=>setTimeout(r, 200))
       router.push('/admin')
       // fallback: hard redirect if SPA navigation fails
-      setTimeout(()=>{ if (typeof window !== 'undefined') window.location.href = '/admin' }, 300)
+      setTimeout(()=>{ if (typeof window !== 'undefined') window.location.href = '/admin' }, 500)
     } catch (e:any) { setError(e.message) } finally { setBusy(false) }
   }
 

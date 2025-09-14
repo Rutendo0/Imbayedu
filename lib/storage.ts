@@ -519,7 +519,9 @@ class InMemoryStorage implements IStorage {
   private seeding = false;
 
   constructor() {
+    this.seedAdmin();
     this.seed();
+    this.seedOrders();
   }
 
   private seed() {
@@ -948,6 +950,45 @@ class InMemoryStorage implements IStorage {
   
   }
 
+  // Seed sample orders for dashboard
+  private seedOrders() {
+    if (this.orders.size > 0) return;
+    const artworks = Array.from(this.artworks.values());
+    const sampleArtworks = artworks.slice(0, 5); // Use first 5 artworks
+
+    // Create 3 sample paid orders
+    for (let i = 0; i < 3; i++) {
+      const orderId = this.orderId++;
+      const createdAt = new Date(Date.now() - (3 - i) * 24 * 60 * 60 * 1000); // Last 3 days
+      const total = sampleArtworks.reduce((sum, aw) => sum + aw.price, 0);
+      const order: Order = {
+        id: orderId,
+        userId: 1, // admin user
+        total,
+        status: 'paid',
+        paymentMethod: i % 2 === 0 ? 'credit-card' : 'paypal',
+        customerName: `Customer ${i + 1}`,
+        customerEmail: `customer${i + 1}@example.com`,
+        createdAt,
+      };
+      this.orders.set(orderId, order);
+
+      // Add items for each artwork
+      sampleArtworks.forEach((aw, idx) => {
+        const itemId = this.orderItemId++;
+        const item: OrderItem = {
+          id: itemId,
+          orderId,
+          artworkId: aw.id,
+          title: aw.title,
+          price: aw.price,
+          quantity: 1,
+        };
+        this.orderItems.set(itemId, item);
+      });
+    }
+  }
+
   // User methods
   async getUser(id: number) { return this.users.get(id); }
   async getUserByUsername(username: string) {
@@ -973,6 +1014,21 @@ class InMemoryStorage implements IStorage {
     return true
   }
 
+  // Seed admin user
+  private seedAdmin() {
+    if (this.users.size > 0) return;
+    const id = this.userId++;
+    const admin: User = {
+      id,
+      username: 'admin',
+      password: 'admin',
+      email: 'admin@example.com',
+      fullName: 'Admin User',
+      isAdmin: true,
+    };
+    this.users.set(id, admin);
+  }
+
   // Artist methods
   async getArtists() { return Array.from(this.artists.values()); }
   async getArtist(id: number) { return this.artists.get(id); }
@@ -991,6 +1047,25 @@ class InMemoryStorage implements IStorage {
     return artist;
   }
 
+  async updateArtist(id: number, patch: Partial<InsertArtist>) {
+    const artist = await this.getArtist(id);
+    if (!artist) return undefined;
+    const updated: Artist = {
+      ...artist,
+      name: patch.name ?? artist.name,
+      bio: patch.bio ?? artist.bio,
+      imageUrl: patch.imageUrl ?? artist.imageUrl,
+      featured: patch.featured ?? artist.featured,
+      location: patch.location ?? artist.location,
+    };
+    this.artists.set(id, updated);
+    return updated;
+  }
+
+  async deleteArtist(id: number) {
+    return this.artists.delete(id);
+  }
+
   // Category methods
   async getCategories() { return Array.from(this.categories.values()); }
   async getCategory(id: number) { return this.categories.get(id); }
@@ -999,6 +1074,22 @@ class InMemoryStorage implements IStorage {
     const category: Category = { id, name: insertCategory.name, description: insertCategory.description ?? null };
     this.categories.set(id, category);
     return category;
+  }
+
+  async updateCategory(id: number, patch: Partial<InsertCategory>) {
+    const category = await this.getCategory(id);
+    if (!category) return undefined;
+    const updated: Category = {
+      ...category,
+      name: patch.name ?? category.name,
+      description: patch.description ?? category.description,
+    };
+    this.categories.set(id, updated);
+    return updated;
+  }
+
+  async deleteCategory(id: number) {
+    return this.categories.delete(id);
   }
 
   // Collection methods
@@ -1016,6 +1107,24 @@ class InMemoryStorage implements IStorage {
     };
     this.collections.set(id, collection);
     return collection;
+  }
+
+  async updateCollection(id: number, patch: Partial<InsertCollection>) {
+    const collection = await this.getCollection(id);
+    if (!collection) return undefined;
+    const updated: Collection = {
+      ...collection,
+      name: patch.name ?? collection.name,
+      description: patch.description ?? collection.description,
+      imageUrl: patch.imageUrl ?? collection.imageUrl,
+      featured: patch.featured ?? collection.featured,
+    };
+    this.collections.set(id, updated);
+    return updated;
+  }
+
+  async deleteCollection(id: number) {
+    return this.collections.delete(id);
   }
 
   // Artwork methods
@@ -1065,6 +1174,32 @@ class InMemoryStorage implements IStorage {
     return artwork;
   }
 
+  async updateArtwork(id: number, patch: Partial<InsertArtwork>) {
+    const artwork = await this.getArtwork(id);
+    if (!artwork) return undefined;
+    const updated: Artwork = {
+      ...artwork,
+      title: patch.title ?? artwork.title,
+      description: patch.description ?? artwork.description,
+      price: patch.price ?? artwork.price,
+      imageUrl: patch.imageUrl ?? artwork.imageUrl,
+      artistId: patch.artistId ?? artwork.artistId,
+      categoryId: patch.categoryId ?? artwork.categoryId,
+      collectionId: patch.collectionId ?? artwork.collectionId,
+      dimensions: patch.dimensions ?? artwork.dimensions,
+      medium: patch.medium ?? artwork.medium,
+      year: patch.year ?? artwork.year,
+      inStock: patch.inStock ?? artwork.inStock,
+      featured: patch.featured ?? artwork.featured,
+    };
+    this.artworks.set(id, updated);
+    return updated;
+  }
+
+  async deleteArtwork(id: number) {
+    return this.artworks.delete(id);
+  }
+
   // Cart methods
   async getCartItems(userId: number) { return Array.from(this.cartItems.values()).filter(ci => ci.userId === userId); }
   async getCartItemsWithDetails(userId: number) {
@@ -1074,6 +1209,65 @@ class InMemoryStorage implements IStorage {
       return { ...ci, artwork: aw! } as CartItemWithDetails;
     }));
     return result;
+  }
+
+  // Orders methods
+  async getOrders() { return Array.from(this.orders.values()); }
+
+  async getRevenueByDay(days: number) {
+    const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
+    const all = await this.getOrders()
+    const map = new Map<string, number>()
+    for (const o of all) {
+      if (o.createdAt && o.createdAt >= since && o.status === 'paid') {
+        const key = o.createdAt.toISOString().slice(0, 10)
+        map.set(key, (map.get(key) || 0) + (o.total || 0))
+      }
+    }
+    return Array.from(map.entries()).sort((a,b)=>a[0].localeCompare(b[0])).map(([date,total])=>({date,total}))
+  }
+
+  async getTopArtworks(limit: number) {
+    const all = Array.from(this.orderItems.values())
+    const agg = new Map<string, { revenue: number; qty: number }>()
+    for (const i of all) {
+      const e = agg.get(i.title) || { revenue: 0, qty: 0 }
+      e.revenue += (i.price || 0) * (i.quantity || 1)
+      e.qty += (i.quantity || 1)
+      agg.set(i.title, e)
+    }
+    return Array.from(agg.entries())
+      .map(([title, v]) => ({ title, revenue: v.revenue, qty: v.qty }))
+      .sort((a, b) => b.revenue - a.revenue)
+      .slice(0, limit)
+  }
+
+  async createOrder(order: InsertOrder) {
+    const id = this.orderId++;
+    const newOrder: Order = {
+      id,
+      userId: 1, // default to admin user
+      total: order.total,
+      status: order.status ?? 'pending',
+      paymentMethod: order.paymentMethod,
+      createdAt: new Date(),
+    };
+    this.orders.set(id, newOrder);
+    return newOrder;
+  }
+
+  async addOrderItem(item: InsertOrderItem) {
+    const id = this.orderItemId++;
+    const newItem: OrderItem = {
+      id,
+      orderId: item.orderId,
+      artworkId: item.artworkId,
+      title: item.title,
+      price: item.price,
+      quantity: item.quantity ?? 1,
+    };
+    this.orderItems.set(id, newItem);
+    return newItem;
   }
   async getCartItem(id: number) { return this.cartItems.get(id); }
   async createCartItem(insertCartItem: InsertCartItem) {

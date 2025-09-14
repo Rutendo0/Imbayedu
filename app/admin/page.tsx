@@ -8,7 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, TableCaption } from '@/components/ui/table'
 import Link from 'next/link'
-import { Eye, EyeOff, Settings, UserPlus, Key, LogOut, Sun, Moon } from 'lucide-react'
+import { Settings, UserPlus, Key, LogOut, Sun, Moon } from 'lucide-react'
 import Image from 'next/image'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { cn } from '@/lib/utils'
@@ -77,12 +77,6 @@ function ChangePasswordForm() {
 
 export default function AdminPage() {
   const router = useRouter()
-  const [authed, setAuthed] = useState(false)
-  const [checking, setChecking] = useState(true)
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [showLoginPw, setShowLoginPw] = useState(false)
-  const [error, setError] = useState<string | null>(null)
   const [stats, setStats] = useState<any>(null)
   const [orders, setOrders] = useState<any[]>([])
   const [filter, setFilter] = useState<{ status: string; paymentMethod: string; days: number }>({ status: '', paymentMethod: '', days: 30 })
@@ -108,23 +102,23 @@ export default function AdminPage() {
     try { localStorage.setItem('theme', next) } catch {}
   }
 
+  // Fallback auth check and load stats
   useEffect(() => {
-    // Verify if already authenticated via cookie by calling a protected API
     fetch('/api/admin/dashboard')
       .then(async r => {
-        if (r.ok) {
-          const json = await r.json();
-          setStats(json)
-          setAuthed(true)
-        } else {
-          setAuthed(false)
+        if (!r.ok) {
+          router.push('/login')
+          return
         }
+        const json = await r.json()
+        setStats(json)
       })
-      .finally(()=> setChecking(false))
-  }, [])
+      .catch(() => router.push('/login'))
+  }, [router])
 
+  // Load orders when stats available
   useEffect(() => {
-    if (!authed) return
+    if (!stats) return
     const params = new URLSearchParams()
     if (filter.status) params.set('status', filter.status)
     if (filter.paymentMethod) params.set('paymentMethod', filter.paymentMethod)
@@ -133,75 +127,15 @@ export default function AdminPage() {
       .then(r=>r.json())
       .then(setOrders)
       .catch(()=>setOrders([]))
-  }, [authed, filter])
+  }, [stats, filter])
 
-  const login = async () => {
-    setError(null)
-    const res = await fetch('/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ identifier: username, password }) })
-    if (res.ok) {
-      // Mark authed and try to fetch stats. If cookie isn't applied yet, refresh.
-      setAuthed(true)
-      try {
-        // Tiny delay so Set-Cookie is applied before the next request
-        await new Promise((r) => setTimeout(r, 50))
-        const r = await fetch('/api/admin/dashboard')
-        if (r.ok) {
-          setStats(await r.json())
-        } else {
-          // Force refresh to ensure server reads latest cookies
-          router.refresh()
-        }
-      } catch {
-        router.refresh()
-      }
-    } else {
-      const msg = await res.json().catch(()=>({ message: 'Invalid credentials' }))
-      setError(msg?.message || 'Invalid credentials')
-    }
-  }
+
 
   const logout = async () => {
     await fetch('/api/auth/logout', { method: 'POST' })
-    setAuthed(false)
-    setStats(null)
+    router.push('/login')
   }
 
-  if (checking) return null
-
-  if (!authed) {
-    return (
-      <div className="min-h-screen flex items-center justify-center px-4 bg-white">
-        <Card className="w-full max-w-md p-8 border shadow-sm">
-          <div className="mb-6 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight">Admin</h1>
-            <p className="text-sm text-neutral-500 mt-1">Sign in to continue</p>
-          </div>
-          <div className="space-y-4">
-            <div>
-              <label className="text-sm text-neutral-700">Username</label>
-              <Input placeholder="admin" value={username} onChange={e=>setUsername(e.target.value)} />
-            </div>
-            <div>
-              <label className="text-sm text-neutral-700">Password</label>
-              <div className="relative">
-                <Input placeholder="••••••••" type={showLoginPw ? 'text' : 'password'} value={password} onChange={e=>setPassword(e.target.value)} />
-                <button
-                  type="button"
-                  onClick={()=>setShowLoginPw(s=>!s)}
-                  className="absolute inset-y-0 right-2 flex items-center text-neutral-500 hover:text-neutral-800"
-                  aria-label={showLoginPw ? 'Hide password' : 'Show password'}
-                >
-                  {showLoginPw ? <EyeOff size={18} /> : <Eye size={18} />}
-                </button>
-              </div>
-            </div>
-            {error && <div className="text-sm text-red-600">{error}</div>}
-            <Button className="w-full" onClick={login}>Login</Button>
-          </div>
-        </Card>
-      </div>
-    )
-  }
 
   return (
 <div className="min-h-screen bg-white">
