@@ -6,6 +6,8 @@ import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { CartProvider } from '@/components/hooks/use-cart'
 import { ThemeProvider } from 'next-themes'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
 
 // Create a client
 const queryClient = new QueryClient({
@@ -16,6 +18,8 @@ const queryClient = new QueryClient({
   },
 })
 
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '')
+
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
@@ -25,12 +29,14 @@ export function Providers({ children }: { children: React.ReactNode }) {
       disableTransitionOnChange
     >
       <QueryClientProvider client={queryClient}>
-        <CartProvider>
-          <TooltipProvider>
-            {children}
-            <Toaster />
-          </TooltipProvider>
-        </CartProvider>
+        <Elements stripe={stripePromise}>
+          <CartProvider>
+            <TooltipProvider>
+              {children}
+              <Toaster />
+            </TooltipProvider>
+          </CartProvider>
+        </Elements>
       </QueryClientProvider>
     </ThemeProvider>
   )

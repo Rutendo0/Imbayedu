@@ -16,6 +16,7 @@ import {users, artists,categories,collections,artworks,cartItems,testimonials,
   type ArtworkWithDetails,
   type CartItemWithDetails,
 } from "@shared/schema";
+import { orders, orderItems, type InsertOrder, type Order, type InsertOrderItem, type OrderItem } from "@shared/orders";
 import { drizzle } from "drizzle-orm/postgres-js";
 import { and, eq } from "drizzle-orm";
 import postgres from "postgres";
@@ -28,23 +29,30 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  updateUserPassword(id: number, password: string): Promise<boolean>;
 
   // Artist methods
   getArtists(): Promise<Artist[]>;
   getArtist(id: number): Promise<Artist | undefined>;
   getFeaturedArtists(): Promise<Artist[]>;
   createArtist(artist: InsertArtist): Promise<Artist>;
+  updateArtist(id: number, patch: Partial<InsertArtist>): Promise<Artist | undefined>;
+  deleteArtist(id: number): Promise<boolean>;
 
   // Category methods
   getCategories(): Promise<Category[]>;
   getCategory(id: number): Promise<Category | undefined>;
   createCategory(category: InsertCategory): Promise<Category>;
+  updateCategory(id: number, patch: Partial<InsertCategory>): Promise<Category | undefined>;
+  deleteCategory(id: number): Promise<boolean>;
 
   // Collection methods
   getCollections(): Promise<Collection[]>;
   getCollection(id: number): Promise<Collection | undefined>;
   getFeaturedCollections(): Promise<Collection[]>;
   createCollection(collection: InsertCollection): Promise<Collection>;
+  updateCollection(id: number, patch: Partial<InsertCollection>): Promise<Collection | undefined>;
+  deleteCollection(id: number): Promise<boolean>;
 
   // Artwork methods
   getArtworks(): Promise<Artwork[]>;
@@ -56,6 +64,8 @@ export interface IStorage {
   getArtworksByCollection(collectionId: number): Promise<Artwork[]>;
   getFeaturedArtworks(): Promise<Artwork[]>;
   createArtwork(artwork: InsertArtwork): Promise<Artwork>;
+  updateArtwork(id: number, patch: Partial<InsertArtwork>): Promise<Artwork | undefined>;
+  deleteArtwork(id: number): Promise<boolean>;
 
   // Cart methods
   getCartItems(userId: number): Promise<CartItem[]>;
@@ -70,6 +80,13 @@ export interface IStorage {
   getTestimonials(): Promise<Testimonial[]>;
   getFeaturedTestimonials(): Promise<Testimonial[]>;
   createTestimonial(testimonial: InsertTestimonial): Promise<Testimonial>;
+
+  // Orders
+  createOrder(order: InsertOrder): Promise<Order>;
+  addOrderItem(item: InsertOrderItem): Promise<OrderItem>;
+  getOrders(): Promise<Order[]>;
+  getRevenueByDay(days: number): Promise<{ date: string; total: number }[]>;
+  getTopArtworks(limit: number): Promise<{ title: string; revenue: number; qty: number }[]>;
 }
 
 // ---------------------------------------------
@@ -101,7 +118,7 @@ try {
     // Use a very small pool; suitable for serverless or dev
     sql = postgres(DATABASE_URL, { max: 1 });
     db = drizzle(sql, {
-      schema: { users, artists, categories, collections, artworks, cartItems, testimonials },
+      schema: { users, artists, categories, collections, artworks, cartItems, testimonials, orders, orderItems },
     });
   }
 } catch (error) {
@@ -114,6 +131,46 @@ try {
 // Postgres-backed storage
 // ---------------------------------------------
 class PostgresStorage implements IStorage {
+  // Orders
+  async createOrder(order: InsertOrder) {
+    const [row] = await db!.insert(orders).values(order).returning()
+    return row!
+  }
+  async addOrderItem(item: InsertOrderItem) {
+    const [row] = await db!.insert(orderItems).values(item).returning()
+    return row!
+  }
+  async getOrders() {
+    return await db!.select().from(orders)
+  }
+  async getRevenueByDay(days: number) {
+    // Simple grouping in JS since we don’t have SQL helpers wired for date trunc
+    const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
+    const all = await this.getOrders()
+    const map = new Map<string, number>()
+    for (const o of all) {
+      if (o.createdAt && o.createdAt >= since && o.status === 'paid') {
+        const key = o.createdAt.toISOString().slice(0, 10)
+        map.set(key, (map.get(key) || 0) + (o.total || 0))
+      }
+    }
+    return Array.from(map.entries()).sort((a,b)=>a[0].localeCompare(b[0])).map(([date,total])=>({date,total}))
+  }
+  async getTopArtworks(limit: number) {
+    // Sum by title from orderItems
+    const all = await db!.select().from(orderItems)
+    const agg = new Map<string, { revenue: number; qty: number }>()
+    for (const i of all) {
+      const e = agg.get(i.title) || { revenue: 0, qty: 0 }
+      e.revenue += (i.price || 0) * (i.quantity || 1)
+      e.qty += (i.quantity || 1)
+      agg.set(i.title, e)
+    }
+    return Array.from(agg.entries())
+      .map(([title, v]) => ({ title, revenue: v.revenue, qty: v.qty }))
+      .sort((a, b) => b.revenue - a.revenue)
+      .slice(0, limit)
+  }
   // User methods
   async getUser(id: number) {
     const rows = await db!.select().from(users).where(eq(users.id, id));
@@ -135,6 +192,14 @@ class PostgresStorage implements IStorage {
       })
       .returning();
     return row!;
+  }
+  async updateUserPassword(id: number, password: string) {
+    const [row] = await db!
+      .update(users)
+      .set({ password })
+      .where(eq(users.id, id))
+      .returning()
+    return !!row
   }
 
   // Artist methods
@@ -161,6 +226,24 @@ class PostgresStorage implements IStorage {
       .returning();
     return row!;
   }
+  async updateArtist(id: number, patch: Partial<InsertArtist>) {
+    const [row] = await db!
+      .update(artists)
+      .set({
+        name: patch.name,
+        bio: patch.bio,
+        imageUrl: patch.imageUrl,
+        featured: patch.featured,
+        location: patch.location,
+      })
+      .where(eq(artists.id, id))
+      .returning();
+    return row;
+  }
+  async deleteArtist(id: number) {
+    const rows = await db!.delete(artists).where(eq(artists.id, id)).returning();
+    return rows.length > 0;
+  }
 
   // Category methods
   async getCategories() {
@@ -179,6 +262,21 @@ class PostgresStorage implements IStorage {
       })
       .returning();
     return row!;
+  }
+  async updateCategory(id: number, patch: Partial<InsertCategory>) {
+    const [row] = await db!
+      .update(categories)
+      .set({
+        name: patch.name,
+        description: patch.description,
+      })
+      .where(eq(categories.id, id))
+      .returning();
+    return row;
+  }
+  async deleteCategory(id: number) {
+    const rows = await db!.delete(categories).where(eq(categories.id, id)).returning();
+    return rows.length > 0;
   }
 
   // Collection methods
@@ -203,6 +301,23 @@ class PostgresStorage implements IStorage {
       })
       .returning();
     return row!;
+  }
+  async updateCollection(id: number, patch: Partial<InsertCollection>) {
+    const [row] = await db!
+      .update(collections)
+      .set({
+        name: patch.name,
+        description: patch.description,
+        imageUrl: patch.imageUrl,
+        featured: patch.featured,
+      })
+      .where(eq(collections.id, id))
+      .returning();
+    return row;
+  }
+  async deleteCollection(id: number) {
+    const rows = await db!.delete(collections).where(eq(collections.id, id)).returning();
+    return rows.length > 0;
   }
 
   // Artwork methods
@@ -264,6 +379,31 @@ class PostgresStorage implements IStorage {
       })
       .returning();
     return row!;
+  }
+  async updateArtwork(id: number, patch: Partial<InsertArtwork>) {
+    const [row] = await db!
+      .update(artworks)
+      .set({
+        title: patch.title,
+        description: patch.description,
+        price: patch.price,
+        imageUrl: patch.imageUrl,
+        artistId: patch.artistId,
+        categoryId: patch.categoryId,
+        collectionId: patch.collectionId,
+        dimensions: patch.dimensions,
+        medium: patch.medium,
+        year: patch.year,
+        inStock: patch.inStock,
+        featured: patch.featured,
+      })
+      .where(eq(artworks.id, id))
+      .returning();
+    return row;
+  }
+  async deleteArtwork(id: number) {
+    const rows = await db!.delete(artworks).where(eq(artworks.id, id)).returning();
+    return rows.length > 0;
   }
 
   // Cart methods
@@ -363,6 +503,9 @@ class InMemoryStorage implements IStorage {
   private artworks = new Map<number, Artwork>();
   private cartItems = new Map<number, CartItem>();
   private testimonials = new Map<number, Testimonial>();
+  // Orders in-memory
+  private orders = new Map<number, Order>();
+  private orderItems = new Map<number, OrderItem>();
 
   private userId = 1;
   private artistId = 1;
@@ -371,6 +514,8 @@ class InMemoryStorage implements IStorage {
   private artworkId = 1;
   private cartItemId = 1;
   private testimonialId = 1;
+  private orderId = 1;
+  private orderItemId = 1;
   private seeding = false;
 
   constructor() {
@@ -820,6 +965,12 @@ class InMemoryStorage implements IStorage {
     };
     this.users.set(id, user);
     return user;
+  }
+  async updateUserPassword(id: number, password: string) {
+    const u = await this.getUser(id)
+    if (!u) return false
+    this.users.set(id, { ...u, password })
+    return true
   }
 
   // Artist methods

@@ -30,6 +30,7 @@ import { Separator } from "../ui/separator";
 import { formatCurrency } from "@/lib/utils";
 import Link from "next/link";
 import { CheckCircle } from "lucide-react";
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 
 const checkoutFormSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
@@ -74,9 +75,14 @@ const Checkout = () => {
   }, [cartItemsWithDetails]);
 
   // Fixed shipping fee
-  const shippingFee = 150;
-  
-  const total = subtotal + shippingFee;
+  // Delivery choice: collect or deliver (extra fee)
+  const [deliveryMethod, setDeliveryMethod] = useState<'collect' | 'deliver'>('collect')
+  const [deliveryFeeCents, setDeliveryFeeCents] = useState<number>(0)
+  const deliveryFee = (deliveryFeeCents || 0) / 100
+  const total = subtotal + deliveryFee;
+
+  const stripe = useStripe()
+  const elements = useElements()
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),
@@ -101,18 +107,142 @@ const Checkout = () => {
 
   const selectedPaymentMethod = form.watch("paymentMethod");
 
-  const handleSubmit = (data: CheckoutFormValues) => {
-    setIsSubmitting(true);
-    
-    // Simulate checkout process
-    setTimeout(() => {
-      // Generate a random order ID
-      const randomOrderId = "ORDER-" + Math.floor(100000 + Math.random() * 900000);
-      setOrderId(randomOrderId);
-      setOrderComplete(true);
-      clearCart();
-      setIsSubmitting(false);
-    }, 2000);
+  const handleSubmit = async (data: CheckoutFormValues) => {
+    try {
+      setIsSubmitting(true)
+
+      const method = data.paymentMethod
+      if (method !== 'credit-card') {
+        // Persist a pending order with line items
+        try {
+          const orderRes = await fetch('/api/admin/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              status: method === 'bank-transfer' ? 'pending' : 'pending',
+              paymentMethod: method,
+              customerName: `${data.firstName} ${data.lastName}`,
+              customerEmail: data.email,
+              total,
+              items: cartItemsWithDetails.map(ci => ({
+                artworkId: ci.artwork.id,
+                title: ci.artwork.title,
+                price: ci.artwork.price,
+                quantity: ci.quantity,
+              })),
+            }),
+          })
+          if (!orderRes.ok) throw new Error(await orderRes.text())
+          const created = await orderRes.json()
+          setOrderId(`ORDER-${created.id}`)
+        } catch (e) {
+          console.error(e)
+        }
+        setOrderComplete(true)
+        await clearCart()
+        toast({
+          title: 'Order placed',
+          description: method === 'bank-transfer' ? 'Please complete the bank transfer using the provided details.' : 'We will follow up to complete your PayPal payment.',
+        })
+        return
+      }
+
+      // Create a PaymentIntent on the server
+      // Normalize country to ISO2 for Stripe
+      const toISO2 = (val?: string) => {
+        switch ((val || '').toLowerCase()) {
+          case 'usa':
+          case 'us':
+          case 'united states':
+            return 'US'
+          case 'uk':
+          case 'gb':
+          case 'united kingdom':
+            return 'GB'
+          case 'canada':
+          case 'ca':
+            return 'CA'
+          case 'australia':
+          case 'au':
+            return 'AU'
+          case 'south-africa':
+          case 'south africa':
+          case 'za':
+            return 'ZA'
+          default:
+            return 'US'
+        }
+      }
+
+      const res = await fetch('/api/payments/create-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: 1, // guest checkout demo; replace with real user id when auth is ready
+          deliveryMethod,
+          deliveryFeeCents: deliveryMethod === 'deliver' ? deliveryFeeCents : 0,
+          shipping: {
+            firstName: data.firstName,
+            lastName: data.lastName,
+            email: data.email,
+            phone: data.phone,
+            address: data.address,
+            city: data.city,
+            state: data.state,
+            zipCode: data.zipCode,
+            country: toISO2(data.country),
+          },
+        }),
+      })
+
+      if (!res.ok) {
+        throw new Error(await res.text())
+      }
+      const { clientSecret } = await res.json()
+
+      if (!stripe || !elements) {
+        throw new Error('Stripe not initialized')
+      }
+
+      const card = elements.getElement(CardElement)
+      if (!card) throw new Error('Card element not found')
+
+      const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card,
+          billing_details: {
+            name: `${data.firstName} ${data.lastName}`,
+            email: data.email,
+            phone: data.phone,
+            address: {
+              line1: data.address,
+              city: data.city,
+              state: data.state,
+              postal_code: data.zipCode,
+              country: (data.country || 'US').toUpperCase(),
+            },
+          },
+        },
+      })
+
+      if (error || paymentIntent?.status !== 'succeeded') {
+        throw new Error(error?.message || 'Payment not completed')
+      }
+
+      const randomOrderId = "ORDER-" + Math.floor(100000 + Math.random() * 900000)
+      setOrderId(randomOrderId)
+      setOrderComplete(true)
+      await clearCart()
+    } catch (err) {
+      console.error(err)
+      toast({
+        title: 'Payment failed',
+        description: 'Please try again or use a different payment method.',
+        variant: 'destructive',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   };
 
   if (orderComplete) {
@@ -336,8 +466,47 @@ const Checkout = () => {
                   <Separator />
                   
                   <div>
-                    <h2 className="text-xl font-['Playfair_Display'] font-semibold mb-6">Payment Method</h2>
-                    
+                    <h2 className="text-xl font-['Playfair_Display'] font-semibold mb-6">Delivery & Payment</h2>
+
+                    {/* Delivery method choice */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                      <button
+                        type="button"
+                        onClick={() => { setDeliveryMethod('collect'); setDeliveryFeeCents(0) }}
+                        className={`border rounded-md p-4 text-left ${deliveryMethod==='collect' ? 'border-[#D3A265]' : 'border-neutral-200'}`}
+                      >
+                        <div className="font-medium">Collect in person</div>
+                        <div className="text-sm text-neutral-600">No delivery fee</div>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={async () => {
+                          setDeliveryMethod('deliver')
+                          try {
+                            // Get a base fee suggestion first
+                            const res = await fetch('/api/payments/calc-delivery', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                shipping: {
+                                  address: form.getValues('address'),
+                                  city: form.getValues('city'),
+                                  state: form.getValues('state'),
+                                  country: form.getValues('country'),
+                                },
+                              }),
+                            })
+                            const data = await res.json()
+                            setDeliveryFeeCents(data.feeCents || 0)
+                          } catch {}
+                        }}
+                        className={`border rounded-md p-4 text-left ${deliveryMethod==='deliver' ? 'border-[#D3A265]' : 'border-neutral-200'}`}
+                      >
+                        <div className="font-medium">Deliver to address</div>
+                        <div className="text-sm text-neutral-600">Calculated by distance (name your price)</div>
+                      </button>
+                    </div>
+
                     <FormField
                       control={form.control}
                       name="paymentMethod"
@@ -353,7 +522,7 @@ const Checkout = () => {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="credit-card">Credit Card</SelectItem>
+                              <SelectItem value="credit-card">Credit / Debit Card</SelectItem>
                               <SelectItem value="paypal">PayPal</SelectItem>
                               <SelectItem value="bank-transfer">Bank Transfer</SelectItem>
                             </SelectContent>
@@ -393,34 +562,11 @@ const Checkout = () => {
                           )}
                         />
                         
-                        <div className="grid grid-cols-2 gap-6">
-                          <FormField
-                            control={form.control}
-                            name="cardExpiry"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Expiration Date</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="MM/YY" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          
-                          <FormField
-                            control={form.control}
-                            name="cardCvc"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>CVC</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="CVC" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
+                        <div className="mt-2">
+                          <FormLabel>Card details</FormLabel>
+                          <div className="border rounded-md p-3 bg-white">
+                            <CardElement options={{ hidePostalCode: true }} />
+                          </div>
                         </div>
                       </div>
                     )}
@@ -524,10 +670,72 @@ const Checkout = () => {
                     <span className="text-neutral-600">Subtotal</span>
                     <span className="font-medium">{formatCurrency(subtotal)}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-neutral-600">Shipping</span>
-                    <span className="font-medium">{formatCurrency(shippingFee)}</span>
-                  </div>
+
+                  {deliveryMethod === 'deliver' && (
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-neutral-600">Suggested delivery fee</span>
+                        <span className="font-medium">{formatCurrency(deliveryFee)}</span>
+                      </div>
+
+                      {/* Offer UI */}
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="number"
+                          min={1}
+                          step={1}
+                          className="w-32 border rounded px-2 py-1 text-sm bg-white text-neutral-900"
+                          placeholder="Your offer ($)"
+                          onChange={(e) => {
+                            const dollars = Number(e.target.value)
+                            if (!Number.isNaN(dollars) && dollars >= 0) {
+                              // Store in cents temporarily (not yet accepted)
+                              // We'll call offer-delivery to accept/counter
+                            }
+                          }}
+                        />
+                        <button
+                          type="button"
+                          className="text-sm px-3 py-1 border rounded"
+                          onClick={async () => {
+                            const input = (document.querySelector('#offerInput') as HTMLInputElement) || null
+                            const dollars = input ? Number(input.value) : NaN
+                            if (!Number.isFinite(dollars) || dollars <= 0) return
+                            try {
+                              const res = await fetch('/api/payments/offer-delivery', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                  offeredFeeCents: Math.round(dollars * 100),
+                                  shipping: {
+                                    address: form.getValues('address'),
+                                    city: form.getValues('city'),
+                                    state: form.getValues('state'),
+                                    country: form.getValues('country'),
+                                  },
+                                }),
+                              })
+                              const data = await res.json()
+                              if (data.status === 'accepted') {
+                                setDeliveryFeeCents(data.acceptedFeeCents)
+                              } else if (data.status === 'counter') {
+                                setDeliveryFeeCents(data.counterFeeCents)
+                              }
+                            } catch {}
+                          }}
+                        >
+                          Offer
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {deliveryMethod === 'collect' && (
+                    <div className="flex justify-between">
+                      <span className="text-neutral-600">Delivery</span>
+                      <span className="font-medium">Free (Collect)</span>
+                    </div>
+                  )}
                 </div>
                 
                 <div className="flex justify-between pt-4 border-t border-gray-200 mb-4">

@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "./use-toast";

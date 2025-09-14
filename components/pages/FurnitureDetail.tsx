@@ -741,7 +741,7 @@ const FurnitureDetail = () => {
 
                 <div className="text-sm text-neutral-600 space-y-1">
                   <p>✓ {furniture.details.assembly}</p>
-                  <p>✓ Free shipping on orders over $1,000</p>
+
                   <p>✓ 30-day return policy</p>
                 </div>
               </div>

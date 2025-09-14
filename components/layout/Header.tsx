@@ -39,12 +39,7 @@ const Header = () => {
 
   return (
     <header className={`bg-white fixed w-full z-30 transition-shadow ${isScrolled ? 'shadow-md' : ''}`}>
-      {/* Top announcement bar */}
-      <div className="bg-[#F8F8F8] text-sm py-2">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
-          <p className="text-center text-neutral-600">Free shipping on orders over $500 • Artwork ships with Certificate of Authenticity</p>
-        </div>
-      </div>
+
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
@@ -112,9 +107,9 @@ const Header = () => {
             <button className="text-neutral-900 hover:text-[#D3A265] hidden sm:block">
               <Search size={20} />
             </button>
-            <button className="text-neutral-900 hover:text-[#D3A265] hidden sm:block">
+            <Link href="/login" className="text-neutral-900 hover:text-[#D3A265] hidden sm:block" aria-label="Account">
               <User size={20} />
-            </button>
+            </Link>
             <Link href="/wishlist" className="text-neutral-900 hover:text-[#D3A265] hidden sm:block">
               <Heart size={20} />
             </Link>
@@ -129,6 +124,7 @@ const Header = () => {
             <button 
               className="text-neutral-900 hover:text-[#D3A265] lg:hidden ml-2"
               onClick={toggleMenu}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

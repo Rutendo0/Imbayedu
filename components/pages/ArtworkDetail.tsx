@@ -9,7 +9,8 @@ import { Button } from "../ui/button";
 import { useCart } from "../hooks/use-cart";
 import { useToast } from "../hooks/use-toast";
 import { formatCurrency } from "@/lib/utils";
-import { Heart, Share2, Gift, Plus, Minus } from "lucide-react";
+import { Heart, Share2, Gift, Plus, Minus, Scan } from "lucide-react";
+import { ARWallViewer } from "@/components/ui/ar-wall-viewer";
 import { useWishlist } from "../hooks/use-wishlist";
 
 const ArtworkDetail = () => {
@@ -28,11 +29,9 @@ const ArtworkDetail = () => {
         throw new Error(`Failed to fetch artwork: ${response.statusText}`);
       }
       return response.json();
-
     },
-
-    retry: 3, // Number of retries
-  retryDelay: (attempt) => Math.min(attempt * 1000, 5000), // Exponential backoff
+    retry: 3,
+    retryDelay: (attempt) => Math.min(attempt * 1000, 5000),
   });
 
   const handleAddToCart = () => {
@@ -68,6 +67,8 @@ const ArtworkDetail = () => {
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
   };
+
+  const [arOpen, setArOpen] = useState(false);
 
   if (isLoading) {
     return (
@@ -279,14 +280,41 @@ const ArtworkDetail = () => {
                       <Heart size={18} className="mr-2" />
                       Add to Wishlist
                     </Button>
+                    <Button 
+                      variant="outline"
+                      className="border-neutral-900 text-neutral-900 hover:bg-neutral-100 px-8 py-6 h-auto rounded"
+                      onClick={() => setArOpen(true)}
+                    >
+                      <Scan size={18} className="mr-2" />
+                      View on wall (AR)
+                    </Button>
                   </div>
                 )}
 
                 <p className="text-sm text-neutral-500 italic mt-4">
                   This artwork ships with a certificate of authenticity.
-                  Free shipping on orders over $500.
                 </p>
               </div>
+
+              {/* AR Viewer Dialog */}
+              <ARWallViewer 
+                open={arOpen} 
+                onOpenChange={setArOpen} 
+                imageUrl={artwork.imageUrl?.startsWith('/') ? artwork.imageUrl : `/${artwork.imageUrl}`} 
+                initialWidthCm={60}
+                artworkId={String(artwork.id)}
+                aspectRatio={(() => {
+                  // Try to parse dimensions like "60 x 45 cm" to infer aspect ratio
+                  const d = artwork.dimensions || ''
+                  const m = d.match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+(?:\.\d+)?)/i)
+                  if (m) {
+                    const w = parseFloat(m[1])
+                    const h = parseFloat(m[2])
+                    if (w > 0 && h > 0) return h / w
+                  }
+                  return 0.75
+                })()}
+              />
 
               {/* Share */}
               <div className="flex items-center mb-10">

@@ -18,10 +18,8 @@ const Cart = () => {
     );
   }, [cartItemsWithDetails]);
 
-  // Fixed shipping fee - would be dynamic in a real implementation
-  const shippingFee = subtotal > 0 ? 150 : 0;
-  
-  const total = subtotal + shippingFee;
+  // Delivery fee is calculated at checkout; total here reflects subtotal only
+  const total = subtotal;
 
   if (cartItemsWithDetails.length === 0) {
     return (
@@ -107,8 +105,8 @@ const Cart = () => {
                     <span className="font-medium">{formatCurrency(subtotal)}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-neutral-600">Shipping</span>
-                    <span className="font-medium">{formatCurrency(shippingFee)}</span>
+                    <span className="text-neutral-600">Delivery</span>
+                    <span className="font-medium">Calculated at checkout</span>
                   </div>
                 </div>
                 
