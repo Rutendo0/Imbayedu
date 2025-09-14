@@ -15,7 +15,12 @@ export async function POST(req: NextRequest) {
     const envPass = process.env.ADMIN_PASS
     if (envUser && envPass && identifier === envUser && password === envPass) {
       const res = NextResponse.json({ id: 'env', username: envUser, isAdmin: true })
-      res.cookies.set('admin_user', 'envadmin', { httpOnly: true, sameSite: 'lax', path: '/' })
+      res.cookies.set('admin_user', 'envadmin', { 
+        httpOnly: true, 
+        sameSite: 'lax', 
+        path: '/',
+        secure: process.env.NODE_ENV === 'production'
+      })
       return res
     }
 
@@ -26,7 +31,12 @@ export async function POST(req: NextRequest) {
     }
 
     const res = NextResponse.json({ id: user.id, username: user.username, isAdmin: user.isAdmin })
-    res.cookies.set('admin_user', String(user.id), { httpOnly: true, sameSite: 'lax', path: '/' })
+    res.cookies.set('admin_user', String(user.id), { 
+      httpOnly: true, 
+      sameSite: 'lax', 
+      path: '/',
+      secure: process.env.NODE_ENV === 'production'
+    })
     return res
   } catch (e: any) {
     return NextResponse.json({ message: e?.message || 'Login failed' }, { status: 400 })

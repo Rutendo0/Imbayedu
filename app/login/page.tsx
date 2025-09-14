@@ -41,13 +41,27 @@ export default function LoginPage() {
   const doLogin = async () => {
     setError(null); setBusy(true)
     try {
-      const res = await fetch('/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ identifier, password }) })
+      const res = await fetch('/api/auth/login', { 
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify({ identifier, password }),
+        credentials: 'include' // Ensure cookies are included
+      })
       if (!res.ok) throw new Error((await res.json()).message || 'Login failed')
-      // ensure cookie applied, then redirect robustly
-      await new Promise((r)=>setTimeout(r, 200))
-      router.push('/admin')
-      // fallback: hard redirect if SPA navigation fails
-      setTimeout(()=>{ if (typeof window !== 'undefined') window.location.href = '/admin' }, 500)
+      
+      // Verify the login was successful by checking the response
+      const data = await res.json()
+      if (!data.isAdmin) {
+        throw new Error('Access denied. Admin privileges required.')
+      }
+      
+      // Wait a bit longer for cookie to be set and then use hard redirect
+      // This ensures the cookie is properly set before navigating
+      setTimeout(() => {
+        if (typeof window !== 'undefined') {
+          window.location.href = '/admin'
+        }
+      }, 100)
     } catch (e:any) { setError(e.message) } finally { setBusy(false) }
   }
 
@@ -82,11 +96,17 @@ export default function LoginPage() {
             <div>
               <label className="text-sm text-neutral-700">Password</label>
               <div className="relative">
-                <Input type={show ? 'text' : 'password'} value={password} onChange={e=>setPassword(e.target.value)} placeholder="••••••••" />
+                <Input 
+                  type={show ? 'text' : 'password'} 
+                  value={password} 
+                  onChange={e=>setPassword(e.target.value)} 
+                  placeholder="••••••••"
+                  className="pr-10"
+                />
                 <button
                   type="button"
                   onClick={() => setShow(s=>!s)}
-                  className="absolute inset-y-0 right-2 flex items-center text-neutral-500 hover:text-neutral-800"
+                  className="absolute inset-y-0 right-0 flex items-center justify-center w-10 h-full text-neutral-500 hover:text-neutral-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset rounded-r-md"
                   aria-label={show ? 'Hide password' : 'Show password'}
                 >
                   {show ? <EyeOff size={18} /> : <Eye size={18} />}

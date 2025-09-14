@@ -4,6 +4,7 @@ import { storage } from './storage'
 export async function requireAdmin() {
   const cookieStore = await cookies()
   const id = cookieStore.get('admin_user')?.value
+  
   if (!id) return null
 
   // Accept env-based admin cookie
@@ -14,7 +15,9 @@ export async function requireAdmin() {
   // Fall back to DB user
   const num = Number(id)
   if (!Number.isFinite(num)) return null
+  
   const user = await storage.getUser(num)
   if (!user || !user.isAdmin) return null
+  
   return user
 }
