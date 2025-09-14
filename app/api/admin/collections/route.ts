@@ -1,31 +1,43 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+import { requireAdmin } from '@/lib/auth'
 import { storage } from '@/lib/storage'
 
-import { requireAdmin } from '@/lib/auth'
+export async function GET() {
+  try {
+    const admin = await requireAdmin()
+    if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
 
-export async function POST(req: NextRequest) {
-  const admin = await requireAdmin()
-  if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
-  const body = await req.json()
-  const created = await storage.createCollection(body)
-  return NextResponse.json(created)
+    const collections = await storage.getCollections()
+    return NextResponse.json(collections)
+  } catch (error) {
+    console.error('Collections API error:', error)
+    return NextResponse.json({ message: 'Failed to fetch collections' }, { status: 500 })
+  }
 }
 
-export async function PATCH(req: NextRequest) {
-  const admin = await requireAdmin()
-  if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
-  const { id, ...patch } = await req.json()
-  if (!id) return NextResponse.json({ message: 'Missing id' }, { status: 400 })
-  const updated = await storage.updateCollection(Number(id), patch)
-  if (!updated) return NextResponse.json({ message: 'Not found' }, { status: 404 })
-  return NextResponse.json(updated)
-}
+export async function POST(request: Request) {
+  try {
+    const admin = await requireAdmin()
+    if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
 
-export async function DELETE(req: NextRequest) {
-  const admin = await requireAdmin()
-  if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
-  const { id } = await req.json()
-  if (!id) return NextResponse.json({ message: 'Missing id' }, { status: 400 })
-  const ok = await storage.deleteCollection(Number(id))
-  return NextResponse.json({ ok })
+    const body = await request.json()
+    const { name, description, imageUrl } = body
+
+    // Validate required fields
+    if (!name) {
+      return NextResponse.json({ message: 'Name is required' }, { status: 400 })
+    }
+
+    // Create collection
+    const collection = await storage.createCollection({
+      name,
+      description: description || '',
+      imageUrl: imageUrl || '/placeholder-collection.jpg'
+    })
+
+    return NextResponse.json(collection, { status: 201 })
+  } catch (error) {
+    console.error('Create collection error:', error)
+    return NextResponse.json({ message: 'Failed to create collection' }, { status: 500 })
+  }
 }

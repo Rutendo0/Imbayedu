@@ -1,31 +1,46 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+import { requireAdmin } from '@/lib/auth'
 import { storage } from '@/lib/storage'
 
-import { requireAdmin } from '@/lib/auth'
+export async function GET() {
+  try {
+    const admin = await requireAdmin()
+    if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
 
-export async function POST(req: NextRequest) {
-  const admin = await requireAdmin()
-  if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
-  const body = await req.json()
-  const created = await storage.createArtist(body)
-  return NextResponse.json(created)
+    const artists = await storage.getArtists()
+    return NextResponse.json(artists)
+  } catch (error) {
+    console.error('Artists API error:', error)
+    return NextResponse.json({ message: 'Failed to fetch artists' }, { status: 500 })
+  }
 }
 
-export async function PATCH(req: NextRequest) {
-  const admin = await requireAdmin()
-  if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
-  const { id, ...patch } = await req.json()
-  if (!id) return NextResponse.json({ message: 'Missing id' }, { status: 400 })
-  const updated = await storage.updateArtist(Number(id), patch)
-  if (!updated) return NextResponse.json({ message: 'Not found' }, { status: 404 })
-  return NextResponse.json(updated)
-}
+export async function POST(request: Request) {
+  try {
+    const admin = await requireAdmin()
+    if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
 
-export async function DELETE(req: NextRequest) {
-  const admin = await requireAdmin()
-  if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
-  const { id } = await req.json()
-  if (!id) return NextResponse.json({ message: 'Missing id' }, { status: 400 })
-  const ok = await storage.deleteArtist(Number(id))
-  return NextResponse.json({ ok })
+    const body = await request.json()
+    const { name, bio, imageUrl, website, socialMedia } = body
+
+    // Validate required fields
+    if (!name) {
+      return NextResponse.json({ message: 'Name is required' }, { status: 400 })
+    }
+
+    // Create artist
+    const artist = await storage.createArtist({
+      name,
+      bio: bio || '',
+      imageUrl: imageUrl || '/placeholder-artist.jpg',
+      website: website || null,
+      socialMedia: socialMedia || null,
+      isFeatured: false
+    })
+
+    return NextResponse.json(artist, { status: 201 })
+  } catch (error) {
+    console.error('Create artist error:', error)
+    return NextResponse.json({ message: 'Failed to create artist' }, { status: 500 })
+  }
 }

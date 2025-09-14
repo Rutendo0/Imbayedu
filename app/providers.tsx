@@ -18,9 +18,20 @@ const queryClient = new QueryClient({
   },
 })
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '')
+const stripePromise = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY 
+  ? loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+  : null
 
 export function Providers({ children }: { children: React.ReactNode }) {
+  const content = (
+    <CartProvider>
+      <TooltipProvider>
+        {children}
+        <Toaster />
+      </TooltipProvider>
+    </CartProvider>
+  )
+
   return (
     <ThemeProvider
       attribute="class"
@@ -29,14 +40,13 @@ export function Providers({ children }: { children: React.ReactNode }) {
       disableTransitionOnChange
     >
       <QueryClientProvider client={queryClient}>
-        <Elements stripe={stripePromise}>
-          <CartProvider>
-            <TooltipProvider>
-              {children}
-              <Toaster />
-            </TooltipProvider>
-          </CartProvider>
-        </Elements>
+        {stripePromise ? (
+          <Elements stripe={stripePromise}>
+            {content}
+          </Elements>
+        ) : (
+          content
+        )}
       </QueryClientProvider>
     </ThemeProvider>
   )

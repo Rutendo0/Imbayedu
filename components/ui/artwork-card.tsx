@@ -45,7 +45,7 @@ export const ArtworkCard = ({ artwork }: ArtworkCardProps) => {
         
         <div className="space-y-1">
           <h3 className="text-lg font-medium text-neutral-900">{artwork.title}</h3>
-          <p className="text-sm text-neutral-600">{artwork.artist?.name || 'Unknown Artist'}</p>
+          <p className="text-sm text-neutral-600">{isGiftArtwork ? 'Gift to Collective' : (artwork.artist?.name || 'Unknown Artist')}</p>
           
           {/* Price or Gift Status */}
           <div className="flex items-center gap-2">

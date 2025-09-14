@@ -1,64 +1,59 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { storage } from '@/lib/storage'
+import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/auth'
+import { storage } from '@/lib/storage'
 
-export const runtime = 'nodejs'
+export async function GET(request: Request) {
+  try {
+    const admin = await requireAdmin()
+    if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
 
-function formatDate(d: Date) {
-  return d.toISOString().slice(0, 10) // YYYY-MM-DD
-}
+    const { searchParams } = new URL(request.url)
+    const days = parseInt(searchParams.get('days') || '30')
 
-function startOfWeek(d: Date) {
-  const date = new Date(d)
-  const day = date.getUTCDay() // 0-6, Sun=0
-  const diff = (day + 6) % 7 // make Monday start
-  date.setUTCDate(date.getUTCDate() - diff)
-  date.setUTCHours(0,0,0,0)
-  return date
-}
+    // Get real data from database
+    const [orders, revenue, topArtworks] = await Promise.all([
+      storage.getOrders(),
+      storage.getRevenueByDay(days),
+      storage.getTopArtworks(5)
+    ])
 
-function startOfMonth(d: Date) {
-  const date = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1))
-  return date
-}
+    // Calculate metrics
+    const paidOrders = orders.filter(o => o.status === 'paid')
+    const totalRevenue = paidOrders.reduce((sum, order) => sum + (order.total || 0), 0)
+    const totalOrders = paidOrders.length
+    const averageOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0
 
-export async function GET(req: NextRequest) {
-  const admin = await requireAdmin()
-  if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+    // Calculate growth (compare with previous period)
+    const previousDays = days * 2
+    const previousRevenue = await storage.getRevenueByDay(previousDays)
+    const currentPeriodRevenue = revenue.reduce((sum, r) => sum + r.total, 0)
+    const previousPeriodRevenue = previousRevenue.slice(0, previousRevenue.length - revenue.length).reduce((sum, r) => sum + r.total, 0)
+    const revenueGrowth = previousPeriodRevenue > 0 ? ((currentPeriodRevenue - previousPeriodRevenue) / previousPeriodRevenue) * 100 : 0
 
-  const { searchParams } = new URL(req.url)
-  const days = Math.max(1, Math.min(365, Number(searchParams.get('days')) || 30))
-  const group = (searchParams.get('group') || 'day').toLowerCase() as 'day'|'week'|'month'
-
-  // day grouping can use existing helper
-  if (group === 'day') {
-    const revenue = await storage.getRevenueByDay(days)
-    return NextResponse.json({ group: 'day', days, revenue })
-  }
-
-  // For week/month, derive from orders
-  const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
-  const orders = await storage.getOrders()
-  const filtered = orders.filter(o => o.createdAt && o.createdAt >= since && o.status === 'paid')
-
-  const map = new Map<string, number>()
-  for (const o of filtered) {
-    const created = o.createdAt as Date
-    let key: string
-    if (group === 'week') {
-      const sow = startOfWeek(created)
-      key = formatDate(sow)
-    } else {
-      // month
-      const som = startOfMonth(created)
-      key = `${som.getUTCFullYear()}-${String(som.getUTCMonth()+1).padStart(2, '0')}`
+    const data = {
+      totalRevenue: Math.round(totalRevenue * 100) / 100,
+      totalOrders,
+      averageOrderValue: Math.round(averageOrderValue * 100) / 100,
+      revenueGrowth: Math.round(revenueGrowth * 10) / 10,
+      orderGrowth: 0, // Could be calculated similarly
+      aovGrowth: 0, // Could be calculated similarly
+      topSeller: topArtworks[0] || null,
+      dailyRevenue: revenue.map(r => ({ date: r.date, revenue: r.total }))
     }
-    map.set(key, (map.get(key) || 0) + (o.total || 0))
+
+    return NextResponse.json(data)
+  } catch (error) {
+    console.error('Sales API error:', error)
+    return NextResponse.json({ 
+      message: 'Sales data unavailable',
+      totalRevenue: 0,
+      totalOrders: 0,
+      averageOrderValue: 0,
+      revenueGrowth: 0,
+      orderGrowth: 0,
+      aovGrowth: 0,
+      topSeller: null,
+      dailyRevenue: []
+    }, { status: 200 })
   }
-
-  const revenue = Array.from(map.entries())
-    .map(([date, total]) => ({ date, total }))
-    .sort((a,b)=> a.date.localeCompare(b.date))
-
-  return NextResponse.json({ group, days, revenue })
 }

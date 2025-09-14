@@ -377,22 +377,29 @@ class PostgresStorage implements IStorage {
     return row!;
   }
   async updateArtwork(id: number, patch: Partial<InsertArtwork>) {
+    // Only set provided fields to avoid overwriting with undefined
+    const updates: Record<string, any> = {}
+    if (patch.title !== undefined) updates.title = patch.title
+    if (patch.description !== undefined) updates.description = patch.description
+    if (patch.price !== undefined) updates.price = patch.price
+    if (patch.imageUrl !== undefined) updates.imageUrl = patch.imageUrl
+    if (patch.artistId !== undefined) updates.artistId = patch.artistId
+    if (patch.categoryId !== undefined) updates.categoryId = patch.categoryId
+    if (patch.collectionId !== undefined) updates.collectionId = patch.collectionId
+    if (patch.dimensions !== undefined) updates.dimensions = patch.dimensions
+    if (patch.medium !== undefined) updates.medium = patch.medium
+    if (patch.year !== undefined) updates.year = patch.year
+    if (patch.inStock !== undefined) updates.inStock = patch.inStock
+    if (patch.featured !== undefined) updates.featured = patch.featured
+
+    if (Object.keys(updates).length === 0) {
+      // Nothing to update; return current record
+      return await this.getArtwork(id)
+    }
+
     const [row] = await db!
       .update(artworks)
-      .set({
-        title: patch.title,
-        description: patch.description,
-        price: patch.price,
-        imageUrl: patch.imageUrl,
-        artistId: patch.artistId,
-        categoryId: patch.categoryId,
-        collectionId: patch.collectionId,
-        dimensions: patch.dimensions,
-        medium: patch.medium,
-        year: patch.year,
-        inStock: patch.inStock,
-        featured: patch.featured,
-      })
+      .set(updates as any)
       .where(eq(artworks.id, id))
       .returning();
     return row;

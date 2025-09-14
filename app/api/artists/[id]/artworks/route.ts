@@ -56,7 +56,13 @@ export async function GET(
 
     // Hydrate with details for each artwork
     const detailed = await Promise.all(unique.map(async (a) => await storage.getArtworkWithDetails(a.id)))
-    const result = (detailed || []).filter(Boolean)
+    // Backfill missing artist details with the canonical artist loaded above
+    const result = (detailed || [])
+      .filter(Boolean)
+      .map((d) => {
+        const item: any = d
+        return { ...item, artist: item?.artist ?? artist }
+      })
 
     console.log(`[artist-artworks] id=${id} siblings=${siblingIds.length} base=${unique.length} result=${result.length}`)
     console.timeEnd(`[artist-artworks] id=${id}`)
