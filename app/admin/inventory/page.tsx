@@ -47,6 +47,16 @@ export default function InventoryPage() {
     try { localStorage.setItem('theme', next) } catch {}
   }
 
+  // Reset all form states when component mounts
+  useEffect(() => {
+    setForm({})
+    setFile(null)
+    setSelected(null)
+    setSearch('')
+    setPage(1)
+    setFilters({ categoryId: '', minPrice: '', maxPrice: '' })
+  }, [])
+
   // Cache lists per tab for instant switching
   const [cache, setCache] = useState<Record<string, any[]>>({})
 
@@ -82,7 +92,7 @@ export default function InventoryPage() {
 
   // When switching tabs: clear form/image and show cached data instantly, then refresh in background
   useEffect(()=>{
-    // reset form, file, preview, filters, pagination
+    // reset form, file, preview, filters, pagination, and any editing state
     setForm({}); setFile(null); setSelected(null)
     setFilters({ categoryId: '', minPrice: '', maxPrice: ''}); setPage(1)
 
@@ -99,7 +109,7 @@ export default function InventoryPage() {
 
   async function load(background: boolean = false){
     if (!background) setLoading(true)
-    const url = tab === 'artworks' ? '/api/artworks' : tab === 'categories' ? '/api/categories' : tab === 'collections' ? '/api/collections' : '/api/artists'
+    const url = tab === 'artworks' ? '/api/artworks/details' : tab === 'categories' ? '/api/categories' : tab === 'collections' ? '/api/collections' : '/api/artists'
     const res = await fetch(url)
     const json = await res.json()
     setData(json)
@@ -165,7 +175,7 @@ export default function InventoryPage() {
       <div className="sticky top-0 z-10 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-neutral-950/80">
         <div className="container flex items-center justify-between h-14">
           <div className="flex items-center gap-3">
-            <Image src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg" alt="Imbayedu" width={28} height={28} className="rounded-sm object-cover" />
+            <Image src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg" alt="Imbayedu" width={28} height={28} className="rounded-sm object-cover" style={{ width: 'auto', height: 'auto' }} />
             <div className="font-semibold tracking-tight">Inventory</div>
           </div>
           <div className="flex items-center gap-2">
@@ -212,6 +222,7 @@ export default function InventoryPage() {
                     type="file"
                     accept="image/*"
                     className="hidden"
+                    aria-label="Choose artwork image"
                     onChange={(e)=>{
                       const f = e.target.files?.[0] || null
                       if (!f) return
@@ -327,6 +338,15 @@ export default function InventoryPage() {
               <Input placeholder="Dimensions" value={form.dimensions||''} onChange={e=>setForm({...form, dimensions:e.target.value})} />
               <Input placeholder="Medium" value={form.medium||''} onChange={e=>setForm({...form, medium:e.target.value})} />
               <Input placeholder="Year" value={form.year||''} onChange={e=>setForm({...form, year:e.target.value})} />
+              <div className="flex items-center gap-2">
+                <input 
+                  type="checkbox" 
+                  id="inStock" 
+                  checked={form.inStock !== false} 
+                  onChange={e=>setForm({...form, inStock:e.target.checked})} 
+                />
+                <label htmlFor="inStock" className="text-sm">In Stock</label>
+              </div>
               <Textarea placeholder="Description" value={form.description||''} onChange={e=>setForm({...form, description:e.target.value})} />
             </>
           )}
@@ -349,6 +369,7 @@ export default function InventoryPage() {
                     type="file"
                     accept="image/*"
                     className="hidden"
+                    aria-label="Choose collection image"
                     onChange={(e)=>{
                       const f = e.target.files?.[0] || null
                       if (!f) return
@@ -400,6 +421,7 @@ export default function InventoryPage() {
                     type="file"
                     accept="image/*"
                     className="hidden"
+                    aria-label="Choose artist image"
                     onChange={(e)=>{
                       const f = e.target.files?.[0] || null
                       if (!f) return
@@ -451,7 +473,7 @@ export default function InventoryPage() {
             <div className="flex items-center gap-2">
               {tab==='artworks' && (
                 <>
-                  <select className="border rounded-md px-2 py-1 text-sm" value={String(filters.categoryId)} onChange={(e)=>{ setFilters(f=>({...f, categoryId: e.target.value })); setPage(1) }}>
+                  <select className="border rounded-md px-2 py-1 text-sm" value={String(filters.categoryId)} onChange={(e)=>{ setFilters(f=>({...f, categoryId: e.target.value })); setPage(1) }} aria-label="Filter by category">
                     <option value="">All categories</option>
                     {categories.map(c=> (<option key={c.id} value={c.id}>{c.name}</option>))}
                   </select>
@@ -468,6 +490,7 @@ export default function InventoryPage() {
                 <tr className="text-left bg-[#EBD9C2]">
                   <th className="py-2 pr-4 text-[#5E4B3C]">ID</th>
                   <th className="py-2 pr-4 text-[#5E4B3C]">Name/Title</th>
+                  <th className="py-2 pr-4 text-[#5E4B3C]">Artist</th>
                   <th className="py-2 pr-4 text-[#5E4B3C]">Price/Desc</th>
                   <th className="py-2 pr-4 text-right text-[#5E4B3C]">Actions</th>
                 </tr>
@@ -483,6 +506,7 @@ export default function InventoryPage() {
                       {row.imageUrl && <img alt="thumb" src={row.imageUrl} className="h-8 w-8 object-cover rounded" />}
                       <span>{row.title || row.name}</span>
                     </td>
+                    <td className="py-2 pr-4">{row.artist?.name || 'No Artist'}</td>
                     <td className="py-2 pr-4">{typeof row.price==='number' ? `$${row.price.toFixed(2)}` : (row.description||'-')}</td>
                     <td className="py-2 pr-4 text-right space-x-2">
                       <Button variant="outline" size="sm" onClick={()=>{ setSelected(row); setForm(row) }}>Edit</Button>

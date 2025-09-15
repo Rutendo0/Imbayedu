@@ -82,7 +82,7 @@ export default function SalesPage(){
       <div className="sticky top-0 z-10 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-neutral-950/80">
         <div className="container flex items-center justify-between h-14">
           <div className="flex items-center gap-3">
-            <Image src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg" alt="Imbayedu" width={28} height={28} className="rounded-sm object-cover" />
+            <Image src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg" alt="Imbayedu" width={28} height={28} className="rounded-sm object-cover" style={{ width: 'auto', height: 'auto' }} />
             <div className="font-semibold tracking-tight">Sales</div>
           </div>
           <div className="flex items-center gap-2">

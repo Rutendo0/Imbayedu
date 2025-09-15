@@ -44,7 +44,7 @@ export async function POST() {
 
     // Artists
     const artistsData: InsertArtist[] = [
-      { name: 'Tunga Makoni', bio: 'Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.', imageUrl: '/img/artwork/Tunga.jpg?v=' + Date.now(), featured: true, location: 'Harare, Zimbabwe' },
+      { name: 'Tunga Makoni', bio: 'Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.', imageUrl: '/img/artwork/Tunga.jpg', featured: true, location: 'Harare, Zimbabwe' },
       { name: "O'Neal Tanaka Maisiri", bio: "O'Neal Tanaka Maisiri is a Zimbabwean artist whose abstract paintings reflect a deep connection to his environment. Using bold colors and dynamic compositions, he conveys the energy and emotions of his surroundings.", imageUrl: '/img/artwork/artist.png', featured: true, location: 'Harare, Zimbabwe' },
     ]
 

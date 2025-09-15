@@ -72,7 +72,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md p-8 border shadow-sm">
         <div className="mb-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Image src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg" alt="Imbayedu" width={28} height={28} className="rounded-sm object-cover" />
+            <Image src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg" alt="Imbayedu" width={28} height={28} className="rounded-sm object-cover" style={{ width: 'auto', height: 'auto' }} />
             <div>
               <h1 className="text-2xl font-semibold tracking-tight">Login</h1>
               <p className="text-sm text-neutral-500 mt-1">Access the admin dashboard</p>

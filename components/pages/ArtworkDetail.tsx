@@ -196,7 +196,7 @@ const ArtworkDetail = () => {
                   </Link>
                 ) : (
                   <span className="text-lg text-neutral-700">
-                    {artwork.price === 0 ? 'Gift to Community' : 'Unknown Artist'}
+                    {artwork.price === 0 ? 'Gift to Community' : 'Artist Not Assigned'}
                   </span>
                 )}
                 {artwork.artist?.location && (

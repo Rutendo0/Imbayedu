@@ -9,7 +9,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
 
     const artworkId = parseInt(params.id)
     const body = await request.json()
-    const { title, description, price, imageUrl, stock, dimensions, medium } = body
+    const { title, description, price, imageUrl, inStock, dimensions, medium } = body
 
     // Update artwork
     const updatedArtwork = await storage.updateArtwork(artworkId, {
@@ -17,7 +17,7 @@ export async function PUT(request: Request, { params }: { params: { id: string }
       description,
       price: price ? parseFloat(price) : undefined,
       imageUrl,
-      stock: stock ? parseInt(stock) : undefined,
+      inStock: inStock !== undefined ? Boolean(inStock) : undefined,
       dimensions,
       medium
     })

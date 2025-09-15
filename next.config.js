@@ -8,15 +8,15 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    // Allow any remote host (existing behavior)
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-      {
-        protocol: 'http',
-        hostname: '**',
-      },
+      { protocol: 'https', hostname: '**' },
+      { protocol: 'http', hostname: '**' },
+    ],
+    // Configure local patterns so query strings like ?v=123 are accepted in Next 16+
+    localPatterns: [
+      { pathname: '/img/**' },
+      { pathname: '/**' },
     ],
   },
   // Disable caching in development

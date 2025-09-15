@@ -7,7 +7,7 @@ export async function GET() {
     const admin = await requireAdmin()
     if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
 
-    const artworks = await storage.getArtworks()
+    const artworks = await storage.getArtworksWithDetails()
     return NextResponse.json(artworks)
   } catch (error) {
     console.error('Artworks API error:', error)
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       title,
       description: description || '',
       price: Number(price),
-      imageUrl: imageUrl || '/placeholder-artwork.jpg',
+      imageUrl: imageUrl || '/img/artwork/artist.png',
       artistId: Number(artistId),
       categoryId: Number(categoryId),
       collectionId: collectionId != null ? Number(collectionId) : undefined,

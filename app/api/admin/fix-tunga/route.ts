@@ -14,7 +14,7 @@ const DATABASE_URL =
   process.env.DATABASE_URL_UNPOOLED ||
   ''
 
-const TARGET_PATH = '/img/artwork/Tunga.jpg?v=' + Date.now()
+const TARGET_PATH = '/img/artwork/Tunga.jpg'
 
 export async function GET() {
   try {

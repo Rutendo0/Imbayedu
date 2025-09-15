@@ -327,7 +327,7 @@ class PostgresStorage implements IStorage {
         const artist = aw.artistId ? await this.getArtist(aw.artistId) : undefined;
         const category = await this.getCategory(aw.categoryId);
         const collection = aw.collectionId ? await this.getCollection(aw.collectionId) : undefined;
-        return { ...aw, artist: artist!, category: category!, collection } as ArtworkWithDetails;
+        return { ...aw, artist: artist || { id: 0, name: 'Unknown Artist', bio: '', imageUrl: '', featured: false, location: null }, category: category!, collection } as ArtworkWithDetails;
       })
     );
     return detailed;
@@ -342,7 +342,7 @@ class PostgresStorage implements IStorage {
     const artist = aw.artistId ? await this.getArtist(aw.artistId) : undefined;
     const category = await this.getCategory(aw.categoryId);
     const collection = aw.collectionId ? await this.getCollection(aw.collectionId) : undefined;
-    return { ...aw, artist: artist!, category: category!, collection } as ArtworkWithDetails;
+    return { ...aw, artist: artist || { id: 0, name: 'Unknown Artist', bio: '', imageUrl: '', featured: false, location: null }, category: category!, collection } as ArtworkWithDetails;
   }
   async getArtworksByArtist(artistId: number) {
     return await db!.select().from(artworks).where(eq(artworks.artistId, artistId));

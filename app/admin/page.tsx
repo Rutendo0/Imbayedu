@@ -1,12 +1,14 @@
 "use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Badge } from '@/components/ui/badge'
@@ -35,6 +37,7 @@ import Image from 'next/image'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/components/ui/alert-dialog'
 import { cn } from '@/lib/utils'
+import { toast } from '@/components/hooks/use-toast'
 
 // Professional Confirmation Dialog Component
 function ConfirmationDialog({ 
@@ -155,7 +158,8 @@ function ImageUpload({ onUpload, currentUrl, type }: {
             src={currentUrl}
             alt="Current image"
             fill
-            className="object-cover"
+            className="object-contain"
+            sizes="128px"
           />
         </div>
       )}
@@ -278,6 +282,85 @@ function AddArtistForm({ onSubmit, onCancel }: {
   )
 }
 
+// Edit Artist Form Component
+function EditArtistForm({ artist, onSubmit, onCancel }: {
+  artist: any
+  onSubmit: (data: any) => void
+  onCancel: () => void
+}) {
+  const [formData, setFormData] = useState({
+    id: artist.id,
+    name: artist.name || '',
+    bio: artist.bio || '',
+    imageUrl: artist.imageUrl || '',
+    website: artist.website || '',
+    socialMedia: artist.socialMedia || ''
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    onSubmit(formData)
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="edit-name">Name *</Label>
+          <Input
+            id="edit-name"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            required
+          />
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-website">Website</Label>
+          <Input
+            id="edit-website"
+            type="url"
+            value={formData.website}
+            onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+            placeholder="https://example.com"
+          />
+        </div>
+      </div>
+      
+      <ImageUpload
+        onUpload={(url) => setFormData({ ...formData, imageUrl: url })}
+        currentUrl={formData.imageUrl}
+        type="artist"
+      />
+      
+      <div>
+        <Label htmlFor="edit-bio">Bio</Label>
+        <Textarea
+          id="edit-bio"
+          value={formData.bio}
+          onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+          placeholder="Artist biography..."
+        />
+      </div>
+      
+      <div>
+        <Label htmlFor="edit-socialMedia">Social Media</Label>
+        <Input
+          id="edit-socialMedia"
+          value={formData.socialMedia}
+          onChange={(e) => setFormData({ ...formData, socialMedia: e.target.value })}
+          placeholder="@username or social media links"
+        />
+      </div>
+      
+      <div className="flex gap-2">
+        <Button type="submit">Update Artist</Button>
+        <Button type="button" variant="outline" onClick={onCancel}>Cancel</Button>
+      </div>
+    </form>
+  )
+}
+
 // Add Collection Form Component
 function AddCollectionForm({ onSubmit, onCancel }: {
   onSubmit: (data: any) => void
@@ -313,9 +396,9 @@ function AddCollectionForm({ onSubmit, onCancel }: {
       />
       
       <div>
-        <Label htmlFor="description">Description</Label>
+        <Label htmlFor="collection-description">Description</Label>
         <textarea
-          id="description"
+          id="collection-description"
           className="w-full p-2 border rounded-md"
           rows={3}
           value={formData.description}
@@ -327,6 +410,238 @@ function AddCollectionForm({ onSubmit, onCancel }: {
       <div className="flex gap-2">
         <Button type="submit">Add Collection</Button>
         <Button type="button" variant="outline" onClick={onCancel}>Cancel</Button>
+      </div>
+    </form>
+  )
+}
+
+// Edit Collection Form Component
+function EditCollectionForm({ collection, onSubmit, onCancel }: {
+  collection: any
+  onSubmit: (data: any) => void
+  onCancel: () => void
+}) {
+  const [formData, setFormData] = useState({
+    id: collection.id,
+    name: collection.name || '',
+    description: collection.description || '',
+    imageUrl: collection.imageUrl || ''
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    onSubmit(formData)
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <Label htmlFor="edit-name">Name *</Label>
+        <Input
+          id="edit-name"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          required
+        />
+      </div>
+      
+      <ImageUpload
+        onUpload={(url) => setFormData({ ...formData, imageUrl: url })}
+        currentUrl={formData.imageUrl}
+        type="collection"
+      />
+      
+      <div>
+        <Label htmlFor="edit-description">Description</Label>
+        <Textarea
+          id="edit-description"
+          value={formData.description}
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+          placeholder="Collection description..."
+        />
+      </div>
+      
+      <div className="flex gap-2">
+        <Button type="submit">Update Collection</Button>
+        <Button type="button" variant="outline" onClick={onCancel}>Cancel</Button>
+      </div>
+    </form>
+  )
+}
+
+// Edit Artwork Form Component
+function EditArtworkForm({ artwork, artists, categories, collections, onSubmit, onCancel }: {
+  artwork: any
+  artists: any[]
+  categories: any[]
+  collections: any[]
+  onSubmit: (data: any) => void
+  onCancel: () => void
+}) {
+  const [formData, setFormData] = useState({
+    title: artwork.title || '',
+    description: artwork.description || '',
+    price: artwork.price || '',
+    imageUrl: artwork.imageUrl || '',
+    artistId: artwork.artistId || '',
+    categoryId: artwork.categoryId || '',
+    collectionId: artwork.collectionId || '',
+    dimensions: artwork.dimensions || '',
+    medium: artwork.medium || '',
+    year: artwork.year || '',
+    inStock: artwork.inStock !== false,
+    featured: artwork.featured || false,
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    onSubmit({ id: artwork.id, ...formData })
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <Label htmlFor="edit-title">Title *</Label>
+          <Input
+            id="edit-title"
+            value={formData.title}
+            onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+            required
+          />
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-price">Price *</Label>
+          <Input
+            id="edit-price"
+            type="number"
+            step="0.01"
+            value={formData.price}
+            onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+            required
+          />
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-artistId">Artist *</Label>
+          <Select value={formData.artistId} onValueChange={(value) => setFormData({ ...formData, artistId: value })}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select artist" />
+            </SelectTrigger>
+            <SelectContent>
+              {artists.map((artist) => (
+                <SelectItem key={artist.id} value={artist.id.toString()}>
+                  {artist.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-categoryId">Category *</Label>
+          <Select value={formData.categoryId} onValueChange={(value) => setFormData({ ...formData, categoryId: value })}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select category" />
+            </SelectTrigger>
+            <SelectContent>
+              {categories.map((category) => (
+                <SelectItem key={category.id} value={category.id.toString()}>
+                  {category.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-collectionId">Collection</Label>
+          <Select value={formData.collectionId} onValueChange={(value) => setFormData({ ...formData, collectionId: value })}>
+            <SelectTrigger>
+              <SelectValue placeholder="Select collection" />
+            </SelectTrigger>
+            <SelectContent>
+              {collections.map((collection) => (
+                <SelectItem key={collection.id} value={collection.id.toString()}>
+                  {collection.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-inStock">Stock Status</Label>
+          <div className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              id="edit-inStock"
+              checked={formData.inStock}
+              onChange={(e) => setFormData({ ...formData, inStock: e.target.checked })}
+            />
+            <label htmlFor="edit-inStock" className="text-sm">In Stock</label>
+          </div>
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-dimensions">Dimensions</Label>
+          <Input
+            id="edit-dimensions"
+            value={formData.dimensions}
+            onChange={(e) => setFormData({ ...formData, dimensions: e.target.value })}
+            placeholder="e.g., 30 x 40 cm"
+          />
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-medium">Medium</Label>
+          <Input
+            id="edit-medium"
+            value={formData.medium}
+            onChange={(e) => setFormData({ ...formData, medium: e.target.value })}
+            placeholder="e.g., Oil on Canvas"
+          />
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-year">Year</Label>
+          <Input
+            id="edit-year"
+            value={formData.year}
+            onChange={(e) => setFormData({ ...formData, year: e.target.value })}
+            placeholder="e.g., 2023"
+          />
+        </div>
+        
+        <div>
+          <Label htmlFor="edit-imageUrl">Image URL</Label>
+          <Input
+            id="edit-imageUrl"
+            value={formData.imageUrl}
+            onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+            placeholder="Image URL"
+          />
+        </div>
+        
+        <div className="md:col-span-2">
+          <Label htmlFor="edit-description">Description</Label>
+          <Textarea
+            id="edit-description"
+            value={formData.description}
+            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            placeholder="Artwork description"
+          />
+        </div>
+      </div>
+
+      <div className="flex justify-end space-x-2">
+        <Button type="button" variant="outline" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button type="submit">
+          Update Artwork
+        </Button>
       </div>
     </form>
   )
@@ -350,7 +665,7 @@ function AddArtworkForm({ artists, categories, collections, onSubmit, onCancel }
     collectionId: '',
     dimensions: '',
     medium: '',
-    stock: ''
+    inStock: false
   })
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -432,13 +747,16 @@ function AddArtworkForm({ artists, categories, collections, onSubmit, onCancel }
         </div>
         
         <div>
-          <Label htmlFor="stock">Stock Quantity</Label>
-          <Input
-            id="stock"
-            type="number"
-            value={formData.stock}
-            onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
-          />
+          <Label htmlFor="inStock">Stock Status</Label>
+          <div className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              id="inStock"
+              checked={formData.inStock}
+              onChange={(e) => setFormData({ ...formData, inStock: e.target.checked })}
+            />
+            <label htmlFor="inStock" className="text-sm">In Stock</label>
+          </div>
         </div>
         
         <div>
@@ -509,6 +827,8 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
   const [collections, setCollections] = useState<any[]>([])
   const [showAddArtist, setShowAddArtist] = useState(false)
   const [showAddCollection, setShowAddCollection] = useState(false)
+  const [editingArtist, setEditingArtist] = useState<any>(null)
+  const [editingCollection, setEditingCollection] = useState<any>(null)
   const [confirmDialog, setConfirmDialog] = useState<{
     isOpen: boolean
     title: string
@@ -524,6 +844,19 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
     actionText: '',
     variant: 'default'
   })
+
+  const artworksByArtist = useMemo(() => {
+    const grouped: { [key: number]: any[] } = {}
+    artworks.forEach(artwork => {
+      if (artwork.artistId) {
+        if (!grouped[artwork.artistId]) {
+          grouped[artwork.artistId] = []
+        }
+        grouped[artwork.artistId].push(artwork)
+      }
+    })
+    return grouped
+  }, [artworks])
 
   const loadArtworks = async () => {
     setLoading(true)
@@ -554,10 +887,10 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
       
       // Ensure we're setting arrays, not concatenating, and deduplicate by name
       console.log('Raw artists data:', artistsData)
-      const uniqueArtists = Array.isArray(artistsData) 
-        ? artistsData.filter((artist, index, self) => 
-            index === self.findIndex(a => a.name === artist.name)
-          ) 
+      const uniqueArtists = Array.isArray(artistsData)
+        ? artistsData.filter((artist, index, self) =>
+            index === self.findIndex(a => a.id === artist.id)
+          )
         : []
       console.log('Unique artists after deduplication:', uniqueArtists)
       
@@ -586,8 +919,41 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
   }
 
   useEffect(() => {
+    // Reset all form states when component mounts
+    console.log('InventoryManager mounting - resetting all form states')
+    setEditingArtwork(null)
+    setShowAddForm(false)
+    setShowAddArtist(false)
+    setShowAddCollection(false)
+    setEditingCollection(null)
+    
     loadArtworks()
     loadReferenceData()
+  }, [])
+
+  // Auto-scroll to top when editing artwork
+  useEffect(() => {
+    if (editingArtwork) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [editingArtwork])
+
+  // Auto-scroll to top when editing artist
+  useEffect(() => {
+    if (editingArtist) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [editingArtist])
+
+  // Reset editing state when component unmounts or when navigating
+  useEffect(() => {
+    return () => {
+      setEditingArtwork(null)
+      setShowAddForm(false)
+      setShowAddArtist(false)
+      setShowAddCollection(false)
+      setEditingCollection(null)
+    }
   }, [])
 
   const handleDelete = async (id: number) => {
@@ -597,10 +963,17 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
       description: 'Are you sure you want to delete this artwork? This action cannot be undone.',
       action: async () => {
         try {
-          await fetch(`/api/admin/artworks/${id}`, { method: 'DELETE' })
-          loadArtworks()
+          const res = await fetch(`/api/admin/artworks/${id}`, { method: 'DELETE' })
+          if (res.ok) {
+            toast({ title: 'Deleted', description: 'Artwork deleted successfully.' })
+            loadArtworks()
+          } else {
+            const err = await res.json().catch(() => ({}))
+            toast({ title: 'Error', description: err.message || 'Failed to delete artwork.' })
+          }
         } catch (error) {
           console.error('Failed to delete artwork:', error)
+          toast({ title: 'Error', description: 'Network error while deleting artwork.' })
         }
       },
       actionText: 'Delete Artwork',
@@ -619,34 +992,55 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
       if (response.ok) {
         setShowAddForm(false)
         loadArtworks()
-        setConfirmDialog({
-          isOpen: true,
+        toast({
           title: 'Success',
-          description: 'Artwork has been added successfully!',
-          action: () => {},
-          actionText: 'OK',
-          variant: 'default'
+          description: 'Artwork has been added successfully!'
         })
       } else {
         const error = await response.json()
-        setConfirmDialog({
-          isOpen: true,
+        toast({
           title: 'Error',
-          description: error.message || 'Failed to add artwork. Please try again.',
-          action: () => {},
-          actionText: 'OK',
-          variant: 'default'
+          description: error.message || 'Failed to add artwork. Please try again.'
         })
       }
     } catch (error) {
       console.error('Failed to add artwork:', error)
-      setConfirmDialog({
-        isOpen: true,
+      toast({
         title: 'Error',
-        description: 'Failed to add artwork. Please check your connection and try again.',
-        action: () => {},
-        actionText: 'OK',
-        variant: 'default'
+        description: 'Failed to add artwork. Please check your connection and try again.'
+      })
+    }
+  }
+
+  const handleUpdateArtwork = async (formData: any) => {
+    try {
+      const response = await fetch('/api/admin/artworks', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      
+      if (response.ok) {
+        setEditingArtwork(null)
+        loadArtworks()
+        toast({
+          title: 'Success',
+          description: 'Artwork has been updated successfully!'
+        })
+      } else {
+        const error = await response.json()
+        toast({
+          title: 'Error',
+          description: error.message || 'Failed to update artwork. Please try again.',
+          variant: 'destructive'
+        })
+      }
+    } catch (error) {
+      console.error('Error updating artwork:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to update artwork. Please check your connection and try again.',
+        variant: 'destructive'
       })
     }
   }
@@ -665,34 +1059,24 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
         const artistsRes = await fetch('/api/admin/artists')
         const artistsData = await artistsRes.json()
         setArtists(Array.isArray(artistsData) ? artistsData : [])
-        setConfirmDialog({
-          isOpen: true,
+        toast({
           title: 'Success',
-          description: 'Artist has been added successfully!',
-          action: () => {},
-          actionText: 'OK',
-          variant: 'default'
+          description: 'Artist has been added successfully!'
         })
       } else {
         const error = await response.json()
-        setConfirmDialog({
-          isOpen: true,
+        toast({
           title: 'Error',
           description: error.message || 'Failed to add artist. Please try again.',
-          action: () => {},
-          actionText: 'OK',
-          variant: 'default'
+          variant: 'destructive'
         })
       }
     } catch (error) {
       console.error('Failed to add artist:', error)
-      setConfirmDialog({
-        isOpen: true,
+      toast({
         title: 'Error',
         description: 'Failed to add artist. Please check your connection and try again.',
-        action: () => {},
-        actionText: 'OK',
-        variant: 'default'
+        variant: 'destructive'
       })
     }
   }
@@ -711,36 +1095,98 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
         const collectionsRes = await fetch('/api/admin/collections')
         const collectionsData = await collectionsRes.json()
         setCollections(Array.isArray(collectionsData) ? collectionsData : [])
-        setConfirmDialog({
-          isOpen: true,
+        toast({
           title: 'Success',
-          description: 'Collection has been added successfully!',
-          action: () => {},
-          actionText: 'OK',
-          variant: 'default'
+          description: 'Collection has been added successfully!'
         })
       } else {
         const error = await response.json()
-        setConfirmDialog({
-          isOpen: true,
+        toast({
           title: 'Error',
           description: error.message || 'Failed to add collection. Please try again.',
-          action: () => {},
-          actionText: 'OK',
-          variant: 'default'
+          variant: 'destructive'
         })
       }
     } catch (error) {
       console.error('Failed to add collection:', error)
-      setConfirmDialog({
-        isOpen: true,
+      toast({
         title: 'Error',
         description: 'Failed to add collection. Please check your connection and try again.',
-        action: () => {},
-        actionText: 'OK',
-        variant: 'default'
+        variant: 'destructive'
       })
     }
+  }
+
+  const handleUpdateCollection = async (formData: any) => {
+    try {
+      const response = await fetch(`/api/admin/collections/${formData.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      
+      if (response.ok) {
+        const updated = await response.json()
+        setCollections(prev => prev.map(c => c.id === updated.id ? updated : c))
+        setEditingCollection(null)
+        toast({
+          title: 'Success',
+          description: 'Collection has been updated successfully!'
+        })
+      } else {
+        const error = await response.json()
+        toast({
+          title: 'Error',
+          description: error.message || 'Failed to update collection. Please try again.',
+          variant: 'destructive'
+        })
+      }
+    } catch (error) {
+      console.error('Error updating collection:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to update collection. Please check your connection and try again.',
+        variant: 'destructive'
+      })
+    }
+  }
+
+  const handleUpdateArtist = async (formData: any) => {
+    try {
+      const response = await fetch(`/api/admin/artists/${formData.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+
+      if (response.ok) {
+        const updated = await response.json()
+        setArtists(prev => prev.map(a => a.id === updated.id ? updated : a))
+        setEditingArtist(null)
+        toast({
+          title: 'Success',
+          description: 'Artist has been updated successfully!'
+        })
+      } else {
+        const error = await response.json()
+        toast({
+          title: 'Error',
+          description: error.message || 'Failed to update artist. Please try again.',
+          variant: 'destructive'
+        })
+      }
+    } catch (error) {
+      console.error('Error updating artist:', error)
+      toast({
+        title: 'Error',
+        description: 'Failed to update artist. Please check your connection and try again.',
+        variant: 'destructive'
+      })
+    }
+  }
+
+  const handleEditCollection = (collection: any) => {
+    setEditingCollection(collection)
   }
 
   const handleDeleteArtist = async (id: number) => {
@@ -752,37 +1198,15 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
         try {
           const response = await fetch(`/api/admin/artists/${id}`, { method: 'DELETE' })
           if (response.ok) {
-            // Remove artist from local state instead of reloading all data
             setArtists(prev => prev.filter(artist => artist.id !== id))
-            setConfirmDialog({
-              isOpen: true,
-              title: 'Success',
-              description: 'Artist has been deleted successfully!',
-              action: () => {},
-              actionText: 'OK',
-              variant: 'default'
-            })
+            toast({ title: 'Deleted', description: 'Artist has been deleted successfully!' })
           } else {
-            const error = await response.json()
-            setConfirmDialog({
-              isOpen: true,
-              title: 'Error',
-              description: error.message || 'Failed to delete artist. Please try again.',
-              action: () => {},
-              actionText: 'OK',
-              variant: 'default'
-            })
+            const error = await response.json().catch(() => ({}))
+            toast({ title: 'Error', description: error.message || 'Failed to delete artist. Please try again.' })
           }
         } catch (error) {
           console.error('Failed to delete artist:', error)
-          setConfirmDialog({
-            isOpen: true,
-            title: 'Error',
-            description: 'Failed to delete artist. Please check your connection and try again.',
-            action: () => {},
-            actionText: 'OK',
-            variant: 'default'
-          })
+          toast({ title: 'Error', description: 'Failed to delete artist. Please check your connection and try again.' })
         }
       },
       actionText: 'Delete Artist',
@@ -799,37 +1223,15 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
         try {
           const response = await fetch(`/api/admin/collections/${id}`, { method: 'DELETE' })
           if (response.ok) {
-            // Remove collection from local state instead of reloading all data
             setCollections(prev => prev.filter(collection => collection.id !== id))
-            setConfirmDialog({
-              isOpen: true,
-              title: 'Success',
-              description: 'Collection has been deleted successfully!',
-              action: () => {},
-              actionText: 'OK',
-              variant: 'default'
-            })
+            toast({ title: 'Deleted', description: 'Collection has been deleted successfully!' })
           } else {
-            const error = await response.json()
-            setConfirmDialog({
-              isOpen: true,
-              title: 'Error',
-              description: error.message || 'Failed to delete collection. Please try again.',
-              action: () => {},
-              actionText: 'OK',
-              variant: 'default'
-            })
+            const error = await response.json().catch(() => ({}))
+            toast({ title: 'Error', description: error.message || 'Failed to delete collection. Please try again.' })
           }
         } catch (error) {
           console.error('Failed to delete collection:', error)
-          setConfirmDialog({
-            isOpen: true,
-            title: 'Error',
-            description: 'Failed to delete collection. Please check your connection and try again.',
-            action: () => {},
-            actionText: 'OK',
-            variant: 'default'
-          })
+          toast({ title: 'Error', description: 'Failed to delete collection. Please check your connection and try again.' })
         }
       },
       actionText: 'Delete Collection',
@@ -901,6 +1303,7 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
           <Button 
             variant={showAddForm ? "default" : "outline"}
             onClick={() => {
+              setEditingArtwork(null)
               setShowAddForm(true)
               setShowAddArtist(false)
               setShowAddCollection(false)
@@ -912,6 +1315,7 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
           <Button 
             variant={showAddArtist ? "default" : "outline"}
             onClick={() => {
+              setEditingArtwork(null)
               setShowAddArtist(true)
               setShowAddForm(false)
               setShowAddCollection(false)
@@ -923,9 +1327,11 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
           <Button 
             variant={showAddCollection ? "default" : "outline"}
             onClick={() => {
+              setEditingArtwork(null)
               setShowAddCollection(true)
               setShowAddForm(false)
               setShowAddArtist(false)
+              setEditingCollection(null)
             }}
           >
             <Plus className="w-4 h-4 mr-2" />
@@ -960,17 +1366,60 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
         </Card>
       )}
 
+      {/* Edit Artwork Form */}
+      {editingArtwork && (
+        <>
+
+          <Card>
+          <CardHeader>
+            <CardTitle>Edit Artwork</CardTitle>
+            <CardDescription>Update the details for this artwork</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <EditArtworkForm 
+              artwork={editingArtwork}
+              artists={artists}
+              categories={categories}
+              collections={collections}
+              onSubmit={handleUpdateArtwork}
+              onCancel={() => setEditingArtwork(null)}
+            />
+          </CardContent>
+        </Card>
+        </>
+      )}
+
       {/* Add Artist Form */}
-      {showAddArtist && (
-        <Card>
+      {showAddArtist && !editingArtist && (
+        <>
+          {console.log('Rendering Add Artist Form')}
+          <Card>
           <CardHeader>
             <CardTitle>Add New Artist</CardTitle>
             <CardDescription>Add a new artist to your database</CardDescription>
           </CardHeader>
           <CardContent>
-            <AddArtistForm 
+            <AddArtistForm
               onSubmit={handleAddArtist}
               onCancel={() => setShowAddArtist(false)}
+            />
+          </CardContent>
+          </Card>
+          </>
+      )}
+
+      {/* Edit Artist Form */}
+      {editingArtist && showAddArtist && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Edit Artist</CardTitle>
+            <CardDescription>Update the artist details</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <EditArtistForm
+              artist={editingArtist}
+              onSubmit={handleUpdateArtist}
+              onCancel={() => setEditingArtist(null)}
             />
           </CardContent>
         </Card>
@@ -980,81 +1429,141 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
       {showAddArtist && (
         <Card>
           <CardHeader>
-            <CardTitle>All Artists</CardTitle>
-            <CardDescription>Manage your artists</CardDescription>
+            <CardTitle>All Artists with Artworks</CardTitle>
+            <CardDescription>Manage artists and view their associated artworks</CardDescription>
           </CardHeader>
           <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Image</TableHead>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Bio</TableHead>
-                  <TableHead>Website</TableHead>
-                  <TableHead>Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {artists.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={5} className="text-center py-8 text-gray-500">
-                      No artists found
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  artists.map((artist) => (
-                    <TableRow key={artist.id}>
-                      <TableCell>
+            {artists.length === 0 ? (
+              <div className="text-center py-8 text-gray-500">
+                No artists found
+              </div>
+            ) : (
+              <Accordion type="single" collapsible className="w-full">
+                {artists.map((artist) => (
+                  <AccordionItem key={artist.id} value={artist.id.toString()}>
+                    <AccordionTrigger className="px-4 py-3">
+                      <div className="flex items-center gap-4 w-full">
                         <Image
-                          src={artist.imageUrl || '/placeholder-artist.jpg'}
+                          src={artist.imageUrl || '/img/artwork/artist.png'}
                           alt={artist.name}
-                          width={50}
-                          height={50}
+                          width={40}
+                          height={40}
                           className="rounded object-cover"
                         />
-                      </TableCell>
-                      <TableCell className="font-medium">{artist.name}</TableCell>
-                      <TableCell className="max-w-xs truncate">{artist.bio || '-'}</TableCell>
-                      <TableCell>
-                        {artist.website ? (
-                          <a href={artist.website} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                            Visit
-                          </a>
-                        ) : '-'}
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex gap-2">
-                          <Button size="sm" variant="outline">
-                            <Edit className="w-4 h-4" />
-                          </Button>
-                          <Button size="sm" variant="destructive" onClick={() => handleDeleteArtist(artist.id)}>
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
+                        <div className="flex-1 text-left">
+                          <div className="font-medium">{artist.name}</div>
+                          <div className="text-sm text-muted-foreground">{artist.bio ? artist.bio.substring(0, 100) + '...' : 'No bio'}</div>
+                          <div className="text-xs text-muted-foreground">
+                            {artist.website ? 'Website available' : 'No website'} • {artworksByArtist[artist.id]?.length || 0} artworks
+                          </div>
                         </div>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                )}
-              </TableBody>
-            </Table>
+                        <div className="flex gap-2">
+                          <div
+                            className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-input bg-background text-foreground hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setEditingArtist(artist)
+                              setShowAddArtist(true)
+                            }}
+                            role="button"
+                            tabIndex={0}
+                          >
+                            <Edit className="w-4 h-4" />
+                          </div>
+                          <div
+                            className="inline-flex items-center justify-center w-8 h-8 rounded-md border border-input bg-destructive text-destructive-foreground hover:bg-destructive/90 cursor-pointer"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleDeleteArtist(artist.id)
+                            }}
+                            role="button"
+                            tabIndex={0}
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </div>
+                        </div>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="p-0">
+                      {artworksByArtist[artist.id] && artworksByArtist[artist.id].length > 0 ? (
+                        <Table>
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Artwork Image</TableHead>
+                              <TableHead>Title</TableHead>
+                              <TableHead>Price</TableHead>
+                              <TableHead>Status</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                            {artworksByArtist[artist.id].map((artwork: any) => (
+                              <TableRow key={artwork.id}>
+                                <TableCell>
+                                  <Image
+                                    src={artwork.imageUrl || '/img/artwork/artist.png'}
+                                    alt={artwork.title}
+                                    width={30}
+                                    height={30}
+                                    className="rounded object-cover"
+                                  />
+                                </TableCell>
+                                <TableCell className="font-medium">{artwork.title}</TableCell>
+                                <TableCell>${artwork.price || 0}</TableCell>
+                                <TableCell>
+                                  <Badge variant={artwork.inStock ? 'default' : 'destructive'}>
+                                    {artwork.inStock ? 'In Stock' : 'Out of Stock'}
+                                  </Badge>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      ) : (
+                        <div className="p-4 text-center text-sm text-muted-foreground">
+                          No artworks for this artist yet.
+                        </div>
+                      )}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            )}
           </CardContent>
         </Card>
       )}
 
-      {/* Add Collection Form */}
+      {/* Add/Edit Collection Forms */}
       {showAddCollection && (
-        <Card>
-          <CardHeader>
-            <CardTitle>Add New Collection</CardTitle>
-            <CardDescription>Create a new art collection</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <AddCollectionForm 
-              onSubmit={handleAddCollection}
-              onCancel={() => setShowAddCollection(false)}
-            />
-          </CardContent>
-        </Card>
+        <div>
+          <Card>
+            <CardHeader>
+              <CardTitle>Add New Collection</CardTitle>
+              <CardDescription>Create a new art collection</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <AddCollectionForm
+                onSubmit={handleAddCollection}
+                onCancel={() => setShowAddCollection(false)}
+              />
+            </CardContent>
+          </Card>
+          
+          {editingCollection && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Edit Collection</CardTitle>
+                <CardDescription>Update the collection details</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <EditCollectionForm
+                  collection={editingCollection}
+                  onSubmit={handleUpdateCollection}
+                  onCancel={() => setEditingCollection(null)}
+                />
+              </CardContent>
+            </Card>
+          )}
+        </div>
       )}
 
       {/* Collection List - Only show when Add Collection is active */}
@@ -1086,7 +1595,7 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
                     <TableRow key={collection.id}>
                       <TableCell>
                         <Image
-                          src={collection.imageUrl || '/placeholder-collection.jpg'}
+                          src={collection.imageUrl || '/img/artwork/artist.png'}
                           alt={collection.name}
                           width={50}
                           height={50}
@@ -1097,7 +1606,7 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
                       <TableCell className="max-w-xs truncate">{collection.description || '-'}</TableCell>
                       <TableCell>
                         <div className="flex gap-2">
-                          <Button size="sm" variant="outline">
+                          <Button size="sm" variant="outline" onClick={() => handleEditCollection(collection)}>
                             <Edit className="w-4 h-4" />
                           </Button>
                           <Button size="sm" variant="destructive" onClick={() => handleDeleteCollection(collection.id)}>
@@ -1115,78 +1624,88 @@ function InventoryManager({ onBack }: { onBack: () => void }) {
       )}
 
 
-      {/* Artwork List - Only show when Add Artwork is active */}
-      {showAddForm && (
-        <Card>
-          <CardHeader>
-            <CardTitle>All Artworks</CardTitle>
-            <CardDescription>Manage your artworks</CardDescription>
-          </CardHeader>
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader>
+      {/* Artwork List - Always visible */}
+      <Card>
+        <CardHeader>
+          <CardTitle>All Artworks</CardTitle>
+          <CardDescription>Manage your artworks</CardDescription>
+        </CardHeader>
+        <CardContent className="p-0">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Image</TableHead>
+                <TableHead>Title</TableHead>
+                <TableHead>Artist</TableHead>
+                <TableHead>Collection</TableHead>
+                <TableHead>Price</TableHead>
+                    <TableHead>Qty</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {loading ? (
                 <TableRow>
-                  <TableHead>Image</TableHead>
-                  <TableHead>Title</TableHead>
-                  <TableHead>Artist</TableHead>
-                  <TableHead>Price</TableHead>
-                  <TableHead>Stock</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Actions</TableHead>
+                  <TableCell colSpan={8} className="text-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+                  </TableCell>
                 </TableRow>
-              </TableHeader>
-              <TableBody>
-                {loading ? (
-                  <TableRow>
-                    <TableCell colSpan={7} className="text-center py-8">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+              ) : artworks.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={8} className="text-center py-8 text-gray-500">
+                    No artworks found
+                  </TableCell>
+                </TableRow>
+              ) : (
+                artworks.map((artwork) => (
+                  <TableRow key={artwork.id}>
+                    <TableCell>
+                      <Image
+                        src={artwork.imageUrl || '/img/artwork/artist.png'}
+                        alt={artwork.title}
+                        width={50}
+                        height={50}
+                        className="rounded object-cover"
+                      />
+                    </TableCell>
+                    <TableCell className="font-medium">{artwork.title}</TableCell>
+                    <TableCell>{artwork.artist?.name || 'Unknown'}</TableCell>
+                    <TableCell>{artwork.collection?.name || 'None'}</TableCell>
+                    <TableCell>${artwork.price || 0}</TableCell>
+                    <TableCell>{artwork.inStock ? 1 : 0}</TableCell>
+                    <TableCell>
+                      <Badge variant={artwork.inStock ? 'default' : 'destructive'}>
+                        {artwork.inStock ? 'In Stock' : 'Out of Stock'}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex gap-2">
+                        <Button size="sm" variant="outline" onClick={() => setEditingArtwork(artwork)}>
+                          <Edit className="w-4 h-4" />
+                        </Button>
+                        <Button size="sm" variant="destructive" onClick={() => handleDelete(artwork.id)}>
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
                     </TableCell>
                   </TableRow>
-                ) : artworks.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={7} className="text-center py-8 text-gray-500">
-                      No artworks found
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  artworks.map((artwork) => (
-                    <TableRow key={artwork.id}>
-                      <TableCell>
-                        <Image
-                          src={artwork.imageUrl || '/placeholder-artwork.jpg'}
-                          alt={artwork.title}
-                          width={50}
-                          height={50}
-                          className="rounded object-cover"
-                        />
-                      </TableCell>
-                      <TableCell className="font-medium">{artwork.title}</TableCell>
-                      <TableCell>{artwork.artist?.name || 'Unknown'}</TableCell>
-                      <TableCell>${artwork.price || 0}</TableCell>
-                      <TableCell>{artwork.stock || 0}</TableCell>
-                      <TableCell>
-                        <Badge variant={artwork.stock > 0 ? 'default' : 'destructive'}>
-                          {artwork.stock > 0 ? 'In Stock' : 'Out of Stock'}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex gap-2">
-                          <Button size="sm" variant="outline" onClick={() => setEditingArtwork(artwork)}>
-                            <Edit className="w-4 h-4" />
-                          </Button>
-                          <Button size="sm" variant="destructive" onClick={() => handleDelete(artwork.id)}>
-                            <Trash2 className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                )}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-      )}
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+
+      <ConfirmationDialog
+        isOpen={confirmDialog.isOpen}
+        onClose={() => setConfirmDialog(prev => ({ ...prev, isOpen: false }))}
+        title={confirmDialog.title}
+        description={confirmDialog.description}
+        action={confirmDialog.action}
+        actionText={confirmDialog.actionText}
+        variant={confirmDialog.variant}
+      />
     </div>
   )
 }
@@ -1417,6 +1936,15 @@ export default function AdminDashboard() {
   const [isLoading, setIsLoading] = useState(true)
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [activeTab, setActiveTab] = useState('dashboard')
+  const [componentKey, setComponentKey] = useState(Date.now())
+
+  // Reset any editing states when switching tabs
+  const handleTabChange = (tab: string) => {
+    console.log(`Switching to tab: ${tab}`)
+    setActiveTab(tab)
+    // Force component remount by changing the key
+    setComponentKey(Date.now())
+  }
   const [confirmDialog, setConfirmDialog] = useState<{
     isOpen: boolean
     title: string
@@ -1516,12 +2044,12 @@ export default function AdminDashboard() {
       <div className="sticky top-0 z-50 border-b bg-white/80 dark:bg-gray-900/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-gray-900/60">
         <div className="container flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
-            <Image 
-              src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg" 
-              alt="Imbayedu" 
-              width={32} 
-              height={32} 
-              className="rounded-sm object-cover" 
+            <Image
+              src="/img/artwork/WhatsApp Image 2025-06-24 at 02.31.06.jpg"
+              alt="Imbayedu"
+              width={32}
+              height={32}
+              className="rounded-sm object-cover"
             />
             <div className="font-bold text-xl tracking-tight">
               Admin Dashboard
@@ -1535,7 +2063,7 @@ export default function AdminDashboard() {
             
             <Button 
               variant={activeTab === 'settings' ? 'default' : 'outline'} 
-              onClick={() => setActiveTab(activeTab === 'settings' ? 'dashboard' : 'settings')}
+              onClick={() => handleTabChange(activeTab === 'settings' ? 'dashboard' : 'settings')}
             >
               <Settings className="h-4 w-4 mr-2" />
               Settings
@@ -1543,7 +2071,7 @@ export default function AdminDashboard() {
             
             <Button 
               variant={activeTab === 'inventory' ? 'default' : 'outline'} 
-              onClick={() => setActiveTab('inventory')}
+              onClick={() => handleTabChange('inventory')}
             >
               <Package className="h-4 w-4 mr-2" />
               Inventory
@@ -1551,7 +2079,7 @@ export default function AdminDashboard() {
             
             <Button 
               variant={activeTab === 'sales' ? 'default' : 'outline'} 
-              onClick={() => setActiveTab('sales')}
+              onClick={() => handleTabChange('sales')}
             >
               <TrendingUp className="h-4 w-4 mr-2" />
               Sales
@@ -1618,41 +2146,13 @@ export default function AdminDashboard() {
               </Card>
             </div>
 
-            {/* Quick Actions */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Quick Actions</CardTitle>
-                <CardDescription>Common administrative tasks</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <Button 
-                    variant="outline" 
-                    className="h-20 flex flex-col gap-2"
-                    onClick={() => setActiveTab('inventory')}
-                  >
-                    <Package className="h-6 w-6" />
-                    Manage Inventory
-                  </Button>
-                  
-                  <Button 
-                    variant="outline" 
-                    className="h-20 flex flex-col gap-2"
-                    onClick={() => setActiveTab('sales')}
-                  >
-                    <TrendingUp className="h-6 w-6" />
-                    View Sales Analytics
-                  </Button>
-                  
-                </div>
-              </CardContent>
-            </Card>
+
           </div>
         )}
 
-        {activeTab === 'inventory' && <InventoryManager onBack={() => setActiveTab('dashboard')} />}
-        {activeTab === 'sales' && <SalesAnalytics onBack={() => setActiveTab('dashboard')} />}
-        {activeTab === 'settings' && <AdminSettings onBack={() => setActiveTab('dashboard')} />}
+        {activeTab === 'inventory' && <InventoryManager key={`inventory-${componentKey}`} onBack={() => handleTabChange('dashboard')} />}
+        {activeTab === 'sales' && <SalesAnalytics key={`sales-${componentKey}`} onBack={() => handleTabChange('dashboard')} />}
+        {activeTab === 'settings' && <AdminSettings key={`settings-${componentKey}`} onBack={() => handleTabChange('dashboard')} />}
       </div>
 
       {/* Professional Confirmation Dialog */}

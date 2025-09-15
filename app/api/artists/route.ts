@@ -14,7 +14,7 @@ export async function GET() {
       await storage.createArtist({
         name: "Tunga Makoni",
         bio: "Contemporary painter specializing in portrait art that captures the essence of African identity and heritage through vibrant colors and expressive brushwork. Her work celebrates cultural pride and explores themes of tradition in modern contexts.",
-        imageUrl: "/img/artwork/Tunga.jpg?v=" + Date.now(),
+        imageUrl: "/img/artwork/Tunga.jpg",
         featured: true,
         location: "Harare, Zimbabwe",
       })

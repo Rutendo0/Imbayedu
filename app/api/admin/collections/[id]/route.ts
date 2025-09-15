@@ -2,6 +2,32 @@ import { NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/auth'
 import { storage } from '@/lib/storage'
 
+export async function PUT(request: Request, { params }: { params: { id: string } }) {
+  try {
+    const admin = await requireAdmin()
+    if (!admin) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+
+    const collectionId = parseInt(params.id)
+    const body = await request.json()
+
+    const updated = await storage.updateCollection(collectionId, {
+      name: body.name,
+      description: body.description,
+      imageUrl: body.imageUrl,
+      featured: body.featured,
+    })
+
+    if (!updated) {
+      return NextResponse.json({ message: 'Collection not found' }, { status: 404 })
+    }
+
+    return NextResponse.json(updated)
+  } catch (error) {
+    console.error('Update collection error:', error)
+    return NextResponse.json({ message: 'Failed to update collection' }, { status: 500 })
+  }
+}
+
 export async function DELETE(request: Request, { params }: { params: { id: string } }) {
   try {
     const admin = await requireAdmin()
