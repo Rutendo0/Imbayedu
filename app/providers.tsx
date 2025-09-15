@@ -18,7 +18,7 @@ const queryClient = new QueryClient({
   },
 })
 
-const stripePromise = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY 
+const stripePromise = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
   ? loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
   : null
 
@@ -40,13 +40,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
       disableTransitionOnChange
     >
       <QueryClientProvider client={queryClient}>
-        {stripePromise ? (
-          <Elements stripe={stripePromise}>
-            {content}
-          </Elements>
-        ) : (
-          content
-        )}
+        {/* Always provide Elements context; stripePromise may be null in build or when key is missing */}
+        <Elements stripe={stripePromise}>
+          {content}
+        </Elements>
       </QueryClientProvider>
     </ThemeProvider>
   )
